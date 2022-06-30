@@ -1618,8 +1618,8 @@ if (isset($_POST)) {
                     $AUSUARIO_ADO->agregarAusuario2($ARRAYRECEPCIONE[0]["NUMERO_RECEPCION"],1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Recepción Envases, Origen recepción materia prima.","material_recepcione", $ARRAYRECEPCIONE[0]["ID_RECEPCION"],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 }
                 if ($_GET["a"] == "crear") {
-                    $_GET["id"] = $_REQUEST['IDP'];
-                    $_GET["a"] = "crear";
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "crear";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -1629,13 +1629,13 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRecepcionmp.php?op";                            
+                            location.href = "registroRecepcionmp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
                 if ($_GET["a"] == "editar") {
-                    $_GET["id"] = $_REQUEST['IDP'];
-                    $_GET["a"] = "editar";
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "editar";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -1645,7 +1645,7 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRecepcionmp.php?op";                            
+                            location.href = "registroRecepcionmp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
@@ -1838,8 +1838,8 @@ if (isset($_POST)) {
                         //REDIRECCIONAR A PAGINA registroRecepcionmp.php
                         //SEGUNE EL TIPO DE OPERACIONS QUE SE INDENTIFIQUE EN LA URL
                         if ($_GET["a"] == "crear") {
-                            $_GET["id"] = $_REQUEST['IDP'];
-                            $_GET["a"] = "ver";
+                            $id_dato = $_REQUEST['IDP'];
+                            $accion_dato = "ver";
                             echo '<script>
                                 Swal.fire({
                                     icon:"info",
@@ -1849,13 +1849,13 @@ if (isset($_POST)) {
                                     confirmButtonText:"Cerrar",
                                     closeOnConfirm:false
                                 }).then((result)=>{
-                                    location.href = "registroRecepcionmp.php?op";                                    
+                                    location.href = "registroRecepcionmp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                                 })
                             </script>';
                         }
                         if ($_GET["a"] == "editar") {
-                            $_GET["id"] = $_REQUEST['IDP'];
-                            $_GET["a"] = "ver";
+                            $id_dato = $_REQUEST['IDP'];
+                            $accion_dato = "ver";
                             echo '<script>
                                 Swal.fire({
                                     icon:"info",
@@ -1865,7 +1865,7 @@ if (isset($_POST)) {
                                     confirmButtonText:"Cerrar",
                                     closeOnConfirm:false
                                 }).then((result)=>{
-                                    location.href = "registroRecepcionmp.php?op";                                    
+                                    location.href = "registroRecepcionmp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                                 })
                             </script>';
                         }                    
