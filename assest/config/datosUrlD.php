@@ -8,7 +8,7 @@ if (isset($_REQUEST['SELECIONOCDURL'])) {
     $_SESSION["urlO"] = $_REQUEST['URLP'];
     $_SESSION["dparametro"] = "";
     $_SESSION["dparametro1"] = "";
-    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op';</script>";
+    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op&id=".$id_dato."&a=".$accion_dato."';</script>";
 }
 
 if (isset($_REQUEST['CREARDURL'])) {
@@ -29,7 +29,7 @@ if (isset($_REQUEST['VERDURL'])) {
     $_SESSION["urlO"] = $_REQUEST['URLP'];
     $_SESSION["dparametro"] = $_REQUEST['IDD'];
     $_SESSION["dparametro1"] = "ver";
-    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op';</script>";
+    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op&id=".$id_dato."&a=".$accion_dato."';</script>";
 }
 if (isset($_REQUEST['EDITARDURL'])) {
     /*$_SESSION["parametro"] = $_REQUEST['IDP'];
@@ -39,7 +39,7 @@ if (isset($_REQUEST['EDITARDURL'])) {
     $_SESSION["urlO"] = $_REQUEST['URLP'];
     $_SESSION["dparametro"] = $_REQUEST['IDD'];
     $_SESSION["dparametro1"] = "editar";
-    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op';</script>";
+    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op&id=".$id_dato."&a=".$accion_dato."';</script>";
 }
 if (isset($_REQUEST['DUPLICARDURL'])) {
     /*$_SESSION["parametro"] = $_REQUEST['IDP'];
@@ -49,7 +49,7 @@ if (isset($_REQUEST['DUPLICARDURL'])) {
     $_SESSION["urlO"] = $_REQUEST['URLP'];
     $_SESSION["dparametro"] = $_REQUEST['IDD'];
     $_SESSION["dparametro1"] = "crear";
-    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op';</script>";
+    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op&id=".$id_dato."&a=".$accion_dato."';</script>";
 }
 if (isset($_REQUEST['ELIMINARDURL'])) {
     /*$_SESSION["parametro"] = $_REQUEST['IDP'];
@@ -59,7 +59,7 @@ if (isset($_REQUEST['ELIMINARDURL'])) {
     $_SESSION["urlO"] = $_REQUEST['URLP'];
     $_SESSION["dparametro"] = $_REQUEST['IDD'];
     $_SESSION["dparametro1"] = "eliminar";
-    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op';</script>";
+    echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLD'] . ".php?op&id=".$id_dato."&a=".$accion_dato."';</script>";
 }
 
 
