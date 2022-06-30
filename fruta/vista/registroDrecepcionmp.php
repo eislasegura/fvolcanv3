@@ -1144,7 +1144,7 @@ if ($_POST) {
                             showConfirmButton:true,
                             confirmButtonText:"Volver a recepcion"
                         }).then((result)=>{
-                            location.href ="' . $_REQUEST['URLO'] . '.php?op";                            
+                            location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
             }
@@ -1285,7 +1285,7 @@ if ($_POST) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver a recepcion"
                     }).then((result)=>{
-                        location.href ="' . $_REQUEST['URLO'] . '.php?op";                        
+                        location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                     })
                 </script>';
             //echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLO'] . ".php?op';</script>";
@@ -1317,7 +1317,7 @@ if ($_POST) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver a recepcion"
                     }).then((result)=>{
-                        location.href ="' . $_REQUEST['URLO'] . '.php?op";                        
+                        location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                     })
                 </script>';
         }

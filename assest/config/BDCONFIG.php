@@ -9,8 +9,8 @@ class BDCONFIG {
     public function __construct()
     {
         $this->HOST="localhost";
-        $this->USER="root";
-        $this->PASS="MikeGuazaky0212";
+        $this->USER = "root";
+        $this->PASS="";
         $this->DBNAME="mscode_fvolcan";
 
     }
@@ -20,13 +20,9 @@ class BDCONFIG {
 
     static public function conectar(){
         // $link = new PDO("mysql:host=localhost;dbname=cartas","forge","fgIg28u3smG0TXCUU5nd");
-        $link = new PDO("mysql:host=localhost;dbname=mscode_fvolcan","root","MikeGuazaky0212");
+        $link = new PDO("mysql:host=localhost;dbname=mscode_fvolcan","root","");
         $link->exec("set names utf8");
         $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $link;
     }
 }
-
-
-
-?>

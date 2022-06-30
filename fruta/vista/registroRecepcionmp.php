@@ -1496,8 +1496,8 @@ if (isset($_POST)) {
 
 
                     //REDIRECCIONAR A PAGINA registroRecepcionmp.php
-                    $_GET["id"] = $ARRYAOBTENERID[0]['ID_RECEPCION'];
-                    $_GET["a"] = "crear";
+                    $id_dato = $ARRYAOBTENERID[0]['ID_RECEPCION'];
+                    $accion_dato = "crear";
                     echo '<script>
                         Swal.fire({
                             icon:"success",
