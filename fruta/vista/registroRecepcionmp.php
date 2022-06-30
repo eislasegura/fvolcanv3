@@ -1507,7 +1507,7 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                             location.href = "registroRecepcionmp.php?op";                            
+                             location.href = "registroRecepcionmp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
