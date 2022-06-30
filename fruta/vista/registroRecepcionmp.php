@@ -199,8 +199,21 @@ include_once "../../assest/config/validarDatosUrl.php";//este valida que se reci
 include_once "../../assest/config/datosUrlD.php";//estos registran el detalle
 
 
-$id_dato = $_GET["id"];
-$accion_dato = $_GET["a"];
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+
+
 
 $ARRAYFOLIO3 = $FOLIO_ADO->verFolioPorEmpresaPlantaTemporadaTmateriaprima($EMPRESAS, $PLANTAS, $TEMPORADAS);
 if (empty($ARRAYFOLIO3)) {
@@ -786,7 +799,7 @@ if (isset($_POST)) {
                         <form class="form" role="form" method="post" name="form_reg_dato" id="form_reg_dato">
                             <div class="box">                               
                                  <div class="box-header with-border bg-primary">                                   
-                                    <h4 class="box-title">Registro de Recepcion <?php echo $id_recibido; ?> Prueba</h4>                                        
+                                    <h4 class="box-title">Registro de Recepcion</h4>                                        
                                 </div>
                                 <div class="box-body ">
                                     <div class="row">
