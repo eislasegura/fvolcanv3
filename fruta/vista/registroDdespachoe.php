@@ -92,6 +92,19 @@ $ARRAYVERFOLIO;
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
 
 $ARRAYPRODUCTO = $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS);
 $ARRAYTUMEDIDA = $TUMEDIDA_ADO->listarTumedidaPorEmpresaCBX($EMPRESAS);
@@ -103,9 +116,9 @@ if ($ARRAYBODEGAENVASES) {
     $BODEGA=$ARRAYBODEGAENVASES[0]["ID_BODEGA"];    
 }
 //OBTENCION DE DATOS ENVIADOR A LA URL
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLP = $_SESSION['urlO'];
 
     $ARRAYRECEPCION = $DESPACHOE_ADO->verDespachoe($IDP);
@@ -116,12 +129,12 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
 }
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
     $IDOP = $_SESSION['dparametro'];
     $OP = $_SESSION['dparametro1'];
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLP = $_SESSION['urlO'];
 
     //IDENTIFICACIONES DE OPERACIONES
@@ -390,7 +403,7 @@ if (isset($_POST)) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">                                    
                                     <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op');">
+                                        <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
                                         <?php if ($OP == "") { ?>
@@ -450,8 +463,8 @@ if (isset($_POST)) {
                 $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle de Despacho Envases.","material_inventarioe", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                 //REDIRECCIONAR A PAGINA registroRecepcion.php     
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -460,7 +473,7 @@ if (isset($_POST)) {
                             showConfirmButton:true,
                             confirmButtonText:"cerrar"
                         }).then((result)=>{
-                            location.href ="'.$_REQUEST['URLP'].'.php?op";                            
+                            location.href ="'.$_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
 
@@ -481,8 +494,8 @@ if (isset($_POST)) {
 
                 $AUSUARIO_ADO->agregarAusuario2("NULL",1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de detalle de Despacho Envases.","material_inventarioe", $_REQUEST['IDD'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                     Swal.fire({
                         icon:"info",
@@ -491,7 +504,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"cerrar"
                     }).then((result)=>{
-                        location.href ="'.$_REQUEST['URLP'].'.php?op";                       
+                        location.href ="'.$_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                       
                     })
                 </script>';
             }
@@ -516,8 +529,8 @@ if (isset($_POST)) {
                     }
                 }
 
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                     Swal.fire({
                         icon:"error",
@@ -526,7 +539,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver a Despacho"
                     }).then((result)=>{
-                        location.href ="'.$_REQUEST['URLP'].'.php?op";                        
+                        location.href ="'.$_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                     })
                 </script>';
             }
