@@ -79,11 +79,24 @@ $ARRAYHISOTIRALPROCESOVALIDAR = "";
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 
 //OPERACIONES
+
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 //OPERACION DE REGISTRO DE FILA
 
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];
 
     $ARRAYEXIINDUSTRIAL1= $EXIINDUSTRIAL_ADO->listarExiindustrialEmpresaPlantaTemporadaDisponibleCBX($EMPRESAS, $PLANTAS, $TEMPORADAS);
@@ -380,8 +393,8 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                 $SINO = "0";
             } else {
                 $SINO = "1";
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                     Swal.fire({
                         icon:"warning",
@@ -391,7 +404,7 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroSelecionExistenciaINDDespachoIND.php?op";                            
+                        location.href = "registroSelecionExistenciaINDDespachoIND.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
@@ -408,8 +421,8 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                     $AUSUARIO_ADO->agregarAusuario2("NULL",1,2,"".$_SESSION["NOMBRE_USUARIO"].", Se agrego la Existencia al despacho de Producto Industrial.","fruta_exiindustrial", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 endforeach;
 
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                     Swal.fire({
                         icon:"success",
@@ -419,7 +432,7 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                         confirmButtonText:"Volver a Despacho",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href="' . $_REQUEST['URLO'] . '.php?op";                        
+                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                     })
                 </script>';
             }
@@ -572,8 +585,8 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                 
                 if ($SINNO == 0) {    
                     if ($MENSAJE == "") {                
-                        $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                        $id_dato =  $_REQUEST['IDP'];
+                        $accion_dato =  $_REQUEST['OPP'];
                         echo '<script>
                             Swal.fire({
                                 icon:"success",
@@ -583,12 +596,12 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                                 confirmButtonText:"Volver al despacho",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op";                        
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                             })
                         </script>';
                     }else{                        
-                        $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                        $id_dato =  $_REQUEST['IDP'];
+                        $accion_dato =  $_REQUEST['OPP'];
                         echo '<script>
                             Swal.fire({
                                 icon:"success",
@@ -598,14 +611,14 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                                 confirmButtonText:"Volver al despacho",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op";                        
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                             })
                         </script>';
                     }
                 }else{                        
                     if($MENSAJE!=""){
-                        $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                        $id_dato =  $_REQUEST['IDP'];
+                        $accion_dato =  $_REQUEST['OPP'];
                         echo '<script>
                             Swal.fire({
                                 icon:"warning",
@@ -615,12 +628,12 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="registroSelecionExistenciaINDDespachoIND.php?op";                        
+                                location.href="registroSelecionExistenciaINDDespachoIND.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                             })
                         </script>';
                     }else{                            
-                        $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                        $id_dato =  $_REQUEST['IDP'];
+                        $accion_dato =  $_REQUEST['OPP'];
                         echo '<script>
                             Swal.fire({
                                 icon:"success",
@@ -630,7 +643,7 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                                 confirmButtonText:"Volver al despacho",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op";                         
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                         
                             })
                         </script>';
 
