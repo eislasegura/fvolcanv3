@@ -113,12 +113,13 @@ include_once "../../assest/config/validarDatosUrlD.php";
 
 
 //OPERACIONES
-
+$id_dato = $_GET["id"];
+$accion_dato = $_GET["a"];
 
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];
 
     $ARRAYRECEPCION = $RECEPCIONIND_ADO->verRecepcion($IDP);
@@ -140,12 +141,12 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
     $IDOP = $_SESSION['dparametro'];
     $OP = $_SESSION['dparametro1'];
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];
 
 
@@ -867,8 +868,8 @@ if ($_POST) {
                     $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Existencia de Producto Industrial","fruta_exiindustrial","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
                     
                     //REDIRECCIONAR A PAGINA registroProceso.php
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];
                     echo '<script>
                             Swal.fire({
                                 icon:"success",
@@ -878,7 +879,7 @@ if ($_POST) {
                                 confirmButtonText:"Volver a recepcion"
                             }).then((result)=>{
                                 if(result.value){
-                                    location.href ="' . $_REQUEST['URLO'] . '.php?op";
+                                    location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";
                                 }
                             })
                         </script>';
@@ -986,8 +987,8 @@ if ($_POST) {
                 }
                 
                 //REDIRECCIONAR A PAGINA registroProceso.php 
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -997,7 +998,7 @@ if ($_POST) {
                             confirmButtonText:"Volver a recepcion"
                         }).then((result)=>{
                             if(result.value){
-                                location.href ="' . $_REQUEST['URLO'] . '.php?op";
+                                location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";
                             }
                         })
                     </script>';
@@ -1024,8 +1025,8 @@ if ($_POST) {
 
 
                 //REDIRECCIONAR A PAGINA registroProceso.php
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                         Swal.fire({
                             icon:"error",
@@ -1035,7 +1036,7 @@ if ($_POST) {
                             confirmButtonText:"Volver a recepcion"
                         }).then((result)=>{
                             if(result.value){
-                                location.href ="' . $_REQUEST['URLO'] . '.php?op";
+                                location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";
                             }
                         })
                     </script>';
