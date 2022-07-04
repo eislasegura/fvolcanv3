@@ -108,6 +108,18 @@ $ARRAYNUMERO = "";
 
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 //FOLIO EXPORTACION
 
 $ARRAYPRODUCTOR = $PRODUCTOR_ADO->listarProductorPorEmpresaCBX($EMPRESAS);
@@ -134,10 +146,10 @@ if (empty($ARRAYFOLIO2)) {
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
+    $IDOP = $id_dato;
+    $OP = $accion_dato;
 
     //OBTENECION DE INFORMACION DE LA TABLAS DE LA VISTA
     $ARRAYTOMADA = $EXIMATERIAPRIMA_ADO->verExistenciaPorRechazo2($IDOP);
@@ -818,8 +830,8 @@ if (isset($_POST)) {
             $AUSUARIO_ADO->agregarAusuario2($NUMERO,1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de rechazo Materia Prima.","fruta_rechazomp", $ARRYAOBTENERID[0]['ID_RECHAZO'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
             //REDIRECCIONAR A PAGINA registroRecepcion.php
             
-            $_SESSION["parametro"] = $ARRYAOBTENERID[0]['ID_RECHAZO'];
-            $_SESSION["parametro1"] = "crear";
+            $id_dato = $ARRYAOBTENERID[0]['ID_RECHAZO'];
+            $accion_dato = "crear";
             
             echo '<script>
                 Swal.fire({
@@ -830,7 +842,7 @@ if (isset($_POST)) {
                     confirmButtonText:"Cerrar",
                     closeOnConfirm:false
                 }).then((result)=>{
-                    location.href = "registroRechazomp.php?op";                            
+                    location.href = "registroRechazomp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                 })
             </script>';
         }
@@ -853,9 +865,9 @@ if (isset($_POST)) {
             $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de rechazo Materia Prima.","fruta_rechazomp", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
             
-            if ($_SESSION['parametro1'] == "crear") {
-                $_SESSION["parametro"] = $_REQUEST['IDP'];
-                $_SESSION["parametro1"] = "crear";
+            if ($accion_dato == "crear") {
+                $id_dato = $_REQUEST['IDP'];
+                $accion_dato = "crear";
                 echo '<script>
                     Swal.fire({
                         icon:"info",
@@ -865,13 +877,13 @@ if (isset($_POST)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroRechazomp.php?op";                            
+                        location.href = "registroRechazomp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
-            if ($_SESSION['parametro1'] == "editar") {
-                $_SESSION["parametro"] = $_REQUEST['IDP'];
-                $_SESSION["parametro1"] = "editar";
+            if ($accion_dato == "editar") {
+                $id_dato = $_REQUEST['IDP'];
+                $accion_dato = "editar";
                 echo '<script>
                     Swal.fire({
                         icon:"info",
@@ -881,7 +893,7 @@ if (isset($_POST)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroRechazomp.php?op";                            
+                        location.href = "registroRechazomp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
@@ -1002,9 +1014,9 @@ if (isset($_POST)) {
                     }
                 endforeach;
                     
-                if ($_SESSION['parametro1'] == "crear") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "ver";
+                if ($accion_dato == "crear") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "ver";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -1014,13 +1026,13 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRechazomp.php?op";                                    
+                            location.href = "registroRechazomp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                         })
                     </script>';
                 }
-                if ($_SESSION['parametro1'] == "editar") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "ver";
+                if ($accion_dato == "editar") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "ver";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -1030,7 +1042,7 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRechazomp.php?op";                                    
+                            location.href = "registroRechazomp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                         })
                     </script>';
                 }  
@@ -1072,7 +1084,7 @@ if (isset($_POST)) {
                     confirmButtonText:"Cerrar",
                     closeOnConfirm:false
                 }).then((result)=>{
-                    location.href = "registroRechazomp.php?op";                            
+                    location.href = "registroRechazomp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                 })
             </script>';                  
         }
