@@ -117,7 +117,18 @@ $ARRAYTUMEDIDA = $TUMEDIDA_ADO->listarTumedidaPorEmpresaCBX($EMPRESAS);
 include_once "../../assest/config/validarDatosUrlD.php";
 include_once "../../assest/config/datosUrlDT.php";
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
 
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 
 
 
