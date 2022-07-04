@@ -97,13 +97,25 @@ $ARRAYTMANEJO = "";
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 
 //OPERACIONES
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 //OPERACION DE REGISTRO DE FILA
 
 
 
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];
     $ARRAYRECHAZO = $RECHAZOPT_ADO->verRechazo($IDP);
     foreach ($ARRAYRECHAZO as $r) :
@@ -324,7 +336,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                     <!-- /.box-body -->                                    
                                     <div class="card-footer">
                                         <div class="btn-group btn-rounded btn-block col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op');">
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="Seleccionar" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
@@ -355,8 +367,8 @@ include_once "../../assest/config/validarDatosUrlD.php";
                     $SINO = "0";
                 } else {
                     $SINO = "1";
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];
                     echo '<script>
                         Swal.fire({
                             icon:"warning",
@@ -366,7 +378,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroSelecionExistenciaPTRechazoPt.php?op";                            
+                            location.href = "registroSelecionExistenciaPTRechazoPt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
@@ -389,8 +401,8 @@ include_once "../../assest/config/validarDatosUrlD.php";
                         $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle rechazo Producto Terminado.","fruta_reapt", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                     endforeach;                           
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];
                     echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -400,7 +412,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             confirmButtonText:"Volver a Rechazo",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href="' . $_REQUEST['URLO'] . '.php?op";                        
+                            location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                         })
                     </script>';
                 }
