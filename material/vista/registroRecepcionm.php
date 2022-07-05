@@ -189,6 +189,7 @@ include_once "../../assest/config/datosUrlD.php";
 
 //VALIDACION DE FOLIO BASE
 
+
 $ARRAYFOLIO = $FOLIO_ADO->verFolioPorEmpresaPlantaTemporadaTMateriales($EMPRESAS, $PLANTAS, $TEMPORADAS);
 if (empty($ARRAYFOLIO)) {
     $DISABLEDFOLIO = "disabled";
@@ -196,11 +197,23 @@ if (empty($ARRAYFOLIO)) {
 }
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
+    $IDOP = $id_dato;
+    $OP = $accion_dato;
 
     //FUNCION PARA LA OBTENCION DE LOS TOTALES DEL DETALLE ASOCIADO A RECEPCIONM
 
@@ -1361,8 +1374,8 @@ if (isset($_POST)) {
                 $AUSUARIO_ADO->agregarAusuario2($NUMERO,2,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Recepción Materiales.","material_recepcionm", $ARRYAOBTENERID[0]['ID_RECEPCION'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
-                $_SESSION["parametro"] = $ARRYAOBTENERID[0]['ID_RECEPCION'];
-                $_SESSION["parametro1"] = "crear";
+                $id_dato = $ARRYAOBTENERID[0]['ID_RECEPCION'];
+                $accion_dato = "crear";
                 echo '<script>
                     Swal.fire({
                         icon:"success",
@@ -1372,7 +1385,7 @@ if (isset($_POST)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroRecepcionm.php?op";                            
+                        location.href = "registroRecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
@@ -1429,9 +1442,9 @@ if (isset($_POST)) {
                 $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,2,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Recepción Materiales.","material_recepcionm", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 
                 
-                if ($_SESSION['parametro1'] == "crear") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "crear";
+                if ($accion_dato == "crear") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "crear";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -1441,13 +1454,13 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRecepcionm.php?op";                            
+                            location.href = "registroRecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
-                if ($_SESSION['parametro1'] == "editar") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "editar";
+                if ($accion_dato == "editar") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "editar";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -1457,7 +1470,7 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRecepcionm.php?op";                            
+                            location.href = "registroRecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
@@ -1575,9 +1588,9 @@ if (isset($_POST)) {
 
                     //REDIRECCIONAR A PAGINA registroRecepcion.php 
                     //SEGUNE EL TIPO DE OPERACIONS QUE SE INDENTIFIQUE EN LA URL                    
-                    if ($_SESSION['parametro1'] == "crear") {
-                        $_SESSION["parametro"] = $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] = "ver";
+                    if ($accion_dato == "crear") {
+                        $id_dato = $_REQUEST['IDP'];
+                        $accion_dato = "ver";
                         echo '<script>
                             Swal.fire({
                                 icon:"info",
@@ -1587,13 +1600,13 @@ if (isset($_POST)) {
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href = "registroRecepcionm.php?op";                                    
+                                location.href = "registroRecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                             })
                         </script>';
                     }
-                    if ($_SESSION['parametro1'] == "editar") {
-                        $_SESSION["parametro"] = $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] = "ver";
+                    if ($accion_dato == "editar") {
+                        $id_dato = $_REQUEST['IDP'];
+                        $accion_dato = "ver";
                         echo '<script>
                             Swal.fire({
                                 icon:"info",
@@ -1603,7 +1616,7 @@ if (isset($_POST)) {
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href = "registroRecepcionm.php?op";                                    
+                                location.href = "registroRecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                             })
                         </script>';
                     }   
