@@ -91,7 +91,7 @@ if (isset($_GET["a"])) {
     $accion_dato = "";
 }
 
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];
