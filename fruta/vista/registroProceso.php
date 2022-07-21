@@ -889,7 +889,7 @@ if (isset($_POST)) {
                                                                     </div>
                                                                 </form>
                                                             </td>
-                                                            <td><?php echo $r['CANTIDAD_ENVASE_EXIMATERIAPRIMA']; ?></td>
+                                                            <td><?php echo $r['FECHA_COSECHA_EXIMATERIAPRIMA']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
                                                             <td><?php echo $NOMBRESPECIES; ?></td>
