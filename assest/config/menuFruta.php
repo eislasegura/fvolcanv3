@@ -515,6 +515,19 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                   </ul>
                 </li>    
               <?php  } ?>
+              <?php if($PFPPROCESO=="1"){ ?>
+              <li class="treeview">
+                  <a href="#">Repaletizaje
+                    <span class="pull-left-container">
+                      <i class=" fa fa-angle-right pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="registroRepaletizajePTFrigorifico.php">Registro Repaletizaje<i class="ti-more"></i></a></li>
+                    <li><a href="listarRepaletizajePTFrigorifico.php">Agrupado Repaletizaje<i class="ti-more"></i></a></li>
+                  </ul>
+                </li> 
+                <?php  } ?>
             </ul>
           </li>          
         <?php  } ?>
