@@ -665,8 +665,8 @@ if (isset($_POST)) {
                                                 <input type="hidden" class="form-control" placeholder="TURNO" id="TURNOE" name="TURNOE" value="<?php echo $TURNO; ?>" />
                                                 <select class="form-control select2" id="TURNO" name="TURNO" style="width: 100%;" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> <?php echo $DISABLEDFOLIO; ?>>
                                                     <option></option>
-                                                    <option value="1" <?php if ($TURNO == "1") { echo "selected"; } ?>>Dia </option>
-                                                    <option value="2" <?php if ($TURNO == "2") { echo "selected"; } ?>> Noche</option>
+                                                    <option value="1" <?php if ($TURNO == "1") { echo "selected"; } ?>>Mañana</option>
+                                                    <option value="2" <?php if ($TURNO == "2") { echo "selected"; } ?>>Tarde</option>
                                                 </select>
                                                 <label id="val_turno" class="validacion"> </label>
                                             </div>
