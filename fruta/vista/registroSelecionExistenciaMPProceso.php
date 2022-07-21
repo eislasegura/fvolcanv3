@@ -538,7 +538,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             $EXIMATERIAPRIMA->__SET('ID_PLANTA3', $r['ID_PLANTA3']);
                             $EXIMATERIAPRIMA->__SET('ID_EXIMATERIAPRIMA2', $r['ID_EXIMATERIAPRIMA']); 
                             //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
-                            $EXIMATERIAPRIMA_ADO->agregarEximateriaprimaProcesoNuevo2($EXIMATERIAPRIMA);
+                            $EXIMATERIAPRIMA_ADO->agregarEximateriaprimaProcesoNuevo2($EXIMATERIAPRIMA);//estado 3 procesado
 
                             $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Existencia y se agrego la Existencia de materia prima al proceso, Origen división de envases en proceso..","fruta_eximateriaprima", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
@@ -578,7 +578,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             $EXIMATERIAPRIMA->__SET('ID_PLANTA3', $r['ID_PLANTA3']);
                             $EXIMATERIAPRIMA->__SET('ID_EXIMATERIAPRIMA2', $r['ID_EXIMATERIAPRIMA']); 
                             // LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
-                            $EXIMATERIAPRIMA_ADO->agregarEximateriaprimaProcesoResto($EXIMATERIAPRIMA);
+                            $EXIMATERIAPRIMA_ADO->agregarEximateriaprimaProcesoResto2($EXIMATERIAPRIMA);//estado 2 disponible
 
                             $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Existencia de materia prima, Origen división de envases en proceso.","fruta_eximateriaprima","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
 
