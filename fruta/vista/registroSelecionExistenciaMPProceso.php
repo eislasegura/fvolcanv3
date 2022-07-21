@@ -594,9 +594,9 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             Swal.fire({
                                 icon:"success",
                                 title:"Accion realizada",
-                                text:"Se agregado la existencia al despacho.",
+                                text:"Se agregado la existencia al proceso.",
                                 showConfirmButton: true,
-                                confirmButtonText:"Volver al despacho",
+                                confirmButtonText:"Ir al proceso",
                                 closeOnConfirm:false
                             }).then((result)=>{
                                 location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
@@ -609,9 +609,9 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             Swal.fire({
                                 icon:"success",
                                 title:"Accion realizada",
-                                text:"Se agregado la existencia al despacho. ' . $MENSAJE . '",
+                                text:"Se agregado la existencia al proceso. ' . $MENSAJE . '",
                                 showConfirmButton: true,
-                                confirmButtonText:"Volver al despacho",
+                                confirmButtonText:"Volver al proceso",
                                 closeOnConfirm:false
                             }).then((result)=>{
                                 location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
@@ -641,9 +641,9 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             Swal.fire({
                                 icon:"success",
                                 title:"Accion realizada",
-                                text:"Se agregado la selección al despacho.",
+                                text:"Se agregado la selección al proceso.",
                                 showConfirmButton: true,
-                                confirmButtonText:"Volver al despacho",
+                                confirmButtonText:"Volver al proceso",
                                 closeOnConfirm:false
                             }).then((result)=>{
                                 location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                         
