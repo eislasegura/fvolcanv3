@@ -905,7 +905,7 @@ if ($_POST) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="btn-group btn-rounded btn-block col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>'&a=<?php echo $accion_dato; ?>');">
+                                        <button type="button" class="btn btn-success" data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>'&a=<?php echo $accion_dato; ?>');">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
                                         <?php if ($OP == "") { ?>
