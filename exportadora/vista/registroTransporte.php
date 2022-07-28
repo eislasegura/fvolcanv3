@@ -52,13 +52,26 @@ include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/datosUrl.php";
 
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION Y VISUALIZACION
 //PREGUNTA SI LA URL VIENE  CON DATOS "parametro" y "parametro1"
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
+    $IDOP = $id_dato;
+    $OP = $accion_dato;
 
     //IDENTIFICACIONES DE OPERACIONES    //OPERACION DE CAMBIO DE ESTADO
     //0 = DESACTIVAR
