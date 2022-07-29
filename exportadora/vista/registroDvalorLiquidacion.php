@@ -98,13 +98,24 @@ $ARRAYDETALLEVALORTOTAL="";
 include_once "../../assest/config/validarDatosUrlD.php";
 include_once "../../assest/config/datosUrlDT.php";
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
 
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
 
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])){    
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])){    
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];    
     $ARRAYVERVALOR = $VALOR_ADO->verValor($IDP);
     if($ARRAYVERVALOR){
@@ -126,13 +137,13 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
 
 
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
     $IDOP = $_SESSION['dparametro'];
     $OP = $_SESSION['dparametro1'];    
 
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLO = $_SESSION['urlO'];
 
 
@@ -433,7 +444,7 @@ if ($_POST) {
                                     <label id=" val_mensaje" class="validacion"><?php echo $MENSAJEELIMINAR; ?> </label>
                                     <div class="box-footer">
                                         <div class="btn-group btn-block   col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op');">
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>a=<?php echo $accion_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <?php if ($OP == "") { ?>
@@ -606,8 +617,8 @@ if ($_POST) {
                 $AUSUARIO_ADO->agregarAusuario2("NULL",3, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Valor Item Liquidación","liquidacion_dvalor","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
                 //REDIRECCIONAR A PAGINA registroICarga.php 
                    
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];   
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];   
 
                 if($_REQUEST['DETALLE']==1){  
 
@@ -622,7 +633,7 @@ if ($_POST) {
                             showConfirmButton:true,
                             confirmButtonText:"Cerrar."
                         }).then((result)=>{
-                            location.href ="registroDvalorLiquidacion.php?op";                            
+                            location.href ="registroDvalorLiquidacion.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';  
 
@@ -635,7 +646,7 @@ if ($_POST) {
                             showConfirmButton:true,
                             confirmButtonText:"Volver a Valor Liquidación."
                         }).then((result)=>{
-                            location.href ="' . $_REQUEST['URLO'] . '.php?op";                            
+                            location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }   
@@ -658,8 +669,8 @@ if ($_POST) {
 
                     $AUSUARIO_ADO->agregarAusuario2("NULL",3, 2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Detalle de Valor Liquidación","liquidacion_dvalor",$ARRAYDVALOR[0]["ID_DVALOR"],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
                     
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];                
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];                
                     echo '<script>
                             Swal.fire({
                                 icon:"success",
@@ -669,7 +680,7 @@ if ($_POST) {
                                 confirmButtonText:"Volver a Valor Liquidación."
                             }).then((result)=>{
                                 if(result.value){
-                                    location.href ="' . $_REQUEST['URLO'] . '.php?op";
+                                    location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";
                                 }
                             })
                         </script>';
@@ -685,8 +696,8 @@ if ($_POST) {
                     $DVALOR_ADO->deshabilitar($DVALOR);
                     $AUSUARIO_ADO->agregarAusuario2("NULL",3, 3,"".$_SESSION["NOMBRE_USUARIO"].", Deshabilitar de Detalle de Valor Liquidación","liquidacion_dvalor",$ARRAYDVALOR[0]["ID_DVALOR"],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
                     
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];                    
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];                    
                     echo '<script>
                             Swal.fire({
                                 icon:"error",
@@ -695,7 +706,7 @@ if ($_POST) {
                                 showConfirmButton:true,
                                 confirmButtonText:"Volver a Valor Liquidación."
                             }).then((result)=>{
-                                location.href ="' . $_REQUEST['URLO'] . '.php?op";                        
+                                location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                             })
                         </script>';
                 }
