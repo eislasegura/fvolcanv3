@@ -110,18 +110,61 @@ include_once "../../assest/config/validarDatosUrlD.php";
 include_once "../../assest/config/datosUrlDT.php";
 
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
+
+if (isset($_GET["iddt"])) {
+    $iddt_dato = $_GET["iddt"];
+}else{
+    $iddt_dato = "";
+}
+
+
+if (isset($_GET["adt"])) {
+    $acciondt_dato = $_GET["adt"];
+}else{
+    $acciondt_dato = "";
+}
+
+
+echo 'entro aqui'.$id_dato.' data 2'.$_SESSION['urlO'];
 //OBTENCION DE DATOS ENVIADOR A LA URL
 if (
-    isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO']) &&
-    isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1']) && isset($_SESSION['durlO'])
+    isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) &&
+    isset($idd_dato) && isset($acciond_dato) && isset($_SESSION['durlO'])
 ) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLP = $_SESSION['urlO'];
-    $IDD = $_SESSION['dparametro'];
-    $OPD = $_SESSION['dparametro1'];
+    $IDD = $idd_dato;
+    $OPD = $acciond_dato;
     $URLD = $_SESSION['durlO'];
-
+    die('entro aqui 1000');
 
     $ARRAYDRECEPCION = $DRECEPCIONM_ADO->verDrecepcion($IDD);
     $ARRAYDTRECEPCIONTOTALES = $TARJAM_ADO->obtenerTotalesTarjaPorDrecepcionCBX($IDD);
@@ -148,19 +191,19 @@ if (
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
 if (
-    isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO']) &&
-    isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1']) && isset($_SESSION['durlO'])  &&
-    isset($_SESSION['dtparametro']) && isset($_SESSION['dtparametro1'])
+    isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) &&
+    isset($idd_dato) && isset($acciond_dato) && isset($_SESSION['durlO'])  &&
+    isset($iddt_dato) && isset($acciondt_dato)
 ) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dtparametro'];
-    $OP = $_SESSION['dtparametro1'];
-
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
+    $IDOP = $iddt_dato;
+    $OP = $acciondt_dato;
+    die('entro aqui 20000');
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
     $URLP = $_SESSION['urlO'];
-    $IDD = $_SESSION['dparametro'];
-    $OPD = $_SESSION['dparametro1'];
+    $IDD = $idd_dato;
+    $OPD = $acciond_dato;
     $URLD = $_SESSION['durlO'];
 
 
@@ -495,7 +538,7 @@ if (isset($_POST)) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                         <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLD; ?>.php?op');">
+                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLD; ?>.php?op&id=<?php echo $id_dato;?>&a=<?php echo $accion_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <?php if ($OP == "") { ?>
@@ -637,8 +680,8 @@ if (isset($_POST)) {
                 }
 
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
-                $_SESSION["dparametro"] =  $_REQUEST['IDD'];
-                $_SESSION["dparametro1"] =  $_REQUEST['OPD'];                
+                $idd_dato =  $_REQUEST['IDD'];
+                $acciond_dato =  $_REQUEST['OPD'];                
                 echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -647,7 +690,7 @@ if (isset($_POST)) {
                             showConfirmButton:true,
                             confirmButtonText:"Volver al Detalle"
                         }).then((result)=>{
-                            location.href ="'. $_REQUEST['URLD'] .'.php?op";                            
+                            location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 //echo "<script type='text/javascript'> location.href ='" ".php?op';</script>";
@@ -733,8 +776,8 @@ if (isset($_POST)) {
                     $AUSUARIO_ADO->agregarAusuario2("NULL",2,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Inventario Materiales.","material_inventariom", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 }
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
-                $_SESSION["dparametro"] =  $_REQUEST['IDD'];
-                $_SESSION["dparametro1"] =  $_REQUEST['OPD'];
+                $idd_dato =  $_REQUEST['IDD'];
+                $acciond_dato =  $_REQUEST['OPD'];
                 echo '<script>
                     Swal.fire({
                         icon:"info",
@@ -743,7 +786,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver al Detalle"
                     }).then((result)=>{
-                        location.href ="'. $_REQUEST['URLD'] .'.php?op";                        
+                        location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                     })
                 </script>';
             }
@@ -765,8 +808,8 @@ if (isset($_POST)) {
 
 
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
-                $_SESSION["dparametro"] =  $_REQUEST['IDD'];
-                $_SESSION["dparametro1"] =  $_REQUEST['OPD'];
+                $idd_dato =  $_REQUEST['IDD'];
+                $acciond_dato =  $_REQUEST['OPD'];
                 echo '<script>
                     Swal.fire({
                         icon:"error",
@@ -775,7 +818,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver al Detalle"
                     }).then((result)=>{
-                        location.href ="'. $_REQUEST['URLD'] .'.php?op";                             
+                        location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                             
                     })
                 </script>';
 
