@@ -135,14 +135,25 @@ include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/datosUrlD.php";
 
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
 
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
+    $IDOP = $id_dato;
+    $OP = $accion_dato;
 
 
     $ARRAYDFICHA = $DFICHA_ADO->listarDfichaPorFichCBX($IDOP);
@@ -793,8 +804,8 @@ if (isset($_POST)) {
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
                 $AUSUARIO_ADO->agregarAusuario2($NUMERO,3,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de ficha","material_ficha",$ARRYAOBTENERID[0]['ID_FICHA'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
 
-                $_SESSION["parametro"] = $ARRYAOBTENERID[0]['ID_FICHA'];
-                $_SESSION["parametro1"] = "crear";
+                $id_dato = $ARRYAOBTENERID[0]['ID_FICHA'];
+                $accion_dato = "crear";
                 echo '<script>
                     Swal.fire({
                         icon:"success",
@@ -804,7 +815,7 @@ if (isset($_POST)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                         location.href = "registroFicha.php?op";                            
+                         location.href = "registroFicha.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
 
@@ -818,9 +829,9 @@ if (isset($_POST)) {
                 $FICHA_ADO->actualizarFicha($FICHA);
 
                 $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,3,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de ficha","material_ficha",$_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
-                if ($_SESSION['parametro1'] == "crear") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "crear";
+                if ($accion_dato == "crear") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "crear";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -830,13 +841,13 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroFicha.php?op";                            
+                            location.href = "registroFicha.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
-                if ($_SESSION['parametro1'] == "editar") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "editar";
+                if ($accion_dato == "editar") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "editar";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -846,7 +857,7 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroFicha.php?op";                            
+                            location.href = "registroFicha.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                         })
                     </script>';
                 }
@@ -888,9 +899,9 @@ if (isset($_POST)) {
 
                     //REDIRECCIONAR A PAGINA registroRecepcion.php 
                     //SEGUNE EL TIPO DE OPERACIONS QUE SE INDENTIFIQUE EN LA URL        
-                        if ($_SESSION['parametro1'] == "crear") {
-                            $_SESSION["parametro"] = $_REQUEST['IDP'];
-                            $_SESSION["parametro1"] = "ver";
+                        if ($accion_dato == "crear") {
+                            $id_dato = $_REQUEST['IDP'];
+                            $accion_dato = "ver";
                             echo '<script>
                                 Swal.fire({
                                     icon:"info",
@@ -900,13 +911,13 @@ if (isset($_POST)) {
                                     confirmButtonText:"Cerrar",
                                     closeOnConfirm:false
                                 }).then((result)=>{
-                                    location.href = "registroFicha.php?op";                                    
+                                    location.href = "registroFicha.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                                 })
                             </script>';
                         }
-                        if ($_SESSION['parametro1'] == "editar") {
-                            $_SESSION["parametro"] = $_REQUEST['IDP'];
-                            $_SESSION["parametro1"] = "ver";
+                        if ($accion_dato == "editar") {
+                            $id_dato = $_REQUEST['IDP'];
+                            $accion_dato = "ver";
                             echo '<script>
                                 Swal.fire({
                                     icon:"info",
@@ -916,7 +927,7 @@ if (isset($_POST)) {
                                     confirmButtonText:"Cerrar",
                                     closeOnConfirm:false
                                 }).then((result)=>{
-                                    location.href = "registroFicha.php?op";                                    
+                                    location.href = "registroFicha.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                                 })
                             </script>';
                         }  

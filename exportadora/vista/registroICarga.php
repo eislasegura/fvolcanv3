@@ -376,12 +376,25 @@ include_once "../../assest/config/datosUrlD.php";
 
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
+
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
+    $IDOP = $id_dato;
+    $OP = $accion_dato;
 
     $ARRAYDCARGA = $DICARGA_ADO->buscarPorIcarga2($IDOP);
     $ARRAYDCARGATOTAL = $DICARGA_ADO->totalesPorIcarga($IDOP);
@@ -3574,8 +3587,8 @@ if (isset($_POST)) {
 
                 $AUSUARIO_ADO->agregarAusuario2($NUMERO,3,1,"".$_SESSION["NOMBRE_USUARIO"].", Regustro de Instructivo Carga","fruta_icarga",$ARRYAOBTENERID[0]['ID_ICARGA'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
                 //REDIRECCIONAR A PAGINA registroICarga.php
-                $_SESSION["parametro"] = $ARRYAOBTENERID[0]['ID_ICARGA'];
-                $_SESSION["parametro1"] = "crear";                
+                $id_dato = $ARRYAOBTENERID[0]['ID_ICARGA'];
+                $accion_dato = "crear";                
                 echo '<script>
                     Swal.fire({
                         icon:"success",
@@ -3585,7 +3598,7 @@ if (isset($_POST)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                            location.href = "registroICarga.php?op";
+                            location.href = "registroICarga.php?op&id='.$id_dato.'&a='.$accion_dato.'";
                         
                     })
                 </script>';
@@ -3674,9 +3687,9 @@ if (isset($_POST)) {
 
                 $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,3,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Instructivo Carga","fruta_icarga",$_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );
 
-                if ($_SESSION['parametro1'] == "crear") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "crear";
+                if ($accion_dato == "crear") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "crear";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -3686,13 +3699,13 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroICarga.php?op";                        
+                            location.href = "registroICarga.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                         })
                     </script>';
                 }
-                if ($_SESSION['parametro1'] == "editar") {
-                    $_SESSION["parametro"] = $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] = "editar";
+                if ($accion_dato == "editar") {
+                    $id_dato = $_REQUEST['IDP'];
+                    $accion_dato = "editar";
                     echo '<script>
                         Swal.fire({
                             icon:"info",
@@ -3702,7 +3715,7 @@ if (isset($_POST)) {
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroICarga.php?op";                        
+                            location.href = "registroICarga.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                         })
                     </script>';
                 }
@@ -3815,9 +3828,9 @@ if (isset($_POST)) {
 
                     //REDIRECCIONAR A PAGINA registroICarga.php 
                     //SEGUNE EL TIPO DE OPERACIONS QUE SE INDENTIFIQUE EN LA URL
-                    if ($_SESSION['parametro1'] == "crear") {
-                        $_SESSION["parametro"] = $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] = "ver";
+                    if ($accion_dato == "crear") {
+                        $id_dato = $_REQUEST['IDP'];
+                        $accion_dato = "ver";
                         echo '<script>
                             Swal.fire({
                                 icon:"info",
@@ -3827,13 +3840,13 @@ if (isset($_POST)) {
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href = "registroICarga.php?op";                            
+                                location.href = "registroICarga.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                             })
                         </script>';
                     }
-                    if ($_SESSION['parametro1'] == "editar") {
-                        $_SESSION["parametro"] = $_REQUEST['IDP'];
-                        $_SESSION["parametro1"] = "ver";
+                    if ($accion_dato == "editar") {
+                        $id_dato = $_REQUEST['IDP'];
+                        $accion_dato = "ver";
                         echo '<script>
                             Swal.fire({
                                 icon:"info",
@@ -3843,7 +3856,7 @@ if (isset($_POST)) {
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href = "registroICarga.php?op";                            
+                                location.href = "registroICarga.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                             })
                         </script>';
                     }  
