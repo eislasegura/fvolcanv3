@@ -116,13 +116,17 @@ if (isset($_GET["id"])) {
     $id_dato = "";
 }
 
-
 if (isset($_GET["a"])) {
     $accion_dato = $_GET["a"];
 }else{
     $accion_dato = "";
 }
 
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
 
 if (isset($_GET["idd"])) {
     $idd_dato = $_GET["idd"];
@@ -130,13 +134,17 @@ if (isset($_GET["idd"])) {
     $idd_dato = "";
 }
 
-
 if (isset($_GET["ad"])) {
     $acciond_dato = $_GET["ad"];
 }else{
     $acciond_dato = "";
 }
 
+if (isset($_GET["urlod"])) {
+    $urlod_dato = $_GET["urlod"];
+}else{
+    $urlod_dato = "";
+}
 
 if (isset($_GET["iddt"])) {
     $iddt_dato = $_GET["iddt"];
@@ -152,19 +160,19 @@ if (isset($_GET["adt"])) {
 }
 
 
-echo 'entro aqui'.$id_dato.' data 2'.$_SESSION['urlO'];
+//echo 'entro aqui'.$id_dato.' data 2'.$urlo_dato;
 //OBTENCION DE DATOS ENVIADOR A LA URL
 if (
-    isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) &&
-    isset($idd_dato) && isset($acciond_dato) && isset($_SESSION['durlO'])
+    isset($id_dato) && isset($accion_dato) && isset($urlo_dato) &&
+    isset($idd_dato) && isset($acciond_dato) && isset($urlod_dato)
 ) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLP = $_SESSION['urlO'];
+    $URLP = $urlo_dato;
     $IDD = $idd_dato;
     $OPD = $acciond_dato;
-    $URLD = $_SESSION['durlO'];
-    die('entro aqui 1000');
+    $URLD = $urlod_dato;
+   
 
     $ARRAYDRECEPCION = $DRECEPCIONM_ADO->verDrecepcion($IDD);
     $ARRAYDTRECEPCIONTOTALES = $TARJAM_ADO->obtenerTotalesTarjaPorDrecepcionCBX($IDD);
@@ -191,20 +199,20 @@ if (
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
 if (
-    isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) &&
-    isset($idd_dato) && isset($acciond_dato) && isset($_SESSION['durlO'])  &&
+    isset($id_dato) && isset($accion_dato) && isset($urlo_dato) &&
+    isset($idd_dato) && isset($acciond_dato) && isset($urlod_dato)  &&
     isset($iddt_dato) && isset($acciondt_dato)
 ) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
     $IDOP = $iddt_dato;
-    $OP = $acciondt_dato;
-    die('entro aqui 20000');
+    $OP = $acciondt_dato;//??
+
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLP = $_SESSION['urlO'];
+    $URLP = $urlo_dato;
     $IDD = $idd_dato;
     $OPD = $acciond_dato;
-    $URLD = $_SESSION['durlO'];
+    $URLD = $urlod_dato;
 
 
     //crear =  OBTENCION DE DATOS PARA LA CREACION DE REGISTRO
@@ -538,7 +546,7 @@ if (isset($_POST)) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                         <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLD; ?>.php?op&id=<?php echo $id_dato;?>&a=<?php echo $accion_dato; ?>');">
+                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLD; ?>.php?op&id=<?php echo $id_dato;?>&a=<?php echo $accion_dato; ?>&idd=<?php echo $idd_dato; ?>&ad=<?php echo $acciond_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <?php if ($OP == "") { ?>
@@ -690,7 +698,7 @@ if (isset($_POST)) {
                             showConfirmButton:true,
                             confirmButtonText:"Volver al Detalle"
                         }).then((result)=>{
-                            location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                            location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'&urlo='.$urlo_dato.'&iddt='.$iddt_dato.'&adt='.$acciondt_dato.'&urlod='.$urlod_dato.'";                            
                         })
                     </script>';
                 //echo "<script type='text/javascript'> location.href ='" ".php?op';</script>";
@@ -786,7 +794,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver al Detalle"
                     }).then((result)=>{
-                        location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'&urlo='.$urlo_dato.'&iddt='.$iddt_dato.'&adt='.$acciondt_dato.'&urlod='.$urlod_dato.'";                        
                     })
                 </script>';
             }
@@ -818,7 +826,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver al Detalle"
                     }).then((result)=>{
-                        location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                             
+                        location.href ="'. $_REQUEST['URLD'] .'.php?op&id='.$id_dato.'&a='.$accion_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'&urlo='.$urlo_dato.'&iddt='.$iddt_dato.'&adt='.$acciondt_dato.'&urlod='.$urlod_dato.'";                             
                     })
                 </script>';
 
