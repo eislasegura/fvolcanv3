@@ -106,10 +106,18 @@ if (isset($_GET["a"])) {
     $accion_dato = "";
 }
 
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
+echo 'ff'.$urlo_dato.'ff';
+
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
 
     $ARRAYREEMBALEJE = $REEMBALAJE_ADO->verReembalaje($IDP);
     foreach ($ARRAYREEMBALEJE as $r) :
@@ -402,7 +410,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             confirmButtonText:"Volver a reembalaje",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href="' . $_REQUEST['URLO'] . '.php?op";                        
+                            location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
                         })
                     </script>';
                 }
