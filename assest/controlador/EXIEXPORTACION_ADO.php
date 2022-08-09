@@ -1157,6 +1157,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function verExiexportacion($ID)
     {
         try {
@@ -1175,14 +1176,6 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
-
-
-
-
-
-
-
-
 
     //LISTAS
     public function listarExiexportacionEmpresaTemporadaDisponibleAgrupadoTestadoEstandarProductorVariedadCalibreManejoEmbalaje($EMPRESA,  $TEMPORADA)
@@ -1221,6 +1214,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaTemporadaDisponible($EMPRESA,  $TEMPORADA)
     {
         try {
@@ -1305,6 +1299,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaPlantaTemporadaDisponible2($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
@@ -1347,6 +1342,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaPlantaTemporadaDisponibleFoliomanual($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
@@ -1390,6 +1386,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaPlantaTemporadaDisponibleFoliomanual2($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
@@ -1433,6 +1430,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaTemporadaDespachado($EMPRESA,  $TEMPORADA)
     {
         try {
@@ -1474,6 +1472,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+    
     public function listarExiexportacionEmpresaPlantaTemporadaDespachado($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
@@ -1516,6 +1515,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaPlantaTemporadaDespachado2($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
@@ -1558,6 +1558,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
     public function listarExiexportacionEmpresaPlantaTemporada2($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
@@ -1598,6 +1599,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+    
     public function listarExiexportacionEmpresaTemporada($EMPRESA,  $TEMPORADA)
     {
         try {
