@@ -792,6 +792,18 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
               </span>
             </a>
             <ul class="treeview-menu">
+            <li class="treeview">
+                <a href="#">En Desarrollo
+                  <span class="pull-left-container">
+                    <i class=" fa fa-angle-right pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="listarProductoTerminadoCompleto.php">Producto Terminado Completo<i class="ti-more"></i></a></li>
+                  <li><a href="listarProductoTerminadoIncompleto.php">Producto Terminado Incompleto<i class="ti-more"></i></a></li>
+                  <li><a href="listarProductoTerminadoMuestras.php">Producto Terminado Muestras<i class="ti-more"></i></a></li>
+                </ul>
+              </li>
               <li class="treeview">
                 <a href="#">Disponible
                   <span class="pull-left-container">

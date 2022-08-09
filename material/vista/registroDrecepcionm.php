@@ -123,20 +123,37 @@ if (isset($_GET["id"])) {
     $id_dato = "";
 }
 
-
 if (isset($_GET["a"])) {
     $accion_dato = $_GET["a"];
 }else{
     $accion_dato = "";
 }
 
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
 
-echo $_SESSION['urlO'].' - datdatdat';
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
+
+//echo $urlo_dato.' - datdatdat';
 //OBTENCION DE DATOS ENVIADOR A LA URL
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLP = $_SESSION['urlO'];
+    $URLP = $urlo_dato;
     $ARRAYRECEPCION = $RECEPCIONM_ADO->verRecepcion($IDP);
     if ($ARRAYRECEPCION) {
         $ESTADORECEPCION = $ARRAYRECEPCION[0]["ESTADO"];
@@ -144,14 +161,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
 }
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_dato) && isset($acciond_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dparametro'];
-    $OP = $_SESSION['dparametro1'];
+    $IDOP = $idd_dato;
+    $OP = $acciond_dato;
 
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLP = $_SESSION['urlO'];
+    $URLP = $urlo_dato;
 
     //IDENTIFICACIONES DE OPERACIONES
     $ARRAYDTRECEPCION = $TARJAM_ADO->listarTarjaPorDrecepcion2CBX($IDOP);
@@ -686,8 +703,9 @@ if (isset($_POST)) {
                 $AUSUARIO_ADO->agregarAusuario2("NULL",2,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle de Recepción Materiales.","material_drecepcionm", $ARRYAOBTENERID[0]['ID_DRECEPCION'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                 //REDIRECCIONAR A PAGINA registroDrecepcionm.php 
-                $_SESSION["dparametro"] = $ARRYAOBTENERID[0]['ID_DRECEPCION'];
-                $_SESSION["dparametro1"] = "editar";
+                $idd_dato = $ARRYAOBTENERID[0]['ID_DRECEPCION'];
+                $acciond_dato = "editar";
+                //op&id=268&a=editar&idd=830&ad=editar&urlo=registroRecepcionm
                 echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -696,7 +714,7 @@ if (isset($_POST)) {
                             showConfirmButton:true,
                             confirmButtonText:"cerrar"
                         }).then((result)=>{
-                            location.href ="registroDrecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                            location.href ="registroDrecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'&urlo='.$urlo_dato.'";                            
                         })
                     </script>';
             }
@@ -724,7 +742,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"cerrar"
                     }).then((result)=>{
-                        location.href ="registroDrecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href ="registroDrecepcionm.php?op&id='.$id_dato.'&a='.$accion_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
 
@@ -747,7 +765,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver a recepcion"
                     }).then((result)=>{
-                        location.href ="' . $_REQUEST['URLP'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href ="' . $_REQUEST['URLP'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
 
