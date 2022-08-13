@@ -803,6 +803,7 @@ if (isset($_POST)) {
                                         <table id="ingreso" class="table-hover " style="width: 100%;">
                                             <thead>
                                                 <tr class="text-left">
+                                                    <th>Estado</th>
                                                     <th>Folio </th>
                                                     <th class="text-center">Operaciónes</th>
                                                     <th>Fecha Embalado </th>
@@ -864,6 +865,17 @@ if (isset($_POST)) {
                                                         } 
                                                         ?>
                                                         <tr class="text-left">
+                                                        <?php 
+                                                                switch($r['ESTADO_FOLIO']){
+                                                                    case 1: '<td style="background: #18d26b; color: white;">P. Completado</td>';
+                                                                        break;
+                                                                    case 2: echo '<td style="background: #ffa800; color: white;">P. Incompleto</td>';
+                                                                        break;
+                                                                    case 3: echo '<td style="background: #3085f5; color: white;">P. Muestra</td>';
+                                                                        break;
+                                                                    default: echo '<td style="background: #93b4d4; color: white;">No identificado</td>';
+                                                                }
+                                                            ?>
                                                             <td><?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">
@@ -991,6 +1003,7 @@ if (isset($_POST)) {
                                         <table id="salida" class="table-hover " style="width: 100%;">
                                             <thead>
                                                 <tr class="text-left">
+                                                <th>Estado</th>
                                                     <th>P. Terminado/Industrial</th>
                                                     <th>Folio</th>
                                                     <th class="text-center">Operaciones</th>
@@ -1055,6 +1068,17 @@ if (isset($_POST)) {
                                                         } 
                                                         ?>
                                                         <tr class="text-left">
+                                                        <?php 
+                                                                switch($r['ESTADO_FOLIO']){
+                                                                    case 1: '<td style="background: #18d26b; color: white;">P. Completado</td>';
+                                                                        break;
+                                                                    case 2: echo '<td style="background: #ffa800; color: white;">P. Incompleto</td>';
+                                                                        break;
+                                                                    case 3: echo '<td style="background: #3085f5; color: white;">P. Muestra</td>';
+                                                                        break;
+                                                                    default: echo '<td style="background: #93b4d4; color: white;">No identificado</td>';
+                                                                }
+                                                            ?>
                                                             <td>P. Terminado</td>
                                                             <td><?php echo $r['FOLIO_DREXPORTACION']; ?></td>
                                                             <td class="text-center">

@@ -43,6 +43,7 @@ $IDEXIEXPORTACION = "";
 $PROCESO = "";
 $PRODUCTOR = "";
 $PVESPECIES = "";
+$ESTADO_FOLIO = "";
 $SELECIONAREXISTENCIA = "";
 
 $ESTANDARPERSONETO = "";
@@ -208,6 +209,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                             <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                 <thead>
                                                     <tr class="text-left">
+                                                        <th>Estado</th>
                                                         <th>Folio </th>
                                                         <th>Estado Calidad</th>
                                                         <th>Condición </th>
@@ -303,6 +305,17 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                         }
                                                         ?>
                                                         <tr class="text-left">
+                                                        <?php 
+                                                                switch($r['ESTADO_FOLIO']){
+                                                                    case 1: '<td style="background: #18d26b; color: white;">P. Completado</td>';
+                                                                        break;
+                                                                    case 2: echo '<td style="background: #ffa800; color: white;">P. Incompleto</td>';
+                                                                        break;
+                                                                    case 3: echo '<td style="background: #3085f5; color: white;">P. Muestra</td>';
+                                                                        break;
+                                                                    default: echo '<td style="background: #93b4d4; color: white;">No identificado</td>';
+                                                                }
+                                                            ?>
                                                             <td>                                                                   
                                                                 <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                     <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>

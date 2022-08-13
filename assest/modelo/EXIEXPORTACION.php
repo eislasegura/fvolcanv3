@@ -67,6 +67,7 @@ class EXIEXPORTACION {
     private   $ID_EXIEXPORTACION2;
     private   $ID_PLANTA2;
     private   $ID_PLANTA3;
+    private   $ESTADO_FOLIO;
     
     
     //FUNCIONES GET Y SET

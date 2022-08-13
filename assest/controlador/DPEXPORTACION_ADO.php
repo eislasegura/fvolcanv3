@@ -144,10 +144,11 @@ class DPEXPORTACION_ADO
                                                 INGRESO,
                                                 MODIFICACION,
                                                 ESTADO,
-                                                ESTADO_REGISTRO
+                                                ESTADO_REGISTRO,
+                                                ESTADO_FOLIO
                                           )
              VALUES
-	       	    ( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,   ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, 1);";
+	       	    ( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,  ?, ?, ?, ?, ?,   ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -173,7 +174,8 @@ class DPEXPORTACION_ADO
                         $DPEXPORTACION->__GET('ID_TCATEGORIA'),
                         $DPEXPORTACION->__GET('ID_ICARGA'),
                         $DPEXPORTACION->__GET('ID_PRODUCTOR'),
-                        $DPEXPORTACION->__GET('ID_PROCESO')
+                        $DPEXPORTACION->__GET('ID_PROCESO'),
+                        $DPEXPORTACION->__GET('ESTADO_FOLIO')
 
                     )
 
@@ -227,7 +229,8 @@ class DPEXPORTACION_ADO
                     ID_PRODUCTOR = ?,
 
                     ID_ICARGA = ?,
-                    ID_PROCESO = ?            
+                    ID_PROCESO = ?,
+                    ESTADO_FOLIO = ?            
                 WHERE ID_DPEXPORTACION= ?;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -252,6 +255,7 @@ class DPEXPORTACION_ADO
 
                         $DPEXPORTACION->__GET('ID_ICARGA'),
                         $DPEXPORTACION->__GET('ID_PROCESO'),
+                        $DPEXPORTACION->__GET('ESTADO_FOLIO'),
                         $DPEXPORTACION->__GET('ID_DPEXPORTACION')
 
                     )

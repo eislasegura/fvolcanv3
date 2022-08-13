@@ -226,7 +226,8 @@ class DREXPORTACION_ADO
                 ID_ICARGA  = ? ,
 
                 ID_PRODUCTOR  = ? ,
-                ID_REEMBALAJE  = ?                             
+                ID_REEMBALAJE  = ? ,
+                ESTADO_FOLIO = ?                             
             WHERE  ID_DREXPORTACION = ?;";
                 $this->conexion->prepare($query)
                 ->execute(
@@ -250,6 +251,7 @@ class DREXPORTACION_ADO
 
                         $DREXPORTACION->__GET('ID_PRODUCTOR'),
                         $DREXPORTACION->__GET('ID_REEMBALAJE'),
+                        $DREXPORTACION->__GET('ESTADO_FOLIO'),
                         $DREXPORTACION->__GET('ID_DREXPORTACION')
 
                     )
