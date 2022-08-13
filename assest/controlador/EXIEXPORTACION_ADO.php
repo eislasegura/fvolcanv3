@@ -252,9 +252,10 @@ class EXIEXPORTACION_ADO
                                                     INGRESO,
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO
+                                                    ESTADO_REGISTRO,
+                                                    ESTADO_FOLIO
                                                  ) VALUES
-	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?,  ?, ?, ?, ?,   ?,  ?,  SYSDATE(),SYSDATE(), 2, 1);";
+	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?,  ?, ?, ?, ?,   ?,  ?,  SYSDATE(),SYSDATE(), 2, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -291,7 +292,8 @@ class EXIEXPORTACION_ADO
                         
                         $EXIEXPORTACION->__GET('ID_ICARGA'),
 
-                        $EXIEXPORTACION->__GET('ID_PROCESO')
+                        $EXIEXPORTACION->__GET('ID_PROCESO'),
+                        $EXIEXPORTACION->__GET('ESTADO_FOLIO')
                     )
 
                 );
@@ -351,9 +353,10 @@ class EXIEXPORTACION_ADO
                                                     INGRESO,
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO
+                                                    ESTADO_REGISTRO,
+                                                    ESTADO_FOLIO
                                                  ) VALUES
-	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?,  ?, ?, ?, ?,   ?,  ?,    SYSDATE(),SYSDATE(), 1, 1);";
+	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?,  ?, ?, ?, ?,   ?,  ?,    SYSDATE(),SYSDATE(), 1, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -390,7 +393,8 @@ class EXIEXPORTACION_ADO
 
                         $EXIEXPORTACION->__GET('ID_ICARGA'),
 
-                        $EXIEXPORTACION->__GET('ID_REEMBALAJE')
+                        $EXIEXPORTACION->__GET('ID_REEMBALAJE'),
+                        $EXIEXPORTACION->__GET('ESTADO_FOLIO')
                     )
 
                 );
@@ -881,7 +885,8 @@ class EXIEXPORTACION_ADO
                     ID_TEMPORADA = ? , 
                     
                     ID_ICARGA = ?  , 
-                    ID_PROCESO = ?   
+                    ID_PROCESO = ? ,
+                    ESTADO_FOLIO = ?   
                 WHERE ID_EXIEXPORTACION= ?;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -912,7 +917,9 @@ class EXIEXPORTACION_ADO
 
                         $EXIEXPORTACION->__GET('ID_ICARGA'),
                         $EXIEXPORTACION->__GET('ID_PROCESO'),
+                        $EXIEXPORTACION->__GET('ESTADO_FOLIO'),
                         $EXIEXPORTACION->__GET('ID_EXIEXPORTACION')
+                        
 
                     )
 
@@ -960,7 +967,8 @@ class EXIEXPORTACION_ADO
                     ID_TEMPORADA = ? , 
 
                     ID_ICARGA = ? , 
-                    ID_REEMBALAJE = ?   
+                    ID_REEMBALAJE = ? ,
+                    ESTADO_FOLIO = ?   
                 WHERE ID_EXIEXPORTACION= ?;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -992,6 +1000,7 @@ class EXIEXPORTACION_ADO
 
                         $EXIEXPORTACION->__GET('ID_ICARGA'),
                         $EXIEXPORTACION->__GET('ID_REEMBALAJE'),
+                        $EXIEXPORTACION->__GET('ESTADO_FOLIO'),
                         $EXIEXPORTACION->__GET('ID_EXIEXPORTACION')
 
                     )
@@ -1599,7 +1608,7 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
-    
+
     public function listarExiexportacionEmpresaTemporada($EMPRESA,  $TEMPORADA)
     {
         try {

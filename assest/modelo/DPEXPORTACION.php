@@ -32,6 +32,7 @@
         private   $ID_PROCESO;
         private   $ID_TCATEGORIA;
         private   $ID_ICARGA;
+        private $ESTADO_FOLIO;
         
         
         //FUNCIONES GET Y SET

@@ -81,6 +81,7 @@ $PESONETOEESTANDAR = "";
 $CATEGORIAESTANDAR="";
 $REFERENCIAESTANDAR="";
 $TCATEGORIA="";
+$ESTADO_FOLIO = "";
 $TEMBALAJE="";
 $ICARGA="";
 $PRODUCTORDATOS = "";
@@ -240,6 +241,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset(
             $TCALIBRE = "" . $r['ID_TCALIBRE'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
             $TCATEGORIA = "" . $r['ID_TCATEGORIA'];
+            $ESTADO_FOLIO = "" . $r['ESTADO_FOLIO'];
             $ICARGA = "" . $r['ID_ICARGA'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $ARRAYVERESTANDAR = $EEXPORTACION_ADO->verEstandar($ESTANDAR);
@@ -295,6 +297,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset(
             $TCALIBRE = "" . $r['ID_TCALIBRE'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
             $TCATEGORIA = "" . $r['ID_TCATEGORIA'];
+            $ESTADO_FOLIO = "" . $r['ESTADO_FOLIO'];
             $ICARGA = "" . $r['ID_ICARGA'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $ARRAYVERESTANDAR = $EEXPORTACION_ADO->verEstandar($ESTANDAR);
@@ -348,6 +351,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset(
             $TCALIBRE = "" . $r['ID_TCALIBRE'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
             $TCATEGORIA = "" . $r['ID_TCATEGORIA'];
+            $ESTADO_FOLIO = "" . $r['ESTADO_FOLIO'];
             $ICARGA = "" . $r['ID_ICARGA'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $ARRAYVERESTANDAR = $EEXPORTACION_ADO->verEstandar($ESTANDAR);
@@ -398,6 +402,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset(
             $TCALIBRE = "" . $r['ID_TCALIBRE'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
             $TCATEGORIA = "" . $r['ID_TCATEGORIA'];
+            $ESTADO_FOLIO = "" . $r['ESTADO_FOLIO'];
             $ICARGA = "" . $r['ID_ICARGA'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];  
             $ARRAYVERESTANDAR = $EEXPORTACION_ADO->verEstandar($ESTANDAR);
@@ -849,6 +854,17 @@ if ($_POST) {
                                                 </select>
                                                 <label id="val_tmanejo" class="validacion"> </label>
                                             </div>
+                                        </div> 
+                                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 ">
+                                            <div class="form-group">
+                                                <label>Estado Folio</label><br>
+                                                <select class="form-control select2" id="EFOLIO" name="EFOLIO" style="width: 100%;" <?php echo $DISABLED; ?>>
+                                                    <option value="0">- Seleccione una Opcion -</option>
+                                                    <option value="1">Pallet Completo</option>
+                                                    <option value="2">Pallet Incompleto</option>
+                                                    <option value="3">Pallet de Muestra</option>
+                                                </select>
+                                            </div>
                                         </div>                                        
                                         <?php if ($CATEGORIAESTANDAR == "1") { ?>
                                             <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6">
@@ -1052,13 +1068,15 @@ if ($_POST) {
                     $DPEXPORTACION->__SET('ID_VESPECIES',  $_REQUEST['VESPECIES']);                    
                     if($_REQUEST['CATEGORIAESTANDAR']==1){
                         $DPEXPORTACION->__SET('ID_TCATEGORIA', $_REQUEST['TCATEGORIA']);
-                    }          
+                    }  
+                    $DPEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);        
                     if($_REQUEST['REFERENCIAESTANDAR']==1){
                         $DPEXPORTACION->__SET('ID_ICARGA', $_REQUEST['ICARGA']);
                     }
                     $DPEXPORTACION->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
                     $DPEXPORTACION->__SET('ID_PROCESO', $_REQUEST['IDP']);
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
+                    //insertpallet DP
                     $DPEXPORTACION_ADO->agregarDpexportacion($DPEXPORTACION);
 
                     $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Detalle de exportacion de proceso","fruta_dpexportacion","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
@@ -1084,7 +1102,8 @@ if ($_POST) {
                     $EXIEXPORTACION->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
                     if($_REQUEST['CATEGORIAESTANDAR']==1){
                         $EXIEXPORTACION->__SET('ID_TCATEGORIA', $_REQUEST['TCATEGORIA']);
-                    }      
+                    }  
+                    $EXIEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);    
                     if($_REQUEST['REFERENCIAESTANDAR']==1){
                         $EXIEXPORTACION->__SET('ID_ICARGA', $_REQUEST['ICARGA']);
                     }
@@ -1148,7 +1167,8 @@ if ($_POST) {
                 $DPEXPORTACION->__SET('ID_VESPECIES',  $_REQUEST['VESPECIES']);    
                 if($_REQUEST['CATEGORIAESTANDAR']==1){
                     $DPEXPORTACION->__SET('ID_TCATEGORIA', $_REQUEST['TCATEGORIA']);
-                }        
+                }   
+                $DPEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);    
                 if($_REQUEST['REFERENCIAESTANDAR']==1){
                     $DPEXPORTACION->__SET('ID_ICARGA', $_REQUEST['ICARGA']);
                 }
@@ -1179,6 +1199,7 @@ if ($_POST) {
                     if($_REQUEST['CATEGORIAESTANDAR']==1){
                         $EXIEXPORTACION->__SET('ID_TCATEGORIA', $_REQUEST['TCATEGORIA']);
                     }    
+                    $EXIEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);
                     if($_REQUEST['REFERENCIAESTANDAR']==1){
                         $EXIEXPORTACION->__SET('ID_ICARGA', $_REQUEST['ICARGA']);
                     }
@@ -1188,7 +1209,9 @@ if ($_POST) {
                     $EXIEXPORTACION->__SET('ID_TEMPORADA', $_REQUEST['TEMPORADA']);
                     $EXIEXPORTACION->__SET('ID_PROCESO', $_REQUEST['IDP']);
                     $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $ARRAYVERFOLIOEXISTENCIA[0]["ID_EXIEXPORTACION"]);
+                   
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
+                    //update pallet
                     $EXIEXPORTACION_ADO->actualizarExiexportacionProceso($EXIEXPORTACION);
 
                     $AUSUARIO_ADO->agregarAusuario2("NULL",1, 2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Existencia de Producto Terminado","fruta_exiexportacion","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
@@ -1227,7 +1250,8 @@ if ($_POST) {
                     $EXIEXPORTACION->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
                     if($_REQUEST['CATEGORIAESTANDAR']==1){
                         $EXIEXPORTACION->__SET('ID_TCATEGORIA', $_REQUEST['TCATEGORIA']);
-                    }    
+                    }   
+                    $EXIEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']); 
                     if($_REQUEST['REFERENCIAESTANDAR']==1){
                         $EXIEXPORTACION->__SET('ID_ICARGA', $_REQUEST['ICARGA']);
                     }
@@ -1237,7 +1261,9 @@ if ($_POST) {
                     $EXIEXPORTACION->__SET('ID_PLANTA', $_REQUEST['PLANTA']);
                     $EXIEXPORTACION->__SET('ID_TEMPORADA', $_REQUEST['TEMPORADA']);
                     $EXIEXPORTACION->__SET('ID_PROCESO', $_REQUEST['IDP']);
+                   
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
+                    //insert pallet
                     $EXIEXPORTACION_ADO->agregarExiexportacionProceso($EXIEXPORTACION);
 
                     $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Existencia de Producto Terminado","fruta_exiexportacion","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
