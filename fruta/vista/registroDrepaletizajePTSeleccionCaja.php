@@ -68,6 +68,7 @@ $CAJATOTAL = "";
 $CAJATOTAL2 = 0;
 $FOLIOALIAS = "";
 $ICARGA="";
+$ESTADO_FOLIO ="";
 
 $TOTALSELECION="";
 
@@ -283,8 +284,17 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                                                                                                                                                                                                 echo "checked";
                                                                                                                                                                                             } ?> onchange="this.form.submit()">
                                                 <label for="FOLIOMANUAL"> Folio Manual</label>
+
+                                                <label>Estado Folio</label><br>
+                                                <select class="form-control select2" id="EFOLIO" name="EFOLIO" style="width: 100%;" <?php echo $DISABLED; ?>>
+                                                    <option value="0">- Seleccione una Opcion -</option>
+                                                    <option value="1">Pallet Completo</option>
+                                                    <option value="2">Pallet Incompleto</option>
+                                                    <option value="3">Pallet de Muestra</option>
+                                                </select>
                                             </div>
                                         </div>
+                                      
                                     </div>
                                     <div class="row">
                                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
@@ -292,7 +302,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
                                                         <tr class="text-left">
-
+                                                            <th>Estado</th>                                                                                                                               
                                                             <th>Folio </th>
                                                             <th>Estado Calidad</th>
                                                             <th>Condición </th>
@@ -409,6 +419,17 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                                                                 <?php if ($ENVASERESTANTE > 0) { ?>
                                                                     <?php $CONTADOR = $CONTADOR + 1; ?>
                                                                     <tr class="text-left">
+                                                                        <?php 
+                                                                            switch($r['ESTADO_FOLIO']){
+                                                                                case 1: echo '<td style="background: #18d26b; color: white;">P. Completado</td>';
+                                                                                    break;
+                                                                                case 2: echo '<td style="background: #ffa800; color: white;">P. Incompleto</td>';
+                                                                                    break;
+                                                                                case 3: echo '<td style="background: #3085f5; color: white;">P. Muestra</td>';
+                                                                                    break;
+                                                                                default: echo '<td style="background: #93b4d4; color: white;">No identificado</td>';
+                                                                            }
+                                                                        ?>
                                                                         <td>                                                                   
                                                                             <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                                 <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
@@ -675,6 +696,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                                 $DREPALETIZAJEEX->__SET('ID_PRODUCTOR', $r["ID_PRODUCTOR"]);
                                 $DREPALETIZAJEEX->__SET('ID_VESPECIES', $r["ID_VESPECIES"]);
                                 $DREPALETIZAJEEX->__SET('ID_EXIEXPORTACION', $r["ID_EXIEXPORTACION"]);
+                                $DREPALETIZAJEEX->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);  
                                 $DREPALETIZAJEEX->__SET('ID_REPALETIZAJE', $REPALETIZAJE);
                                 $DREPALETIZAJEEX_ADO->agregarDrepaletizaje($DREPALETIZAJEEX);       
                                 
@@ -728,7 +750,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                                 $EXIEXPORTACION->__SET('ID_INPSAG2', $r["ID_INPSAG2"]); 
                                 $EXIEXPORTACION->__SET('ID_ICARGA', $r["ID_ICARGA"]); 
                                 $EXIEXPORTACION->__SET('ID_REPALETIZAJE2', $REPALETIZAJE);      
-                                $EXIEXPORTACION->__SET('ID_EXIEXPORTACION2', $r["ID_EXIEXPORTACION"]);                                                    
+                                $EXIEXPORTACION->__SET('ID_EXIEXPORTACION2', $r["ID_EXIEXPORTACION"]);  
+                                $EXIEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);                                                    
                                 $EXIEXPORTACION_ADO->agregarExiexportacionRepaletizaje($EXIEXPORTACION);
 
                                 $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de existencia de Producto Terminado, por envases","fruta_exiexportacion","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );           
@@ -892,6 +915,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             $DREPALETIZAJEEX->__SET('ID_VESPECIES', $r["ID_VESPECIES"]);
                             $DREPALETIZAJEEX->__SET('ID_EXIEXPORTACION', $r["ID_EXIEXPORTACION"]);
                             $DREPALETIZAJEEX->__SET('ID_REPALETIZAJE', $REPALETIZAJE);
+                            $DREPALETIZAJEEX->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']); 
                             $DREPALETIZAJEEX_ADO->agregarDrepaletizaje($DREPALETIZAJEEX);                 
                             
                             $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Detalle de repaletizaje Producto Terminado, mantener folio","fruta_drepaletizajeex","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );           
@@ -943,7 +967,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
                             $EXIEXPORTACION->__SET('ID_INPSAG2', $r["ID_INPSAG2"]); 
                             $EXIEXPORTACION->__SET('ID_ICARGA', $r["ID_ICARGA"]); 
                             $EXIEXPORTACION->__SET('ID_REPALETIZAJE2', $REPALETIZAJE);    
-                            $EXIEXPORTACION->__SET('ID_EXIEXPORTACION2', $r["ID_EXIEXPORTACION"]);   
+                            $EXIEXPORTACION->__SET('ID_EXIEXPORTACION2', $r["ID_EXIEXPORTACION"]); 
+                            $EXIEXPORTACION->__SET('ESTADO_FOLIO', $_REQUEST['EFOLIO']);   
                             $EXIEXPORTACION_ADO->agregarExiexportacionRepaletizaje($EXIEXPORTACION);
 
                             $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de existencia de Producto Terminado, mantener folio","fruta_exiexportacion","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );           

@@ -142,10 +142,11 @@ class DREXPORTACION_ADO
                                                  INGRESO ,
                                                  MODIFICACION ,
                                                  ESTADO ,
-                                                 ESTADO_REGISTRO 
+                                                 ESTADO_REGISTRO,
+                                                 ESTADO_FOLIO
                                                 )
              VALUES
-	       	    ( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?, ?,   ?, ?, SYSDATE(), SYSDATE(), 1, 1);";
+	       	    ( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?, ?,   ?, ?, SYSDATE(), SYSDATE(), 1, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -172,7 +173,8 @@ class DREXPORTACION_ADO
                         $DREXPORTACION->__GET('ID_VESPECIES'),
 
                         $DREXPORTACION->__GET('ID_PRODUCTOR'),
-                        $DREXPORTACION->__GET('ID_REEMBALAJE')
+                        $DREXPORTACION->__GET('ID_REEMBALAJE'),
+                        $DREXPORTACION->__GET('ESTADO_FOLIO')
 
                     )
 

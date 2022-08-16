@@ -31,6 +31,7 @@ class  DREPALETIZAJEEX {
     private   $ID_PRODUCTOR;  
     private   $ID_PVESPECIES;  
     private   $ID_REPALETIZAJE;  
+    private $ESTADO_FOLIO;
     
     //FUNCIONES GET Y SET
     public function __GET($k){ return $this->$k; }

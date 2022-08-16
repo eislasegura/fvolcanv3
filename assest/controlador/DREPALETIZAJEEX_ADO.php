@@ -65,10 +65,11 @@ class DREPALETIZAJEEX_ADO
                                                         INGRESO,
                                                         MODIFICACION,
                                                         ESTADO,
-                                                        ESTADO_REGISTRO  
+                                                        ESTADO_REGISTRO,
+                                                        ESTADO_FOLIO  
                                                     ) 
             VALUES
-	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?,   SYSDATE(),  SYSDATE(), 1, 1 );";
+	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?,   SYSDATE(),  SYSDATE(), 1, 1 , ?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -88,7 +89,8 @@ class DREPALETIZAJEEX_ADO
                         $DREPALETIZAJEEX->__GET('ID_PRODUCTOR'),
                         $DREPALETIZAJEEX->__GET('ID_VESPECIES'),
                         $DREPALETIZAJEEX->__GET('ID_EXIEXPORTACION'),
-                        $DREPALETIZAJEEX->__GET('ID_REPALETIZAJE')
+                        $DREPALETIZAJEEX->__GET('ID_REPALETIZAJE'),
+                        $DREPALETIZAJEEX->__GET('ESTADO_FOLIO')
                     )
                 );
         } catch (Exception $e) {
