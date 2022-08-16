@@ -21,6 +21,7 @@ class REPALETIZAJEEX {
     private   $ID_EMPRESA;
     private   $ID_PLANTA;
     private   $ID_TEMPORADA;
+    private $ESTADO_FOLIO;
     
     //FUNCIONES GET Y SET
     public function __GET($k){ return $this->$k; }

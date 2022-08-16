@@ -673,9 +673,10 @@ class EXIEXPORTACION_ADO
 
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO
+                                                    ESTADO_REGISTRO,
+                                                    ESTADO_FOLIO
                                                  ) VALUES
-	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?, ?, ?,   ?,   ?, ?,    ?, ?, ?, ?, ?,   ?, ?,  ?,    ?, ?,   ?, ?, ?, ?, ?,    ?, ?,    ?, ?, ?,     ?, ?,     SYSDATE(), 1, 1);";
+	       	( ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?,   ?, ?, ?, ?,   ?,   ?, ?,    ?, ?, ?, ?, ?,   ?, ?,  ?,    ?, ?,   ?, ?, ?, ?, ?,    ?, ?,    ?, ?, ?,     ?, ?,     SYSDATE(), 1, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -740,7 +741,8 @@ class EXIEXPORTACION_ADO
                         $EXIEXPORTACION->__GET('ID_EXIEXPORTACION2'),
 
                         $EXIEXPORTACION->__GET('ID_PLANTA2'),
-                        $EXIEXPORTACION->__GET('ID_PLANTA3')
+                        $EXIEXPORTACION->__GET('ID_PLANTA3'),
+                        $EXIEXPORTACION->__GET('ESTADO_FOLIO ')
 
 
                         
