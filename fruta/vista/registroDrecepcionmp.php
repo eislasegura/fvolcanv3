@@ -148,6 +148,18 @@ if (isset($_GET["urlo"])) {
     $urlo_dato = "";
 }
 
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
 
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
 //OBTENCION DE DATOS ENVIADOR A LA URL
@@ -182,10 +194,10 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
 }
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_dato) && isset($acciond_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dparametro'];
-    $OP = $_SESSION['dparametro1'];
+    $IDOP = $idd_dato;
+    $OP = $acciond_dato;
     $IDP = $id_dato;
     $OPP = $accion_dato;
     $URLO = $urlo_dato;
