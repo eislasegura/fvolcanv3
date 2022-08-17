@@ -113,14 +113,42 @@ include_once "../../assest/config/validarDatosUrlD.php";
 
 
 //OPERACIONES
-$id_dato = $_GET["id"];
-$accion_dato = $_GET["a"];
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
 
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
 
     $ARRAYRECEPCION = $RECEPCIONIND_ADO->verRecepcion($IDP);
     foreach ($ARRAYRECEPCION as $r) :
@@ -141,13 +169,13 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_dato) && isset($acciond_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dparametro'];
-    $OP = $_SESSION['dparametro1'];
+    $IDOP = $idd_dato;
+    $OP = $acciond_dato;
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
 
 
 
@@ -736,7 +764,7 @@ if ($_POST) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op');">
+                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
                                         <?php if ($OP == "") { ?>
