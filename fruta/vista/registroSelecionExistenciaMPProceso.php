@@ -89,18 +89,22 @@ if (isset($_GET["id"])) {
     $id_dato = "";
 }
 
-
 if (isset($_GET["a"])) {
     $accion_dato = $_GET["a"];
 }else{
     $accion_dato = "";
 }
 
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
 
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
 
 
 
