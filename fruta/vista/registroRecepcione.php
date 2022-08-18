@@ -190,7 +190,6 @@ if (isset($_GET["a"])) {
     $accion_dato = "";
 }
 
-
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 if (isset($id_dato) && isset($accion_dato)) {
