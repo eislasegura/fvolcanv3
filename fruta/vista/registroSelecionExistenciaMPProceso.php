@@ -331,7 +331,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 <!-- /.box-body -->
                                 <div class="card-footer">
                                     <div class="btn-group btn-rounded btn-block col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
+                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
 
@@ -391,7 +391,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroSelecionExistenciaMPProceso.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                        location.href = "registroSelecionExistenciaMPProceso.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                     })
                 </script>';
             }
@@ -418,7 +418,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                         confirmButtonText:"Volver a proceso",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
 
@@ -603,7 +603,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 confirmButtonText:"Ir al proceso",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
                     }else{                        
@@ -618,7 +618,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 confirmButtonText:"Volver al proceso",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
                     }
@@ -635,7 +635,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="registroSelecionExistenciaMPProceso.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                                location.href="registroSelecionExistenciaMPProceso.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
                     }else{                            
@@ -650,7 +650,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 confirmButtonText:"Volver al proceso",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                         
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                         
                             })
                         </script>';
                     }
