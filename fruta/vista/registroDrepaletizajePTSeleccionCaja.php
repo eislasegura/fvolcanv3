@@ -584,7 +584,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href="registroDrepaletizajePTSeleccionCaja.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href="registroDrepaletizajePTSeleccionCaja.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
             }

@@ -91,10 +91,17 @@ if (isset($_GET["a"])) {
     $accion_dato = "";
 }
 
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
 if (isset($id_dato) && isset($accion_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
     $ARRAYRECHAZO = $RECHAZOMP_ADO->verRechazo($IDP);
     foreach ($ARRAYRECHAZO as $r) :
         $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -293,7 +300,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                                     <!-- /.box-body -->
                                     <div class="card-footer">
                                         <div class="btn-group btn-rounded btn-block col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <button type="submit" class="btn  btn-primary" data-toggle="tooltip" title="Por Folio" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
@@ -351,7 +358,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroSelecionExistenciaMPRechazoMp.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                        location.href = "registroSelecionExistenciaMPRechazoMp.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                     })
                 </script>';
             }
@@ -381,7 +388,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                         confirmButtonText:"Volver a proceso",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
                 // echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLO'] . ".php?op';</script>";

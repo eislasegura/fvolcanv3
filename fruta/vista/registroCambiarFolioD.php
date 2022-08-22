@@ -45,14 +45,30 @@ $ARRAYFOLIOPOEXPO = "";
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
 
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
 
 
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $ID = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
-    $URLO = $_SESSION['urlO'];
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
+    $ID = $id_dato;
+    $OP = $accion_dato;
+    $URLO = $urlo_dato;
 
     //ALMACENAR DATOS DE VARIABLES DE LA URL
     $ARRAYVEREXISTENCIA =  $EXIEXPORTACION_ADO->verExiexportacion($ID);
@@ -199,7 +215,7 @@ if ($_POST) {
                                     <!-- /.box-body -->
                                     <div class="box-footer">
                                         <div class="btn-group btn-rounded btn-block col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op');">
+                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <button type="submit" class="btn btn-warning   " data-toggle="tooltip" title="Cambiar" name="CAMBIAR" value="EDCAMBIARITAR" <?php echo $DISABLED; ?> onclick="return validacion()">
@@ -255,7 +271,7 @@ if ($_POST) {
                                         confirmButtonText:"Cerrar"
                                     }).then((result)=>{
                                         if(result.value){
-                                            location.href ="' . $_REQUEST['URLO'] . '.php?op";
+                                            location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";
                                         }
                                     })
                                 </script>';

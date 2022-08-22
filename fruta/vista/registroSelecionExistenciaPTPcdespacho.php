@@ -106,12 +106,18 @@ if (isset($_GET["a"])) {
 }else{
     $accion_dato = "";
 }
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
 //OPERACION DE REGISTRO DE FILA
 
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
     $ARRAYPCDESPACHO=$PCDESPACHO_ADO->verPcdespacho($IDP);
     if($ARRAYPCDESPACHO){
         if($ARRAYPCDESPACHO[0]["TINPUSDA"]=="1"){
@@ -338,7 +344,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                     <!-- /.box-body -->                        
                                     <div class="card-footer">
                                         <div class="btn-group btn-rounded btn-block col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
 
@@ -381,7 +387,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroSelecionExistenciaPTPcdespacho.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                            location.href = "registroSelecionExistenciaPTPcdespacho.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                         })
                     </script>';
                 }
@@ -407,7 +413,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             confirmButtonText:"Volver a PC",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                            location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                         })
                     </script>';
                 }
