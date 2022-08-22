@@ -107,22 +107,40 @@ if (isset($_GET["id"])) {
     $id_dato = "";
 }
 
-
 if (isset($_GET["a"])) {
     $accion_dato = $_GET["a"];
 }else{
     $accion_dato = "";
 }
 
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
+
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_dato) && isset($acciond_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dparametro'];
-    $OP = $_SESSION['dparametro1'];
+    $IDOP = $idd_dato;
+    $OP = $acciond_dato;
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLO = $_SESSION['urlO'];
+    $URLO = $urlo_dato;
     $ARRAYNOTA=$NOTADC_ADO->verNota($IDP);
     if($ARRAYNOTA){
         $TNOTA=$ARRAYNOTA[0]["TNOTA"];
@@ -585,7 +603,7 @@ if ($_POST) {
                                     <label id=" val_mensaje" class="validacion"><?php echo $MENSAJEELIMINAR; ?> </label>
                                     <div class="box-footer">
                                         <div class="btn-group btn-block   col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <?php if ($OP == "") { ?>
@@ -669,7 +687,7 @@ if ($_POST) {
                             showConfirmButton:true,
                             confirmButtonText:"Volver a Nota D/C"
                         }).then((result)=>{
-                            location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                            location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'";                            
                         })
                     </script>';
             }
@@ -700,7 +718,7 @@ if ($_POST) {
                                 confirmButtonText:"Volver a Nota D/C"
                             }).then((result)=>{
                                 if(result.value){
-                                    location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";
+                                    location.href ="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'";
                                 }
                             })
                         </script>';
