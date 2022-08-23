@@ -535,7 +535,14 @@ if ($_POST) {
                                         <div class="col-xxl-11 col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 col-xs-10">
                                             <label>Motivo</label>
                                             <input type="hidden" class="form-control" placeholder="Motivo a Repaletizar" id="MOTIVOREPALETIZAJEE" name="MOTIVOREPALETIZAJEE" value="<?php echo $MOTIVOREPALETIZAJE; ?>" />
-                                            <textarea class="form-control" rows="1" placeholder="Motivo a Repaletizar" id="MOTIVOREPALETIZAJE" name="MOTIVOREPALETIZAJE" <?php echo $DISABLEDFOLIO; ?> <?php echo $DISABLED2; ?> ><?php echo $MOTIVOREPALETIZAJE; ?></textarea>
+                                            <select class="form-control select2" id="MOTIVOREPALETIZAJE" name="MOTIVOREPALETIZAJE" style="width: 100%;" <?php echo $DISABLED2; ?>>
+                                                <option value="">- SELECCIONE OPCIÓN -</option>
+                                                <option value="Juntar Folio" <?php if ($MOTIVOREPALETIZAJE == "Juntar Folio") { echo "selected";  } ?>>Juntar Folio</option>
+                                                <option value="Agergar Caja" <?php if ($MOTIVOREPALETIZAJE == "Agergar Caja") { echo "selected"; } ?>> Agergar Caja </option>
+                                                <option value="Quitar Caja" <?php if ($MOTIVOREPALETIZAJE == "Quitar Caja") { echo "selected"; } ?>> Quitar Caja </option>
+                                            </select>
+                                            <!--<input type="hidden" class="form-control" placeholder="Motivo a Repaletizar" id="MOTIVOREPALETIZAJEE" name="MOTIVOREPALETIZAJEE" value="<?php //echo $MOTIVOREPALETIZAJE; ?>" />
+                                            <textarea class="form-control" rows="1" placeholder="Motivo a Repaletizar" id="MOTIVOREPALETIZAJE" name="MOTIVOREPALETIZAJE" <?php //echo $DISABLEDFOLIO; ?> <?php //echo $DISABLED2; ?> ><?php //echo $MOTIVOREPALETIZAJE; ?></textarea>-->
                                             <label id="val_motivo" class="validacion"> </label>
                                         </div>
                                     </div>

@@ -256,8 +256,10 @@ if (isset($id_dato) && isset($accion_dato)) {
     $ARRAYEXISTENCIATOTALESREEMBALAJE2 = $EXIEXPORTACION_ADO->obtenerTotalesReembalaje2($IDOP);
     $TOTALNETOE = $ARRAYEXISTENCIATOTALESREEMBALAJE[0]['DESHIRATACION'];
     $TOTALENVASEE = $ARRAYEXISTENCIATOTALESREEMBALAJE[0]['ENVASE'];
+    $TOTALENTRADANETOEX = $ARRAYEXISTENCIATOTALESREEMBALAJE[0]['NETO'];
     $TOTALNETOEV = $ARRAYEXISTENCIATOTALESREEMBALAJE2[0]['DESHIRATACION'];
     $TOTALENVASEEV = $ARRAYEXISTENCIATOTALESREEMBALAJE2[0]['ENVASE'];
+    $TOTALENTRADANETOEXV = $ARRAYEXISTENCIATOTALESREEMBALAJE2[0]['NETO'];
 
     $ARRATDINDUSTRIALTOTALREEMBALAJE = $DRINDUSTRIAL_ADO->obtenerTotales($IDOP);
     $ARRATDINDUSTRIALTOTALREEMBALAJE2 = $DRINDUSTRIAL_ADO->obtenerTotales2($IDOP);    
@@ -275,14 +277,18 @@ if (isset($id_dato) && isset($accion_dato)) {
     $TOTALNETOEX = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['NETO'];
     $TOTALBRUTOEX = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['BRUTO'];
     $TOTALDESHIDRATACIONEX = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['DESHIDRATACION'];
+    $KGSALIDANETO = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['NETO'];
     
     $TOTALENVASEEXV = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['ENVASE'];
     $TOTALNETOEXV = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['NETO'];
     $TOTALBRUTOEXV = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['BRUTO'];
     $TOTALDESHIDRATACIONEXV = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['DESHIDRATACION'];
+    $KGSALIDANETOV = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['NETO'];
+
+    //echo $TOTALNETOEXV;
 
     $TOTALENVASEEXPO = $TOTALENVASEEX + $TOTALENVASEIND;
-    $TOTALNETOEXPO = $TOTALNETOEX + $TOTALNETOIND;
+    $TOTALNETOEXPO = $TOTALNETOEX;
     $TOTALBRUTOEXPO = $TOTALBRUTOEX + $TOTALBRUTOIND;
 
     if ($TOTALNETOEX != 0 && $TOTALNETOE != 0) {
@@ -303,7 +309,7 @@ if (isset($id_dato) && isset($accion_dato)) {
     }
 
     $PEXPORTACIONEXPO = ($PEXPORTACIONEXPOEXDESHI + $PEXPORTACIONEXPOINDU);
-    $DIFERENCIAKILOSNETOEXPO = $TOTALNETOE - ($TOTALDESHIDRATACIONEX + $TOTALNETOIND);
+    $DIFERENCIAKILOSNETOEXPO = $TOTALENTRADANETOEX - ($TOTALNETOEXPO + $TOTALNETOIND);
 
     //IDENTIFICACIONES DE OPERACIONES
     //crear =  OBTENCION DE DATOS INICIALES PARA PODER CREAR LA RECEPCION
@@ -1209,19 +1215,19 @@ if (isset($_POST)) {
                                                             Kg. Entrada Netos
                                                         </div>
                                                     </div>
-                                                    <input type="hidden" class="form-control" id="TOTALDESHIDRATACIONEX" name="TOTALDESHIDRATACIONEX" value="<?php echo $TOTALDESHIDRATACIONEX; ?>" />
-                                                    <input type="text" class="form-control" placeholder="Kg. Entrada Netos" id="TOTALDESHIDRATACIONEXV" name="TOTALDESHIDRATACIONEXV" value="<?php echo $TOTALDESHIDRATACIONEXV; ?>" disabled />
+                                                    <input type="hidden" class="form-control" id="TOTALDESHIDRATACIONEX" name="TOTALDESHIDRATACIONEX" value="<?php echo $TOTALENTRADANETOEX; ?>" />
+                                                    <input type="text" class="form-control" placeholder="Kg. Entrada Netos" id="TOTALDESHIDRATACIONEXV" name="TOTALDESHIDRATACIONEXV" value="<?php echo $TOTALENTRADANETOEXV; ?>" disabled />
                                                 </div>
                                             </div>                              
                                             <div class="col-auto">
                                                 <div class="input-group mb-2">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
-                                                            Kg. Salida Neto
+                                                            Kg. Salida Neto Exp.
                                                         </div>
                                                     </div>
-                                                    <input type="hidden" class="form-control" id="TOTALDESHIDRATACIONEX" name="TOTALDESHIDRATACIONEX" value="<?php echo $TOTALDESHIDRATACIONEX; ?>" />
-                                                    <input type="text" class="form-control text-center" placeholder="Total Kilos Con Desh. Expo" id="TOTALDESHIDRATACIONEXV" name="TOTALDESHIDRATACIONEXV" value="<?php echo $TOTALDESHIDRATACIONEX; ?>" disabled />
+                                                    <input type="hidden" class="form-control" id="TOTALDESHIDRATACIONEX" name="TOTALDESHIDRATACIONEX" value="<?php echo $TOTALNETOEXPO; ?>" />
+                                                    <input type="text" class="form-control text-center" placeholder="Total Kilos Con Desh. Expo" id="TOTALDESHIDRATACIONEXV" name="TOTALDESHIDRATACIONEXV" value="<?php echo $TOTALNETOEXPO; ?>" disabled />
                                                 </div>
                                             </div>
                                             <div class="col-auto">
