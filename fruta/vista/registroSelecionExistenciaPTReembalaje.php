@@ -113,7 +113,6 @@ if (isset($_GET["urlo"])) {
     $urlo_dato = "";
 }
 
-echo 'ff'.$urlo_dato.'ff';
 
 if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;

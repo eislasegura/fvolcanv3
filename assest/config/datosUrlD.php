@@ -3,7 +3,7 @@
 if (isset($_REQUEST['SELECIONOCDURL'])) {
     /*$_SESSION["parametro"] = $_REQUEST['IDP'];
     $_SESSION["parametro1"] = $_REQUEST['OPP'];*/
-    echo "<script type='text/javascript'>alert('SELECIONOCDURL');</script>";
+    //echo "<script type='text/javascript'>alert('SELECIONOCDURL');</script>";
     $id_dato = $_REQUEST['IDP'];
     $accion_dato = $_REQUEST['OPP'];
     $urlo_dato = $_REQUEST['URLP'];
