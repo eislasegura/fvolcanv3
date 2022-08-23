@@ -1138,6 +1138,7 @@ if (isset($_POST)) {
                                                         }
                                                         ?>
                                                         <tr class="text-left">
+                                                            <td>-</td>
                                                             <td>P. Industrial</td>
                                                             <td><?php echo $r['FOLIO_DRINDUSTRIAL']; ?></td>
                                                             <td class="text-center">
@@ -1193,11 +1194,11 @@ if (isset($_POST)) {
                                             <div class="col-auto">
                                                 <div class="input-group mb-2">
                                                     <div class="input-group-prepend">
-                                                        <div class="input-group-text">Kilos Con Desh. Entrada</div>
+                                                        <div class="input-group-text">Kg. Entrada Con Desh.</div>
                                                     </div>
                                                     <!-- inicio input -->
                                                     <input type="hidden" class="form-control" placeholder="TOTAL NETO" id="TOTALNETO" name="TOTALNETO" value="<?php echo $TOTALNETOE; ?>" />
-                                                    <input type="text" class="form-control" placeholder="Total  Con Desh " id="TOTALNETOEV" name="TOTALNETOEV" value="<?php echo $TOTALNETOEV; ?>" disabled />
+                                                    <input type="text" class="form-control" placeholder="Kg. Entrada Con Desh." id="TOTALNETOEV" name="TOTALNETOEV" value="<?php echo $TOTALNETOEV; ?>" disabled />
                                                     <!-- /termino input -->
                                                 </div>
                                             </div>
@@ -1205,18 +1206,18 @@ if (isset($_POST)) {
                                                 <div class="input-group mb-2">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
-                                                            Kilos Neto Exportacion
+                                                            Kg. Entrada Netos
                                                         </div>
                                                     </div>
                                                     <input type="hidden" class="form-control" id="TOTALDESHIDRATACIONEX" name="TOTALDESHIDRATACIONEX" value="<?php echo $TOTALDESHIDRATACIONEX; ?>" />
-                                                    <input type="text" class="form-control" placeholder="TOTAL DESHIDRATACION" id="TOTALDESHIDRATACIONEXV" name="TOTALDESHIDRATACIONEXV" value="<?php echo $TOTALDESHIDRATACIONEXV; ?>" disabled />
+                                                    <input type="text" class="form-control" placeholder="Kg. Entrada Netos" id="TOTALDESHIDRATACIONEXV" name="TOTALDESHIDRATACIONEXV" value="<?php echo $TOTALDESHIDRATACIONEXV; ?>" disabled />
                                                 </div>
                                             </div>                              
                                             <div class="col-auto">
                                                 <div class="input-group mb-2">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
-                                                            Kilos Con Desh. Expo.
+                                                            Kg. Salida Neto
                                                         </div>
                                                     </div>
                                                     <input type="hidden" class="form-control" id="TOTALDESHIDRATACIONEX" name="TOTALDESHIDRATACIONEX" value="<?php echo $TOTALDESHIDRATACIONEX; ?>" />
@@ -1227,7 +1228,7 @@ if (isset($_POST)) {
                                                 <div class="input-group mb-2">
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
-                                                            Kilos Neto Industrial
+                                                            Kg. Salida Industrial
                                                         </div>
                                                     </div>
                                                     <input type="hidden" class="form-control" id="TOTALNETOIND" name="TOTALNETOIND" value="<?php echo $TOTALNETOIND; ?>" />

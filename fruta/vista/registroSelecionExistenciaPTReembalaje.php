@@ -113,7 +113,6 @@ if (isset($_GET["urlo"])) {
     $urlo_dato = "";
 }
 
-echo 'ff'.$urlo_dato.'ff';
 
 if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
@@ -351,7 +350,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                     <!-- /.box-body -->
                                     <div class="card-footer">
                                         <div class="btn-group btn-rounded btn-block col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>'&urlo=<?php echo $urlo_dato; ?>);">
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="Seleccionar" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>

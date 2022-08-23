@@ -1185,6 +1185,33 @@ if (isset($_POST)) {
                                                 <label class="sr-only" for="inlineFormInputGroup">Username</label>
                                                 <div class="input-group mb-2">
                                                     <div class="input-group-prepend">
+                                                        <div class="input-group-text">Diferencia de Envases Guia</div>
+                                                    </div>
+                                                    <input type="hidden" name="DIFERENCIAENVASESGUIA" id="DIFERENCIAENVASESGUIA" value="<?php echo ($TOTALGUIA-$CANTIDADENVASERECEPCION); ?>" />
+                                                    <input type="text" class="form-control" placeholder="Diferencia de Envases Guia" id="DIFERENCIAENVASESGUIAv" name="DIFERENCIAENVASESGUIAv" value="<?php echo ($TOTALGUIA-$CANTIDADENVASERECEPCION); ?>" disabled />
+                                                </div>
+                                            </div>
+
+
+                                            <?php 
+                                            $CONTROL_ALERTA = ($TOTALGUIA-$CANTIDADENVASERECEPCION);
+
+
+                                            if($CONTROL_ALERTA < 0){
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i>Los envases no cuadran con la Guia.</div>';
+                                            }
+                                            
+                                            
+                                            ?>
+
+                                            
+
+                                            
+                                           
+                                            <div class="col-auto">
+                                                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
                                                         <div class="input-group-text">Total Envase</div>
                                                     </div>
                                                     <input type="hidden" name="CANTIDADENVASERECEPCION" id="CANTIDADENVASERECEPCION" value="<?php echo $CANTIDADENVASERECEPCION; ?>" />
@@ -1211,7 +1238,13 @@ if (isset($_POST)) {
                                                     <input type="text" class="form-control" placeholder="Total Bruto" id="KILOSBRUTORECEPCIONV" name="KILOSBRUTORECEPCIONV" value="<?php echo $KILOSBRUTORECEPCION2; ?>" disabled />
                                                 </div>
                                             </div>
+
+                                            
+
+                                            
                                         </div>
+
+                                        
                                 </div>
                                 <div class="card-body">
                                     <div class=" table-responsive">
