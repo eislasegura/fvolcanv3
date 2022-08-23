@@ -545,9 +545,10 @@ class DREXPORTACION_ADO
                                                 IFNULL(SUM(KILOS_NETO_DREXPORTACION),0) AS 'NETO' , 
                                                 IFNULL(SUM(KILOS_BRUTO_DREXPORTACION),0) AS 'BRUTO' , 
                                                 IFNULL(SUM(KILOS_DESHIDRATACION_DREXPORTACION),0) AS 'DESHIDRATACION' 
-                                         FROM  fruta_drexportacion  
+                                         FROM  fruta_drexportacion
                                          WHERE ID_REEMBALAJE = '" . $IDPROCESO . "' 
                                          AND  ESTADO_REGISTRO  = 1;");
+                                     
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
