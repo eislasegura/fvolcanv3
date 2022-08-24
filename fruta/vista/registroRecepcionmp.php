@@ -1192,22 +1192,6 @@ if (isset($_POST)) {
                                                 </div>
                                             </div>
 
-
-                                            <?php 
-                                            $CONTROL_ALERTA = ($TOTALGUIA-$CANTIDADENVASERECEPCION);
-
-
-                                            if($CONTROL_ALERTA < 0){
-                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i>Los envases no cuadran con la Guia.</div>';
-                                            }
-                                            
-                                            
-                                            ?>
-
-                                            
-
-                                            
-                                           
                                             <div class="col-auto">
                                                 <label class="sr-only" for="inlineFormInputGroup">Username</label>
                                                 <div class="input-group mb-2">
@@ -1246,6 +1230,18 @@ if (isset($_POST)) {
 
                                         
                                 </div>
+                                <?php 
+                                            $CONTROL_ALERTA = ($TOTALGUIA-$CANTIDADENVASERECEPCION);
+
+
+                                            if($CONTROL_ALERTA < 0){
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i>Los envases no cuadran con la Guia.</div>';
+                                            }else{
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i>Le quedan envases pendientes, segun Guia.</div>';
+                                            }
+                                            
+                                            
+                                            ?>
                                 <div class="card-body">
                                     <div class=" table-responsive">
                                         <table id="detalle" class="table-hover " style="width: 100%;">
