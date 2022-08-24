@@ -291,7 +291,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                 <label for="FOLIOMANUAL"> Folio Manual</label>
 
                                                 <label>Estado Folio</label><br>
-                                                <select class="form-control select2" id="EFOLIO" name="EFOLIO" style="width: 100%;" <?php echo $DISABLED; ?>>
+                                                <select class="form-control select2" id="EFOLIO" name="EFOLIO" style="width: 100%;">
                                                     <option value="0">- Seleccione una Opcion -</option>
                                                     <option value="1">Pallet Completo</option>
                                                     <option value="2">Pallet Incompleto</option>
@@ -684,6 +684,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                     $EMBOLSADOEXISTENCIA=0;
                                 }
 
+                                //echo '<script> alert("SE SE PASA POR ENVASE SE CREA NUEVO FOLIO EL FOLIO '.$_REQUEST["EFOLIO"].'"); </script>';
 
                                 $DREPALETIZAJEEX->__SET('FOLIO_NUEVO_DREPALETIZAJE', $NUMEROFOLIODEXPORTACION);
                                 $DREPALETIZAJEEX->__SET('FOLIO_MANUAL', $FOLIOMANUALR);
@@ -903,6 +904,9 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 $KILOSBRUTOEXISTENCIA=0;
                                 $EMBOLSADOEXISTENCIA=0;
                             }   
+
+
+                            //echo '<script> alert("SE MANTIENE EL FOLIO '.$_REQUEST["EFOLIO"].'"); </script>';
                             $DREPALETIZAJEEX->__SET('FOLIO_NUEVO_DREPALETIZAJE', $r["FOLIO_AUXILIAR_EXIEXPORTACION"]);
                             $DREPALETIZAJEEX->__SET('FOLIO_MANUAL', $r["FOLIO_MANUAL"]);
                             $DREPALETIZAJEEX->__SET('FECHA_EMBALADO_DREPALETIZAJE', $r["FECHA_EMBALADO_EXIEXPORTACION"]);
