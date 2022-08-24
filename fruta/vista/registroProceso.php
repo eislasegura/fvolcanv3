@@ -1140,6 +1140,7 @@ if (isset($_POST)) {
                                                         }
                                                         ?>
                                                         <tr class="text-left">
+                                                            <td>-</td>
                                                             <td>P. Industrial</td>
                                                             <td><?php echo $r['FOLIO_DPINDUSTRIAL']; ?></td>
                                                             <td class="text-center">

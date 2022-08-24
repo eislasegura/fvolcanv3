@@ -522,7 +522,7 @@ if ($_POST) {
                                     <div class="row">                                        
                                         <div class="col-xxl-1 col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 col-xs-2">
                                             <div class="form-group">
-                                                <label>Inspeccion</label>
+                                                <label>Con Inspeccion</label>
                                                 <input type="hidden" class="form-control" placeholder="SINPSAG" id="SINPSAGE" name="SINPSAGE" value="<?php echo $SINPSAG; ?>" />
                                                 <select class="form-control select2" id="SINPSAG" name="SINPSAG" style="width: 100%;" <?php echo $DISABLED3; ?>>
                                                     <option></option>
@@ -621,11 +621,12 @@ if ($_POST) {
                                                                 <th> N° Folio </th>
                                                                 <th>Condición </th>
                                                                 <th class="text-center">Operaciónes</th>
+                                                                <th>Cantidad Envase</th>
                                                                 <th>Fecha Embalado </th>
                                                                 <th>Código Estandar</th>
                                                                 <th>Envase/Estandar</th>
                                                                 <th>Variedad</th>
-                                                                <th>Cantidad Envase</th>
+                                                               
                                                                 <th>Kilos Neto</th>
                                                                 <th>% Deshidratacion</th>
                                                                 <th>Kilos Deshidratacion</th>
@@ -736,11 +737,12 @@ if ($_POST) {
                                                                                 </div>
                                                                             </form>
                                                                         </td>
+                                                                        <td><?php echo $r['ENVASE']; ?></td>
                                                                         <td><?php echo $r['EMBALADO']; ?></td>
                                                                         <td><?php echo $CODIGOESTANDAR; ?></td>
                                                                         <td><?php echo $NOMBREESTANDAR; ?></td>
                                                                         <td><?php echo $NOMBREVARIEDAD; ?></td>
-                                                                        <td><?php echo $r['ENVASE']; ?></td>
+                                                                        
                                                                         <td><?php echo $r['NETO']; ?></td>
                                                                         <td><?php echo $r['PORCENTAJE']; ?></td>
                                                                         <td><?php echo $r['DESHIRATACION']; ?></td>
