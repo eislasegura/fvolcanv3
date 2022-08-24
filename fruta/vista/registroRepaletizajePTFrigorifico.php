@@ -522,7 +522,7 @@ if ($_POST) {
                                     <div class="row">                                        
                                         <div class="col-xxl-1 col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 col-xs-2">
                                             <div class="form-group">
-                                                <label>Inspeccion</label>
+                                                <label>Con Inspeccion</label>
                                                 <input type="hidden" class="form-control" placeholder="SINPSAG" id="SINPSAGE" name="SINPSAGE" value="<?php echo $SINPSAG; ?>" />
                                                 <select class="form-control select2" id="SINPSAG" name="SINPSAG" style="width: 100%;" <?php echo $DISABLED3; ?>>
                                                     <option></option>
