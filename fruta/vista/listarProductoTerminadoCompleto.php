@@ -607,6 +607,15 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                     </button>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Total Pallet</div>
+                                                    <button class="btn   btn-default" id="TOTALENVASEV" name="TOTALENVASEV" >                                                           
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div><!-- 
                                         <div class="col-auto">
                                             <div class="input-group mb-2">
