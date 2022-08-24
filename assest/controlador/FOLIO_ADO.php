@@ -278,11 +278,11 @@ class FOLIO_ADO {
     }
 
     //VER FOLIO FILTRADO POR EMPRESA
-    public function buscarFoliPorEmpresa($IDEMPRESA){
+    public function buscarFoliPorEmpresa($IDEMPRESA, $IDTEMPORADA){
         try{
             
             $datos=$this->conexion->prepare("SELECT * FROM fruta_folio 
-                                             WHERE ID_EMPRESA= '".$IDEMPRESA."'
+                                             WHERE ID_EMPRESA= '".$IDEMPRESA."' AND ID_TEMPORADA = '".$IDTEMPORADA."'
                                              AND ESTADO_REGISTRO = 1;");
             $datos->execute();
             $resultado = $datos->fetchAll();
