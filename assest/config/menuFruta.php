@@ -799,9 +799,9 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="listarProductoTerminadoCompleto.php">Producto Terminado Completo<i class="ti-more"></i></a></li>
-                  <li><a href="listarProductoTerminadoIncompleto.php">Producto Terminado Incompleto<i class="ti-more"></i></a></li>
-                  <li><a href="listarProductoTerminadoMuestras.php">Producto Terminado Muestras<i class="ti-more"></i></a></li>
+                  <li><a href="listarProductoTerminadoCompleto.php">PT Completo<i class="ti-more"></i></a></li>
+                  <li><a href="listarProductoTerminadoIncompleto.php">PT Incompleto<i class="ti-more"></i></a></li>
+                  <li><a href="listarProductoTerminadoMuestras.php">PT Muestras<i class="ti-more"></i></a></li>
                 </ul>
               </li>
               <li class="treeview">

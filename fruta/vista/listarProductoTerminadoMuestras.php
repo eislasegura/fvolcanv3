@@ -87,6 +87,7 @@ $ARRAYDESPACHO="";
 $ARRAYDESPACHO2="";
 $ARRAYTINPSAG = "";
 $ARRAYINPSAG = "";
+$TOTALPALLET = 0;
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES 
 if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
@@ -588,7 +589,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 <td><?php echo $NOMBRETEMPORADA; */?></td> -->
                                                                 <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             </tr>                                                       
-                                                        <?php endforeach; ?>        
+                                                        <?php endforeach; ?>   
+                                                        <?php $TOTALPALLET++; ?>       
                                                     <?php endforeach; ?>
                                                 </tbody>
                                             </table>
@@ -604,6 +606,16 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">Total Envase</div>
                                                     <button class="btn   btn-default" id="TOTALENVASEV" name="TOTALENVASEV" >                                                           
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="input-group mb-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text">Total Pallet</div>
+                                                    <button class="btn   btn-default" id="TOTALPALLET" name="TOTALPALLET" >    
+                                                        <?php echo $TOTALPALLET; ?>                                                       
                                                     </button>
                                                 </div>
                                             </div>

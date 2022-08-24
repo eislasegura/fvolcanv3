@@ -7965,6 +7965,7 @@ $(function () {
                 //console.log("neto: "+  totalnetoconsolidado);
                 //console.log("bruto: "+  totalbrutoconsolidado);
                 $("#TOTALENVASEV").text(totalenvaseconsolidado);
+                $("#TOTALPALLET").text('10000');
                 //$("#TOTALNETOV").text(totalnetoconsolidado);
                 //$("#TOTALBRUTOV").text(totalbrutoconsolidado);
             },
@@ -8721,6 +8722,7 @@ $(function () {
                 //console.log("neto: "+  totalnetoconsolidado);
                 //console.log("bruto: "+  totalbrutoconsolidado);
                 $("#TOTALENVASEV").text(totalenvaseconsolidado);
+                //$("#TOTALPALLET").text('10000');
                 //$("#TOTALNETOV").text(totalnetoconsolidado);
                 //$("#TOTALBRUTOV").text(totalbrutoconsolidado);
             },
