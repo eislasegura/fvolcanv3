@@ -330,7 +330,7 @@ if (isset($_POST)) {
 <html lang="es">
 
 <head>
-    <title> Registrar Rechazo MP</title>
+    <title> Registrar Levantamiento MP</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
@@ -448,9 +448,9 @@ if (isset($_POST)) {
                                             <li class="breadcrumb-item"> <a href="index.php"> <i class="mdi mdi-home-outline"></i></a></li>
                                             <li class="breadcrumb-item" aria-current="page">Modulo</li>
                                             <li class="breadcrumb-item" aria-current="page">Calidad de Fruta</li>
-                                            <li class="breadcrumb-item" aria-current="page">Rechazo</li>
+                                            <li class="breadcrumb-item" aria-current="page">Levantamiento</li>
                                             <li class="breadcrumb-item" aria-current="page">Materia Prima</li>
-                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#">Registro Rechazo </a> </li>
+                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#">Registro Levantamiento </a> </li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -464,7 +464,7 @@ if (isset($_POST)) {
                         <form class="form" role="form" method="post" name="form_reg_dato" id="form_reg_dato">
                             <div class="box">                   
                                  <div class="box-header with-border bg-primary">                                   
-                                    <h4 class="box-title">Registro de Rechazo</h4>                                        
+                                    <h4 class="box-title">Registro de Levantamiento</h4>                                        
                                 </div>
                                 <div class="box-body ">
                                     <div class="row">
@@ -521,12 +521,12 @@ if (isset($_POST)) {
                                         </div>
                                         <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-9 col-9 col-xs-9">
                                             <div class="form-group">
-                                                <label>Tipo Rechazo</label>
+                                                <label>Tipo Levantamiento</label>
                                                 <input type="hidden" class="form-control" placeholder="TIPO TRECHAZO" id="TRECHAZOE" name="TRECHAZOE" value="<?php echo $TRECHAZO; ?>" />
                                                 <select class="form-control select2" id="TRECHAZO" name="TRECHAZO" style="width: 100%;" <?php echo $DISABLED; ?>  <?php echo $DISABLED3; ?>  <?php echo $DISABLEDFOLIO; ?>>
                                                     <option></option>
-                                                    <option value="1" <?php if ($TRECHAZO == 1 ) {  echo "selected";  } ?>> Rechazado </option>
-                                                    <option value="2" <?php if ($TRECHAZO == 2 ) {  echo "selected";  } ?>> Objetado </option> 
+                                                    <option value="1" <?php if ($TRECHAZO == 1 ) {  echo "selected";  } ?>> Orden Comercial </option>
+                                                    <option value="2" <?php if ($TRECHAZO == 2 ) {  echo "selected";  } ?>> Departamento de Calidad </option> 
                                                 </select>
                                                 <label id="val_trechazo" class="validacion"> </label>
                                             </div>
