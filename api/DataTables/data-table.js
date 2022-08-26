@@ -7959,13 +7959,15 @@ $(function () {
             'drawCallback':function(){
                 var api =this.api();  
                 var totalenvaseconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(9,{page:'current'}).data().sum()).toFixed(0));
+                var totalpallet = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(9,{page:'current'}).data().count()).toFixed(0));
+             
                 //var totalnetoconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(16,{page:'current'}).data().sum()).toFixed(2));
                 //var totalbrutoconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(19,{page:'current'}).data().sum()).toFixed(2));
                 //console.log("envase: "+  totalenvaseconsolidado);
                 //console.log("neto: "+  totalnetoconsolidado);
                 //console.log("bruto: "+  totalbrutoconsolidado);
                 $("#TOTALENVASEV").text(totalenvaseconsolidado);
-                $("#TOTALPALLET").text('10000');
+                $("#TOTALPALLET").text(totalpallet);
                 //$("#TOTALNETOV").text(totalnetoconsolidado);
                 //$("#TOTALBRUTOV").text(totalbrutoconsolidado);
             },
