@@ -740,6 +740,39 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                         </ul>
                       </li>                
                     </ul>
+                  </li> 
+                  <li class="treeview">
+                    <a href="#">Levantamiento  
+                      <span class="pull-left-container">
+                        <i class=" fa fa-angle-right pull-right"></i>
+                      </span>
+                    </a>
+                    <ul class="treeview-menu">
+                      <li class="treeview">
+                        <a href="#">Materia Prima
+                          <span class="pull-left-container">
+                            <i class=" fa fa-angle-right pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                          <li><a href="registroLevantamientomp.php">Registro Levantamiento<i class="ti-more"></i></a></li>
+                          <li><a href="listarLevantamientomp.php">Agrupado Levantamiento<i class="ti-more"></i></a></li>
+                          <li><a href="listarLevantamientompDetallado.php">Detallado Levantamiento<i class="ti-more"></i></a></li>
+                        </ul>
+                      </li>                  
+                      <li class="treeview">
+                        <a href="#">Producto Terminado
+                          <span class="pull-left-container">
+                            <i class=" fa fa-angle-right pull-right"></i>
+                          </span>
+                        </a>
+                        <ul class="treeview-menu">
+                          <li><a href="registroLevantamientopt.php">Registro Levantamiento<i class="ti-more"></i></a></li>
+                          <li><a href="listarLevantamientopt.php">Agrupado Levantamiento<i class="ti-more"></i></a></li>
+                          <li><a href="listarLevantamientoptDetallado.php">Detallado Levantamiento<i class="ti-more"></i></a></li>
+                        </ul>
+                      </li>                
+                    </ul>
                   </li>                  
                 <?php  } ?>
                 <?php if($PFCFLEVANTAMIENTO=="1"){ ?>
