@@ -12,7 +12,7 @@ include_once '../../assest/controlador/TMANEJO_ADO.php';
 include_once '../../assest/controlador/RECEPCIONMP_ADO.php';
 include_once '../../assest/controlador/DESPACHOMP_ADO.php';
 
-include_once '../../assest/controlador/RECHAZOMP_ADO.php';
+include_once '../../assest/controlador/LEVANTAMIENTOMP_ADO.php';
 
 
 include_once '../../assest/controlador/EXIMATERIAPRIMA_ADO.php';
@@ -31,7 +31,7 @@ $ESPECIES_ADO =  new ESPECIES_ADO();
 $TMANEJO_ADO =  new TMANEJO_ADO();
 
 
-$RECHAZOMP_ADO =  new RECHAZOMP_ADO();
+$LEVANTAMIENTOMP_ADO =  new LEVANTAMIENTOMP_ADO();
 $EXIMATERIAPRIMA_ADO =  new EXIMATERIAPRIMA_ADO();
 //INIICIALIZAR MODELO
 $EXIMATERIAPRIMA =  new EXIMATERIAPRIMA();
@@ -102,8 +102,8 @@ if (isset($id_dato) && isset($accion_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
     $URLO = $urlo_dato;
-    $ARRAYRECHAZO = $RECHAZOMP_ADO->verRechazo($IDP);
-    foreach ($ARRAYRECHAZO as $r) :
+    $ARRAYLEVANTAMIENTO = $LEVANTAMIENTOMP_ADO->verLevantamiento($IDP);
+    foreach ($ARRAYLEVANTAMIENTO as $r) :
         $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
         $VESPECIES = "" . $r['ID_VESPECIES'];
     endforeach;
@@ -158,7 +158,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                                             <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                             <li class="breadcrumb-item" aria-current="page">Modulo</li>
                                             <li class="breadcrumb-item" aria-current="page">Calidad de Fruta</li>
-                                            <li class="breadcrumb-item" aria-current="page">Rechazo</li>
+                                            <li class="breadcrumb-item" aria-current="page">Levantamiento</li>
                                             <li class="breadcrumb-item" aria-current="page">Materia Prima</li>
                                             <li class="breadcrumb-item active" aria-current="page"> <a href="#"> Seleccion Existencia</a> </li>
                                         </ol>
@@ -358,7 +358,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroSelecionExistenciaMPRechazoMp.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
+                        location.href = "registroSelecionExistenciaMPLevantamientoMp.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                     })
                 </script>';
             }
@@ -370,9 +370,9 @@ if (isset($id_dato) && isset($accion_dato)) {
                     $EXIMATERIAPRIMA->__SET('ID_RECHAZADO', $IDDESPACHO);
                     $EXIMATERIAPRIMA->__SET('ID_EXIMATERIAPRIMA', $IDEXISMATERIAPRIMA);
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
-                    $EXIMATERIAPRIMA_ADO->actualizarSelecionarRechazoCambiarEstado($EXIMATERIAPRIMA);
+                    $EXIMATERIAPRIMA_ADO->actualizarSelecionarLevantamientoCambiarEstado($EXIMATERIAPRIMA);
 
-                    $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", se agrega existencia al rechazo Materia Prima.","fruta_eximateriaprima", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                    $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", se agrega existencia al levantamiento Materia Prima.","fruta_eximateriaprima", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 endforeach;
 
                 $id_dato =  $_REQUEST['IDP'];
@@ -383,7 +383,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     Swal.fire({
                         icon:"success",
                         title:"Accion realizada",
-                        text:"Se agregado la existencia al rechazo.",
+                        text:"Se agregado la existencia al levantamiento.",
                         showConfirmButton: true,
                         confirmButtonText:"Volver a proceso",
                         closeOnConfirm:false

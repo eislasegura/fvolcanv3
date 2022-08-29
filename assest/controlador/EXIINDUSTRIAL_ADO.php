@@ -844,6 +844,79 @@ class EXIINDUSTRIAL_ADO
             die($e->getMessage());
         }
     }
+
+
+    public function agregarExiindustrialLevantamientoMP(EXIINDUSTRIAL $EXIINDUSTRIAL)
+    {
+        try {
+            $query =
+                "INSERT INTO fruta_exiindustrial (  
+                                                    FOLIO_EXIINDUSTRIAL,
+                                                    FOLIO_AUXILIAR_EXIINDUSTRIAL,
+                                                    FECHA_EMBALADO_EXIINDUSTRIAL,   
+
+                                                    CANTIDAD_ENVASE_EXIINDUSTRIAL,   
+                                                    KILOS_NETO_EXIINDUSTRIAL,    
+                                                    KILOS_BRUTO_EXIINDUSTRIAL,    
+                                                    KILOS_PROMEDIO_EXIINDUSTRIAL,  
+                                                    PESO_PALLET_EXIINDUSTRIAL,        
+
+                                                    GASIFICADO,     
+                                                    ALIAS_DINAMICO_FOLIO_EXIINDUSTRIAL, 
+                                                    ALIAS_ESTATICO_FOLIO_EXIINDUSTRIAL,   
+
+                                                    ID_TMANEJO, 
+                                                    ID_ESTANDARMP,
+                                                    ID_PRODUCTOR,
+
+                                                    ID_VESPECIES,
+                                                    ID_EMPRESA, 
+                                                    ID_PLANTA, 
+                                                    ID_TEMPORADA,
+                                                    ID_LEVANTAMIENTOMP,
+
+                                                    INGRESO,
+                                                    MODIFICACION,
+                                                    TCOBRO,              
+                                                    ESTADO,  
+                                                    ESTADO_REGISTRO
+                                                ) VALUES
+	       	( ?, ?, ?,    ?, ?, ?, ?, ?,     ?, ?, ?,   ?, ?, ?,   ?, ?, ?, ?, ?,  SYSDATE(),SYSDATE(), 1, 2, 1);";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+
+                        $EXIINDUSTRIAL->__GET('FOLIO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('FOLIO_AUXILIAR_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('FECHA_EMBALADO_EXIINDUSTRIAL'),
+
+                        $EXIINDUSTRIAL->__GET('CANTIDAD_ENVASE_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('KILOS_NETO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('KILOS_BRUTO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('KILOS_PROMEDIO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('PESO_PALLET_EXIINDUSTRIAL'),
+                        
+                        $EXIINDUSTRIAL->__GET('GASIFICADO'),
+                        $EXIINDUSTRIAL->__GET('ALIAS_DINAMICO_FOLIO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('ALIAS_ESTATICO_FOLIO_EXIINDUSTRIAL'),
+
+                        $EXIINDUSTRIAL->__GET('ID_TMANEJO'),
+                        $EXIINDUSTRIAL->__GET('ID_ESTANDARMP'),
+                        $EXIINDUSTRIAL->__GET('ID_PRODUCTOR'),
+
+                        $EXIINDUSTRIAL->__GET('ID_VESPECIES'),
+                        $EXIINDUSTRIAL->__GET('ID_EMPRESA'),
+                        $EXIINDUSTRIAL->__GET('ID_PLANTA'),
+                        $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
+                        $EXIINDUSTRIAL->__GET('ID_LEVANTAMIENTOMP')
+
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     //ELIMINAR FILA, NO SE UTILIZA
     public function eliminarExiindustrial($id)
     {
@@ -996,6 +1069,67 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
                         $EXIINDUSTRIAL->__GET('ID_REEMBALAJE'),
+                        $EXIINDUSTRIAL->__GET('ID_EXIINDUSTRIAL')
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function actualizarExiindustrialLevantamientoMP(EXIINDUSTRIAL $EXIINDUSTRIAL)
+    {
+        try {
+            $query = "
+            UPDATE fruta_exiindustrial SET
+                    MODIFICACION =  SYSDATE(),
+
+                    FECHA_EMBALADO_EXIINDUSTRIAL = ?,
+
+                    CANTIDAD_ENVASE_EXIINDUSTRIAL = ?,
+                    KILOS_NETO_EXIINDUSTRIAL = ?,
+                    KILOS_BRUTO_EXIINDUSTRIAL = ?,
+                    KILOS_PROMEDIO_EXIINDUSTRIAL = ?,
+                    PESO_PALLET_EXIINDUSTRIAL = ?,
+                    
+                    GASIFICADO = ?,
+
+                    ID_TMANEJO = ?, 
+                    ID_ESTANDARMP = ?, 
+                    ID_PRODUCTOR = ?,
+
+                    ID_VESPECIES = ?,
+                    ID_EMPRESA = ?,
+                    ID_PLANTA = ?, 
+                    ID_TEMPORADA = ? ,
+                    ID_LEVANTAMIENTOMP = ?   
+                            
+            WHERE ID_EXIINDUSTRIAL= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIINDUSTRIAL->__GET('FECHA_EMBALADO_EXIINDUSTRIAL'),
+
+                        $EXIINDUSTRIAL->__GET('CANTIDAD_ENVASE_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('KILOS_NETO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('KILOS_BRUTO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('KILOS_PROMEDIO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('PESO_PALLET_EXIINDUSTRIAL'),
+                        
+                        $EXIINDUSTRIAL->__GET('GASIFICADO'),
+
+                        $EXIINDUSTRIAL->__GET('ID_TMANEJO'),
+                        $EXIINDUSTRIAL->__GET('ID_ESTANDARMP'),
+                        $EXIINDUSTRIAL->__GET('ID_PRODUCTOR'),
+
+                        $EXIINDUSTRIAL->__GET('ID_VESPECIES'),
+                        $EXIINDUSTRIAL->__GET('ID_EMPRESA'),
+                        $EXIINDUSTRIAL->__GET('ID_PLANTA'),
+                        $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
+                        $EXIINDUSTRIAL->__GET('ID_LEVANTAMIENTOMP'),
+
                         $EXIINDUSTRIAL->__GET('ID_EXIINDUSTRIAL')
                     )
 
@@ -1171,6 +1305,31 @@ class EXIINDUSTRIAL_ADO
                 ->execute(
                     array(
                         $EXIINDUSTRIAL->__GET('ID_RECHAZADOMP'),
+                        $EXIINDUSTRIAL->__GET('FOLIO_EXIINDUSTRIAL'),
+                        $EXIINDUSTRIAL->__GET('FOLIO_AUXILIAR_EXIINDUSTRIAL')
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function deshabilitarEliminarLevantamientomp(EXIINDUSTRIAL $EXIINDUSTRIAL)
+    {
+
+        try {
+            $query = "
+                UPDATE fruta_exiindustrial SET	
+                        MODIFICACION =  SYSDATE(),		
+                        ESTADO = 0	,		
+                        ESTADO_REGISTRO = 0	
+                WHERE  ID_LEVANTAMIENTOMP= ? AND FOLIO_EXIINDUSTRIAL= ? AND FOLIO_AUXILIAR_EXIINDUSTRIAL= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIINDUSTRIAL->__GET('ID_LEVANTAMIENTOMP'),
                         $EXIINDUSTRIAL->__GET('FOLIO_EXIINDUSTRIAL'),
                         $EXIINDUSTRIAL->__GET('FOLIO_AUXILIAR_EXIINDUSTRIAL')
                     )
@@ -2506,6 +2665,32 @@ class EXIINDUSTRIAL_ADO
             $datos = $this->conexion->prepare("SELECT *
                                              FROM fruta_exiindustrial
                                              WHERE ID_RECHAZADOMP = '".$IDRECHAZADOMP."'
+                                             AND FOLIO_EXIINDUSTRIAL LIKE '" . $FOLIO . "' 
+                                             AND FOLIO_AUXILIAR_EXIINDUSTRIAL LIKE '" . $FOLIOAUXILIAR . "'
+                                             AND ESTADO != 0
+                                             AND ESTADO_REGISTRO = 1  ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function buscarPorLevantamientoMpFolio($IDLEVANTAMIENTOMP, $FOLIO, $FOLIOAUXILIAR)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT *
+                                             FROM fruta_exiindustrial
+                                             WHERE ID_LEVANTAMIENTOMP = '".$IDLEVANTAMIENTOMP."'
                                              AND FOLIO_EXIINDUSTRIAL LIKE '" . $FOLIO . "' 
                                              AND FOLIO_AUXILIAR_EXIINDUSTRIAL LIKE '" . $FOLIOAUXILIAR . "'
                                              AND ESTADO != 0
