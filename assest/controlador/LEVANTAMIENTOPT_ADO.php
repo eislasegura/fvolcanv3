@@ -84,7 +84,11 @@ class LEVANTAMIENTOPT_ADO
     public function verLevantamiento($ID)
     {
         try {
-
+            /*echo " SELECT *,
+            DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
+            DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 
+            FROM fruta_levantamientopt 
+            WHERE ID_LEVANTAMIENTO= '" . $ID . "';";*/
             $datos = $this->conexion->prepare(" SELECT *,
                                                     DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
                                                     DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 

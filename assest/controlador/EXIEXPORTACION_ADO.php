@@ -3871,7 +3871,7 @@ class EXIEXPORTACION_ADO
                                                 FROM fruta_exiexportacion existencia, fruta_reapt detalle 
                                                 WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
                                                 AND existencia.ESTADO_REGISTRO = 1                                     
-                                                AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
+                                                AND ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
                                             ;");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -4519,7 +4519,7 @@ class EXIEXPORTACION_ADO
                                                     FROM fruta_exiexportacion existencia, fruta_reapt detalle 
                                                     WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
                                                     AND existencia.ESTADO_REGISTRO = 1                                           
-                                                    AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'
+                                                    AND ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'
                                              
                                              ;");
             $datos->execute();
@@ -4574,7 +4574,7 @@ class EXIEXPORTACION_ADO
                                                 FROM fruta_exiexportacion existencia, fruta_reapt detalle 
                                                 WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
                                                 AND existencia.ESTADO_REGISTRO = 1                                           
-                                                AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'            
+                                                AND ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'            
                                              ;");
             $datos->execute();
             $resultado = $datos->fetchAll();

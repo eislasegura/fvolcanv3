@@ -529,7 +529,7 @@ if (isset($_POST)) {
                                             <div class="form-group">
                                                 <label>Tipo Levantamiento</label>
                                                 <input type="hidden" class="form-control" placeholder="TIPO TLEVANTAMIENTO" id="TLEVANTAMIENTOE" name="TLEVANTAMIENTOE" value="<?php echo $TLEVANTAMIENTO; ?>" />
-                                                <select class="form-control select2" id="TLEVANTAMIENTO" name="LEVANTAMIENTO" style="width: 100%;" <?php echo $DISABLED; ?>  <?php echo $DISABLED3; ?>  <?php echo $DISABLEDFOLIO; ?>>
+                                                <select class="form-control select2" id="TLEVANTAMIENTO" name="TLEVANTAMIENTO" style="width: 100%;" <?php echo $DISABLED; ?>  <?php echo $DISABLED3; ?>  <?php echo $DISABLEDFOLIO; ?>>
                                                     <option></option>
                                                     <option value="1" <?php if ($TLEVANTAMIENTO == 1 ) {  echo "selected";  } ?>> Orden Comercial </option>
                                                     <option value="2" <?php if ($TLEVANTAMIENTO == 2 ) {  echo "selected";  } ?>> Departamento de Calidad </option> 
@@ -809,12 +809,12 @@ if (isset($_POST)) {
 
             $ARRAYNUMERO = $LEVANTAMIENTOMP_ADO->obtenerNumero($_REQUEST['EMPRESA'], $_REQUEST['PLANTA'], $_REQUEST['TEMPORADA']);
             $NUMERO = $ARRAYNUMERO[0]['NUMERO'] + 1;
-            echo '<script> alert("'.$_REQUEST['TLEVANTAMIENTOE'].'"); </script>';
+            //echo '<script> alert("crear variable es : '.$_REQUEST['TLEVANTAMIENTO'].' vspecie es : '.$_REQUEST['VESPECIES'].'"); </script>';
             //UTILIZACION METODOS SET DEL MODELO
             //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO
             $LEVANTAMIENTOMP->__SET('NUMERO_LEVANTAMIENTO', $NUMERO);
             $LEVANTAMIENTOMP->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
-            $LEVANTAMIENTOMP->__SET('TLEVANTAMIENTO', 1);
+            $LEVANTAMIENTOMP->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTO']);
             $LEVANTAMIENTOMP->__SET('RESPONSBALE_LEVANTAMIENTO', $_REQUEST['RESPONSBALE']);
             $LEVANTAMIENTOMP->__SET('MOTIVO_LEVANTAMIENTO', $_REQUEST['MOTIVO']);
             $LEVANTAMIENTOMP->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
@@ -856,7 +856,7 @@ if (isset($_POST)) {
         //OPERACION EDICION DE FILA
         if (isset($_REQUEST['GUARDAR'])) {            
             $LEVANTAMIENTOMP->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
-            $LEVANTAMIENTOMP->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTOE']);
+            $LEVANTAMIENTOMP->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTO']);
             $LEVANTAMIENTOMP->__SET('RESPONSBALE_LEVANTAMIENTO', $_REQUEST['RESPONSBALE']);
             $LEVANTAMIENTOMP->__SET('MOTIVO_LEVANTAMIENTO', $_REQUEST['MOTIVO']);
             $LEVANTAMIENTOMP->__SET('CANTIDAD_ENVASE_LEVANTAMIENTO', $_REQUEST['TOTALENVASE']);
@@ -931,7 +931,7 @@ if (isset($_POST)) {
             //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO
             if ($SINO == "0") {
                 $LEVANTAMIENTOMP->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
-                $LEVANTAMIENTOMP->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTOE']);
+                $LEVANTAMIENTOMP->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTO']);
                 $LEVANTAMIENTOMP->__SET('RESPONSBALE_LEVANTAMIENTO', $_REQUEST['RESPONSBALE']);
                 $LEVANTAMIENTOMP->__SET('MOTIVO_LEVANTAMIENTO', $_REQUEST['MOTIVO']);
                 $LEVANTAMIENTOMP->__SET('CANTIDAD_ENVASE_LEVANTAMIENTO', $_REQUEST['TOTALENVASE']);
@@ -1084,7 +1084,7 @@ if (isset($_POST)) {
             if($TLEVANTAMIENTOQUITAR==1){
                 $ARRAYEXISTENICAINDUSTRIAL2=$EXIINDUSTRIAL_ADO->buscarPorLevantamientoMpFolio($_REQUEST['IDP'],$FOLIOQUITAR,$FOLIOAUXILIARQUITAR);
                 if($ARRAYEXISTENICAINDUSTRIAL2){
-                    $EXIINDUSTRIAL->__SET('ID_RECHAZADOMP', $_REQUEST['IDP']);
+                    $EXIINDUSTRIAL->__SET('ID_LEVANTAMIENTOMP', $_REQUEST['IDP']);
                     $EXIINDUSTRIAL->__SET('FOLIO_EXIINDUSTRIAL', $FOLIOQUITAR);
                     $EXIINDUSTRIAL->__SET('FOLIO_AUXILIAR_EXIINDUSTRIAL', $FOLIOAUXILIARQUITAR);
                     $EXIINDUSTRIAL_ADO->deshabilitarEliminarLevantamientomp($EXIINDUSTRIAL);
