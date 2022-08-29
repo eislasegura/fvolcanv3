@@ -533,6 +533,7 @@ if (isset($_POST)) {
                                                     <option></option>
                                                     <option value="1" <?php if ($TLEVANTAMIENTO == 1 ) {  echo "selected";  } ?>> Orden Comercial </option>
                                                     <option value="2" <?php if ($TLEVANTAMIENTO == 2 ) {  echo "selected";  } ?>> Departamento de Calidad </option> 
+                                                    <option value="3" <?php if ($TLEVANTAMIENTO == 3 ) {  echo "selected";  } ?>> Otros </option> 
                                                 </select>
                                                 <label id="val_tlevantamiento" class="validacion"> </label>
                                             </div>
@@ -926,7 +927,7 @@ if (isset($_POST)) {
                 $MENSAJEEXISTENCIA = "";
             }
                
-            echo '<script>alert("flag 0");</script>';
+            //echo '<script>alert("flag 0");</script>';
             //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO
             if ($SINO == "0") {
                 $LEVANTAMIENTOMP->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
@@ -952,21 +953,24 @@ if (isset($_POST)) {
                 //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                 $LEVANTAMIENTOMP_ADO->cerrado($LEVANTAMIENTOMP);
 
-                echo '<script>alert("flag 1");</script>';
+                //echo '<script>alert("flag 1");</script>';
 
                 $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,3,"".$_SESSION["NOMBRE_USUARIO"].", Cerrar  levantamiento Materia Prima.","fruta_levantamientomp", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                 $ARRAYEXIMATERIAPRIMA = $EXIMATERIAPRIMA_ADO->buscarPorLevantamiento2($_REQUEST['IDP']);
-                echo '<script>alert("flag 2");</script>';
+                //echo '<script>alert("flag 2");</script>';//flag encontrado
                 foreach ($ARRAYEXIMATERIAPRIMA as $r) :
-                    if( $_REQUEST['TLEVANTAMIENTOE']==1){
+                    /*if( $_REQUEST['TLEVANTAMIENTOE']==1){*/
                         $EXIMATERIAPRIMA->__SET('ID_EXIMATERIAPRIMA', $r['ID_EXIMATERIAPRIMA']);
                         $EXIMATERIAPRIMA->__SET('COLOR', 3);
                         //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                         $EXIMATERIAPRIMA_ADO->levantamientoColor($EXIMATERIAPRIMA);
-                        echo '<script>alert("flag 3");</script>';
-                        /*$ARRAYEXISTENICAINDUSTRIAL=$EXIINDUSTRIAL_ADO->buscarPorLevantamientoMpFolio($_REQUEST['IDP'],$r['FOLIO_EXIMATERIAPRIMA'],$r['FOLIO_AUXILIAR_EXIMATERIAPRIMA']);
-                        if($ARRAYEXISTENICAINDUSTRIAL){                              
+                        //echo '<script>alert("flag 3");</script>';
+                        //echo '<script>alert("SE REALIZA UPDATE IDP: '.$_REQUEST['IDP'].'- FOLIO EXI MP: '.$r['FOLIO_EXIMATERIAPRIMA'].'- FOLIO AUXI: '.$r['FOLIO_AUXILIAR_EXIMATERIAPRIMA'].'");</script>';
+
+                        $ARRAYEXISTENICAINDUSTRIAL=$EXIINDUSTRIAL_ADO->buscarPorLevantamientoMpFolio($_REQUEST['IDP'],$r['FOLIO_EXIMATERIAPRIMA'],$r['FOLIO_AUXILIAR_EXIMATERIAPRIMA']);
+                        if($ARRAYEXISTENICAINDUSTRIAL){      
+                            //echo '<script>alert("flag 5");</script>';                        
                             $EXIINDUSTRIAL->__SET('FECHA_EMBALADO_EXIINDUSTRIAL',$r['FECHA_COSECHA_EXIMATERIAPRIMA']);                                
                             $EXIINDUSTRIAL->__SET('CANTIDAD_ENVASE_EXIINDUSTRIAL',$r['CANTIDAD_ENVASE_EXIMATERIAPRIMA']);
                             $EXIINDUSTRIAL->__SET('KILOS_NETO_EXIINDUSTRIAL',$r['KILOS_NETO_EXIMATERIAPRIMA']);
@@ -974,6 +978,8 @@ if (isset($_POST)) {
                             $EXIINDUSTRIAL->__SET('KILOS_PROMEDIO_EXIINDUSTRIAL',$r['KILOS_PROMEDIO_EXIMATERIAPRIMA']);
                             $EXIINDUSTRIAL->__SET('PESO_PALLET_EXIINDUSTRIAL',$r['PESO_PALLET_EXIMATERIAPRIMA']);                                                        
                             $EXIINDUSTRIAL->__SET('GASIFICADO',$r['GASIFICADO']);
+                            $EXIINDUSTRIAL->__SET('ESTADO_REGISTRO',0);
+                            $EXIINDUSTRIAL->__SET('ESTADO',0);
                             $EXIINDUSTRIAL->__SET('ID_TMANEJO', $r['ID_TMANEJO']);
                             $EXIINDUSTRIAL->__SET('ID_ESTANDARMP',$r['ID_ESTANDAR']);
                             $EXIINDUSTRIAL->__SET('ID_PRODUCTOR',$r['ID_PRODUCTOR']);    
@@ -987,7 +993,7 @@ if (isset($_POST)) {
                             $EXIINDUSTRIAL_ADO->actualizarExiindustrialLevantamientoMP($EXIINDUSTRIAL);
                             $AUSUARIO_ADO->agregarAusuario2("NULL",1, 2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Existencia de Producto Industrial, origen levantamiento materia prima","fruta_exiindustrial","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
 
-                        }else{
+                        }/*else{
 
                             $EXIINDUSTRIAL->__SET('FOLIO_EXIINDUSTRIAL',$r['FOLIO_EXIMATERIAPRIMA']);
                             $EXIINDUSTRIAL->__SET('FOLIO_AUXILIAR_EXIINDUSTRIAL',$r['FOLIO_AUXILIAR_EXIMATERIAPRIMA']);
@@ -998,6 +1004,7 @@ if (isset($_POST)) {
                             $EXIINDUSTRIAL->__SET('KILOS_PROMEDIO_EXIINDUSTRIAL',$r['KILOS_PROMEDIO_EXIMATERIAPRIMA']);
                             $EXIINDUSTRIAL->__SET('PESO_PALLET_EXIINDUSTRIAL',$r['PESO_PALLET_EXIMATERIAPRIMA']);                            
                             $EXIINDUSTRIAL->__SET('GASIFICADO',$r['GASIFICADO']);
+                            $EXIINDUSTRIAL->__SET('ESTADO_REGISTRO',0);
                             $EXIINDUSTRIAL->__SET('ALIAS_DINAMICO_FOLIO_EXIINDUSTRIAL',$r['ALIAS_DINAMICO_FOLIO_EXIMATERIAPRIMA']);
                             $EXIINDUSTRIAL->__SET('ALIAS_ESTATICO_FOLIO_EXIINDUSTRIAL',$r['ALIAS_ESTATICO_FOLIO_EXIMATERIAPRIMA']);    
                             $EXIINDUSTRIAL->__SET('ID_TMANEJO',$r['ID_TMANEJO']);
@@ -1014,15 +1021,15 @@ if (isset($_POST)) {
                            $AUSUARIO_ADO->agregarAusuario2("NULL",1, 1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Existencia de Producto Industrial, origen levantamiento materia prima","fruta_exiindustrial","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
                         }*/
 
-                    }
+                    /*}
                     if( $_REQUEST['TLEVANTAMIENTOE']==2){
                         $EXIMATERIAPRIMA->__SET('ID_EXIMATERIAPRIMA', $r['ID_EXIMATERIAPRIMA']);
                         $EXIMATERIAPRIMA->__SET('COLOR', 3);
                         //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                         $EXIMATERIAPRIMA_ADO->levantamientoColor($EXIMATERIAPRIMA);
-                        echo '<script>alert("flag 4");</script>';
+                        //echo '<script>alert("flag 4");</script>';
                         $AUSUARIO_ADO->agregarAusuario2("NULL",1, 2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Existencia de Materia Prima, origen levantamiento materia prima","fruta_eximateriaprima","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],$_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );
-                    }
+                    }*/
                 endforeach;
                     
                 if ($accion_dato == "crear") {

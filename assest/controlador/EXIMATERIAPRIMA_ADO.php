@@ -2007,7 +2007,7 @@ class EXIMATERIAPRIMA_ADO
     {
         try {
 
-            $datos = $this->conexion->prepare("  SELECT * ,  
+            $datos = $this->conexion->prepare("SELECT * ,  
                                                     IFNULL(DATE_FORMAT(FECHA_COSECHA_EXIMATERIAPRIMA, '%d-%m-%Y'),'Sin Datos') AS 'COSECHA',
                                                     FORMAT(IFNULL(CANTIDAD_ENVASE_EXIMATERIAPRIMA,0),0,'de_DE') AS 'ENVASE',
                                                     FORMAT(IFNULL(KILOS_NETO_EXIMATERIAPRIMA,0),2,'de_DE') AS 'NETO',
