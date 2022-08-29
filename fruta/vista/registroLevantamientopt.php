@@ -171,7 +171,7 @@ if (isset($id_dato) && isset($accion_dato)) {
     $TOTALBRUTO = $ARRAYEXISTENCIAMPTOTAL[0]['BRUTO'];
     $TOTALBRUTOV = $ARRAYEXISTENCIAMPTOTAL2[0]['BRUTO'];
 
-
+    //die('3');
     //IDENTIFICACIONES DE OPERACIONES
     //crear =  OBTENCION DE DATOS INICIALES PARA PODER CREAR LA RECEPCION
     if ($OP == "crear") {
