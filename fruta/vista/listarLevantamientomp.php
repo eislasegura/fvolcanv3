@@ -13,7 +13,7 @@ include_once '../../assest/controlador/ERECEPCION_ADO.php';
 include_once '../../assest/controlador/EXIMATERIAPRIMA_ADO.php';
 
 
-include_once '../../assest/controlador/RECHAZOMP_ADO.php';
+include_once '../../assest/controlador/LEVANTAMIENTOMP_ADO.php';
 
 
 //INCIALIZAR LAS VARIBLES
@@ -28,7 +28,7 @@ $FOLIO_ADO =  new FOLIO_ADO();
 $EXIMATERIAPRIMA_ADO =  new EXIMATERIAPRIMA_ADO();
 $ERECEPCION_ADO =  new ERECEPCION_ADO();
 
-$RECHAZOMP_ADO =  new RECHAZOMP_ADO();
+$LEVANTAMIENTOMP_ADO =  new LEVANTAMIENTOMP_ADO();
 
 
 
@@ -43,14 +43,14 @@ $TOTALBRUTO = "";
 $ARRAYEMPRESA = "";
 $ARRAYPRODUCTOR = "";
 $ARRAYVESPECIES = "";
-$ARRAYRECHAZO = "";
+$ARRAYLEVANTAMIENTO = "";
 
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 
 
 if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
-    $ARRAYRECHAZO = $RECHAZOMP_ADO->listarRechazoEmpresaPlantaTemporadaCBX($EMPRESAS, $PLANTAS, $TEMPORADAS);
+    $ARRAYLEVANTAMIENTO = $LEVANTAMIENTOMP_ADO->listarLevantamientoEmpresaPlantaTemporadaCBX($EMPRESAS, $PLANTAS, $TEMPORADAS);
 }
 include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/datosUrLP.php";
@@ -63,7 +63,7 @@ include_once "../../assest/config/datosUrLP.php";
 <html lang="es">
 
 <head>
-    <title>Agrupado Rechazo MP</title>
+    <title>Agrupado Levantamiento MP</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
@@ -110,9 +110,9 @@ include_once "../../assest/config/datosUrLP.php";
                                         <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                         <li class="breadcrumb-item" aria-current="page">Modulo</li>
                                         <li class="breadcrumb-item" aria-current="page">Calidad de Fruta</li>
-                                        <li class="breadcrumb-item" aria-current="page">Rechazo</li>
+                                        <li class="breadcrumb-item" aria-current="page">Levantamiento</li>
                                         <li class="breadcrumb-item" aria-current="page">Materia Prima</li>
-                                        <li class="breadcrumb-item active" aria-current="page"> <a href="#"> Agrupado Rechazo </a> </li>
+                                        <li class="breadcrumb-item active" aria-current="page"> <a href="#"> Agrupado Levantamiento </a> </li>
                                     </ol>
                                 </nav>
                             </div>
@@ -128,14 +128,14 @@ include_once "../../assest/config/datosUrLP.php";
                             <div class="row">
                                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                     <div class="table-responsive">
-                                        <table id="rechazomp" class="table-hover " style="width: 100%;">
+                                        <table id="levantamientomp" class="table-hover " style="width: 100%;">
                                             <thead>
                                                 <tr class="text-left">
                                                     <th>Numero</th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciones</th>
-                                                    <th>Fecha Rechazo</th>
-                                                    <th>Estado Rechazo</th>
+                                                    <th>Fecha Levantamiento</th>
+                                                    <th>Estado Levantamiento</th>
                                                     <th>Responsable </th>
                                                     <th>Especie</th>
                                                     <th>Variedad</th>
@@ -152,16 +152,16 @@ include_once "../../assest/config/datosUrLP.php";
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($ARRAYRECHAZO as $r) : ?>
+                                                <?php foreach ($ARRAYLEVANTAMIENTO as $r) : ?>
 
                                                     <?php                                             
 
-                                                    if($r['TRECHAZO'] == 1){
-                                                        $TRECHAZO="Rechazado";
-                                                    }else if($r['TRECHAZO'] == 2){
-                                                        $TRECHAZO="Objetado";
+                                                    if($r['TLEVANTAMIENTO'] == 1){
+                                                        $TLEVANTAMIENTO="Rechazado";
+                                                    }else if($r['TLEVANTAMIENTO'] == 2){
+                                                        $TLEVANTAMIENTO="Objetado";
                                                     }else{
-                                                        $TRECHAZO="Sin Datos";
+                                                        $TLEVANTAMIENTO="Sin Datos";
                                                     }
 
                                                     $ARRAYVERVESPECIESID = $VESPECIES_ADO->verVespecies($r['ID_VESPECIES']);
@@ -209,7 +209,7 @@ include_once "../../assest/config/datosUrLP.php";
 
                                                     ?>
                                                     <tr class="text-left">
-                                                        <td> <?php echo $r['NUMERO_RECHAZO']; ?> </td>
+                                                        <td> <?php echo $r['NUMERO_LEVANTAMIENTO']; ?> </td>
                                                         <td>
                                                             <?php if ($r['ESTADO'] == "0") { ?>
                                                                 <button type="button" class="btn btn-block btn-danger">Cerrado</button>
@@ -227,9 +227,9 @@ include_once "../../assest/config/datosUrLP.php";
                                                                         </button>
                                                                         <div class="dropdown-menu dropdown-menu-right">
                                                                             <button class="dropdown-menu" aria-labelledby="dropdownMenuButton"></button>
-                                                                            <input type="hidden" class="form-control" placeholder="ID" id="ID" name="ID" value="<?php echo $r['ID_RECHAZO']; ?>" />
-                                                                            <input type="hidden" class="form-control" placeholder="URL" id="URL" name="URL" value="registroRechazomp" />
-                                                                            <input type="hidden" class="form-control" placeholder="URL" id="URLO" name="URLO" value="listarRechazomp" />
+                                                                            <input type="hidden" class="form-control" placeholder="ID" id="ID" name="ID" value="<?php echo $r['ID_LEVANTAMIENTO']; ?>" />
+                                                                            <input type="hidden" class="form-control" placeholder="URL" id="URL" name="URL" value="registroLevantamientomp" />
+                                                                            <input type="hidden" class="form-control" placeholder="URL" id="URLO" name="URLO" value="listarLevantamientomp" />
                                                                             <?php if ($r['ESTADO'] == "0") { ?>
 
                                                                                 <span href="#" class="dropdown-item" data-toggle="tooltip" title="Ver">
@@ -257,8 +257,8 @@ include_once "../../assest/config/datosUrLP.php";
                                                             </form>
                                                         </td>
                                                         <td><?php echo $r['FECHA']; ?></td>
-                                                        <td><?php echo $TRECHAZO; ?></td>
-                                                        <td><?php echo $r['RESPONSBALE_RECHAZO']; ?></td>
+                                                        <td><?php echo $TLEVANTAMIENTO; ?></td>
+                                                        <td><?php echo $r['RESPONSBALE_LEVANTAMIENTO']; ?></td>
                                                         <td><?php echo $NOMBRESPECIES; ?></td>
                                                         <td><?php echo $NOMBREVESPECIES; ?></td>
                                                         <td><?php echo $r['ENVASE']; ?></td>

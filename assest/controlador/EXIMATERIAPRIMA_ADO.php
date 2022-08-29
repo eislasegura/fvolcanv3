@@ -1946,6 +1946,34 @@ class EXIMATERIAPRIMA_ADO
             die($e->getMessage());
         }
     }
+
+
+    public function buscarPorLevantamiento($IDLEVANTAMIENTO)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("  SELECT * ,  
+                                                    FECHA_COSECHA_EXIMATERIAPRIMA AS 'COSECHA',
+                                                    IFNULL(CANTIDAD_ENVASE_EXIMATERIAPRIMA,0) AS 'ENVASE',
+                                                    IFNULL(KILOS_NETO_EXIMATERIAPRIMA,0) AS 'NETO',
+                                                    IFNULL(KILOS_BRUTO_EXIMATERIAPRIMA,0) AS 'BRUTO',
+                                                    IFNULL(KILOS_PROMEDIO_EXIMATERIAPRIMA,3) AS 'PROMEDIO'
+                                                FROM fruta_eximateriaprima 
+                                                WHERE ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
+                                                AND ESTADO_REGISTRO = 1 ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     public function buscarPorRechazo2($IDRECHAZADO)
     {
         try {
@@ -1974,6 +2002,35 @@ class EXIMATERIAPRIMA_ADO
         }
     }
 
+
+    public function buscarPorLevantamiento2($IDLEVANTAMIENTO)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT * ,  
+                                                    IFNULL(DATE_FORMAT(FECHA_COSECHA_EXIMATERIAPRIMA, '%d-%m-%Y'),'Sin Datos') AS 'COSECHA',
+                                                    FORMAT(IFNULL(CANTIDAD_ENVASE_EXIMATERIAPRIMA,0),0,'de_DE') AS 'ENVASE',
+                                                    FORMAT(IFNULL(KILOS_NETO_EXIMATERIAPRIMA,0),2,'de_DE') AS 'NETO',
+                                                    FORMAT(IFNULL(KILOS_BRUTO_EXIMATERIAPRIMA,0),0,'de_DE') AS 'BRUTO',
+                                                    FORMAT(IFNULL(KILOS_PROMEDIO_EXIMATERIAPRIMA,3),5,'de_DE') AS 'PROMEDIO'
+                                                FROM fruta_eximateriaprima 
+                                                WHERE ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
+                                                AND ESTADO_REGISTRO = 1
+                                                AND ESTADO = 12;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function verExistenciaPorRechazo2($IDRECHAZADO)
     {
         try {
@@ -1986,6 +2043,34 @@ class EXIMATERIAPRIMA_ADO
                                                     FORMAT(IFNULL(KILOS_PROMEDIO_EXIMATERIAPRIMA,3),5,'de_DE') AS 'PROMEDIO'
                                                 FROM fruta_eximateriaprima 
                                                 WHERE ID_RECHAZADO= '" . $IDRECHAZADO . "'  
+                                                AND ESTADO_REGISTRO = 1;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function verExistenciaPorLevantamiento2($IDLEVANTAMIENTO)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("  SELECT * ,  
+                                                    IFNULL(DATE_FORMAT(FECHA_COSECHA_EXIMATERIAPRIMA, '%d-%m-%Y'),'Sin Datos') AS 'COSECHA',
+                                                    FORMAT(IFNULL(CANTIDAD_ENVASE_EXIMATERIAPRIMA,0),0,'de_DE') AS 'ENVASE',
+                                                    FORMAT(IFNULL(KILOS_NETO_EXIMATERIAPRIMA,0),2,'de_DE') AS 'NETO',
+                                                    FORMAT(IFNULL(KILOS_BRUTO_EXIMATERIAPRIMA,0),0,'de_DE') AS 'BRUTO',
+                                                    FORMAT(IFNULL(KILOS_PROMEDIO_EXIMATERIAPRIMA,3),5,'de_DE') AS 'PROMEDIO'
+                                                FROM fruta_eximateriaprima 
+                                                WHERE ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
                                                 AND ESTADO_REGISTRO = 1;");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -2150,6 +2235,70 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE  ESTADO = 2  
                                                 AND ESTADO_REGISTRO = 1 
                                                 AND COLOR IS NULL 
+                                                AND ID_PRODUCTOR = '" . $PRODUCTOR . "'
+                                                AND ID_VESPECIES = '" . $VESPECIES . "'
+                                                AND ID_EMPRESA = '" . $EMPRESA . "'
+                                                AND ID_PLANTA = '" . $PLANTA . "'
+                                                AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function buscarPorEmpresaPlantaTemporadaVariedadProductorColorNuloLevantamiento($EMPRESA, $PLANTA, $TEMPORADA,  $VESPECIES, $PRODUCTOR)
+    {
+        try {
+
+            /*echo "SELECT * ,  
+            DATEDIFF(SYSDATE(), FECHA_COSECHA_EXIMATERIAPRIMA) AS 'DIAS',
+            IFNULL(DATE_FORMAT(INGRESO, '%d-%m-%Y'),'Sin Datos') AS 'INGRESO',
+            IFNULL(DATE_FORMAT(MODIFICACION, '%d-%m-%Y'),'Sin Datos') AS 'MODIFICACION',
+            IFNULL(DATE_FORMAT(FECHA_COSECHA_EXIMATERIAPRIMA, '%d-%m-%Y'),'Sin Datos') AS 'COSECHA',
+            IFNULL(DATE_FORMAT(FECHA_RECEPCION, '%d-%m-%Y'),'Sin Datos') AS 'RECEPCION',
+            IFNULL(DATE_FORMAT(FECHA_REPALETIZAJE, '%d-%m-%Y'),'Sin Datos') AS 'REPALETIZAJE',
+            IFNULL(DATE_FORMAT(FECHA_DESPACHO, '%d-%m-%Y'),'Sin Datos') AS 'DESPACHO',
+            FORMAT(IFNULL(CANTIDAD_ENVASE_EXIMATERIAPRIMA,0),0,'de_DE') AS 'ENVASE',
+            FORMAT(IFNULL(KILOS_NETO_EXIMATERIAPRIMA,0),2,'de_DE') AS 'NETO',
+            FORMAT(IFNULL(KILOS_BRUTO_EXIMATERIAPRIMA,0),0,'de_DE') AS 'BRUTO',
+            FORMAT(IFNULL(KILOS_PROMEDIO_EXIMATERIAPRIMA,0),5,'de_DE') AS 'PROMEDIO',
+            FORMAT(IFNULL(PESO_PALLET_EXIMATERIAPRIMA,0),0,'de_DE') AS 'PALLET'
+        FROM fruta_eximateriaprima 
+        WHERE  ESTADO = 11   
+        AND ESTADO_REGISTRO = 1 
+        AND COLOR IS 1 
+        AND ID_PRODUCTOR = '" . $PRODUCTOR . "'
+        AND ID_VESPECIES = '" . $VESPECIES . "'
+        AND ID_EMPRESA = '" . $EMPRESA . "'
+        AND ID_PLANTA = '" . $PLANTA . "'
+        AND ID_TEMPORADA = '" . $TEMPORADA . "' ;";*/
+
+            $datos = $this->conexion->prepare("SELECT * ,  
+                                                    DATEDIFF(SYSDATE(), FECHA_COSECHA_EXIMATERIAPRIMA) AS 'DIAS',
+                                                    IFNULL(DATE_FORMAT(INGRESO, '%d-%m-%Y'),'Sin Datos') AS 'INGRESO',
+                                                    IFNULL(DATE_FORMAT(MODIFICACION, '%d-%m-%Y'),'Sin Datos') AS 'MODIFICACION',
+                                                    IFNULL(DATE_FORMAT(FECHA_COSECHA_EXIMATERIAPRIMA, '%d-%m-%Y'),'Sin Datos') AS 'COSECHA',
+                                                    IFNULL(DATE_FORMAT(FECHA_RECEPCION, '%d-%m-%Y'),'Sin Datos') AS 'RECEPCION',
+                                                    IFNULL(DATE_FORMAT(FECHA_REPALETIZAJE, '%d-%m-%Y'),'Sin Datos') AS 'REPALETIZAJE',
+                                                    IFNULL(DATE_FORMAT(FECHA_DESPACHO, '%d-%m-%Y'),'Sin Datos') AS 'DESPACHO',
+                                                    FORMAT(IFNULL(CANTIDAD_ENVASE_EXIMATERIAPRIMA,0),0,'de_DE') AS 'ENVASE',
+                                                    FORMAT(IFNULL(KILOS_NETO_EXIMATERIAPRIMA,0),2,'de_DE') AS 'NETO',
+                                                    FORMAT(IFNULL(KILOS_BRUTO_EXIMATERIAPRIMA,0),0,'de_DE') AS 'BRUTO',
+                                                    FORMAT(IFNULL(KILOS_PROMEDIO_EXIMATERIAPRIMA,0),5,'de_DE') AS 'PROMEDIO',
+                                                    FORMAT(IFNULL(PESO_PALLET_EXIMATERIAPRIMA,0),0,'de_DE') AS 'PALLET'
+                                                FROM fruta_eximateriaprima 
+                                                WHERE  ESTADO = 11   
+                                                AND ESTADO_REGISTRO = 1 
+                                                AND COLOR = 1 
                                                 AND ID_PRODUCTOR = '" . $PRODUCTOR . "'
                                                 AND ID_VESPECIES = '" . $VESPECIES . "'
                                                 AND ID_EMPRESA = '" . $EMPRESA . "'
@@ -2347,6 +2496,31 @@ class EXIMATERIAPRIMA_ADO
             die($e->getMessage());
         }
     }
+
+
+    public function obtenerTotalesLevantamiento($IDLEVANTAMIENTO)
+    {
+        try {
+            $datos = $this->conexion->prepare("SELECT 
+                                                    IFNULL(SUM(CANTIDAD_ENVASE_EXIMATERIAPRIMA),0) AS 'ENVASE', 
+                                                    IFNULL(SUM(KILOS_NETO_EXIMATERIAPRIMA),0) AS 'NETO' , 
+                                                    IFNULL(SUM(KILOS_BRUTO_EXIMATERIAPRIMA),0) AS 'BRUTO' 
+                                             FROM fruta_eximateriaprima
+                                             WHERE ID_LEVANTAMIENTO = '" . $IDLEVANTAMIENTO . "' 
+                                             AND  ESTADO_REGISTRO= 1;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     
     public function obtenerTotalesRechazo2($IDRECHAZADO)
     {
@@ -2357,6 +2531,31 @@ class EXIMATERIAPRIMA_ADO
                                                     FORMAT(IFNULL(SUM(KILOS_BRUTO_EXIMATERIAPRIMA),0),2,'de_DE') AS 'BRUTO' 
                                              FROM fruta_eximateriaprima
                                              WHERE ID_RECHAZADO = '" . $IDRECHAZADO . "' 
+                                             AND  ESTADO_REGISTRO= 1;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function obtenerTotalesLevantamiento2($IDLEVANTAMIENTO)
+    {
+        try {
+            $datos = $this->conexion->prepare("SELECT 
+                                                    FORMAT(IFNULL(SUM(CANTIDAD_ENVASE_EXIMATERIAPRIMA),0),0,'de_DE') AS 'ENVASE', 
+                                                    FORMAT(IFNULL(SUM(KILOS_NETO_EXIMATERIAPRIMA),0),2,'de_DE') AS 'NETO' , 
+                                                    FORMAT(IFNULL(SUM(KILOS_BRUTO_EXIMATERIAPRIMA),0),2,'de_DE') AS 'BRUTO' 
+                                             FROM fruta_eximateriaprima
+                                             WHERE ID_LEVANTAMIENTO = '" . $IDLEVANTAMIENTO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -2520,6 +2719,30 @@ class EXIMATERIAPRIMA_ADO
     }
 
 
+    public function actualizarSelecionarLevantamientoCambiarEstado(EXIMATERIAPRIMA $EXIMATERIAPRIMA)
+    {
+        try {
+            $query = "
+            UPDATE fruta_eximateriaprima SET
+                MODIFICACION = SYSDATE(),
+                ESTADO = 12,     
+                ID_LEVANTAMIENTO = ?          
+            WHERE ID_EXIMATERIAPRIMA= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIMATERIAPRIMA->__GET('ID_LEVANTAMIENTO'),
+                        $EXIMATERIAPRIMA->__GET('ID_EXIMATERIAPRIMA')
+
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
 
     //ACTUALIZAR ESTADO, ASOCIAR PROCESO, REGISTRO HISTORIAL PROCESO    
     public function actualizarDeselecionarProcesoCambiarEstado(EXIMATERIAPRIMA $EXIMATERIAPRIMA)
@@ -2574,6 +2797,29 @@ class EXIMATERIAPRIMA_ADO
                 ESTADO = 2,         
                 COLOR = null,        
                 ID_RECHAZADO = null          
+            WHERE ID_EXIMATERIAPRIMA= ? ;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIMATERIAPRIMA->__GET('ID_EXIMATERIAPRIMA')
+
+                    )
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function actualizarDeselecionarLevantamientoCambiarEstado(EXIMATERIAPRIMA $EXIMATERIAPRIMA)
+    {
+        try {
+            $query = "
+            UPDATE fruta_eximateriaprima SET
+                MODIFICACION = SYSDATE(), 
+                ESTADO = 2,         
+                COLOR = null,        
+                ID_LEVANTAMIENTO = null          
             WHERE ID_EXIMATERIAPRIMA= ? ;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -2913,6 +3159,28 @@ class EXIMATERIAPRIMA_ADO
                                 MODIFICACION = SYSDATE(),				
                                 COLOR = ?,				
                                 ESTADO = 11
+                        WHERE ID_EXIMATERIAPRIMA= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                         $EXIMATERIAPRIMA->__GET('COLOR'),
+                         $EXIMATERIAPRIMA->__GET('ID_EXIMATERIAPRIMA')
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function levantamientoColor(EXIMATERIAPRIMA $EXIMATERIAPRIMA)
+    {
+        try {
+            $query = "
+                        UPDATE fruta_eximateriaprima SET
+                                MODIFICACION = SYSDATE(),				
+                                COLOR = ?,				
+                                ESTADO = 2
                         WHERE ID_EXIMATERIAPRIMA= ?;";
             $this->conexion->prepare($query)
                 ->execute(

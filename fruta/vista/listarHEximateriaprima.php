@@ -208,6 +208,11 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         if ($r['ESTADO'] == "11") {
                                                             $ESTADO = "Rechazado";
                                                         }
+                                                        if ($r['ESTADO'] == "12") {
+                                                            $ESTADO = "En Levantamiento";
+                                                        }
+                                                  
+                                                        
 
 
                                                         if($r['COLOR']==1){
@@ -217,8 +222,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             $TRECHAZOCOLOR="badge badge-warning ";
                                                             $COLOR="Objetado";
                                                         }else if($r['COLOR']==3){
-                                                            $TRECHAZOCOLOR="badge badge-Success ";
-                                                            $COLOR="Aprobado";
+                                                            $TRECHAZOCOLOR="badge badge-success ";
+                                                            $COLOR="Levantado";
                                                         }else{
                                                             $TRECHAZOCOLOR="";
                                                             $COLOR="Sin Datos";
