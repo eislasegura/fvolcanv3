@@ -4753,6 +4753,27 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
+
+    public function actualizarSelecionarLevantamientoCambiarEstado(EXIEXPORTACION $EXIEXPORTACION)
+    {
+        try {
+            $query = "
+                UPDATE fruta_exiexportacion SET
+                    MODIFICACION = SYSDATE(),
+                    ESTADO = 11               
+                WHERE ID_EXIEXPORTACION= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIEXPORTACION->__GET('ID_EXIEXPORTACION')
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     //ACTUALIZAR ESTADO, ASOCIAR PROCESO, REGISTRO HISTORIAL PROCESO
 
     public function actualizarDespachoAgregarPrecio(EXIEXPORTACION $EXIEXPORTACION)

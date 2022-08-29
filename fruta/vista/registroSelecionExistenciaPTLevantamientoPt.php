@@ -12,11 +12,11 @@ include_once '../../assest/controlador/TCALIBRE_ADO.php';
 include_once '../../assest/controlador/TEMBALAJE_ADO.php';
 
 
-include_once '../../assest/controlador/RECHAZOPT_ADO.php';
+include_once '../../assest/controlador/LEVANTAMIENTOPT_ADO.php';
 include_once '../../assest/controlador/REAPT_ADO.php';
 include_once '../../assest/controlador/EXIEXPORTACION_ADO.php';
 
-include_once '../../assest/modelo/RECHAZOPT.php';
+include_once '../../assest/modelo/LEVANTAMIENTOPT.php';
 include_once '../../assest/modelo/REAPT.php';
 include_once '../../assest/modelo/EXIEXPORTACION.php';
 
@@ -32,12 +32,12 @@ $TCALIBRE_ADO =  new TCALIBRE_ADO();
 $TEMBALAJE_ADO =  new TEMBALAJE_ADO();
 
 
-$RECHAZOPT_ADO =  new RECHAZOPT_ADO();
+$LEVANTAMIENTOPT_ADO =  new LEVANTAMIENTOPT_ADO();
 $REAPT_ADO =  new REAPT_ADO();
 $EXIEXPORTACION_ADO =  new EXIEXPORTACION_ADO();
 
 //INIICIALIZAR MODELO
-$RECHAZOPT =  new RECHAZOPT();
+$LEVANTAMIENTOPT =  new LEVANTAMIENTOPT();
 $REAPT =  new REAPT();
 $EXIEXPORTACION =  new EXIEXPORTACION();
 
@@ -123,8 +123,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
     $URLO = $urlo_dato;
-    $ARRAYRECHAZO = $RECHAZOPT_ADO->verRechazo($IDP);
-    foreach ($ARRAYRECHAZO as $r) :
+    $ARRAYLEVANTAMIENTO = $LEVANTAMIENTOPT_ADO->verLevantamiento($IDP);
+    foreach ($ARRAYLEVANTAMIENTO as $r) :
         $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
         $VESPECIES = "" . $r['ID_VESPECIES'];
     endforeach;
@@ -180,7 +180,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                             <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                             <li class="breadcrumb-item" aria-current="page">Modulo</li>
                                             <li class="breadcrumb-item" aria-current="page">Calidad de Fruta</li>
-                                            <li class="breadcrumb-item" aria-current="page">Rechazo</li>
+                                            <li class="breadcrumb-item" aria-current="page">Levantamiento</li>
                                             <li class="breadcrumb-item" aria-current="page">Producto Terminado</li>
                                             <li class="breadcrumb-item active" aria-current="page"> <a href="#"> Seleccion Existencia</a>  </li>
                                         </ol>
@@ -197,9 +197,9 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             </div>
                             <form class="form" role="form" method="post" name="form_reg_dato" id="form_reg_dato">
                                 <div class="card-body ">
-                                    <input type="hidden" class="form-control" placeholder="ID RECHAZO" id="IDP" name="IDP" value="<?php echo $IDP; ?>" />
-                                    <input type="hidden" class="form-control" placeholder="OP RECHAZO" id="OPP" name="OPP" value="<?php echo $OPP; ?>" />
-                                    <input type="hidden" class="form-control" placeholder="URL RECHAZO" id="URLO" name="URLO" value="<?php echo $URLO; ?>" />
+                                    <input type="hidden" class="form-control" placeholder="ID LEVANTAMIENTO" id="IDP" name="IDP" value="<?php echo $IDP; ?>" />
+                                    <input type="hidden" class="form-control" placeholder="OP LEVANTAMIENTO" id="OPP" name="OPP" value="<?php echo $OPP; ?>" />
+                                    <input type="hidden" class="form-control" placeholder="URL LEVANTAMIENTO" id="URLO" name="URLO" value="<?php echo $URLO; ?>" />
                                     <input type="hidden" class="form-control" placeholder="ID EMPRESA" id="EMPRESA" name="EMPRESA" value="<?php echo $EMPRESAS; ?>" />
                                     <input type="hidden" class="form-control" placeholder="ID PLANTA" id="PLANTA" name="PLANTA" value="<?php echo $PLANTAS; ?>" />
                                     <input type="hidden" class="form-control" placeholder="ID TEMPORADA" id="TEMPORADA" name="TEMPORADA" value="<?php echo $TEMPORADAS; ?>" />
@@ -250,16 +250,16 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                                 $ESTADOSAG =  "Rechazado";
                                                             }
                                                             if($r['COLOR']=="1"){
-                                                                $TRECHAZOCOLOR="badge badge-danger ";
+                                                                $TLEVANTAMIENTOCOLOR="badge badge-danger ";
                                                                 $COLOR="Rechazado";
                                                             }else if($r['COLOR']=="2"){
-                                                                $TRECHAZOCOLOR="badge badge-warning ";
+                                                                $TLEVANTAMIENTOCOLOR="badge badge-warning ";
                                                                 $COLOR="Objetado";
                                                             }else if($r['COLOR']=="3"){
-                                                                $TRECHAZOCOLOR="badge badge-Success ";
+                                                                $TLEVANTAMIENTOCOLOR="badge badge-Success ";
                                                                 $COLOR="Aprobado";
                                                             }else{
-                                                                $TRECHAZOCOLOR="";
+                                                                $TLEVANTAMIENTOCOLOR="";
                                                                 $COLOR="Sin Datos";
                                                             }
                                                             $ARRAYVERPRODUCTORID = $PRODUCTOR_ADO->verProductor($r['ID_PRODUCTOR']);
@@ -306,7 +306,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             ?>
                                                             <tr class="text-left">
                                                                 <td>                                                                   
-                                                                    <span class="<?php echo $TRECHAZOCOLOR; ?>">
+                                                                    <span class="<?php echo $TLEVANTAMIENTOCOLOR; ?>">
                                                                         <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
                                                                     </span>
                                                                 </td>
@@ -367,7 +367,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
         <?php include_once "../../assest/config/urlBase.php"; ?>
         <?php
             if (isset($_REQUEST['AGREGAR'])) {
-                $IDRECHAZO = $_REQUEST['IDP'];
+                $IDLEVANTAMIENTO = $_REQUEST['IDP'];
                 if (isset($_REQUEST['SELECIONAREXISTENCIA'])) {
                     $SELECIONAREXISTENCIA = $_REQUEST['SELECIONAREXISTENCIA'];
                     $SINO = "0";
@@ -384,7 +384,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroSelecionExistenciaPTRechazoPt.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
+                            location.href = "registroSelecionExistenciaPTLevantamientoPt.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                         })
                     </script>';
                 }
@@ -395,16 +395,16 @@ include_once "../../assest/config/validarDatosUrlD.php";
                         $IDEXIEXPORTACION = $r;
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $IDEXIEXPORTACION);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
-                        $EXIEXPORTACION_ADO->actualizarSelecionarRechazoCambiarEstado($EXIEXPORTACION);
+                        $EXIEXPORTACION_ADO->actualizarSelecionarLevantamientoCambiarEstado($EXIEXPORTACION);
 
-                        $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", se agrega existencia al rechazo Producto Terminado.","fruta_exiexportacion", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                        $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", se agrega existencia al levantamiento Producto Terminado.","fruta_exiexportacion", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
-                        $REAPT->__SET('ID_RECHAZO', $IDRECHAZO);
+                        $REAPT->__SET('ID_LEVANTAMIENTO', $IDLEVANTAMIENTO);
                         $REAPT->__SET('ID_EXIEXPORTACION', $IDEXIEXPORTACION);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
                         $REAPT_ADO->agregarReapt($REAPT);
 
-                        $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle rechazo Producto Terminado.","fruta_reapt", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                        $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle levantamiento Producto Terminado.","fruta_reapt", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                     endforeach;                           
                     $id_dato =  $_REQUEST['IDP'];
@@ -413,9 +413,9 @@ include_once "../../assest/config/validarDatosUrlD.php";
                         Swal.fire({
                             icon:"success",
                             title:"Accion realizada",
-                            text:"Se agregado la existencia al Rechazo.",
+                            text:"Se agregado la existencia al Levantamiento.",
                             showConfirmButton: true,
-                            confirmButtonText:"Volver a Rechazo",
+                            confirmButtonText:"Volver a Levantamiento",
                             closeOnConfirm:false
                         }).then((result)=>{
                             location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
