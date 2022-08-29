@@ -861,7 +861,8 @@ class EXIINDUSTRIAL_ADO
                                                     KILOS_PROMEDIO_EXIINDUSTRIAL,  
                                                     PESO_PALLET_EXIINDUSTRIAL,        
 
-                                                    GASIFICADO,     
+                                                    GASIFICADO,   
+                                                    ESTADO_REGISTRO,  
                                                     ALIAS_DINAMICO_FOLIO_EXIINDUSTRIAL, 
                                                     ALIAS_ESTATICO_FOLIO_EXIINDUSTRIAL,   
 
@@ -897,6 +898,7 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('PESO_PALLET_EXIINDUSTRIAL'),
                         
                         $EXIINDUSTRIAL->__GET('GASIFICADO'),
+                        $EXIINDUSTRIAL->__GET('ESTADO_REGISTRO'),
                         $EXIINDUSTRIAL->__GET('ALIAS_DINAMICO_FOLIO_EXIINDUSTRIAL'),
                         $EXIINDUSTRIAL->__GET('ALIAS_ESTATICO_FOLIO_EXIINDUSTRIAL'),
 
@@ -1095,6 +1097,8 @@ class EXIINDUSTRIAL_ADO
                     PESO_PALLET_EXIINDUSTRIAL = ?,
                     
                     GASIFICADO = ?,
+                    ESTADO_REGISTRO = ?,
+                    ESTADO = ?,
 
                     ID_TMANEJO = ?, 
                     ID_ESTANDARMP = ?, 
@@ -1119,6 +1123,8 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('PESO_PALLET_EXIINDUSTRIAL'),
                         
                         $EXIINDUSTRIAL->__GET('GASIFICADO'),
+                        $EXIINDUSTRIAL->__GET('ESTADO_REGISTRO'),
+                        $EXIINDUSTRIAL->__GET('ESTADO'),
 
                         $EXIINDUSTRIAL->__GET('ID_TMANEJO'),
                         $EXIINDUSTRIAL->__GET('ID_ESTANDARMP'),
@@ -2687,11 +2693,11 @@ class EXIINDUSTRIAL_ADO
     public function buscarPorLevantamientoMpFolio($IDLEVANTAMIENTOMP, $FOLIO, $FOLIOAUXILIAR)
     {
         try {
-
+            /* ID_LEVANTAMIENTOMP = '".$IDLEVANTAMIENTOMP."'
+                                             AND */
             $datos = $this->conexion->prepare("SELECT *
                                              FROM fruta_exiindustrial
-                                             WHERE ID_LEVANTAMIENTOMP = '".$IDLEVANTAMIENTOMP."'
-                                             AND FOLIO_EXIINDUSTRIAL LIKE '" . $FOLIO . "' 
+                                             WHERE FOLIO_EXIINDUSTRIAL LIKE '" . $FOLIO . "' 
                                              AND FOLIO_AUXILIAR_EXIINDUSTRIAL LIKE '" . $FOLIOAUXILIAR . "'
                                              AND ESTADO != 0
                                              AND ESTADO_REGISTRO = 1  ;");

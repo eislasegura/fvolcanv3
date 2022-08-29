@@ -107,7 +107,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
         $VESPECIES = "" . $r['ID_VESPECIES'];
     endforeach;
-    $ARRAYEXIMATERIAPRIMA = $EXIMATERIAPRIMA_ADO->buscarPorEmpresaPlantaTemporadaVariedadProductorColorNulo($EMPRESAS, $PLANTAS, $TEMPORADAS,  $VESPECIES, $PRODUCTOR);
+    $ARRAYEXIMATERIAPRIMA = $EXIMATERIAPRIMA_ADO->buscarPorEmpresaPlantaTemporadaVariedadProductorColorNuloLevantamiento($EMPRESAS, $PLANTAS, $TEMPORADAS,  $VESPECIES, $PRODUCTOR);
 }
 
 
@@ -367,7 +367,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                 foreach ($SELECIONAREXISTENCIA as $r) :
                     $IDEXISMATERIAPRIMA = $r;
 
-                    $EXIMATERIAPRIMA->__SET('ID_RECHAZADO', $IDDESPACHO);
+                    $EXIMATERIAPRIMA->__SET('ID_LEVANTAMIENTO', $IDDESPACHO);
                     $EXIMATERIAPRIMA->__SET('ID_EXIMATERIAPRIMA', $IDEXISMATERIAPRIMA);
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
                     $EXIMATERIAPRIMA_ADO->actualizarSelecionarLevantamientoCambiarEstado($EXIMATERIAPRIMA);
