@@ -3856,6 +3856,36 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
+    public function verExistenciaPorLevantamiento($IDLEVANTAMIENTO)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT * ,  
+                                                    existencia.FECHA_EMBALADO_EXIEXPORTACION AS 'EMBALADO',
+                                                    IFNULL(existencia.CANTIDAD_ENVASE_EXIEXPORTACION,0) AS 'ENVASE',
+                                                    IFNULL(existencia.KILOS_NETO_EXIEXPORTACION,0) AS 'NETO',
+                                                    IFNULL(existencia.KILOS_DESHIRATACION_EXIEXPORTACION,0) AS 'DESHIRATACION',
+                                                    IFNULL(existencia.PDESHIDRATACION_EXIEXPORTACION,0) AS 'PORCENTAJE',
+                                                    IFNULL(existencia.KILOS_BRUTO_EXIEXPORTACION,0) AS 'BRUTO'
+                                                FROM fruta_exiexportacion existencia, fruta_reapt detalle 
+                                                WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
+                                                AND existencia.ESTADO_REGISTRO = 1                                     
+                                                AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
+                                            ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     public function buscarPorRechazo($IDRECHAZADO)
     {
         try {
@@ -3871,6 +3901,37 @@ class EXIEXPORTACION_ADO
                                                 WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
                                                 AND existencia.ESTADO_REGISTRO = 1                                     
                                                 AND detalle.ID_RECHAZO= '" . $IDRECHAZADO . "'  
+                                            ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function buscarPorLevantamiento($IDLEVANTAMIENTO)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT * ,  
+                                                    existencia.FECHA_EMBALADO_EXIEXPORTACION AS 'EMBALADO',
+                                                    IFNULL(existencia.CANTIDAD_ENVASE_EXIEXPORTACION,0) AS 'ENVASE',
+                                                    IFNULL(existencia.KILOS_NETO_EXIEXPORTACION,0) AS 'NETO',
+                                                    IFNULL(existencia.KILOS_DESHIRATACION_EXIEXPORTACION,0) AS 'DESHIRATACION',
+                                                    IFNULL(existencia.PDESHIDRATACION_EXIEXPORTACION,0) AS 'PORCENTAJE',
+                                                    IFNULL(existencia.KILOS_BRUTO_EXIEXPORTACION,0) AS 'BRUTO'
+                                                FROM fruta_exiexportacion existencia, fruta_reapt detalle 
+                                                WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
+                                                AND existencia.ESTADO_REGISTRO = 1                                     
+                                                AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
                                             ;");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -4446,6 +4507,34 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
+
+    public function obtenerTotalesLevantamiento($IDLEVANTAMIENTO)
+    {
+        try {
+                $datos = $this->conexion->prepare("SELECT 
+                                                        IFNULL(SUM(existencia.CANTIDAD_ENVASE_EXIEXPORTACION),0) AS 'ENVASE',
+                                                        IFNULL(SUM(existencia.KILOS_NETO_EXIEXPORTACION),0) AS 'NETO',
+                                                        IFNULL(SUM(existencia.KILOS_BRUTO_EXIEXPORTACION),0) AS 'BRUTO'
+                                                    FROM fruta_exiexportacion existencia, fruta_reapt detalle 
+                                                    WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
+                                                    AND existencia.ESTADO_REGISTRO = 1                                           
+                                                    AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'
+                                             
+                                             ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     
     public function obtenerTotalesRechazo2($IDRECHAZADO)
     {
@@ -4458,6 +4547,34 @@ class EXIEXPORTACION_ADO
                                                 WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
                                                 AND existencia.ESTADO_REGISTRO = 1                                           
                                                 AND detalle.ID_RECHAZO= '" . $IDRECHAZADO . "'            
+                                             ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+
+    public function obtenerTotalesLevantamiento2($IDLEVANTAMIENTO)
+    {
+        try {
+            $datos = $this->conexion->prepare("SELECT 
+                                                    FORMAT(IFNULL(SUM(existencia.CANTIDAD_ENVASE_EXIEXPORTACION),0),0,'de_DE') AS 'ENVASE',
+                                                    FORMAT(IFNULL(SUM(existencia.KILOS_NETO_EXIEXPORTACION),0),2,'de_DE') AS 'NETO',
+                                                    FORMAT(IFNULL(SUM(existencia.KILOS_BRUTO_EXIEXPORTACION),0),2,'de_DE') AS 'BRUTO'
+                                                FROM fruta_exiexportacion existencia, fruta_reapt detalle 
+                                                WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
+                                                AND existencia.ESTADO_REGISTRO = 1                                           
+                                                AND detalle.ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'            
                                              ;");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -4618,6 +4735,27 @@ class EXIEXPORTACION_ADO
     }
     
     public function actualizarSelecionarRechazoCambiarEstado(EXIEXPORTACION $EXIEXPORTACION)
+    {
+        try {
+            $query = "
+                UPDATE fruta_exiexportacion SET
+                    MODIFICACION = SYSDATE(),
+                    ESTADO = 11               
+                WHERE ID_EXIEXPORTACION= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIEXPORTACION->__GET('ID_EXIEXPORTACION')
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function actualizarSelecionarLevantamientoCambiarEstado(EXIEXPORTACION $EXIEXPORTACION)
     {
         try {
             $query = "
@@ -4838,6 +4976,28 @@ class EXIEXPORTACION_ADO
     }
 
     public function actualizarDeselecionarRechazoCambiarEstado(EXIEXPORTACION $EXIEXPORTACION)
+    {
+        try {
+            $query = "
+                UPDATE fruta_exiexportacion SET
+                    MODIFICACION = SYSDATE(),
+                    ESTADO = 2,              
+                    COLOR = NULL             
+                WHERE ID_EXIEXPORTACION= ?;";
+            $this->conexion->prepare($query)
+                ->execute(
+                    array(
+                        $EXIEXPORTACION->__GET('ID_EXIEXPORTACION')
+                    )
+
+                );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function actualizarDeselecionarLevantamientoCambiarEstado(EXIEXPORTACION $EXIEXPORTACION)
     {
         try {
             $query = "

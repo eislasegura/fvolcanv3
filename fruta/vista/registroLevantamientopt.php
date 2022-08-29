@@ -12,13 +12,13 @@ include_once '../../assest/controlador/FOLIO_ADO.php';
 include_once '../../assest/controlador/EEXPORTACION_ADO.php';
 
 
-include_once '../../assest/controlador/RECHAZOPT_ADO.php';
+include_once '../../assest/controlador/LEVANTAMIENTOPT_ADO.php';
 include_once '../../assest/controlador/REAPT_ADO.php';
 include_once '../../assest/controlador/EXIEXPORTACION_ADO.php';
 include_once '../../assest/controlador/EXIINDUSTRIAL_ADO.php';
 
 
-include_once '../../assest/modelo/RECHAZOPT.php';
+include_once '../../assest/modelo/LEVANTAMIENTOPT.php';
 include_once '../../assest/modelo/REAPT.php';
 include_once '../../assest/modelo/EXIEXPORTACION.php';
 include_once '../../assest/modelo/EXIINDUSTRIAL.php';
@@ -35,11 +35,11 @@ $EEXPORTACION_ADO =  new EEXPORTACION_ADO();
 
 $EXIEXPORTACION_ADO =  new EXIEXPORTACION_ADO();
 $EXIINDUSTRIAL_ADO =  new EXIINDUSTRIAL_ADO();
-$RECHAZOPT_ADO =  new RECHAZOPT_ADO();
+$LEVANTAMIENTOPT_ADO =  new LEVANTAMIENTOPT_ADO();
 $REAPT_ADO =  new REAPT_ADO();
 //INIICIALIZAR MODELO
 
-$RECHAZOPT =  new RECHAZOPT();
+$LEVANTAMIENTOPT =  new LEVANTAMIENTOPT();
 $REAPT =  new REAPT();
 $EXIEXPORTACION =  new EXIEXPORTACION();
 $EXIINDUSTRIAL =  new EXIINDUSTRIAL();
@@ -52,18 +52,18 @@ $FOLIOEXIMATERIAPRIMAQUITAR = "";
 
 $NUMERO = "";
 $NUMEROVER = "";
-$IDRECHAZO = "";
-$FECHARECHAZO = "";
+$IDLEVANTAMIENTO = "";
+$FECHALEVANTAMIENTO = "";
 $FECHAINGRESO = "";
 $FECHAMODIFCIACION = "";
 
-$TRECHAZO = "";
+$TLEVANTAMIENTO = "";
 $RESPONSBALE = "";
 $MOTIVO = "";
 $PRODUCTOR = "";
 $VESPECIES = "";
 $ESTADO = "";
-$TRECHAZOCOLOR="";
+$TLEVANTAMIENTOCOLOR="";
 
 
 $EMPRESA = "";
@@ -102,7 +102,7 @@ $ARRAYPRODUCTOR = "";
 $ARRAYVESPECIES = "";
 
 
-$ARRAYRECHAZOMP = "";
+$ARRAYLEVANTAMIENTOMP = "";
 $ARRAYEXIEXPORTACIONTOMADO = "";
 $ARRAYEXIEXPORTACION = "";
 $ARRAYFECHAACTUAL = "";
@@ -127,8 +127,8 @@ if (isset($_GET["a"])) {
 
 $ARRAYPRODUCTOR = $PRODUCTOR_ADO->listarProductorPorEmpresaCBX($EMPRESAS);
 $ARRAYVESPECIES = $VESPECIES_ADO->listarVespeciesPorEmpresaCBX($EMPRESAS);
-$ARRAYFECHAACTUAL = $RECHAZOPT_ADO->obtenerFecha();
-$FECHARECHAZO = $ARRAYFECHAACTUAL[0]['FECHA'];
+$ARRAYFECHAACTUAL = $LEVANTAMIENTOPT_ADO->obtenerFecha();
+$FECHALEVANTAMIENTO = $ARRAYFECHAACTUAL[0]['FECHA'];
 
 $ARRAYFOLIO = $FOLIO_ADO->verFolioPorEmpresaPlantaTemporadaTexportacion($EMPRESAS, $PLANTAS, $TEMPORADAS);
 $ARRAYFOLIO2 = $FOLIO_ADO->verFolioPorEmpresaPlantaTemporadaTindustrial($EMPRESAS, $PLANTAS, $TEMPORADAS);
@@ -155,11 +155,11 @@ if (isset($id_dato) && isset($accion_dato)) {
     $OP = $accion_dato;
 
     //OBTENECION DE INFORMACION DE LA TABLAS DE LA VISTA    
-    $ARRAYTOMADA = $EXIEXPORTACION_ADO->verExistenciaPorRechazo($IDOP);
+    $ARRAYTOMADA = $EXIEXPORTACION_ADO->verExistenciaPorLevantamiento($IDOP);
 
     //OBTENCIONS DE TOTALES O EL RESUMEN DE LAS TABLAS
-    $ARRAYEXISTENCIAMPTOTAL = $EXIEXPORTACION_ADO->obtenerTotalesRechazo($IDOP);
-    $ARRAYEXISTENCIAMPTOTAL2 = $EXIEXPORTACION_ADO->obtenerTotalesRechazo2($IDOP);
+    $ARRAYEXISTENCIAMPTOTAL = $EXIEXPORTACION_ADO->obtenerTotalesLevantamiento($IDOP);
+    $ARRAYEXISTENCIAMPTOTAL2 = $EXIEXPORTACION_ADO->obtenerTotalesLevantamiento2($IDOP);
 
 
     $TOTALENVASE = $ARRAYEXISTENCIAMPTOTAL[0]['ENVASE'];
@@ -186,23 +186,23 @@ if (isset($id_dato) && isset($accion_dato)) {
         $DISABLED3 = "disabled";
         $DISABLEDMENU = "disabled";
         $DISABLEDSTYLE3 = "style='background-color: #eeeeee;'";
-        $ARRAYRECHAZOMP = $RECHAZOPT_ADO->verRechazo($IDOP);
+        $ARRAYLEVANTAMIENTOMP = $LEVANTAMIENTOPT_ADO->verLevantamiento($IDOP);
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
-        foreach ($ARRAYRECHAZOMP as $r) :
-            $IDRECHAZO = $IDOP;
-            $NUMEROVER = "" . $r['NUMERO_RECHAZO'];
-            $FECHARECHAZO = "" . $r['FECHA_RECHAZO'];
-            $TRECHAZO = "" . $r['TRECHAZO'];
-            if($TRECHAZO==1){
-                $TRECHAZOCOLOR="badge badge-danger ";
-            }else if($TRECHAZO==2){
-                $TRECHAZOCOLOR="badge badge-warning ";
+        foreach ($ARRAYLEVANTAMIENTOMP as $r) :
+            $IDLEVANTAMIENTO = $IDOP;
+            $NUMEROVER = "" . $r['NUMERO_LEVANTAMIENTO'];
+            $FECHALEVANTAMIENTO = "" . $r['FECHA_LEVANTAMIENTO'];
+            $TLEVANTAMIENTO = "" . $r['TLEVANTAMIENTO'];
+            if($TLEVANTAMIENTO==1){
+                $TLEVANTAMIENTOCOLOR="badge badge-danger ";
+            }else if($TLEVANTAMIENTO==2){
+                $TLEVANTAMIENTOCOLOR="badge badge-warning ";
             }else{
-                $TRECHAZOCOLOR="";
+                $TLEVANTAMIENTOCOLOR="";
             }
-            $RESPONSBALE = "" . $r['RESPONSBALE_RECHAZO'];
-            $MOTIVO = "" . $r['MOTIVO_RECHAZO'];            
+            $RESPONSBALE = "" . $r['RESPONSBALE_LEVANTAMIENTO'];
+            $MOTIVO = "" . $r['MOTIVO_LEVANTAMIENTO'];            
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
@@ -226,23 +226,23 @@ if (isset($id_dato) && isset($accion_dato)) {
         $DISABLED3 = "disabled";
         $DISABLEDMENU = "disabled";
         $DISABLEDSTYLE = "style='background-color: #eeeeee;'";
-        $ARRAYRECHAZOMP = $RECHAZOPT_ADO->verRechazo($IDOP);
+        $ARRAYLEVANTAMIENTOMP = $LEVANTAMIENTOPT_ADO->verLevantamiento($IDOP);
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
-        foreach ($ARRAYRECHAZOMP as $r) :
-            $IDRECHAZO = $IDOP;
-            $NUMEROVER = "" . $r['NUMERO_RECHAZO'];
-            $FECHARECHAZO = "" . $r['FECHA_RECHAZO'];
-            $TRECHAZO = "" . $r['TRECHAZO'];
-            if($TRECHAZO==1){
-                $TRECHAZOCOLOR="badge badge-danger ";
-            }else if($TRECHAZO==2){
-                $TRECHAZOCOLOR="badge badge-warning ";
+        foreach ($ARRAYLEVANTAMIENTOMP as $r) :
+            $IDLEVANTAMIENTO = $IDOP;
+            $NUMEROVER = "" . $r['NUMERO_LEVANTAMIENTO'];
+            $FECHALEVANTAMIENTO = "" . $r['FECHA_LEVANTAMIENTO'];
+            $TLEVANTAMIENTO = "" . $r['TLEVANTAMIENTO'];
+            if($TLEVANTAMIENTO==1){
+                $TLEVANTAMIENTOCOLOR="badge badge-danger ";
+            }else if($TLEVANTAMIENTO==2){
+                $TLEVANTAMIENTOCOLOR="badge badge-warning ";
             }else{
-                $TRECHAZOCOLOR="";
+                $TLEVANTAMIENTOCOLOR="";
             }
-            $RESPONSBALE = "" . $r['RESPONSBALE_RECHAZO'];
-            $MOTIVO = "" . $r['MOTIVO_RECHAZO'];            
+            $RESPONSBALE = "" . $r['RESPONSBALE_LEVANTAMIENTO'];
+            $MOTIVO = "" . $r['MOTIVO_LEVANTAMIENTO'];            
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
@@ -269,23 +269,23 @@ if (isset($id_dato) && isset($accion_dato)) {
         //ALMACENAR INFORMACION EN ARREGLO
         //LLAMADA A LA FUNCION DE CONTROLADOR  
         //SE LE PASE UNO DE LOS DATOS OBTENIDO PREVIAMENTE A TRAVEZ DE LA URL
-        $ARRAYRECHAZOMP = $RECHAZOPT_ADO->verRechazo($IDOP);
+        $ARRAYLEVANTAMIENTOMP = $LEVANTAMIENTOPT_ADO->verLevantamiento($IDOP);
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
-        foreach ($ARRAYRECHAZOMP as $r) :
-            $IDRECHAZO = $IDOP;
-            $NUMEROVER = "" . $r['NUMERO_RECHAZO'];
-            $FECHARECHAZO = "" . $r['FECHA_RECHAZO'];
-            $TRECHAZO = "" . $r['TRECHAZO'];
-            if($TRECHAZO==1){
-                $TRECHAZOCOLOR="badge badge-danger ";
-            }else if($TRECHAZO==2){
-                $TRECHAZOCOLOR="badge badge-warning ";
+        foreach ($ARRAYLEVANTAMIENTOMP as $r) :
+            $IDLEVANTAMIENTO = $IDOP;
+            $NUMEROVER = "" . $r['NUMERO_LEVANTAMIENTO'];
+            $FECHALEVANTAMIENTO = "" . $r['FECHA_LEVANTAMIENTO'];
+            $TLEVANTAMIENTO = "" . $r['TLEVANTAMIENTO'];
+            if($TLEVANTAMIENTO==1){
+                $TLEVANTAMIENTOCOLOR="badge badge-danger ";
+            }else if($TLEVANTAMIENTO==2){
+                $TLEVANTAMIENTOCOLOR="badge badge-warning ";
             }else{
-                $TRECHAZOCOLOR="";
+                $TLEVANTAMIENTOCOLOR="";
             }
-            $RESPONSBALE = "" . $r['RESPONSBALE_RECHAZO'];
-            $MOTIVO = "" . $r['MOTIVO_RECHAZO'];            
+            $RESPONSBALE = "" . $r['RESPONSBALE_LEVANTAMIENTO'];
+            $MOTIVO = "" . $r['MOTIVO_LEVANTAMIENTO'];            
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
@@ -299,11 +299,11 @@ if (isset($id_dato) && isset($accion_dato)) {
 }
 //FECHARECHAZO PARA OBTENER LOS DATOS DEL FORMULARIO  Y MANTENERLO AL ACTUALIZACION QUE REALIZA EL SELECT DE PRODUCTOR
 if (isset($_POST)) {
-    if (isset($_REQUEST['FECHARECHAZO'])) {
-        $FECHARECHAZO = $_REQUEST['FECHARECHAZO'];
+    if (isset($_REQUEST['FECHALEVANTAMIENTO'])) {
+        $FECHALEVANTAMIENTO = $_REQUEST['FECHALEVANTAMIENTO'];
     }
-    if (isset($_REQUEST['TRECHAZO'])) {
-        $TRECHAZO = $_REQUEST['TRECHAZO'];
+    if (isset($_REQUEST['TLEVANTAMIENTO'])) {
+        $TLEVANTAMIENTO = $_REQUEST['TLEVANTAMIENTO'];
     }
     if (isset($_REQUEST['PRODUCTOR'])) {
         $PRODUCTOR = $_REQUEST['PRODUCTOR'];
@@ -333,7 +333,7 @@ if (isset($_POST)) {
 <html lang="es">
 
 <head>
-    <title> Registrar Rechazo PT</title>
+    <title> Registrar Levantamiento PT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
@@ -346,35 +346,35 @@ if (isset($_POST)) {
                 function validacion() {
 
 
-                    FECHARECHAZO = document.getElementById("FECHARECHAZO").value;
-                    TRECHAZO = document.getElementById("TRECHAZO").selectedIndex;
+                    FECHALEVANTAMIENTO = document.getElementById("FECHALEVANTAMIENTO").value;
+                    TLEVANTAMIENTO = document.getElementById("TLEVANTAMIENTO").selectedIndex;
                     PRODUCTOR = document.getElementById("PRODUCTOR").selectedIndex;
                     VESPECIES = document.getElementById("VESPECIES").selectedIndex;
                     RESPONSBALE = document.getElementById("RESPONSBALE").value;
                     MOTIVO = document.getElementById("MOTIVO").value;
 
                     document.getElementById('val_fecha').innerHTML = "";
-                    document.getElementById('val_trechazo').innerHTML = "";
+                    document.getElementById('val_tlevantamiento').innerHTML = "";
                     document.getElementById('val_productor').innerHTML = "";
                     document.getElementById('val_variedad').innerHTML = "";
                     document.getElementById('val_responsable').innerHTML = "";
                     document.getElementById('val_motivo').innerHTML = "";
 
-                    if (FECHARECHAZO == null || FECHARECHAZO.length == 0 || /^\s+$/.test(FECHARECHAZO)) {
-                        document.form_reg_dato.FECHARECHAZO.focus();
-                        document.form_reg_dato.FECHARECHAZO.style.borderColor = "#FF0000";
+                    if (FECHALEVANTAMIENTO == null || FECHALEVANTAMIENTO.length == 0 || /^\s+$/.test(FECHALEVANTAMIENTO)) {
+                        document.form_reg_dato.FECHALEVANTAMIENTO.focus();
+                        document.form_reg_dato.FECHALEVANTAMIENTO.style.borderColor = "#FF0000";
                         document.getElementById('val_fecha').innerHTML = "NO A INGRESADO DATO";
                         return false;
                     }
-                    document.form_reg_dato.FECHARECHAZO.style.borderColor = "#4AF575";    
+                    document.form_reg_dato.FECHALEVANTAMIENTO.style.borderColor = "#4AF575";    
                     
-                    if (TRECHAZO == null || TRECHAZO == 0) {
-                        document.form_reg_dato.TRECHAZO.focus();
-                        document.form_reg_dato.TRECHAZO.style.borderColor = "#FF0000";
-                        document.getElementById('val_trechazo').innerHTML = "NO HA SELECIONADO ALTERNATIVA";
+                    if (TLEVANTAMIENTO == null || TLEVANTAMIENTO == 0) {
+                        document.form_reg_dato.TLEVANTAMIENTO.focus();
+                        document.form_reg_dato.TLEVANTAMIENTO.style.borderColor = "#FF0000";
+                        document.getElementById('val_tlevantamiento').innerHTML = "NO HA SELECIONADO ALTERNATIVA";
                         return false;
                     }
-                    document.form_reg_dato.TRECHAZO.style.borderColor = "#4AF575";
+                    document.form_reg_dato.TLEVANTAMIENTO.style.borderColor = "#4AF575";
              
                     if (PRODUCTOR == null || PRODUCTOR == 0) {
                         document.form_reg_dato.PRODUCTOR.focus();
@@ -451,9 +451,9 @@ if (isset($_POST)) {
                                             <li class="breadcrumb-item"> <a href="index.php"> <i class="mdi mdi-home-outline"></i></a></li>
                                             <li class="breadcrumb-item" aria-current="page">Modulo</li>
                                             <li class="breadcrumb-item" aria-current="page">Calidad de Fruta</li>
-                                            <li class="breadcrumb-item" aria-current="page">Rechazo</li>
+                                            <li class="breadcrumb-item" aria-current="page">Levantamiento</li>
                                             <li class="breadcrumb-item" aria-current="page">Producto Terminado</li>
-                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#p">Registro Rechazo </a>    </li>
+                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#p">Registro Levantamiento </a>    </li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -467,7 +467,7 @@ if (isset($_POST)) {
                         <form class="form" role="form" method="post" name="form_reg_dato" id="form_reg_dato">
                             <div class="box">                       
                                  <div class="box-header with-border bg-primary">                                   
-                                    <h4 class="box-title">Registro de Rechazo</h4>                                        
+                                    <h4 class="box-title">Registro de Levantamiento</h4>                                        
                                 </div>
                                 <div class="box-body ">
                                     <div class="row">
@@ -486,9 +486,9 @@ if (isset($_POST)) {
                                                 <input type="hidden" class="form-control" id="TOTALBRUTO" name="TOTALBRUTO" value="<?php echo $TOTALBRUTO; ?>" />
 
 
-                                                <input type="hidden" class="form-control" placeholder="ID RECHAZO" id="IDP" name="IDP" value="<?php echo $IDOP; ?>" />
-                                                <input type="hidden" class="form-control" placeholder="OP RECHAZO" id="OPP" name="OPP" value="<?php echo $OP; ?>" />
-                                                <input type="hidden" class="form-control" placeholder="URL RECHAZO" id="URLP" name="URLP" value="registroRechazopt" />
+                                                <input type="hidden" class="form-control" placeholder="ID LEVANTAMIENTO" id="IDP" name="IDP" value="<?php echo $IDOP; ?>" />
+                                                <input type="hidden" class="form-control" placeholder="OP LEVANTAMIENTO" id="OPP" name="OPP" value="<?php echo $OP; ?>" />
+                                                <input type="hidden" class="form-control" placeholder="URL LEVANTAMIENTO" id="URLP" name="URLP" value="registroLevantamientopt" />
                                                 <label>Numero</label>
                                                 <input type="number" class="form-control" style="background-color: #eeeeee;" placeholder="Numero Proceso" id="NUMEROVER" name="NUMEROVER" value="<?php echo $NUMEROVER; ?>" disabled />
                                                 <label id="val_id" class="validacion"> </label>
@@ -517,21 +517,21 @@ if (isset($_POST)) {
                                         <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                             <div class="form-group">
                                                 <label>Fecha </label>
-                                                <input type="hidden" class="form-control" placeholder="FECHA FECHARECHAZOE" id="FECHARECHAZOE" name="FECHARECHAZOE" value="<?php echo $FECHARECHAZO; ?>" />
-                                                <input type="date" class="form-control"  placeholder="Fecha Proceso" id="FECHARECHAZO" name="FECHARECHAZO" value="<?php echo $FECHARECHAZO; ?>" <?php echo $DISABLED; ?>  <?php echo $DISABLEDFOLIO; ?> />
+                                                <input type="hidden" class="form-control" placeholder="FECHA FECHALEVANTAMIENTOE" id="FECHALEVANTAMIENTOE" name="FECHALEVANTAMIENTOE" value="<?php echo $FECHALEVANTAMIENTO; ?>" />
+                                                <input type="date" class="form-control"  placeholder="Fecha Proceso" id="FECHALEVANTAMIENTO" name="FECHALEVANTAMIENTO" value="<?php echo $FECHALEVANTAMIENTO; ?>" <?php echo $DISABLED; ?>  <?php echo $DISABLEDFOLIO; ?> />
                                                 <label id="val_fecha" class="validacion"> </label>
                                             </div>
                                         </div>
                                         <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-9 col-9 col-xs-9">
                                             <div class="form-group">
-                                                <label>Tipo Rechazo</label>
-                                                <input type="hidden" class="form-control" placeholder="TIPO TRECHAZO" id="TRECHAZOE" name="TRECHAZOE" value="<?php echo $TRECHAZO; ?>" />
-                                                <select class="form-control select2" id="TRECHAZO" name="TRECHAZO" style="width: 100%;" <?php echo $DISABLED; ?>  <?php echo $DISABLED3; ?>  <?php echo $DISABLEDFOLIO; ?>>
+                                                <label>Tipo Levantamiento</label>
+                                                <input type="hidden" class="form-control" placeholder="TIPO TLEVANTAMIENTO" id="TLEVANTAMIENTOE" name="TLEVANTAMIENTOE" value="<?php echo $TLEVANTAMIENTO; ?>" />
+                                                <select class="form-control select2" id="TLEVANTAMIENTO" name="TLEVANTAMIENTO" style="width: 100%;" <?php echo $DISABLED; ?>  <?php echo $DISABLED3; ?>  <?php echo $DISABLEDFOLIO; ?>>
                                                     <option></option>
-                                                    <option value="1" <?php if ($TRECHAZO == 1 ) {  echo "selected";  } ?>> Rechazado </option>
-                                                    <option value="2" <?php if ($TRECHAZO == 2 ) {  echo "selected";  } ?>> Objetado </option> 
+                                                    <option value="1" <?php if ($TLEVANTAMIENTO == 1 ) {  echo "selected";  } ?>> Rechazado </option>
+                                                    <option value="2" <?php if ($TLEVANTAMIENTO == 2 ) {  echo "selected";  } ?>> Objetado </option> 
                                                 </select>
-                                                <label id="val_trechazo" class="validacion"> </label>
+                                                <label id="val_tlevantamiento" class="validacion"> </label>
                                             </div>
                                         </div>
                                         <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-9 col-9 col-xs-9">
@@ -597,7 +597,7 @@ if (isset($_POST)) {
                                     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar">
                                         <div class="btn-group col-sm-4" role="group" aria-label="acciones">
                                             <?php if ($OP == "") { ?>
-                                                <button type="button" class="btn btn-warning " data-toggle="tooltip" title="Cancelar" name="CANCELAR" value="CANCELAR" Onclick="irPagina('registroRechazopt.php');">
+                                                <button type="button" class="btn btn-warning " data-toggle="tooltip" title="Cancelar" name="CANCELAR" value="CANCELAR" Onclick="irPagina('registroLevantamientopt.php');">
                                                     <i class="ti-trash"></i> Cancelar
                                                 </button>
                                                 <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="Crear" name="CREAR" value="CREAR" <?php echo $DISABLEDFOLIO; ?> onclick="return validacion()">
@@ -605,7 +605,7 @@ if (isset($_POST)) {
                                                 </button>
                                             <?php } ?>
                                             <?php if ($OP != "") { ?>
-                                                <button type="button" class="btn  btn-success " data-toggle="tooltip" title="Volver" name="VOLVER" value="VOLVER" Onclick="irPagina('listarRechazopt.php'); ">
+                                                <button type="button" class="btn  btn-success " data-toggle="tooltip" title="Volver" name="VOLVER" value="VOLVER" Onclick="irPagina('listarLevantamientopt.php'); ">
                                                     <i class="ti-back-left "></i> Volver
                                                 </button>
                                                 <button type="submit" class="btn btn-warning " data-toggle="tooltip" title="Guardar" name="GUARDAR" value="GUARDAR" <?php echo $DISABLED2; ?> <?php echo $DISABLEDFOLIO; ?> onclick="return validacion()">
@@ -618,7 +618,7 @@ if (isset($_POST)) {
                                         </div>
                                         <div class="btn-group col-sm-4">
                                             <?php if ($OP != "") : ?>
-                                                <button type="button" class="btn btn-primary  " data-toggle="tooltip" title="Informe" id="defecto" name="tarjas" <?php echo $DISABLEDFOLIO; ?> Onclick="abrirPestana('../../assest/documento/informeRechazopt.php?parametro=<?php echo $IDOP; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
+                                                <button type="button" class="btn btn-primary  " data-toggle="tooltip" title="Informe" id="defecto" name="tarjas" <?php echo $DISABLEDFOLIO; ?> Onclick="abrirPestana('../../assest/documento/informeLevantamientopt.php?parametro=<?php echo $IDOP; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
                                                     <i class="fa fa-file-pdf-o"></i> Informe
                                                 </button>
                                             <?php endif ?>
@@ -636,10 +636,10 @@ if (isset($_POST)) {
                                 <div class="card-header">
                                             <div class="form-row align-items-center">
                                                 <form method="post" id="form1">
-                                                    <input type="hidden" class="form-control" placeholder="ID RECHAZO" id="IDP" name="IDP" value="<?php echo $IDOP; ?>" />
-                                                    <input type="hidden" class="form-control" placeholder="OP RECHAZO" id="OPP" name="OPP" value="<?php echo $OP; ?>" />
-                                                    <input type="hidden" class="form-control" placeholder="URL RECHAZO" id="URLP" name="URLP" value="registroRechazopt" />
-                                                    <input type="hidden" class="form-control" placeholder="URL SELECCIONAR" id="URLD" name="URLD" value="registroSelecionExistenciaPTRechazoPt" />
+                                                    <input type="hidden" class="form-control" placeholder="ID LEVANTAMIENTO" id="IDP" name="IDP" value="<?php echo $IDOP; ?>" />
+                                                    <input type="hidden" class="form-control" placeholder="OP LEVANTAMIENTO" id="OPP" name="OPP" value="<?php echo $OP; ?>" />
+                                                    <input type="hidden" class="form-control" placeholder="URL LEVANTAMIENTO" id="URLP" name="URLP" value="registroLevantamientopt" />
+                                                    <input type="hidden" class="form-control" placeholder="URL SELECCIONAR" id="URLD" name="URLD" value="registroSelecionExistenciaPTLevantamientoPt" />
                                                     <div class="col-auto">
                                                         <button type="submit" class="btn btn-success btn-block mb-2" data-toggle="tooltip" title="Seleccion Existencia" id="SELECIONOCDURL" name="SELECIONOCDURL"
                                                             <?php echo $DISABLED2; ?> <?php if ($ESTADO == 0) {  echo "disabled style='background-color: #eeeeee;'";  } ?> >
@@ -740,15 +740,15 @@ if (isset($_POST)) {
                                                         ?>
                                                         <tr class="text-left">
                                                             <td>
-                                                                <span class="<?php echo $TRECHAZOCOLOR; ?>">
+                                                                <span class="<?php echo $TLEVANTAMIENTOCOLOR; ?>">
                                                                    <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
                                                                 </span>
                                                             </td>
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">
                                                                     <input type="hidden" class="form-control" id="IDQUITAR" name="IDQUITAR" value="<?php echo $r['ID_EXIEXPORTACION']; ?>" />
-                                                                    <input type="hidden" class="form-control" placeholder="ID RECHAZO" id="IDP" name="IDP" value="<?php echo $IDOP; ?>" />
-                                                                    <input type="hidden" class="form-control" placeholder="TRECHAZO" id="TRECHAZO" name="TRECHAZO" value="<?php echo $TRECHAZO; ?>" />
+                                                                    <input type="hidden" class="form-control" placeholder="ID LEVANTAMIENTO" id="IDP" name="IDP" value="<?php echo $IDOP; ?>" />
+                                                                    <input type="hidden" class="form-control" placeholder="TLEVANTAMIENTO" id="TLEVANTAMIENTO" name="TLEVANTAMIENTO" value="<?php echo $TLEVANTAMIENTO; ?>" />
                                                                     <input type="hidden" class="form-control" id="FOLIO" name="FOLIO" value="<?php echo $r['FOLIO_EXIEXPORTACION']; ?>" />
                                                                     <input type="hidden" class="form-control" id="FOLIOAUXILIAR" name="FOLIOAUXILIAR" value="<?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>" />
                                                                     <div class="btn-group btn-block" role="group" aria-label="Operaciones Detalle">
@@ -791,69 +791,69 @@ if (isset($_POST)) {
         //OPERACION DE REGISTRO DE FILA
         if (isset($_REQUEST['CREAR'])) {
 
-            $ARRAYNUMERO = $RECHAZOPT_ADO->obtenerNumero($_REQUEST['EMPRESA'], $_REQUEST['PLANTA'], $_REQUEST['TEMPORADA']);
+            $ARRAYNUMERO = $LEVANTAMIENTOPT_ADO->obtenerNumero($_REQUEST['EMPRESA'], $_REQUEST['PLANTA'], $_REQUEST['TEMPORADA']);
             $NUMERO = $ARRAYNUMERO[0]['NUMERO'] + 1;
 
             //UTILIZACION METODOS SET DEL MODELO
             //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO
-            $RECHAZOPT->__SET('NUMERO_RECHAZO', $NUMERO);
-            $RECHAZOPT->__SET('FECHA_RECHAZO', $_REQUEST['FECHARECHAZO']);
-            $RECHAZOPT->__SET('TRECHAZO', $_REQUEST['TRECHAZO']);
-            $RECHAZOPT->__SET('RESPONSBALE_RECHAZO', $_REQUEST['RESPONSBALE']);
-            $RECHAZOPT->__SET('MOTIVO_RECHAZO', $_REQUEST['MOTIVO']);
-            $RECHAZOPT->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
-            $RECHAZOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
-            $RECHAZOPT->__SET('ID_EMPRESA', $_REQUEST['EMPRESA']);
-            $RECHAZOPT->__SET('ID_PLANTA', $_REQUEST['PLANTA']);
-            $RECHAZOPT->__SET('ID_TEMPORADA', $_REQUEST['TEMPORADA']);
-            $RECHAZOPT->__SET('ID_USUARIOI', $IDUSUARIOS);
-            $RECHAZOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
+            $LEVANTAMIENTOPT->__SET('NUMERO_LEVANTAMIENTO', $NUMERO);
+            $LEVANTAMIENTOPT->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
+            $LEVANTAMIENTOPT->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTO']);
+            $LEVANTAMIENTOPT->__SET('RESPONSBALE_LEVANTAMIENTO', $_REQUEST['RESPONSBALE']);
+            $LEVANTAMIENTOPT->__SET('MOTIVO_LEVANTAMIENTO', $_REQUEST['MOTIVO']);
+            $LEVANTAMIENTOPT->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
+            $LEVANTAMIENTOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
+            $LEVANTAMIENTOPT->__SET('ID_EMPRESA', $_REQUEST['EMPRESA']);
+            $LEVANTAMIENTOPT->__SET('ID_PLANTA', $_REQUEST['PLANTA']);
+            $LEVANTAMIENTOPT->__SET('ID_TEMPORADA', $_REQUEST['TEMPORADA']);
+            $LEVANTAMIENTOPT->__SET('ID_USUARIOI', $IDUSUARIOS);
+            $LEVANTAMIENTOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
             //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR  HORAINGRESORECHAZOMP
-            $RECHAZOPT_ADO->agregarRechazo($RECHAZOPT);
+            $LEVANTAMIENTOPT_ADO->agregarLevantamiento($LEVANTAMIENTOPT);
             //OBTENER EL ID DE LA RECEPCION CREADA PARA LUEGO ENVIAR EL INGRESO DEL DETALLE
-            $ARRYAOBTENERID = $RECHAZOPT_ADO->obtenerId(
-                $_REQUEST['FECHARECHAZO'],
+            $ARRYAOBTENERID = $LEVANTAMIENTOPT_ADO->obtenerId(
+                $_REQUEST['FECHALEVANTAMIENTO'],
                 $_REQUEST['EMPRESA'],
                 $_REQUEST['PLANTA'],
                 $_REQUEST['TEMPORADA'],
             );
             //REDIRECCIONAR A PAGINA registroRecepcion.php
 
-            $AUSUARIO_ADO->agregarAusuario2($NUMERO,1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de rechazo Producto Terminado.","fruta_rechazopt", $ARRYAOBTENERID[0]['ID_RECHAZO'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+            $AUSUARIO_ADO->agregarAusuario2($NUMERO,1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Levantamiento Producto Terminado.","fruta_levantamientopt", $ARRYAOBTENERID[0]['ID_LEVANTAMIENTO'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
             
-            $id_dato = $ARRYAOBTENERID[0]['ID_RECHAZO'];
+            $id_dato = $ARRYAOBTENERID[0]['ID_LEVANTAMIENTO'];
             $accion_dato = "crear";
             
             echo '<script>
                 Swal.fire({
                     icon:"success",
                     title:"Registro Creado",
-                    text:"El registro de rechazo MP se ha creado correctamente",
+                    text:"El registro de levantamiento MP se ha creado correctamente",
                     showConfirmButton: true,
                     confirmButtonText:"Cerrar",
                     closeOnConfirm:false
                 }).then((result)=>{
-                    location.href = "registroRechazopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                    location.href = "registroLevantamientopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                 })
             </script>';
         }
         //OPERACION EDICION DE FILA
         if (isset($_REQUEST['GUARDAR'])) {            
-            $RECHAZOPT->__SET('FECHA_RECHAZO', $_REQUEST['FECHARECHAZO']);
-            $RECHAZOPT->__SET('TRECHAZO', $_REQUEST['TRECHAZOE']);
-            $RECHAZOPT->__SET('RESPONSBALE_RECHAZO', $_REQUEST['RESPONSBALE']);
-            $RECHAZOPT->__SET('MOTIVO_RECHAZO', $_REQUEST['MOTIVO']);
-            $RECHAZOPT->__SET('CANTIDAD_ENVASE_RECHAZO', $_REQUEST['TOTALENVASE']);
-            $RECHAZOPT->__SET('KILOS_BRUTO_RECHAZO', $_REQUEST['TOTALBRUTO']);
-            $RECHAZOPT->__SET('KILOS_NETO_RECHAZO', $_REQUEST['TOTALNETO']);
-            $RECHAZOPT->__SET('ID_VESPECIES', $_REQUEST['VESPECIESE']);
-            $RECHAZOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTORE']);
-            $RECHAZOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
-            $RECHAZOPT->__SET('ID_RECHAZO', $_REQUEST['IDP']);
+            $LEVANTAMIENTOPT->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
+            $LEVANTAMIENTOPT->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTOE']);
+            $LEVANTAMIENTOPT->__SET('RESPONSBALE_LEVANTAMIENTO', $_REQUEST['RESPONSBALE']);
+            $LEVANTAMIENTOPT->__SET('MOTIVO_LEVANTAMIENTO', $_REQUEST['MOTIVO']);
+            $LEVANTAMIENTOPT->__SET('CANTIDAD_ENVASE_LEVANTAMIENTO', $_REQUEST['TOTALENVASE']);
+            $LEVANTAMIENTOPT->__SET('KILOS_BRUTO_LEVANTAMIENTO', $_REQUEST['TOTALBRUTO']);
+            $LEVANTAMIENTOPT->__SET('KILOS_NETO_LEVANTAMIENTO', $_REQUEST['TOTALNETO']);
+            $LEVANTAMIENTOPT->__SET('ID_VESPECIES', $_REQUEST['VESPECIESE']);
+            $LEVANTAMIENTOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTORE']);
+            $LEVANTAMIENTOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
+            $LEVANTAMIENTOPT->__SET('ID_LEVANTAMIENTO', $_REQUEST['IDP']);
             //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-            $RECHAZOPT_ADO->actualizarRechazo($RECHAZOPT);           
+            $LEVANTAMIENTOPT_ADO->actualizarLevantamiento($LEVANTAMIENTOPT);           
             
-            $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de rechazo Producto Terminado.","fruta_rechazopt", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+            $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de levantamiento Producto Terminado.","fruta_levantamientopt", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
             
             if ($accion_dato == "crear") {
@@ -863,12 +863,12 @@ if (isset($_POST)) {
                     Swal.fire({
                         icon:"info",
                         title:"Registro Modificado",
-                        text:"El registro de rechazo se ha modificada correctamente",
+                        text:"El registro de levantamiento se ha modificada correctamente",
                         showConfirmButton: true,
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroRechazopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                        location.href = "registroLevantamientopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
@@ -879,12 +879,12 @@ if (isset($_POST)) {
                     Swal.fire({
                         icon:"info",
                         title:"Registro Modificado",
-                        text:"El registro de rechazo se ha modificada correctamente",
+                        text:"El registro de levantamiento se ha modificada correctamente",
                         showConfirmButton: true,
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroRechazopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                        location.href = "registroLevantamientopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
@@ -893,7 +893,7 @@ if (isset($_POST)) {
         if (isset($_REQUEST['CERRAR'])) {
             //UTILIZACION METODOS SET DEL MODELO
             
-            $ARRAYEXIEXPORTACIONTOMADO = $EXIEXPORTACION_ADO->buscarPorRechazo($_REQUEST['IDP']);
+            $ARRAYEXIEXPORTACIONTOMADO = $EXIEXPORTACION_ADO->buscarPorLevantamiento($_REQUEST['IDP']);
             if ( empty($ARRAYEXIEXPORTACIONTOMADO) ) {
                 $SINO = "1";
                 echo '<script>
@@ -914,39 +914,39 @@ if (isset($_POST)) {
 
             //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO
             if ($SINO == "0") {
-                $RECHAZOPT->__SET('FECHA_RECHAZO', $_REQUEST['FECHARECHAZO']);
-                $RECHAZOPT->__SET('TRECHAZO', $_REQUEST['TRECHAZOE']);
-                $RECHAZOPT->__SET('RESPONSBALE_RECHAZO', $_REQUEST['RESPONSBALE']);
-                $RECHAZOPT->__SET('MOTIVO_RECHAZO', $_REQUEST['MOTIVO']);
-                $RECHAZOPT->__SET('CANTIDAD_ENVASE_RECHAZO', $_REQUEST['TOTALENVASE']);
-                $RECHAZOPT->__SET('KILOS_BRUTO_RECHAZO', $_REQUEST['TOTALBRUTO']);
-                $RECHAZOPT->__SET('KILOS_NETO_RECHAZO', $_REQUEST['TOTALNETO']);
-                $RECHAZOPT->__SET('ID_VESPECIES', $_REQUEST['VESPECIESE']);
-                $RECHAZOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTORE']);
-                $RECHAZOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
-                $RECHAZOPT->__SET('ID_RECHAZO', $_REQUEST['IDP']);
+                $LEVANTAMIENTOPT->__SET('FECHA_LEVANTAMIENTO', $_REQUEST['FECHALEVANTAMIENTO']);
+                $LEVANTAMIENTOPT->__SET('TLEVANTAMIENTO', $_REQUEST['TLEVANTAMIENTOE']);
+                $LEVANTAMIENTOPT->__SET('RESPONSBALE_LEVANTAMIENTO', $_REQUEST['RESPONSBALE']);
+                $LEVANTAMIENTOPT->__SET('MOTIVO_LEVANTAMIENTO', $_REQUEST['MOTIVO']);
+                $LEVANTAMIENTOPT->__SET('CANTIDAD_ENVASE_LEVANTAMIENTO', $_REQUEST['TOTALENVASE']);
+                $LEVANTAMIENTOPT->__SET('KILOS_BRUTO_LEVANTAMIENTO', $_REQUEST['TOTALBRUTO']);
+                $LEVANTAMIENTOPT->__SET('KILOS_NETO_LEVANTAMIENTO', $_REQUEST['TOTALNETO']);
+                $LEVANTAMIENTOPT->__SET('ID_VESPECIES', $_REQUEST['VESPECIESE']);
+                $LEVANTAMIENTOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTORE']);
+                $LEVANTAMIENTOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
+                $LEVANTAMIENTOPT->__SET('ID_LEVANTAMIENTO', $_REQUEST['IDP']);
                 //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-                $RECHAZOPT_ADO->actualizarRechazo($RECHAZOPT);
+                $LEVANTAMIENTOPT_ADO->actualizarLevantamiento($LEVANTAMIENTOPT);
                 //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
 
-                $RECHAZOPT->__SET('ID_RECHAZO', $_REQUEST['IDP']);
+                $LEVANTAMIENTOPT->__SET('ID_LEVANTAMIENTO', $_REQUEST['IDP']);
                 //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-                $RECHAZOPT_ADO->cerrado($RECHAZOPT);
+                $LEVANTAMIENTOPT_ADO->cerrado($LEVANTAMIENTOPT);
 
-                $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,3,"".$_SESSION["NOMBRE_USUARIO"].", Cerrar  rechazo Producto Terminado.","fruta_rechazopt", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,3,"".$_SESSION["NOMBRE_USUARIO"].", Cerrar  levantamiento Producto Terminado.","fruta_levantamientopt", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
-                $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorRechazo($_REQUEST['IDP']);   
+                $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorLevantamiento($_REQUEST['IDP']);   
                 foreach ($ARRAYEXIEXPORTACION as $r) :
-                    if( $_REQUEST['TRECHAZOE']==1){
+                    if( $_REQUEST['TLEVANTAMIENTOE']==1){
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $r['ID_EXIEXPORTACION']);
-                        $EXIEXPORTACION->__SET('COLOR', $_REQUEST['TRECHAZOE']);
+                        $EXIEXPORTACION->__SET('COLOR', $_REQUEST['TLEVANTAMIENTOE']);
                         //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                         $EXIEXPORTACION_ADO->rechazadoColor($EXIEXPORTACION);
                     }
                     
-                    if( $_REQUEST['TRECHAZOE']==2){
+                    if( $_REQUEST['TLEVANTAMIENTOE']==2){
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $r['ID_EXIEXPORTACION']);
-                        $EXIEXPORTACION->__SET('COLOR', $_REQUEST['TRECHAZOE']);
+                        $EXIEXPORTACION->__SET('COLOR', $_REQUEST['TLEVANTAMIENTOE']);
                         //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                         $EXIEXPORTACION_ADO->objetadoColor($EXIEXPORTACION);
                     }
@@ -959,12 +959,12 @@ if (isset($_POST)) {
                         Swal.fire({
                             icon:"info",
                             title:"Registro Cerrado",
-                            text:"Este rechazo se encuentra cerrada y no puede ser modificada.",
+                            text:"Este levantamiento se encuentra cerrada y no puede ser modificada.",
                             showConfirmButton: true,
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRechazopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
+                            location.href = "registroLevantamientopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                         })
                     </script>';
                 }
@@ -975,12 +975,12 @@ if (isset($_POST)) {
                         Swal.fire({
                             icon:"info",
                             title:"Registro Cerrado",
-                            text:"Este rechazo se encuentra cerrada y no puede ser modificada.",
+                            text:"Este levantamiento se encuentra cerrada y no puede ser modificada.",
                             showConfirmButton: true,
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroRechazopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
+                            location.href = "registroLevantamientopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                                    
                         })
                     </script>';
                 }  
@@ -990,19 +990,19 @@ if (isset($_POST)) {
         if (isset($_REQUEST['QUITAR'])) {
             $IDQUITAR = $_REQUEST['IDQUITAR'];
             $IDPQUITAR = $_REQUEST['IDP'];
-            $TRECHAZOQUITAR = $_REQUEST['TRECHAZO'];
+            $TLEVANTAMIENTOQUITAR = $_REQUEST['TLEVANTAMIENTO'];
             $FOLIOQUITAR = $_REQUEST['FOLIO'];
             $FOLIOAUXILIARQUITAR = $_REQUEST['FOLIOAUXILIAR'];            
         
             $EXIEXPORTACION->__SET('ID_EXIEXPORTACION',  $_REQUEST['IDQUITAR']);
             //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
-            $EXIEXPORTACION_ADO->actualizarDeselecionarRechazoCambiarEstado($EXIEXPORTACION);   
+            $EXIEXPORTACION_ADO->actualizarDeselecionarLevantamientoCambiarEstado($EXIEXPORTACION);   
 
-            $AUSUARIO_ADO->agregarAusuario2("NULL",1,2,"".$_SESSION["NOMBRE_USUARIO"].", Se Quito la Existencia al rechazo producto terminado.","fruta_exiexportacion", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+            $AUSUARIO_ADO->agregarAusuario2("NULL",1,2,"".$_SESSION["NOMBRE_USUARIO"].", Se Quito la Existencia al levantamiento producto terminado.","fruta_exiexportacion", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
             $REAPT_ADO->eliminarReapt($_REQUEST['IDP'],$_REQUEST['IDQUITAR']);         
             
-            $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Desahabilitar de detalle rechazo Producto Terminado.","fruta_reapt", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+            $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Desahabilitar de detalle levantamiento Producto Terminado.","fruta_reapt", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
             
             
             echo '<script>
@@ -1014,7 +1014,7 @@ if (isset($_POST)) {
                     confirmButtonText:"Cerrar",
                     closeOnConfirm:false
                 }).then((result)=>{
-                    location.href = "registroRechazopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                    location.href = "registroLevantamientopt.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                 })
             </script>';                  
         }
