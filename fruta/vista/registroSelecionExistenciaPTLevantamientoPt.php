@@ -128,7 +128,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
         $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
         $VESPECIES = "" . $r['ID_VESPECIES'];
     endforeach;
-    $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorEmpresaPlantaTemporadaProductorVariedadColorNuloAprobado($EMPRESAS, $PLANTAS, $TEMPORADAS,  $VESPECIES, $PRODUCTOR);
+    $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorEmpresaPlantaTemporadaProductorVariedadColorNuloAprobadoLevantamientoPT($EMPRESAS, $PLANTAS, $TEMPORADAS,  $VESPECIES, $PRODUCTOR);
 }
 include_once "../../assest/config/validarDatosUrlD.php";
 
@@ -394,15 +394,16 @@ include_once "../../assest/config/validarDatosUrlD.php";
 
                         $IDEXIEXPORTACION = $r;
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $IDEXIEXPORTACION);
+                        $EXIEXPORTACION->__SET('ID_LEVANTAMIENTO', $IDLEVANTAMIENTO);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
                         $EXIEXPORTACION_ADO->actualizarSelecionarLevantamientoCambiarEstado($EXIEXPORTACION);
 
                         $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", se agrega existencia al levantamiento Producto Terminado.","fruta_exiexportacion", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
-                        $REAPT->__SET('ID_LEVANTAMIENTO', $IDLEVANTAMIENTO);
-                        $REAPT->__SET('ID_EXIEXPORTACION', $IDEXIEXPORTACION);
+                        //$REAPT->__SET('ID_LEVANTAMIENTO', $IDLEVANTAMIENTO);
+                        //$REAPT->__SET('ID_EXIEXPORTACION', $IDEXIEXPORTACION);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
-                        $REAPT_ADO->agregarReapt($REAPT);
+                        //$REAPT_ADO->agregarReapt($REAPT);
 
                         $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle levantamiento Producto Terminado.","fruta_reapt", "NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 

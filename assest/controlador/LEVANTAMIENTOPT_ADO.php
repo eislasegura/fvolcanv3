@@ -235,7 +235,8 @@ class LEVANTAMIENTOPT_ADO
                         $LEVANTAMIENTOPT->__GET('ID_PLANTA'),
                         $LEVANTAMIENTOPT->__GET('ID_TEMPORADA'),
                         
-                        $LEVANTAMIENTOPT->__GET('ID_USUARIOM')
+                        $LEVANTAMIENTOPT->__GET('ID_USUARIOM'),
+                        $LEVANTAMIENTOPT->__GET('ID_LEVANTAMIENTO')
 
                     )
 
@@ -507,7 +508,7 @@ class LEVANTAMIENTOPT_ADO
     public function obtenerNumero($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
-            $datos = $this->conexion->prepare(" SELECT  COUNT(IFNULL(NUMERO_LEVANTAMIENTOMP,0)) AS 'NUMERO'
+            $datos = $this->conexion->prepare(" SELECT  COUNT(IFNULL(NUMERO_LEVANTAMIENTO,0)) AS 'NUMERO'
                                                 FROM fruta_levantamientopt
                                                 WHERE  
                                                     ID_EMPRESA = '" . $EMPRESA . "' 
