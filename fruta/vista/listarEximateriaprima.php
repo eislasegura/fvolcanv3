@@ -198,7 +198,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             $TRECHAZOCOLOR="badge badge-warning ";
                                                             $COLOR="Objetado";
                                                         }else if($r['COLOR']==3){
-                                                            $TRECHAZOCOLOR="badge badge-Success ";
+                                                            $TRECHAZOCOLOR="badge badge-success ";
                                                             $COLOR="Aprobado";
                                                         }else{
                                                             $TRECHAZOCOLOR="";

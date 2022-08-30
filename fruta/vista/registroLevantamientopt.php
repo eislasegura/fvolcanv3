@@ -925,6 +925,10 @@ if (isset($_POST)) {
                 $LEVANTAMIENTOPT->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTORE']);
                 $LEVANTAMIENTOPT->__SET('ID_USUARIOM', $IDUSUARIOS);
                 $LEVANTAMIENTOPT->__SET('ID_LEVANTAMIENTO', $_REQUEST['IDP']);
+                $LEVANTAMIENTOPT->__SET('ID_EMPRESA', $_SESSION['ID_EMPRESA']);
+                $LEVANTAMIENTOPT->__SET('ID_PLANTA', $_SESSION['ID_PLANTA']);
+                $LEVANTAMIENTOPT->__SET('ID_TEMPORADA', $_SESSION['ID_TEMPORADA']);
+                
                 //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                 $LEVANTAMIENTOPT_ADO->actualizarLevantamiento($LEVANTAMIENTOPT);
                 //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
@@ -937,20 +941,20 @@ if (isset($_POST)) {
 
                 $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorLevantamiento($_REQUEST['IDP']);   
                 foreach ($ARRAYEXIEXPORTACION as $r) :
-                    if( $_REQUEST['TLEVANTAMIENTOE']==1){
+                    //if( $_REQUEST['TLEVANTAMIENTOE']==1){
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $r['ID_EXIEXPORTACION']);
-                        $EXIEXPORTACION->__SET('COLOR', $_REQUEST['TLEVANTAMIENTOE']);
+                        $EXIEXPORTACION->__SET('COLOR', 3);
                         //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-                        $EXIEXPORTACION_ADO->rechazadoColor($EXIEXPORTACION);
-                    }
+                        $EXIEXPORTACION_ADO->levantarColor($EXIEXPORTACION);
+                    //}
                     
-                    if( $_REQUEST['TLEVANTAMIENTOE']==2){
+                    /*if( $_REQUEST['TLEVANTAMIENTOE']==2){
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $r['ID_EXIEXPORTACION']);
                         $EXIEXPORTACION->__SET('COLOR', $_REQUEST['TLEVANTAMIENTOE']);
                         //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
                         $EXIEXPORTACION_ADO->objetadoColor($EXIEXPORTACION);
-                    }
-                endforeach;              
+                    }*/
+                endforeach;             
            
                 if ($accion_dato == "crear") {
                     $id_dato = $_REQUEST['IDP'];
