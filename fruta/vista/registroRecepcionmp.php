@@ -1235,9 +1235,11 @@ if (isset($_POST)) {
 
 
                                             if($CONTROL_ALERTA < 0){
-                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i>Los envases no cuadran con la Guia.</div>';
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Los envases no cuadran con la Guia.</div>';
+                                            }elseif($CONTROL_ALERTA == 0){
+                                                echo '<div class="alert alert-success" role="alert"><i class="fa fa-check"></i> No hay diferencia de envases.</div>';
                                             }else{
-                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i>Le quedan envases pendientes, segun Guia.</div>';
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Le quedan envases pendientes, segun Guia.</div>';
                                             }
                                             
                                             
