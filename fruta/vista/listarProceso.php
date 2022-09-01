@@ -149,7 +149,8 @@ include_once "../../assest/config/datosUrLP.php";
                                                     <th>Kg. Deshi. </th>
                                                     <th>Kg. Con Deshi. </th>
                                                     <th>Kg. IQF</th>
-                                                    <th>Kg. Merma/Desecho</th>
+                                                    <th>Kg. Merma</th>
+                                                    <th>Kg. Desecho</th>
                                                     <th>Kg. Industrial</th>
                                                     <th>Kg. Diferencia</th>
                                                     <th>% Exportación</th>
@@ -299,9 +300,10 @@ include_once "../../assest/config/datosUrLP.php";
                                                         <td><?php echo $r['NETO']; ?></td>
                                                         <td><?php echo $r['EXPORTACION']-$r['NETO']; ?></td>
                                                         <td><?php echo $r['EXPORTACION']; ?></td>
-                                                        <td><?php echo $r['INDUSTRIALSC']; ?></td>
-                                                        <td><?php echo $r['INDUSTRIALNC']; ?></td>
-                                                        <td><?php echo $r['INDUSTRIAL']; ?></td>
+                                                        <td><?php echo $r['IQF_INFO']; ?></td>
+                                                        <td><?php echo $r['MERMA_INFO']; ?></td>
+                                                        <td><?php echo $r['DESECHO_INFO']; ?></td>
+                                                        <td><?php echo $r['SUMA_INDUSTRIAL_INFO']; ?></td> 
                                                         <td><?php echo number_format( $r['ENTRADA']-$r['EXPORTACION']-$r['INDUSTRIAL'],2,".",""); ?></td>                                                        
                                                         <td><?php echo $r['PDEXPORTACION_PROCESO']; ?></td>
                                                         <td><?php echo $r['PDEXPORTACIONCD_PROCESO']-$r['PDEXPORTACION_PROCESO']; ?></td>
