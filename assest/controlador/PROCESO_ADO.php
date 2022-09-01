@@ -511,22 +511,52 @@ class PROCESO_ADO
     public function listarProcesoEmpresaPlantaTemporadaCBX($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
-
+            /*echo "SELECT * ,  
+            IFNULL(KILOS_EXPORTACION_PROCESO,0) AS 'EXPORTACION'   ,                                                 
+            IFNULL(KILOS_INDUSTRIAL_PROCESO,0) AS 'INDUSTRIAL'    ,                                                
+            IFNULL(KILOS_INDUSTRIALSC_PROCESO,0) AS 'INDUSTRIALSC'    ,                                               
+            IFNULL(KILOS_INDUSTRIALNC_PROCESO,0) AS 'INDUSTRIALNC'    ,                                                
+            IFNULL(KILOS_NETO_PROCESO,0) AS 'NETO',                                        
+            IFNULL(KILOS_NETO_ENTRADA,0) AS 'ENTRADA',
+            FECHA_PROCESO AS 'FECHA',
+            
+            WEEK(FECHA_PROCESO,3) AS 'SEMANA',                                                     
+            WEEKOFYEAR(FECHA_PROCESO) AS 'SEMANAISO', 
+            
+            DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
+            DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 
+        FROM fruta_proceso                                                        
+        WHERE   ESTADO_REGISTRO = 1 
+        AND  ID_EMPRESA = '" . $EMPRESA . "' 
+        AND ID_PLANTA = '" . $PLANTA . "'
+        AND ID_TEMPORADA = '" . $TEMPORADA . "' ;	";*/
             $datos = $this->conexion->prepare("SELECT * ,  
-                                                    IFNULL(KILOS_EXPORTACION_PROCESO,0) AS 'EXPORTACION'   ,                                                 
-                                                    IFNULL(KILOS_INDUSTRIAL_PROCESO,0) AS 'INDUSTRIAL'    ,                                                
-                                                    IFNULL(KILOS_INDUSTRIALSC_PROCESO,0) AS 'INDUSTRIALSC'    ,                                               
-                                                    IFNULL(KILOS_INDUSTRIALNC_PROCESO,0) AS 'INDUSTRIALNC'    ,                                                
-                                                    IFNULL(KILOS_NETO_PROCESO,0) AS 'NETO',                                        
-                                                    IFNULL(KILOS_NETO_ENTRADA,0) AS 'ENTRADA',
-                                                    FECHA_PROCESO AS 'FECHA',
-                                                    
-                                                    WEEK(FECHA_PROCESO,3) AS 'SEMANA',                                                     
-                                                    WEEKOFYEAR(FECHA_PROCESO) AS 'SEMANAISO', 
-                                                    
-                                                    DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
-                                                    DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 
-                                                FROM fruta_proceso                                                        
+            IFNULL(KILOS_EXPORTACION_PROCESO,0) AS 'EXPORTACION'   ,                                                 
+            IFNULL(KILOS_INDUSTRIAL_PROCESO,0) AS 'INDUSTRIAL'    ,                                                
+            IFNULL(KILOS_INDUSTRIALSC_PROCESO,0) AS 'INDUSTRIALSC'    ,                                               
+            IFNULL(KILOS_INDUSTRIALNC_PROCESO,0) AS 'INDUSTRIALNC'    ,                                                
+            IFNULL(KILOS_NETO_PROCESO,0) AS 'NETO',                                        
+            IFNULL(KILOS_NETO_ENTRADA,0) AS 'ENTRADA',
+            FECHA_PROCESO AS 'FECHA',
+            
+            WEEK(FECHA_PROCESO,3) AS 'SEMANA',                                                     
+            WEEKOFYEAR(FECHA_PROCESO) AS 'SEMANAISO', 
+            
+            DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
+            DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION',
+						(SELECT SUM(FRUTA_EXIINDUSTRIAL.KILOS_NETO_EXIINDUSTRIAL) FROM FRUTA_EXIINDUSTRIAL 
+				JOIN ESTANDAR_EINDUSTRIAL on ESTANDAR_EINDUSTRIAL.ID_ESTANDAR = FRUTA_EXIINDUSTRIAL.ID_ESTANDAR 
+				where ID_PROCESO = FRUTA_PROCESO.ID_PROCESO AND AGRUPACION='1')AS 'IQF_INFO',
+						(SELECT SUM(FRUTA_EXIINDUSTRIAL.KILOS_NETO_EXIINDUSTRIAL) FROM FRUTA_EXIINDUSTRIAL 
+				JOIN ESTANDAR_EINDUSTRIAL on ESTANDAR_EINDUSTRIAL.ID_ESTANDAR = FRUTA_EXIINDUSTRIAL.ID_ESTANDAR 
+				where ID_PROCESO = FRUTA_PROCESO.ID_PROCESO AND AGRUPACION='2')AS 'MERMA_INFO',
+				(SELECT SUM(FRUTA_EXIINDUSTRIAL.KILOS_NETO_EXIINDUSTRIAL) FROM FRUTA_EXIINDUSTRIAL 
+				JOIN ESTANDAR_EINDUSTRIAL on ESTANDAR_EINDUSTRIAL.ID_ESTANDAR = FRUTA_EXIINDUSTRIAL.ID_ESTANDAR 
+				where ID_PROCESO = FRUTA_PROCESO.ID_PROCESO AND AGRUPACION='3')AS 'DESECHO_INFO',
+				(SELECT SUM(FRUTA_EXIINDUSTRIAL.KILOS_NETO_EXIINDUSTRIAL) FROM FRUTA_EXIINDUSTRIAL 
+				JOIN ESTANDAR_EINDUSTRIAL on ESTANDAR_EINDUSTRIAL.ID_ESTANDAR = FRUTA_EXIINDUSTRIAL.ID_ESTANDAR 
+				where ID_PROCESO = FRUTA_PROCESO.ID_PROCESO AND (AGRUPACION='1' OR AGRUPACION='2' OR AGRUPACION='3'))AS 'SUMA_INDUSTRIAL_INFO' 
+        FROM FRUTA_PROCESO                                                           
                                                 WHERE   ESTADO_REGISTRO = 1 
                                                 AND  ID_EMPRESA = '" . $EMPRESA . "' 
                                                 AND ID_PLANTA = '" . $PLANTA . "'
