@@ -309,6 +309,8 @@ if (isset($id_dato) && isset($accion_dato)) {
             $ESTADO = "" . $r['ESTADO'];
             $DIFERENCIAKILOS = $KILOSNETORECEPCION - $TOTALGUIA;
             $PORCENTAJEDIFERENCIA =  Round((($KILOSNETORECEPCION * 100) / $TOTALGUIA) - 100, 2);
+            //$DIFERENCIAKILOS = $KILOSBRUTORECEPCION - $TOTALGUIA;
+            //$PORCENTAJEDIFERENCIA =  Round((($KILOSBRUTORECEPCION * 100) / $TOTALGUIA) - 100, 2);
         endforeach;
     }
 
@@ -1120,6 +1122,16 @@ if (isset($_POST)) {
                                             </div>
                                         </form>
                                         <div class="col-auto">
+                                                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">Diferencia de Envases Guia</div>
+                                                    </div>
+                                                    <input type="hidden" name="DIFERENCIAENVASESGUIA" id="DIFERENCIAENVASESGUIA" value="<?php echo ($TOTALGUIA-$CANTIDADENVASERECEPCION); ?>" />
+                                                    <input type="text" class="form-control" placeholder="Diferencia de Envases Guia" id="DIFERENCIAENVASESGUIAv" name="DIFERENCIAENVASESGUIAv" value="<?php echo ($TOTALGUIA-$CANTIDADENVASERECEPCION); ?>" disabled />
+                                                </div>
+                                            </div>
+                                        <div class="col-auto">
                                             <label class="sr-only" for="inlineFormInputGroup">Username</label>
                                             <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
@@ -1151,6 +1163,20 @@ if (isset($_POST)) {
                                         </div>
                                     </div>
                                 </div>
+                                <?php 
+                                            $CONTROL_ALERTA = ($TOTALGUIA-$CANTIDADENVASERECEPCION);
+
+
+                                            if($CONTROL_ALERTA < 0){
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Los envases no cuadran con la Guia.</div>';
+                                            }elseif($CONTROL_ALERTA == 0){
+                                                echo '<div class="alert alert-success" role="alert"><i class="fa fa-check"></i> No hay diferencia de envases.</div>';
+                                            }else{
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Le quedan envases pendientes, segun Guia.</div>';
+                                            }
+                                            
+                                            
+                                            ?>
                                 <div class="card-body">
                                     <div class=" table-responsive">
                                         <table id="detalle" class="table-hover " style="width: 100%;">
