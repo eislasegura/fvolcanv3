@@ -198,6 +198,8 @@ if (isset($id_dato) && isset($accion_dato)) {
                 $TLEVANTAMIENTOCOLOR="badge badge-danger ";
             }else if($TLEVANTAMIENTO==2){
                 $TLEVANTAMIENTOCOLOR="badge badge-warning ";
+            }else if($TLEVANTAMIENTO==3){
+                $TLEVANTAMIENTOCOLOR="badge badge-success ";
             }else{
                 $TLEVANTAMIENTOCOLOR="";
             }
@@ -238,6 +240,8 @@ if (isset($id_dato) && isset($accion_dato)) {
                 $TLEVANTAMIENTOCOLOR="badge badge-danger ";
             }else if($TLEVANTAMIENTO==2){
                 $TLEVANTAMIENTOCOLOR="badge badge-warning ";
+            }else if($TLEVANTAMIENTO==3){
+                $TLEVANTAMIENTOCOLOR="badge badge-success ";
             }else{
                 $TLEVANTAMIENTOCOLOR="";
             }
@@ -281,6 +285,8 @@ if (isset($id_dato) && isset($accion_dato)) {
                 $TLEVANTAMIENTOCOLOR="badge badge-danger ";
             }else if($TLEVANTAMIENTO==2){
                 $TLEVANTAMIENTOCOLOR="badge badge-warning ";
+            }else if($TLEVANTAMIENTO==3){
+                $TLEVANTAMIENTOCOLOR="badge badge-success ";
             }else{
                 $TLEVANTAMIENTOCOLOR="";
             }
@@ -528,8 +534,9 @@ if (isset($_POST)) {
                                                 <input type="hidden" class="form-control" placeholder="TIPO TLEVANTAMIENTO" id="TLEVANTAMIENTOE" name="TLEVANTAMIENTOE" value="<?php echo $TLEVANTAMIENTO; ?>" />
                                                 <select class="form-control select2" id="TLEVANTAMIENTO" name="TLEVANTAMIENTO" style="width: 100%;" <?php echo $DISABLED; ?>  <?php echo $DISABLED3; ?>  <?php echo $DISABLEDFOLIO; ?>>
                                                     <option></option>
-                                                    <option value="1" <?php if ($TLEVANTAMIENTO == 1 ) {  echo "selected";  } ?>> Rechazado </option>
-                                                    <option value="2" <?php if ($TLEVANTAMIENTO == 2 ) {  echo "selected";  } ?>> Objetado </option> 
+                                                    <option value="1" <?php if ($TLEVANTAMIENTO == 1 ) {  echo "selected";  } ?>> Orden Comercial </option>
+                                                    <option value="2" <?php if ($TLEVANTAMIENTO == 2 ) {  echo "selected";  } ?>> Departamento de Calidad </option> 
+                                                    <option value="3" <?php if ($TLEVANTAMIENTO == 3 ) {  echo "selected";  } ?>> Otros </option> 
                                                 </select>
                                                 <label id="val_tlevantamiento" class="validacion"> </label>
                                             </div>

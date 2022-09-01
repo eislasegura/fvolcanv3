@@ -4047,6 +4047,37 @@ class EXIEXPORTACION_ADO
     }
 
 
+    public function buscarPorLevantamiento2($IDLEVANTAMIENTO)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("  SELECT * ,  
+                                                    existencia.FECHA_EMBALADO_EXIEXPORTACION AS 'EMBALADO',
+                                                    FORMAT(IFNULL(existencia.CANTIDAD_ENVASE_EXIEXPORTACION,0),0,'de_DE') AS 'ENVASE',
+                                                    FORMAT(IFNULL(existencia.KILOS_NETO_EXIEXPORTACION,0),2,'de_DE') AS 'NETO',
+                                                    FORMAT(IFNULL(existencia.KILOS_DESHIRATACION_EXIEXPORTACION,0),2,'de_DE') AS 'DESHIRATACION',
+                                                    FORMAT(IFNULL(existencia.PDESHIDRATACION_EXIEXPORTACION,0),2,'de_DE') AS 'PORCENTAJE',
+                                                    FORMAT(IFNULL(existencia.KILOS_BRUTO_EXIEXPORTACION,0),2,'de_DE') AS 'BRUTO'
+                                                FROM fruta_exiexportacion existencia, fruta_reapt detalle 
+                                                WHERE existencia.ID_EXIEXPORTACION = detalle.ID_EXIEXPORTACION     
+                                                AND existencia.ESTADO_REGISTRO = 1                                           
+                                                AND ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'              
+                                            ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
 
 
     //OBTENER TOTALES

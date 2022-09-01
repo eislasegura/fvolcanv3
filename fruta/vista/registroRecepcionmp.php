@@ -1071,8 +1071,8 @@ if (isset($_POST)) {
                                         <?php } ?>
                                         <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                             <div class="form-group">
-                                                <label>Diferencia Kilos</label>
-                                                <input type="text" class="form-control" placeholder="Diferencia Kilos" id="DIFERENCIAKILOS" name="DIFERENCIAKILOS" value="<?php echo $DIFERENCIAKILOS; ?>" disabled style='background-color: #eeeeee;' />
+                                                <label>Diferencia Envases</label>
+                                                <input type="text" class="form-control" placeholder="Diferencia Envases" id="DIFERENCIAKILOS" name="DIFERENCIAKILOS" value="<?php echo $DIFERENCIAKILOS; ?>" disabled style='background-color: #eeeeee;' />
                                                 <label id="val_dkilo" class="validacion"> </label>
                                             </div>
                                         </div>
