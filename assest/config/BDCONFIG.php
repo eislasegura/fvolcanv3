@@ -10,8 +10,8 @@ class BDCONFIG {
     {
         $this->HOST="localhost";
         $this->USER = "root";
-        $this->PASS="";
-        $this->DBNAME="mscode_fvolcan2";
+        $this->PASS="MikeGuazaky0212";
+        $this->DBNAME="mscode_fvolcan";
 
     }
     public function __GET($k){ return $this->$k; }
