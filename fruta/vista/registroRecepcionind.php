@@ -228,8 +228,8 @@ if (isset($_GET["a"])) {
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    //$IDOP = $_SESSION['parametro'];
-    //$OP = $_SESSION['parametro1'];
+    //$IDOP = $id_dato ;
+    //$OP = $accion_dato;
 
     $IDOP = $id_dato; //1239  //vacio
     $OP = $accion_dato; //EDITAR // vacio agregar
@@ -309,6 +309,8 @@ if (isset($id_dato) && isset($accion_dato)) {
             $ESTADO = "" . $r['ESTADO'];
             $DIFERENCIAKILOS = $KILOSNETORECEPCION - $TOTALGUIA;
             $PORCENTAJEDIFERENCIA =  Round((($KILOSNETORECEPCION * 100) / $TOTALGUIA) - 100, 2);
+            //$DIFERENCIAKILOS = $KILOSBRUTORECEPCION - $TOTALGUIA;
+            //$PORCENTAJEDIFERENCIA =  Round((($KILOSBRUTORECEPCION * 100) / $TOTALGUIA) - 100, 2);
         endforeach;
     }
 
@@ -1120,6 +1122,16 @@ if (isset($_POST)) {
                                             </div>
                                         </form>
                                         <div class="col-auto">
+                                                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">Diferencia de Envases Guia</div>
+                                                    </div>
+                                                    <input type="hidden" name="DIFERENCIAENVASESGUIA" id="DIFERENCIAENVASESGUIA" value="<?php echo ($TOTALGUIA-$CANTIDADENVASERECEPCION); ?>" />
+                                                    <input type="text" class="form-control" placeholder="Diferencia de Envases Guia" id="DIFERENCIAENVASESGUIAv" name="DIFERENCIAENVASESGUIAv" value="<?php echo ($TOTALGUIA-$CANTIDADENVASERECEPCION); ?>" disabled />
+                                                </div>
+                                            </div>
+                                        <div class="col-auto">
                                             <label class="sr-only" for="inlineFormInputGroup">Username</label>
                                             <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
@@ -1151,6 +1163,20 @@ if (isset($_POST)) {
                                         </div>
                                     </div>
                                 </div>
+                                <?php 
+                                            $CONTROL_ALERTA = ($TOTALGUIA-$CANTIDADENVASERECEPCION);
+
+
+                                            if($CONTROL_ALERTA < 0){
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Los envases no cuadran con la Guia.</div>';
+                                            }elseif($CONTROL_ALERTA == 0){
+                                                echo '<div class="alert alert-success" role="alert"><i class="fa fa-check"></i> No hay diferencia de envases.</div>';
+                                            }else{
+                                                echo '<div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Le quedan envases pendientes, segun Guia.</div>';
+                                            }
+                                            
+                                            
+                                            ?>
                                 <div class="card-body">
                                     <div class=" table-responsive">
                                         <table id="detalle" class="table-hover " style="width: 100%;">
@@ -1534,7 +1560,7 @@ if (isset($_POST)) {
                 
                 $AUSUARIO_ADO->agregarAusuario2($ARRAYRECEPCIONE[0]["NUMERO_RECEPCION"],1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Recepción Envases, Origen recepción Producto Industrial.","material_recepcione", $ARRAYRECEPCIONE[0]["ID_RECEPCION"],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
             }     
-            if ($_SESSION['parametro1'] == "crear") {
+            if ($accion_dato == "crear") {
                 $id_dato = $_REQUEST['IDP'];
                 $accion_dato = "crear";
                 echo '<script>
@@ -1550,7 +1576,7 @@ if (isset($_POST)) {
                     })
                 </script>';
             }
-            if ($_SESSION['parametro1'] == "editar") {
+            if ($accion_dato == "editar") {
                 $id_dato = $_REQUEST['IDP'];
                 $accion_dato = "editar";
                 echo '<script>
@@ -1755,7 +1781,7 @@ if (isset($_POST)) {
 
                 //REDIRECCIONAR A PAGINA registroRecepcionind.php
                 //SEGUNE EL TIPO DE OPERACIONS QUE SE INDENTIFIQUE EN LA URL                     
-                if ($_SESSION['parametro1'] == "crear") {
+                if ($accion_dato == "crear") {
                     $id_dato = $_REQUEST['IDP'];
                     $accion_dato = "ver";
                     echo '<script>
@@ -1771,7 +1797,7 @@ if (isset($_POST)) {
                         })
                     </script>';
                 }
-                if ($_SESSION['parametro1'] == "editar") {
+                if ($accion_dato == "editar") {
                     $id_dato = $_REQUEST['IDP'];
                     $accion_dato = "ver";
                     echo '<script>
