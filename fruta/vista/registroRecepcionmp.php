@@ -1069,7 +1069,7 @@ if (isset($_POST)) {
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                        <!--<div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                             <div class="form-group">
                                                 <label>Diferencia Envases</label>
                                                 <input type="text" class="form-control" placeholder="Diferencia Envases" id="DIFERENCIAKILOS" name="DIFERENCIAKILOS" value="<?php echo $DIFERENCIAKILOS; ?>" disabled style='background-color: #eeeeee;' />
@@ -1082,7 +1082,7 @@ if (isset($_POST)) {
                                                 <input type="text" class="form-control" placeholder="% " id="PORCENTAJEDIFERENCIA" name="PORCENTAJEDIFERENCIA" value="<?php echo $PORCENTAJEDIFERENCIA; ?>" disabled style='background-color: #eeeeee;' />
                                                 <label id="val_dkilo" class="validacion"> </label>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="row">
                                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
