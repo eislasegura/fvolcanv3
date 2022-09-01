@@ -170,9 +170,10 @@ class EINDUSTRIAL_ADO
                                                     INGRESO ,
                                                     MODIFICACION ,
                                                     TFRUTA_ESTANDAR, 
-                                                    ESTADO_REGISTRO 
+                                                    ESTADO_REGISTRO,
+                                                    AGRUPACION 
                                                 ) VALUES
-	       	( ?, ?, ?, ?, ?,    ?, ?,   ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(),  3, 1);";
+	       	( ?, ?, ?, ?, ?,    ?, ?,   ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(),  3, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -189,7 +190,8 @@ class EINDUSTRIAL_ADO
                         $EINDUSTRIAL->__GET('ID_EMPRESA'),
                         $EINDUSTRIAL->__GET('ID_PRODUCTO'),
                         $EINDUSTRIAL->__GET('ID_USUARIOI'),
-                        $EINDUSTRIAL->__GET('ID_USUARIOM')
+                        $EINDUSTRIAL->__GET('ID_USUARIOM'),
+                        $EINDUSTRIAL->__GET('AGRUPACION')
                     )
 
                 );
@@ -234,7 +236,8 @@ class EINDUSTRIAL_ADO
                     ID_ESPECIES= ?  ,   
                     ID_EMPRESA= ?  ,   
                     ID_PRODUCTO= ?  ,  
-                    ID_USUARIOM= ?     
+                    ID_USUARIOM= ? ,
+                    AGRUPACION= ?     
                 WHERE ID_ESTANDAR= ?;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -252,6 +255,7 @@ class EINDUSTRIAL_ADO
                         $EINDUSTRIAL->__GET('ID_EMPRESA'),
                         $EINDUSTRIAL->__GET('ID_PRODUCTO'),
                         $EINDUSTRIAL->__GET('ID_USUARIOM'),
+                        $EINDUSTRIAL->__GET('AGRUPACION'),
                         $EINDUSTRIAL->__GET('ID_ESTANDAR')
                     )
 

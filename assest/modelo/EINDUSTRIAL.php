@@ -24,6 +24,7 @@
         private   $ID_PRODUCTO;
         private	  $ID_USUARIOI; 
         private	  $ID_USUARIOM; 
+        private   $AGRUPACION;
 
         //FUNCIONES GET Y SET
         public function __GET($k){ return $this->$k; }

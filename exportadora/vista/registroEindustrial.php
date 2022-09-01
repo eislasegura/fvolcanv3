@@ -33,6 +33,7 @@ $TAINDUSTRIAL = "";
 $ESTADO = "";
 $PRODUCTO="";
 $CONTADOR=0;
+$AGRUPACION = "";
 
 $COBRO="";
 $TESTANDAR="";
@@ -209,6 +210,9 @@ if (isset($_POST)) {
     if (isset($_REQUEST['NOMBRESTANDAR'])) {
         $NOMBRESTANDAR = "" . $_REQUEST['NOMBRESTANDAR'];
     }
+    if (isset($_REQUEST['AGRUPACION'])) {
+        $AGRUPACION = $_REQUEST['AGRUPACION'];
+    }
     if (isset($_REQUEST['TESTANDAR'])) {
         $TESTANDAR = "" . $_REQUEST['TESTANDAR'];
         if($TESTANDAR==0){            
@@ -274,13 +278,25 @@ if (isset($_POST)) {
                     TESTANDAR = document.getElementById("TESTANDAR").selectedIndex;
                     ESPECIES = document.getElementById("ESPECIES").selectedIndex;
                  //   PRODUCTO = document.getElementById("PRODUCTO").selectedIndex;
+                 AGRUPACION = document.getElementById("AGRUPACION").selectedIndex;
 
 
                     document.getElementById('val_codigo').innerHTML = "";
                     document.getElementById('val_nombre').innerHTML = "";
                     document.getElementById('val_testandar').innerHTML = "";
                     document.getElementById('val_especies').innerHTML = "";
+                    document.getElementById('val_agrupacion').innerHTML = "";
                  //   document.getElementById('val_producto').innerHTML = "";
+
+
+                 if (AGRUPACION == null || AGRUPACION == 0) {
+                        document.form_reg_dato.AGRUPACION.focus();
+                        document.form_reg_dato.AGRUPACION.style.borderColor = "#FF0000";
+                        document.getElementById('val_agrupacion').innerHTML = "NO HA SELECIONADO ALTERNATIVA";
+                        return false;
+                    }
+                    document.form_reg_dato.AGRUPACION.style.borderColor = "#4AF575";
+             
 
 
                     if (CODIGOESTANDAR == null || CODIGOESTANDAR == 0) {
@@ -515,7 +531,22 @@ if (isset($_POST)) {
                                                         </select>
                                                         <label id="val_producto" class="validacion"> </label>
                                                     </div>
-                                                </div>                                            
+                                                </div> 
+                                                <div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-9 col-9 col-xs-9">
+                                                    <div class="form-group">
+                                                        <label>Agrupacion</label>
+                                                        <input type="hidden" class="form-control" placeholder="AGRUPACION" id="AGRUPACIONE" name="AGRUPACIONE" value="<?php echo $AGRUPACION; ?>" />
+                                                        <select class="form-control select2" id="AGRUPACION" name="AGRUPACION" style="width: 100%;" <?php echo $DISABLED; ?>>
+                                                            <option></option>
+                                                            <option value="1" <?php if ($AGRUPACION == 1 ) {  echo "selected";  } ?>> IQF </option>
+                                                            <option value="2" <?php if ($AGRUPACION == 2 ) {  echo "selected";  } ?>> Merma </option> 
+                                                            <option value="3" <?php if ($AGRUPACION == 3 ) {  echo "selected";  } ?>> Desecho </option>
+                                                            <option value="3" <?php if ($AGRUPACION == 4 ) {  echo "selected";  } ?>> Diferencias </option>
+                                                            <option value="3" <?php if ($AGRUPACION == 5 ) {  echo "selected";  } ?>> Otros </option> 
+                                                        </select>
+                                                        <label id="val_agrupacion" class="validacion"> </label>
+                                                    </div>
+                                                </div>                                           
                                             </div>
                                         </div>
                                         <!-- /.box-body -->                                        
@@ -562,6 +593,7 @@ if (isset($_POST)) {
                                                         <th>Codigo </th>
                                                         <th>Nombre </th>
                                                         <th>Tipo Estandar </th>
+                                                        <th>Agrupación </th>
                                                         <th>Cantidad Envase </th>
                                                         <th>Peso Envase </th>
                                                         <th>Peso Envase </th>
@@ -574,6 +606,19 @@ if (isset($_POST)) {
                                                     <?php foreach ($ARRAYESTANDAR as $r) : ?>
                                                         <?php 
                                                             $CONTADOR+=1;   
+                                                            switch($r["AGRUPACION"]){
+                                                                case 1: $AGRUPACIONT = 'IQF';
+                                                                    break;
+                                                                case 2: $AGRUPACIONT = 'Merma';
+                                                                    break;
+                                                                case 3: $AGRUPACIONT = 'Desecho';
+                                                                    break;
+                                                                case 4: $AGRUPACIONT = 'Diferencia';
+                                                                    break;
+                                                                case 5: $AGRUPACIONT = 'Otros';
+                                                                    break;
+                                                                default: $AGRUPACIONT = 'No Definido.';
+                                                            }
                                                             if($r["TESTANDAR"]==0){
                                                                 $NOMBRETESTANDAR="Proceso";
                                                                 $CANTIDADENVASE="No Aplica";
@@ -654,8 +699,10 @@ if (isset($_POST)) {
                                                             </td>
                                                             <td><?php echo $r['CODIGO_ESTANDAR']; ?></td>   
                                                             <td><?php echo $r['NOMBRE_ESTANDAR']; ?></td>    
-                                                            <td><?php echo $NOMBRETESTANDAR; ?></td>   
-                                                            <td><?php echo $CANTIDADENVASE; ?></td>   
+                                                            <td><?php echo $NOMBRETESTANDAR; ?></td> 
+                                                            <td><?php echo $AGRUPACIONT; ?></td>   
+                                                            <td><?php echo $CANTIDADENVASE; ?></td> 
+                                                              
                                                             <td><?php echo $PESOENVASE; ?></td>   
                                                             <td><?php echo $PESOPALLET; ?></td>  
                                                             <td><?php echo $NOMBRECOBRO; ?></td>    
@@ -706,6 +753,8 @@ if (isset($_POST)) {
                 $EINDUSTRIAL->__SET('ID_ESPECIES', $_REQUEST['ESPECIES']);
                 $EINDUSTRIAL->__SET('ID_EMPRESA', $_REQUEST['EMPRESA']);
                 $EINDUSTRIAL->__SET('ID_PRODUCTO', $_REQUEST['PRODUCTO']);
+                $EINDUSTRIAL->__SET('AGRUPACION', $_REQUEST['AGRUPACION']);
+                //echo '<script>alert("'.$_REQUEST['AGRUPACION'].'");</script>';
                 $EINDUSTRIAL->__SET('ID_USUARIOI', $IDUSUARIOS);
                 $EINDUSTRIAL->__SET('ID_USUARIOM', $IDUSUARIOS);
                 //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
@@ -748,6 +797,8 @@ if (isset($_POST)) {
                 $EINDUSTRIAL->__SET('ID_ESPECIES', $_REQUEST['ESPECIES']);
                 $EINDUSTRIAL->__SET('ID_EMPRESA', $_REQUEST['EMPRESA']);
                 $EINDUSTRIAL->__SET('ID_PRODUCTO', $_REQUEST['PRODUCTO']);
+                $EINDUSTRIAL->__SET('AGRUPACION', $_REQUEST['AGRUPACION']);
+                //echo '<script>alert("'.$_REQUEST['AGRUPACION'].'");</script>';
                 $EINDUSTRIAL->__SET('ID_USUARIOM', $IDUSUARIOS);
                 $EINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ID']);
                 //LLAMADA AL METODO DE EDICION DEL CONTROLADOR
