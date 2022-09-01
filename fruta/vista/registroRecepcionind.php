@@ -228,8 +228,8 @@ if (isset($_GET["a"])) {
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    //$IDOP = $_SESSION['parametro'];
-    //$OP = $_SESSION['parametro1'];
+    //$IDOP = $id_dato ;
+    //$OP = $accion_dato;
 
     $IDOP = $id_dato; //1239  //vacio
     $OP = $accion_dato; //EDITAR // vacio agregar
@@ -1560,7 +1560,7 @@ if (isset($_POST)) {
                 
                 $AUSUARIO_ADO->agregarAusuario2($ARRAYRECEPCIONE[0]["NUMERO_RECEPCION"],1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Recepción Envases, Origen recepción Producto Industrial.","material_recepcione", $ARRAYRECEPCIONE[0]["ID_RECEPCION"],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
             }     
-            if ($_SESSION['parametro1'] == "crear") {
+            if ($accion_dato == "crear") {
                 $id_dato = $_REQUEST['IDP'];
                 $accion_dato = "crear";
                 echo '<script>
@@ -1576,7 +1576,7 @@ if (isset($_POST)) {
                     })
                 </script>';
             }
-            if ($_SESSION['parametro1'] == "editar") {
+            if ($accion_dato == "editar") {
                 $id_dato = $_REQUEST['IDP'];
                 $accion_dato = "editar";
                 echo '<script>
@@ -1781,7 +1781,7 @@ if (isset($_POST)) {
 
                 //REDIRECCIONAR A PAGINA registroRecepcionind.php
                 //SEGUNE EL TIPO DE OPERACIONS QUE SE INDENTIFIQUE EN LA URL                     
-                if ($_SESSION['parametro1'] == "crear") {
+                if ($accion_dato == "crear") {
                     $id_dato = $_REQUEST['IDP'];
                     $accion_dato = "ver";
                     echo '<script>
@@ -1797,7 +1797,7 @@ if (isset($_POST)) {
                         })
                     </script>';
                 }
-                if ($_SESSION['parametro1'] == "editar") {
+                if ($accion_dato == "editar") {
                     $id_dato = $_REQUEST['IDP'];
                     $accion_dato = "ver";
                     echo '<script>
