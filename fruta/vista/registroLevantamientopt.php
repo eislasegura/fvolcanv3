@@ -625,7 +625,7 @@ if (isset($_POST)) {
                                         </div>
                                         <div class="btn-group col-sm-4">
                                             <?php if ($OP != "") : ?>
-                                                <button type="button" class="btn btn-primary  " data-toggle="tooltip" title="Informe" id="defecto" name="tarjas" <?php echo $DISABLEDFOLIO; ?> Onclick="abrirPestana('../../assest/documento/informeLevantamientopt.php?parametro=<?php echo $IDOP; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
+                                                <button type="button" class="btn btn-primary  " data-toggle="tooltip" title="Informe" id="defecto" name="tarjas" <?php if ($ESTADO == "1") { echo "disabled"; } ?>  <?php echo $DISABLEDFOLIO; ?> Onclick="abrirPestana('../../assest/documento/informeLevantamientopt.php?parametro=<?php echo $IDOP; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
                                                     <i class="fa fa-file-pdf-o"></i> Informe
                                                 </button>
                                             <?php endif ?>
