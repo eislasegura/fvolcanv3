@@ -59,6 +59,7 @@ $BORDER = "";
 $CONTADOR = 0;
 $SINONETO = "";
 $SINO = "";
+$EXCEDE_ENVASES = 0;
 $SINOENVASE="";
 $MENSAJE = "";
 $IDOP = "";
@@ -437,6 +438,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
             $ARRAYPROMEDIO = $_REQUEST['PROMEDIO'];
             $ARRAYPESOPALLET = $_REQUEST['PESOPALLET'];
 
+            
+
 
             if (isset($_REQUEST['IDCAJA'])) {
                 foreach ($ARRAYIDCAJA as $ID) :
@@ -450,27 +453,31 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                     $PROMEDIO = $ARRAYPROMEDIO[$IDNETO];
                     $PESOPALLET = $ARRAYPESOPALLET[$IDNETO];
 
+                    
+                   
+                   
 
-                    if ($ENVASE != "") {
-                        $SINO = 0;
-                        $MENSAJE = $MENSAJE;
-                        if ($SINO <= 0) {
-                            $SINOENVASE = 1;
-                            $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL . ": Solo deben ingresar un valor mayor a zero.";
-                        } else {
-                            if ($ENVASE >= $ENVASEORIGINAL) {
-                                $SINO = 1;
-                                $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL . ":Los kilos despachados no puede ser mayor o igual los kilos netos.";
+                        if ($ENVASE != "") {
+                            $SINO = 0;
+                            $MENSAJE = $MENSAJE;
+                            if ($SINO <= 0) {
+                                $SINOENVASE = 1;
+                                $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL; //. ": Solo deben ingresar un valor mayor a zero.";
                             } else {
-                                $SINO = 0;
-                                $MENSAJE = $MENSAJE;
+                                if ($ENVASE > $ENVASEORIGINAL) {
+                                    $SINO = 1;
+                                    $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL . ": Los envases no puede ser mayor a los disponibles por el FOLIO.";
+                                } else {
+                                    $SINO = 0;
+                                    $MENSAJE = $MENSAJE;
+                                }
                             }
+                        } else {
+                            $SINO = 1;
+                            // $MENSAJE = $MENSAJE . " <br> " . $FOLIOORIGINAL . ": SE DEBE INGRESAR UN DATO EN KILOS DESPACHO";
                         }
-                    } else {
-                        $SINO = 1;
-                        // $MENSAJE = $MENSAJE . " <br> " . $FOLIOORIGINAL . ": SE DEBE INGRESAR UN DATO EN KILOS DESPACHO";
-                    }
-
+             
+                    
                     if ($SINO == 0) {
                         $ARRAYVERESTANDAR = $ERECEPCION_ADO->verEstandar($ESTANDAR);
                         $PESOENVASEESTANDAR = $ARRAYVERESTANDAR[0]["PESO_ENVASE_ESTANDAR"];
@@ -594,7 +601,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                     if ($MENSAJE == "") {                
                         $id_dato =  $_REQUEST['IDP'];
                         $accion_dato =  $_REQUEST['OPP'];
-                        echo '<script>
+                       
+                            echo '<script>
                             Swal.fire({
                                 icon:"success",
                                 title:"Accion realizada",
@@ -606,10 +614,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
+                        
+                        
                     }else{                        
                         $id_dato =  $_REQUEST['IDP'];
                         $accion_dato =  $_REQUEST['OPP'];
-                        echo '<script>
+
+                        
+                            echo '<script>
                             Swal.fire({
                                 icon:"success",
                                 title:"Accion realizada",
@@ -621,6 +633,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                 location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
+                        
+                        
                     }
                 }else{                        
                     if($MENSAJE!=""){
