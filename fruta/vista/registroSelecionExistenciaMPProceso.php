@@ -439,7 +439,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
             $ARRAYPESOPALLET = $_REQUEST['PESOPALLET'];
 
             
-
+            $EXCEDE_ENVASES = 0;
 
             if (isset($_REQUEST['IDCAJA'])) {
                 foreach ($ARRAYIDCAJA as $ID) :
@@ -454,27 +454,37 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                     $PESOPALLET = $ARRAYPESOPALLET[$IDNETO];
 
                     
+
+                    
                    
                    
 
-                        if ($ENVASE != "") {
-                            $SINO = 0;
-                            $MENSAJE = $MENSAJE;
-                            if ($SINO <= 0) {
-                                $SINOENVASE = 1;
-                                $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL; //. ": Solo deben ingresar un valor mayor a zero.";
-                            } else {
-                                if ($ENVASE > $ENVASEORIGINAL) {
-                                    $SINO = 1;
-                                    $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL . ": Los envases no puede ser mayor a los disponibles por el FOLIO.";
-                                } else {
-                                    $SINO = 0;
-                                    $MENSAJE = $MENSAJE;
-                                }
-                            }
-                        } else {
+                        
+
+                        if($ENVASE > $ENVASEORIGINAL){
+                            $EXCEDE_ENVASES = 1;
                             $SINO = 1;
-                            // $MENSAJE = $MENSAJE . " <br> " . $FOLIOORIGINAL . ": SE DEBE INGRESAR UN DATO EN KILOS DESPACHO";
+                            $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL . ": Los envases no puede ser mayor a los disponibles por el FOLIO.";
+                        }else{
+                            if ($ENVASE != "") {
+                                $SINO = 0;
+                                $MENSAJE = $MENSAJE;
+                                if ($SINO <= 0) {
+                                    $SINOENVASE = 1;
+                                    $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL; //. ": Solo deben ingresar un valor mayor a zero.";
+                                } else {
+                                    if ($ENVASE > $ENVASEORIGINAL) {
+                                        $SINO = 1;
+                                        $MENSAJE = $MENSAJE . "  " . $FOLIOORIGINAL . ": Los envases no puede ser mayor a los disponibles por el FOLIO.";
+                                    } else {
+                                        $SINO = 0;
+                                        $MENSAJE = $MENSAJE;
+                                    }
+                                }
+                            } else {
+                                $SINO = 1;
+                                // $MENSAJE = $MENSAJE . " <br> " . $FOLIOORIGINAL . ": SE DEBE INGRESAR UN DATO EN KILOS DESPACHO";
+                            }
                         }
              
                     
@@ -510,7 +520,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                             "_TIPO_FOLIO:MATERIA PRIMA_DESPACHO:" . $_REQUEST['IDP'] . "_FOLIO:" . $FOLIOORIGINAL;
 
                         //CREA UNA FOLIO NUEVO CON EL RESTANTE DE LOS ENVASES
-                        $ARRAYVEREXITENICA = $EXIMATERIAPRIMA_ADO->verEximateriaprima($IDEXISTENCIA);
+                        if($EXCEDE_ENVASES == 0){
+                            $ARRAYVEREXITENICA = $EXIMATERIAPRIMA_ADO->verEximateriaprima($IDEXISTENCIA);
                         foreach ($ARRAYVEREXITENICA as $r) :
 
                             $EXIMATERIAPRIMA->__SET('FOLIO_EXIMATERIAPRIMA', $r['FOLIO_EXIMATERIAPRIMA']);
@@ -595,9 +606,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
 
 
                         endforeach;
+                        }
+                        
                     }
-                endforeach;                
-                if ($SINNO == 0) {    
+                endforeach;           
+                
+                
+
+                if ($SINO == 0) {    
                     if ($MENSAJE == "") {                
                         $id_dato =  $_REQUEST['IDP'];
                         $accion_dato =  $_REQUEST['OPP'];
@@ -668,7 +684,11 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                             })
                         </script>';
                     }
-                }                
+                }  
+                
+                
+
+
             }
         }
         ?>
