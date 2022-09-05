@@ -150,6 +150,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
 
     $ARRAYEXISTENCIATOTALESREEMBALAJE = $EXIEXPORTACION_ADO->obtenerTotalesReembalaje($IDP);
     $TOTALNETOE = $ARRAYEXISTENCIATOTALESREEMBALAJE[0]['DESHIRATACION'];
+    $NETOTOTALACTUAL = $ARRAYEXISTENCIATOTALESREEMBALAJE[0]['NETO'];
     $ARRATDINDUSTRIALTOTALREEMBALAJE = $DRINDUSTRIAL_ADO->obtenerTotales($IDP);
     $ARRATDINDUSTRIALTOTALREEMBALAJE2 = $DRINDUSTRIAL_ADO->obtenerTotales2($IDP);
     $TOTALNETOIND = $ARRATDINDUSTRIALTOTALREEMBALAJE[0]['NETO'];
@@ -158,7 +159,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $ARRAYDEXPORTACIONTOTALREEMBALAJE2 = $DREXPORTACION_ADO->obtenerTotales2($IDP);
     $TOTALDESHIDRATACIONEX = $ARRAYDEXPORTACIONTOTALREEMBALAJE[0]['DESHIDRATACION'];
     $TOTALDESHIDRATACIONEXV = $ARRAYDEXPORTACIONTOTALREEMBALAJE2[0]['DESHIDRATACION'];    
-    $DIFERENCIAKILOSNETOEXPO = round($TOTALNETOE - ($TOTALDESHIDRATACIONEX + $TOTALNETOIND), 2);
+    $DIFERENCIAKILOSNETOEXPO = round($NETOTOTALACTUAL - ($TOTALDESHIDRATACIONEX + $TOTALNETOIND), 2);
 
 
     $ARRAYREEMBALAJE = $REEMBALAJE_ADO->verReembalaje($IDP);
@@ -513,7 +514,7 @@ if ($_POST) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="btn-group btn-block col-6" role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>'&urlo=<?php echo $urlo_dato; ?>);">
+                                        <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>);">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
                                         <?php if ($OP == "") { ?>

@@ -147,12 +147,14 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Tipo Manejo</th>
                                                         <!-- <th>Tipo Tratamiento 1 </th>
                                                         <th>Tipo Tratamiento 2 </th>
-                                                        <th>Gasificacion</th>
+                                                        
                                                         <th>Ingreso</th>
                                                         <th>Modificación</th>
                                                         <th>Empresa</th>
                                                         <th>Planta</th>
-                                                        <th>Temporada</th> -->
+                                                         -->
+                                                         <th>Gasificacion</th>
+                                                         <th>Temporada</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -380,11 +382,12 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             <td><?php echo $NOMBRETMANEJO; ?></td>
                                                             <!-- <td><?php echo $NOMBRETTRATAMIENTO1; ?></td>
                                                             <td><?php echo $NOMBRETTRATAMIENTO2; ?></td>
-                                                            <td><?php echo $GASIFICADO; ?></td>
+                                                            
                                                             <td><?php echo $r['INGRESO']; ?></td>
                                                             <td><?php echo $r['MODIFICACION']; ?></td>
                                                             <td><?php echo $NOMBREEMPRESA; ?></td>
                                                             <td><?php echo $NOMBREPLANTA; ?></td> -->
+                                                            <td><?php echo $GASIFICADO; ?></td>
                                                             <td><?php echo $NOMBRETEMPORADA; ?></td>
                                                         </tr>
                                                     <?php endforeach; ?>
