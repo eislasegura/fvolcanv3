@@ -427,7 +427,7 @@ if (isset($_POST)) {
                                                     <?php if ($ARRAYPRODUCTO) {    ?>
                                                         <option value="<?php echo $r['ID_PRODUCTO']; ?>" <?php if ($PRODUCTO == $r['ID_PRODUCTO']) {
                                                                                                                 echo "selected";
-                                                                                                            } ?>> <?php echo $r['NOMBRE_PRODUCTO'] ?> </option>
+                                                                                                            } ?>> <?php echo $r['CODIGO_PRODUCTO'].' - '.$r['NOMBRE_PRODUCTO'] ?> </option>
                                                     <?php } else { ?>
                                                         <option>No Hay Datos Registrados </option>
                                                     <?php } ?>
