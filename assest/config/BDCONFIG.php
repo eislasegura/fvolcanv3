@@ -10,7 +10,7 @@ class BDCONFIG {
     {
         $this->HOST="localhost";
         $this->USER = "root";
-        $this->PASS="MikeGuazaky0212";
+        $this->PASS="";
         $this->DBNAME="mscode_fvolcan";
 
     }
