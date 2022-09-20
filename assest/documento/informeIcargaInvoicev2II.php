@@ -237,7 +237,7 @@ if($ARRAYICARGA){
     $ARRAYUSUARIO2 = $USUARIO_ADO->ObtenerNombreCompleto($IDUSUARIOI);
     $NOMBRERESPONSABLE = $ARRAYUSUARIO2[0]["NOMBRE_COMPLETO"];
     
-    
+    $ARRAYGGNPRODUCTOR=$DESPACHOEX_ADO->buscarGGNxCarga($IDOP);
     $ARRAYDESPACHOEX=$DESPACHOEX_ADO->buscarDespachoExPorIcarga($IDOP);
     $ARRAYDESPACHOEX2=$DESPACHOEX_ADO->buscarDespachoExPorIcargaAgrupadoPorPlanta($IDOP);
     if($ARRAYDESPACHOEX){
@@ -807,11 +807,31 @@ if($COSTOFLETEICARGA!=""){
             
             
 
-$html = $html . '
+                    $html = $html . '
     
-  </tbody>
-  </table>
-<br><br><br><br><br>
+                    </tbody>';
+                  
+                  if ($ARRAYGGNPRODUCTOR) { 
+                    $html = $html . '
+                    </table>
+                      <table border="0" cellspacing="0" cellpadding="0">
+                          <thead>
+                              <tr>
+                                <th class="color left ">Lista GGN</th>  
+                              </tr>
+                          </thead>
+                          <tbody>';
+                  foreach ($ARRAYGGNPRODUCTOR as $ggn) :
+                  $html = $html . '             
+                      <tr class="bt">
+                          <th class="left">'.$ggn['GGN_PRODUCTOR'].'</th>
+                      </tr>
+                  ';
+                  endforeach;     
+                  $html = $html . '</tbody>
+                    </table>';
+                  } 
+                  $html = $html . '<br><br><br><br><br>
   <div id="details" class="clearfix">
 
         <div id="client">
