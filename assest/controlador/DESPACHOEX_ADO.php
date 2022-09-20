@@ -933,6 +933,33 @@ class DESPACHOEX_ADO
             die($e->getMessage());
         }
     }
+
+
+    public function buscarGGNxCarga($IDICARGA)
+    {
+        try {
+            
+            $datos = $this->conexion->prepare("
+            SELECT ID_EXIEXPORTACION, FOLIO_EXIEXPORTACION, FOLIO_AUXILIAR_EXIEXPORTACION, FECHA_EMBALADO_EXIEXPORTACION, CANTIDAD_ENVASE_EXIEXPORTACION, KILOS_NETO_EXIEXPORTACION, GGN_PRODUCTOR
+FROM fruta_exiexportacion a
+JOIN fruta_productor b on b.id_productor = a.id_productor 
+JOIN fruta_despachoex c ON c.ID_DESPACHOEX = a.ID_DESPACHOEX
+WHERE c.ID_ICARGA=  " . $IDICARGA . " 
+AND a.ESTADO BETWEEN 7 AND  8
+AND a.ESTADO_REGISTRO = 1; ");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     
     public function buscarDespachoExPorIcargaAgrupadoPorPlanta($IDICARGA)
     {
