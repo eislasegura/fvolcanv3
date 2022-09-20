@@ -284,7 +284,8 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                                 <i class="fa fa-file-pdf-o"></i><br> Instruction English
                                                                                         </button>                                                                                 
                                                                                     </div>    
-                                                                                    <hr>             
+                                                                                    <hr> 
+                                
                                                                                     <div class="btn-group btn-block col-12" role="group" aria-label="Acciones generales"> 
                                                                                         <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Report Invoice" Onclick="abrirPestana('../../assest/documento/informeIcargaInvoice.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
                                                                                             <i class="fa fa-file-pdf-o"></i><br> Invoice
@@ -292,7 +293,17 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                         <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Report Invoice v2" Onclick="abrirPestana('../../assest/documento/informeIcargaInvoicev2.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
                                                                                                 <i class="fa fa-file-pdf-o"></i><br> Invoice v2
                                                                                         </button>                                                                                 
-                                                                                    </div>     
+                                                                                    </div> 
+                                                                                    <hr> 
+                                
+                                                                                    <div class="btn-group btn-block col-12" role="group" aria-label="Acciones generales"> 
+                                                                                        <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Report Invoice" Onclick="abrirPestana('../../assest/documento/informeIcargaInvoiceII.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
+                                                                                            <i class="fa fa-file-pdf-o"></i><br> Invoice II
+                                                                                        </button>    
+                                                                                        <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Report Invoice v2" Onclick="abrirPestana('../../assest/documento/informeIcargaInvoicev2II.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
+                                                                                                <i class="fa fa-file-pdf-o"></i><br> Invoice v2 II
+                                                                                        </button>                                                                                 
+                                                                                    </div>   
                                                                                     <hr>                         
                                                                                     <div class="btn-group btn-block col-12" role="group" aria-label="Acciones generales">
                                                                                         <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Informe Carga Real" Onclick="abrirPestana('../../assest/documento/informeICargaReal.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
