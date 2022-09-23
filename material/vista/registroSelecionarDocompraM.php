@@ -63,17 +63,34 @@ $MENSAJE = "";
 
 //INICIALIZAR ARREGLOS
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
 
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 //include_once "../../assest/config/validarDatosUrlD.php";
 
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
-    $URLP = $_SESSION['urlO'];
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
+    $URLP = $urlo_dato;
     $ARRAYRECEPCION = $RECEPCIONM_ADO->verRecepcion($IDP);
     if ($ARRAYRECEPCION) {
         $SELECIONARDOCOMPRA = $DOCOMPRA_ADO->listarDocompraPorOcompraCBX($ARRAYRECEPCION[0]["ID_OCOMPRA"]);
@@ -228,7 +245,7 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                                     <!-- /.box-body -->
                                     <div class="box-footer">
                                         <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                            <button type="button"  class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op');">
+                                            <button type="button"  class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <button type="submit"  class="btn btn-primary " data-toggle="tooltip" title="Agregar"  name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
@@ -266,8 +283,8 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                     $SELECIONARDOCOMPRAID = $_REQUEST['SELECIONARDOCOMPRAID'];
                 } else {
                     $SINO = "1";
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];
                     echo '<script>
                         Swal.fire({
                             icon:"warning",
@@ -277,7 +294,7 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                             confirmButtonText:"Cerrar",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href = "registroSelecionarDocompraM.php?op";                            
+                            location.href = "registroSelecionarDocompraM.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                         })
                     </script>';
                 }
@@ -306,8 +323,8 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                     endforeach;
 
 
-                    $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                    $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                    $id_dato =  $_REQUEST['IDP'];
+                    $accion_dato =  $_REQUEST['OPP'];
                     echo '<script>
                         Swal.fire({
                             icon:"success",
@@ -317,7 +334,7 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
                             confirmButtonText:"Volver a recepción",
                             closeOnConfirm:false
                         }).then((result)=>{
-                            location.href="' . $_REQUEST['URLP'] . '.php?op";                        
+                            location.href="' . $_REQUEST['URLP'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                         })
                     </script>';
                 }
