@@ -120,14 +120,44 @@ $ARRAYTUMEDIDA = $TUMEDIDA_ADO->listarTumedidaPorEmpresaCBX($EMPRESAS);
 include_once "../../assest/config/validarDatosUrlD.php";
 include_once "../../assest/config/datosUrlDT.php";
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
 
 
 
 //OBTENCION DE DATOS ENVIADOR A LA URL
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
-    $URLP = $_SESSION['urlO'];
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
+    $URLP = $urlo_dato;
     
     $ARRAYRECEPCION = $RECEPCIONM_ADO->verRecepcion($IDP);
     if ($ARRAYRECEPCION) {
@@ -136,14 +166,14 @@ if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_S
 }
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_dato) && isset($acciond_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dparametro'];
-    $OP = $_SESSION['dparametro1'];
+    $IDOP = $idd_dato;
+    $OP = $acciond_dato;
 
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
-    $URLP = $_SESSION['urlO'];
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
+    $URLP = $urlo_dato;
 
     //IDENTIFICACIONES DE OPERACIONES
     $ARRAYDTRECEPCION = $TARJAM_ADO->listarTarjaPorDrecepcion2CBX($IDOP);
@@ -459,7 +489,7 @@ if (isset($_POST)) {
                                 <!-- /.box-body -->                             
                                 <div class="box-footer">
                                         <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op');">
+                                            <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
                                             <?php if ($OP == "") { ?>
@@ -679,7 +709,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"cerrar"
                     }).then((result)=>{
-                        location.href ="registroDrecepcionmDocompra.php?op";                        
+                        location.href ="registroDrecepcionmDocompra.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'&idd='.$idd_dato.'&ad='.$acciond_dato.'";                        
                     })
                 </script>';
             }
@@ -691,8 +721,8 @@ if (isset($_POST)) {
 
                 $AUSUARIO_ADO->agregarAusuario2("NULL",2,4,"".$_SESSION["NOMBRE_USUARIO"].", Deshabilitar  detalle de Recepción Materiales.","material_drecepcionm", $_REQUEST['IDD'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
-                $_SESSION["parametro"] =  $_REQUEST['IDP'];
-                $_SESSION["parametro1"] =  $_REQUEST['OPP'];
+                $id_dato =  $_REQUEST['IDP'];
+                $accion_dato =  $_REQUEST['OPP'];
                 echo '<script>
                     Swal.fire({
                         icon:"error",
