@@ -16,7 +16,7 @@ if (isset($_REQUEST['CREARDURL'])) {
     $acciondt_dato = "";
 
     
-    $_SESSION["urlO"] = $_REQUEST['URLO'];
+    //$_SESSION["urlO"] = $_REQUEST['URLO'];
     echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLT'] . ".php?op&id=".$id_dato."&a=".$accion_dato."&idd=".$idd_dato."&ad=".$acciond_dato."&urlo=".$urlo_dato."&iddt=".$iddt_dato."&adt=".$acciondt_dato."&urlod=".$urlod_dato."';</script>";
 }
 if (isset($_REQUEST['VERDURL'])) {
