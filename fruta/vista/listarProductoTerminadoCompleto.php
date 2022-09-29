@@ -181,9 +181,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <!-- <th>Especies</th> -->
                                                         <th>Variedad</th>
                                                         <th>Cantidad Envase</th>
-                                                        <!-- <th>Total Envase</th>
+                                                        <!-- <th>Total Envase</th>-->
                                                         <th>Kilos Neto</th>
-                                                        <th>% Deshidratacion</th>
+                                                        <!--<th>% Deshidratacion</th>
                                                         <th>Kilos Deshidratacion</th>
                                                         <th>Kilos Bruto</th>
                                                         <th>Número Recepción </th>
@@ -549,9 +549,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 <!-- <td><?php /*echo $NOMBRESPECIES; */?></td> -->
                                                                 <td><?php echo $NOMBREVESPECIES; ?></td>
                                                                 <td><?php echo $r['ENVASE']; ?></td>
-                                                                <!--  <th><?php /*echo $s['ENVASE']; ?></th>
+                                                                <!--  <th><?php //echo $s['ENVASE']; ?></th>-->
                                                                 <td><?php echo $r['NETO']; ?></td>
-                                                                <td><?php echo $r['PORCENTAJE']; ?></td>
+                                                                <!--<td><?php /*echo $r['PORCENTAJE']; ?></td>
                                                                 <td><?php echo $r['DESHIRATACION']; ?></td>
                                                                 <td><?php echo $r['BRUTO']; ?></td>
                                                                 <td><?php echo $NUMERORECEPCION; ?></td>
