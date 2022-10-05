@@ -545,10 +545,12 @@ $html = $html . '
                 <th class="color left"> </th>
                 <th class="color center"> </th>
                 <th class="color center"> </th>
-                <th class="color center"> </th>
+                
                 <th class="color right">Sub Total </th>
                 <th class="color center"> ' . $TOTALENVASEEXV . '</th>
+                
                 <th class="color center "> ' . $TOTALNETOEX . ' </th>
+                <th class="color center"> </th>
                 <th class="color center "> ' . $TOTALDESHIDRATACIONEXV . ' </th>
                 <th class="color center "> ' . number_format($PEXPORTACIONEXPOEXDESHI, 2, ",", ".") . '% </th>
                 <th class="color center ">  </th>
