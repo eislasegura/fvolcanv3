@@ -577,7 +577,7 @@ if (isset($_POST)) {
                                     <div class=" table-responsive">
                                         <table id="detalle" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>
                                                         <a href="#" class="text-warning hover-warning">
                                                             Folio
@@ -615,7 +615,7 @@ if (isset($_POST)) {
                                                             $NOMBRETUMEDIDA = "Sin Dato";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td>
                                                                 <a href="#" class="text-warning hover-warning">
                                                                     <?php echo $s['FOLIO_TARJA']; ?>

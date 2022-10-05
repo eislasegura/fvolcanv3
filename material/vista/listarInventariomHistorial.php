@@ -446,7 +446,7 @@ include_once "../../assest/config/datosUrl.php";
                                                 <?php endforeach; ?>
                                             </tbody>                                            
                                             <tfoot>
-                                                <tr class="text-left" id="filtro">
+                                                <tr class="text-center" id="filtro">
                                                     <th>N° Folio </th>
                                                     <th>Estado </th>
                                                     <th>Codigo Producto </th>

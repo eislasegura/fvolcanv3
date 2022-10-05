@@ -166,7 +166,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="despachomm" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Número </th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciónes</th>
@@ -324,7 +324,7 @@ include_once "../../assest/config/datosUrLP.php";
 
                                                     $ARRAYMGUIAM = $MGUIAM_ADO->listarMguiaDespachoCBX($r['ID_DESPACHO']);
                                                     ?>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td> <?php echo $r['NUMERO_DESPACHO']; ?> </td>
                                                         <td>
                                                             <?php if ($r['ESTADO'] == "0") { ?>
