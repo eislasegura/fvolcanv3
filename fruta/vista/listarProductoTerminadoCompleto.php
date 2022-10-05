@@ -169,20 +169,23 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Embalado </th>
+                                                        <th>Código Estandar</th>
+                                                        <th>Envase/Estandar</th>
+                                                        <th>Tipo Calibre </th>
+                                                        <th>Cantidad Envase</th>
+                                                        <th>Kilos Neto</th>
+                                                        <th>CSG</th>
+                                                        <th>Productor</th>
+                                                        <th>Variedad</th>
+                                                        <th>Fecha Proceso </th>
+                                                        <th>Tipo Manejo</th>
+                                                        <th>Numero Referencia</th>
                                                         <!-- <th>Estado </th>
                                                         <th>Estado Calidad</th> 
                                                         <th>Condición </th>
                                                         <th>Días</th> -->
-                                                        <th>Código Estandar</th>
-                                                        <th>Envase/Estandar</th>
-                                                        <th>Tipo Calibre </th>
-                                                        <th>CSG</th>
-                                                        <th>Productor</th>
                                                         <!-- <th>Especies</th> -->
-                                                        <th>Variedad</th>
-                                                        <th>Cantidad Envase</th>
-                                                        <!-- <th>Total Envase</th>-->
-                                                        <th>Kilos Neto</th>
+                                                        <!-- <th>Total Envase</th>-->   
                                                         <!--<th>% Deshidratacion</th>
                                                         <th>Kilos Deshidratacion</th>
                                                         <th>Kilos Bruto</th>
@@ -196,7 +199,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Número Repaletizaje </th>
                                                         <th>Fecha Repaletizaje </th>
                                                         <th>Número Proceso </th>
-                                                        <th>Fecha Proceso </th>
+                                                       
                                                         <th>Tipo Proceso </th>
                                                         <th>Número Reembalaje </th>
                                                         <th>Fecha Reembalaje </th>
@@ -204,7 +207,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Número Inspección </th>
                                                         <th>Fecha Inspección </th>
                                                         <th>Tipo Inspección </th> -->
-                                                        <th>Tipo Manejo</th>
+                                                        
                                                         <!-- <th>Tipo Calibre </th>
                                                         <th>Tipo Embalaje </th>
                                                         <th>Stock</th>
@@ -218,7 +221,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Empresa</th>
                                                         <th>Planta</th>
                                                         <th>Temporada</th> -->
-                                                        <th>Numero Referencia</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -537,56 +540,57 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                     </span>
                                                                 </td>
                                                                 <td><?php echo $r['EMBALADO']; ?></td>
-                                                                <!-- <td><?php /*echo $ESTADO; ?></td>
-                                                                <td><?php echo $COLOR; ?></td>
-                                                                <td><?php echo $ESTADOSAG; ?></td>
-                                                                <td><?php echo $r['DIAS']; */?></td> -->
                                                                 <td><?php echo $CODIGOESTANDAR; ?></td>
                                                                 <td><?php echo $NOMBREESTANDAR; ?></td>
                                                                 <td><?php echo $NOMBRETCALIBRE; ?></td>
+                                                                <td><?php echo $r['ENVASE']; ?></td>
+                                                                <td><?php echo $r['NETO']; ?></td>
                                                                 <td><?php echo $CSGPRODUCTOR; ?></td>
                                                                 <td><?php echo $NOMBREPRODUCTOR; ?></td>
-                                                                <!-- <td><?php /*echo $NOMBRESPECIES; */?></td> -->
                                                                 <td><?php echo $NOMBREVESPECIES; ?></td>
-                                                                <td><?php echo $r['ENVASE']; ?></td>
-                                                                <!--  <th><?php //echo $s['ENVASE']; ?></th>-->
-                                                                <td><?php echo $r['NETO']; ?></td>
-                                                                <!--<td><?php /*echo $r['PORCENTAJE']; ?></td>
-                                                                <td><?php echo $r['DESHIRATACION']; ?></td>
-                                                                <td><?php echo $r['BRUTO']; ?></td>
-                                                                <td><?php echo $NUMERORECEPCION; ?></td>
-                                                                <td><?php echo $FECHARECEPCION; ?></td>
-                                                                <td><?php echo $TIPORECEPCION; ?></td>
-                                                                <td><?php echo $CSGCSPORIGEN; ?></td>
-                                                                <td><?php echo $ORIGEN; ?></td>
-                                                                <td><?php echo $NUMEROGUIARECEPCION; ?></td>
-                                                                <td><?php echo $FECHAGUIARECEPCION; ?></td>
-                                                                <td><?php echo $NUMEROREPALETIZAJE; ?></td>
-                                                                <td><?php echo $FECHAREPALETIZAJE; ?></td>
-                                                                <td><?php echo $NUMEROPROCESO; ?></td>
                                                                 <td><?php echo $FECHAPROCESO; ?></td>
-                                                                <td><?php echo $TPROCESO; ?></td>
-                                                                <td><?php echo $NUMEROREEMBALEJE; ?></td>
-                                                                <td><?php echo $FECHAREEMBALEJE; ?></td>
-                                                                <td><?php echo $TREEMBALAJE; ?></td>
-                                                                <td><?php echo $NUMEROINPSAG; ?></td>
-                                                                <td><?php echo $FECHAINPSAG; ?></td>
-                                                                <td><?php echo $NOMBRETINPSAG; */ ?></td> -->
                                                                 <td><?php echo $NOMBRETMANEJO; ?></td>
-                                                                <!--<td><?php /*  echo $NOMBRETCALIBRE; ?></td>
-                                                                <td><?php echo $NOMBRETEMBALAJE; ?></td>
-                                                                <td><?php echo $STOCK; ?></td>
-                                                                <td><?php echo $EMBOLSADO; ?></td>
-                                                                <td><?php echo $GASIFICADO; ?></td>
-                                                                <td><?php echo $PREFRIO; ?></td>
-                                                                <td><?php echo $NOMBRETCATEGORIA; ?></td>
-                                                                <td><?php echo $NOMBRETCOLOR; ?></td>
-                                                                <td><?php echo $r['INGRESO']; ?></td>
-                                                                <td><?php echo $r['MODIFICACION']; ?></td>
-                                                                <td><?php echo $NOMBREEMPRESA; ?></td>
-                                                                <td><?php echo $NOMBREPLANTA; ?></td>
-                                                                <td><?php echo $NOMBRETEMPORADA; */?></td> -->
                                                                 <td><?php echo $NUMEROREFERENCIA; ?></td>
+                                                                <!--<td><?php //echo $ESTADO; ?></td> -->
+                                                                <!--<td><?php //echo $COLOR; ?></td> -->
+                                                                <!--<td><?php //echo $ESTADOSAG; ?></td> -->
+                                                                <!--<td><?php //echo $r['DIAS']; ?></td> -->
+                                                                <!--<td><?php //echo $NOMBRESPECIES; ?></td> -->
+                                                                <!--<th><?php //echo $s['ENVASE']; ?></th>-->
+                                                                <!--<td><?php //echo $r['PORCENTAJE']; ?></td>-->
+                                                                <!--<td><?php //echo $r['DESHIRATACION']; ?></td>-->
+                                                                <!--<td><?php //echo $r['BRUTO']; ?></td>-->
+                                                                <!--<td><?php //echo $NUMERORECEPCION; ?></td>-->
+                                                                <!--<td><?php //echo $FECHARECEPCION; ?></td>-->
+                                                                <!--<td><?php //echo $TIPORECEPCION; ?></td>-->
+                                                                <!--<td><?php //echo $CSGCSPORIGEN; ?></td>-->
+                                                                <!--<td><?php //echo $ORIGEN; ?></td>-->
+                                                                <!--<td><?php //echo $NUMEROGUIARECEPCION; ?></td>-->
+                                                                <!--<td><?php //echo $FECHAGUIARECEPCION; ?></td>-->
+                                                                <!--<td><?php //echo $NUMEROREPALETIZAJE; ?></td>-->
+                                                                <!--<td><?php //echo $FECHAREPALETIZAJE; ?></td>-->
+                                                                <!--<td><?php //echo $NUMEROPROCESO; ?></td>-->
+                                                                <!--<td><?php //echo $TPROCESO; ?></td>-->
+                                                                <!--<td><?php //echo $NUMEROREEMBALEJE; ?></td>-->
+                                                                <!--<td><?php //echo $FECHAREEMBALEJE; ?></td>-->
+                                                                <!--<td><?php //echo $TREEMBALAJE; ?></td>-->
+                                                                <!--<td><?php //echo $NUMEROINPSAG; ?></td>-->
+                                                                <!--<td><?php //echo $FECHAINPSAG; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBRETINPSAG;  ?></td> -->
+                                                                <!--<td><?php //echo $NOMBRETCALIBRE; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBRETEMBALAJE; ?></td>-->
+                                                                <!--<td><?php //echo $STOCK; ?></td>-->
+                                                                <!--<td><?php //echo $EMBOLSADO; ?></td>-->
+                                                                <!--<td><?php //echo $GASIFICADO; ?></td>-->
+                                                                <!--<td><?php //echo $PREFRIO; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBRETCATEGORIA; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBRETCOLOR; ?></td>-->
+                                                                <!--<td><?php //echo $r['INGRESO']; ?></td>-->
+                                                                <!--<td><?php //echo $r['MODIFICACION']; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBREEMPRESA; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBREPLANTA; ?></td>-->
+                                                                <!--<td><?php //echo $NOMBRETEMPORADA; ?></td> -->
+                                                                
                                                             </tr>                                                       
                                                         <?php endforeach; ?>     
                                                         
