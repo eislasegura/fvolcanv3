@@ -1299,7 +1299,7 @@ if (isset($_POST)) {
                                                 <div class="table-responsive">
                                                     <table id="detalle" class="table-hover " style="width: 150%;">
                                                         <thead>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <th> N° Folio </th>
                                                                 <th class="text-center">Operaciónes</th>
                                                                 <th>Fecha Cosecha </th>
@@ -1349,7 +1349,7 @@ if (isset($_POST)) {
                                                                         $NOMBRETMANEJO = "Sin Datos";
                                                                     }
                                                                     ?>
-                                                                    <tr class="text-left">
+                                                                    <tr class="text-center">
                                                                         <td><?php echo $r['FOLIO_AUXILIAR_EXIMATERIAPRIMA']; ?> </td>
                                                                         <td class="text-center">
                                                                         <form method="post" id="form2">

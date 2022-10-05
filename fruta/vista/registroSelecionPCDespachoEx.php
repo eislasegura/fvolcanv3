@@ -195,7 +195,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                             <div class="table-responsive">
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <th>Numero </th>
                                                             <th>Selección</th>
                                                             <th>Estado</th>
@@ -208,7 +208,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                     <tbody>
                                                         <?php if($ARRAYPCDESPACHO){ ?>
                                                             <?php foreach ($ARRAYPCDESPACHO as $r) : ?>
-                                                                <tr class="text-left">
+                                                                <tr class="text-center">
                                                                     <td> <?php echo $r['NUMERO_PCDESPACHO']; ?> </td>
                                                                     <td>
                                                                         <div class="form-group">

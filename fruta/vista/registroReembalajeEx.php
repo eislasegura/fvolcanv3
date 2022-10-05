@@ -808,7 +808,7 @@ if (isset($_POST)) {
                                     <div class="table-responsive">
                                         <table id="ingreso" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Estado</th>
                                                     <th>Folio </th>
                                                     <th class="text-center">Operaciónes</th>
@@ -870,7 +870,7 @@ if (isset($_POST)) {
                                                             $NOMBRETCATEGORIA = "Sin Datos";
                                                         } 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                         <?php 
                                                                 switch($r['ESTADO_FOLIO']){
                                                                     case 1: echo '<td style="background: #18d26b; color: white;">P. Completado</td>';
@@ -1008,7 +1008,7 @@ if (isset($_POST)) {
                                     <div class="table-responsive">
                                         <table id="salida" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                 <th>Estado</th>
                                                     <th>P. Terminado/Industrial</th>
                                                     <th>Folio</th>
@@ -1073,7 +1073,7 @@ if (isset($_POST)) {
                                                             $NOMBRETCATEGORIA = "Sin Datos";
                                                         } 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                         <?php 
                                                                 switch($r['ESTADO_FOLIO']){
                                                                     case 1: echo '<td style="background: #18d26b; color: white;">P. Completado</td>';
@@ -1143,7 +1143,7 @@ if (isset($_POST)) {
                                                             $NOMBREESTANDARI = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td>-</td>
                                                             <td>P. Industrial</td>
                                                             <td><?php echo $r['FOLIO_DRINDUSTRIAL']; ?></td>

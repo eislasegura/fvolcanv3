@@ -306,7 +306,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                             <div class="table-responsive">
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <th>Estado</th>                                                                                                                               
                                                             <th>Folio </th>
                                                             <th>Estado Calidad</th>
@@ -423,7 +423,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                                 ?>
                                                                 <?php if ($ENVASERESTANTE > 0) { ?>
                                                                     <?php $CONTADOR = $CONTADOR + 1; ?>
-                                                                    <tr class="text-left">
+                                                                    <tr class="text-center">
                                                                         <?php 
                                                                             switch($r['ESTADO_FOLIO']){
                                                                                 case 1: echo '<td style="background: #18d26b; color: white;">P. Completado</td>';

@@ -137,7 +137,7 @@ include_once "../../assest/config/reporteUrl.php";
                                     <div class="table-responsive">
                                         <table id="kardexe" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Código Producto</th>
                                                     <th>Producto</th>
                                                     <th>Unidad Medida</th>

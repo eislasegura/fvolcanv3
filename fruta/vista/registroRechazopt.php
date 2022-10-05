@@ -683,7 +683,7 @@ if (isset($_POST)) {
                                     <div class="table-responsive">
                                         <table id="detalle" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Folio </th>
                                                     <th class="text-center">Operaciones</th>
                                                     <th>Fecha Embalado </th>
@@ -738,7 +738,7 @@ if (isset($_POST)) {
                                                             $NOMBRETMANEJO = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td>
                                                                 <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                    <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>

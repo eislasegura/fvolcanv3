@@ -3400,7 +3400,7 @@ if (isset($_POST)) {
                                 <div class="card-body">
                                     <table id="salida" class="table-hover " style="width: 100%;">
                                         <thead>
-                                            <tr class="text-left">
+                                            <tr class="text-center">
                                                 <th>Codigo Estandar </th>
                                                 <th>Envase/Estandar </th>
                                                 <th>Codigo Estandar </th>
@@ -3459,7 +3459,7 @@ if (isset($_POST)) {
                                                     }
 
                                                     ?>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td><?php echo $CODIGOESTANDAR; ?></td>
                                                         <td><?php echo $NOMBREESTANTAR; ?></td>
                                                         <td><?php echo $CODIGOECOMERCIAL; ?></td>

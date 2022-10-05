@@ -617,7 +617,7 @@ if ($_POST) {
                                                 <div class="table-responsive">
                                                     <table id="ingreso" class=" table-hover " style="width: 100%;">
                                                         <thead>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <th> N° Folio </th>
                                                                 <th>Condición </th>
                                                                 <th class="text-center">Operaciónes</th>
@@ -721,7 +721,7 @@ if ($_POST) {
                                                                     }
                                                                     
                                                                     ?>
-                                                                    <tr class="text-left">
+                                                                    <tr class="text-center">
                                                                         <td><?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                                         <td><?php echo $ESTADOSAG; ?></td>
                                                                         <td class="text-center">
@@ -823,7 +823,7 @@ if ($_POST) {
                                             <div class="table-responsive">
                                                 <table id="detalle" class="table-hover " style="width: 100%;">
                                                     <thead>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <th>Estado</th>
                                                             <th>Folio Nuevo</th>
                                                             <th class="text-center">Operaciónes</th>
@@ -893,7 +893,7 @@ if ($_POST) {
                                                                     $NOMBRETEMBALAJE = "Sin Datos";
                                                                 }
                                                                 ?>
-                                                                <tr class="text-left">
+                                                                <tr class="text-center">
                                                                 <?php 
                                                                 //echo 'dataaaa : '.$r['ESTADO_FOLIO'];
                                                                 switch($r['ESTADO_FOLIO']){

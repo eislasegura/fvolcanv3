@@ -182,7 +182,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                             <div class="table-responsive">
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <th>Folio </th>
                                                             <th>Fecha Cosecha </th>
                                                             <th>Selección</th>
@@ -259,7 +259,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                             }
                                                             ?>
 
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td><?php echo $r['FOLIO_AUXILIAR_EXIMATERIAPRIMA']; ?> </td>
                                                                 <td><?php echo $r['COSECHA']; ?></td>
                                                                 <td>

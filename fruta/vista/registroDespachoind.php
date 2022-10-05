@@ -1138,7 +1138,7 @@ if (isset($_POST)) {
                                                 <form method="post" id="form2">
                                                     <table id="detalle" class="table-hover " style="width: 150%;">
                                                             <thead>
-                                                                <tr class="text-left">
+                                                                <tr class="text-center">
                                                                         <th> N° Folio </th>
                                                                         <th class="text-center">Operaciónes</th>
                                                                         <?php if ($TDESPACHO == "3") { ?>
@@ -1197,7 +1197,7 @@ if (isset($_POST)) {
                                                                             }
 
                                                                             ?>
-                                                                            <tr class="text-left">
+                                                                            <tr class="text-center">
                                                                                 <td><?php echo $r['FOLIO_AUXILIAR_EXIINDUSTRIAL']; ?> </td>
                                                                                 <form method="post" id="form1">
                                                                                     <td class="text-center">

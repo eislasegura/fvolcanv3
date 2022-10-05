@@ -129,7 +129,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="detalladolevantamientomp" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Folio </th>
                                                     <th>Fecha Cosecha </th>
                                                     <th>Código Estandar </th>
@@ -246,7 +246,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                      
                                                         ?>
 
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
 
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIMATERIAPRIMA']; ?></td>
                                                             <td><?php echo $s['COSECHA']; ?></td>

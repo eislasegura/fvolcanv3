@@ -1248,7 +1248,7 @@ if (isset($_POST)) {
                                     <div class=" table-responsive">
                                         <table id="detalle" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Numero Linea</th>
                                                     <th>Folio</th>
                                                     <th class="text-center">Operaciones</th>

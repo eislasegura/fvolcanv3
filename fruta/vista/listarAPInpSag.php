@@ -144,7 +144,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                     <div class="table-responsive">
                                         <table id="sag" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Numero Interno</th>
                                                     <th>Numero Inspecion</th>
                                                     <th>Estado</th>
@@ -217,7 +217,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                                     }
                                                     ?>
 
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td> <?php echo $r['NUMERO_INPSAG']; ?></td>
                                                         <td> <?php echo $r['CORRELATIVO_INPSAG']; ?></td>
                                                         <td>

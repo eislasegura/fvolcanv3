@@ -172,7 +172,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="detalladormp" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>N° Folio </th>
                                                     <th>Fecha Cosecha </th>
                                                     <th>Código Estandar</th>
@@ -315,7 +315,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                             $GASIFICADO = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_DRECEPCION']; ?></td>
                                                             <td><?php echo $s['COSECHA']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
