@@ -192,7 +192,7 @@ if (  $TEMPORADAS) {
                                     <div class="table-responsive">
                                         <table id="detalladodmp" class=" table-hover   " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>N° Folio </th>
                                                     <th>Fecha Embalado/Cosecha </th>
                                                     <th>Condición </th>
@@ -421,7 +421,7 @@ if (  $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIMATERIAPRIMA']; ?> </td>
                                                             <td><?php echo $s['COSECHA']; ?></td>
                                                             <td><?php echo "Sin Datos"; ?></td>

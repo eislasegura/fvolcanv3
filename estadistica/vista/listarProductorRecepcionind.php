@@ -149,7 +149,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="recepcionind" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Numero Recepcion </th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciones</th>
@@ -245,7 +245,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                             }
                                                             
                                                         ?>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td>
                                                             <a href="#" class="text-warning hover-warning">
                                                                 <?php echo $r['NUMERO_RECEPCION']; ?>
