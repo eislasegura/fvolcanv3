@@ -90,38 +90,55 @@ $ARRAYAVISOS=$AVISO_ADO->listarAvisoTodosCBX();
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">  
-                            <!-- Default box -->
+                    <?php foreach ($ARRAYAVISOS as $r) : ?>
+            <div class="col-md-12 col-12">
+				<div class="box">
+				  <div class="box-header">
+					<div class="box-controls pull-right">
+					  <button class="btn btn-xs btn-<?php echo $r["TPRIORIDAD"]?>" href="#"><?php echo $r["NOMBRETPRIORIDAD"]?></button>
+					</div>                
+				  </div>
+
+				  <div class="box-body">
+					<p><?php echo $r["MENSAJE"]?></p>
+				  </div>
+				</div>
+			  </div>
+
+              <?php endforeach; ?>     
+                       <!--<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">  
+                        
                             <div class="box box-solid box-info">
                                 <div class="box-header with-border">
                                     <h4 class="box-title">Avisos</h4>                                   
                                     <ul class="box-controls pull-right">
-                                        <!--<li><a class="box-btn-close" href="#"></a></li>-->
-                                        <!-- <li><a class="box-btn-slide" href="#"></a></li>	 -->
+                          
                                         <li><a class="box-title" href="index.php">Volver</a></li>
                                     </ul>                                     
                                 </div>
                                 <div class="box-body p-0" id="aviso">
+                                 
+			  
                                     <ul class="todo-list">   
-                                        <?php foreach ($ARRAYAVISOS as $r) : ?>
+                                        
                                             <li class="p-10">
                                                 <div class="box p-10 mb-0 d-block bb-2 border-danger">
-                                                    <!-- drag handle -->
+                                                  
                                                     <span class="handle">
                                                         <i class="fa fa-plus"></i>
                                                     </span>
-                                                    <!-- checkbox -->
-                                                    <span class="pull-right badge <?php echo $r["TPRIORIDAD"]?>"><?php echo $r["NOMBRETPRIORIDAD"]?></span>
-                                                    <span class="font-size-14 text-line"><a href="#"><?php echo $r["MENSAJE"]?></a> </span>
+                                                  
+                                                    <span class="pull-right badge <?php //echo $r["TPRIORIDAD"]?>"><?php //echo $r["NOMBRETPRIORIDAD"]?></span>
+                                                    <span class="font-size-14 text-line"><a href="#"><?php //echo $r["MENSAJE"]?></a> </span>
                                                 </div>
                                             </li>
-                                        <?php endforeach; ?>                                             
+                                                                              
                                     </ul>
                                 </div>
-                                <!-- /.box-body -->
+                            
                             </div>
-                            <!-- /.box -->
-                        </div>
+                      
+                        </div>-->
                     </div>
                 </section>
                 <!-- /.content -->
