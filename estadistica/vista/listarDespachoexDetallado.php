@@ -208,7 +208,7 @@ if ( $TEMPORADAS) {
                                     <div class="table-responsive">
                                         <table id="detalladodex" class=" table-hover   " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Número Referencia </th>
                                                     <th>Cliente</th>
                                                     <th>Mercado </th>
@@ -642,7 +642,7 @@ if ( $TEMPORADAS) {
                                                             $FECHAREPALETIZAJE = "";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">     
+                                                        <tr class="text-center">     
                                                             <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             <td><?php echo $NOMBREBROKER; ?></td>
                                                             <td><?php echo $NOMBREMERCADO; ?></td>

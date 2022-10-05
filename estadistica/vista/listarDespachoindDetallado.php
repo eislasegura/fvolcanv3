@@ -182,7 +182,7 @@ if ( $TEMPORADAS) {
                                     <div class="table-responsive">
                                         <table id="detalladodind" class=" table-hover   " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>N° Folio </th>
                                                     <th>Fecha Embalado </th>
                                                     <th>Condición </th>
@@ -432,7 +432,7 @@ if ( $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIINDUSTRIAL']; ?> </td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo "Sin Datos"; ?></td>

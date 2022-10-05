@@ -356,7 +356,7 @@ if ($TEMPORADAS) {
                                                             $PREFRIO = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_DRECEPCION']; ?></td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>

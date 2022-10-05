@@ -136,7 +136,7 @@ $ARRAYEMPRESAPRODUCTOR=$EMPRESAPRODUCTOR_ADO->buscarEmpresaProductorPorUsuarioCB
                                     <div class="table-responsive">
                                         <table id="proceso" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Numero</th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciónes</th>
@@ -241,7 +241,7 @@ $ARRAYEMPRESAPRODUCTOR=$EMPRESAPRODUCTOR_ADO->buscarEmpresaProductorPorUsuarioCB
                                                             $NOMBRETEMPORADA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td> <?php echo $r['NUMERO_PROCESO']; ?> </td>
                                                             <td>
                                                                 <?php if ($r['ESTADO'] == "0") { ?>
