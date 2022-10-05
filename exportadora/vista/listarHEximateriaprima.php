@@ -128,7 +128,7 @@ if ($EMPRESAS   && $TEMPORADAS) {
                                         <div class="table-responsive">
                                             <table id="hexistencia" class="table-hover table-bordered" style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Cosecha </th>
@@ -447,7 +447,7 @@ if ($EMPRESAS   && $TEMPORADAS) {
                                                             $NOMBRETEMPORADA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">                                                            
+                                                        <tr class="text-center">                                                            
                                                              <td>
                                                                 <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                    <?php echo $r['FOLIO_EXIMATERIAPRIMA']; ?>
@@ -501,7 +501,7 @@ if ($EMPRESAS   && $TEMPORADAS) {
                                                     <?php endforeach; ?>
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr class="text-left" id="filtro">
+                                                    <tr class="text-center" id="filtro">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Cosecha </th>

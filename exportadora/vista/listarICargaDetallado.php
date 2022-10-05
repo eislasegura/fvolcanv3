@@ -228,7 +228,7 @@ include_once "../../assest/config/datosUrLP.php";
                                         <div class="table-responsive">
                                             <table id="detalladoicarga" class=" table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Número </th>
                                                         <th>Número Referencia</th>
                                                         <th>Codigo Estandar </th>
@@ -511,7 +511,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                                 $NOMBRETMANEJO = "Sin Datos";
                                                             }
                                                             ?>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td> <?php echo $r['NUMERO_ICARGA']; ?>  </td>
                                                                 <td> <?php echo $r['NREFERENCIA_ICARGA']; ?>  </td>
                                                                 <td> <?php echo $CODIGOESTANDAR; ?></td>

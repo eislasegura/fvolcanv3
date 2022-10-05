@@ -170,7 +170,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                     <div class="table-responsive">
                                         <table id="modulo" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Número Valor Liqui.</th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciónes</th>
@@ -273,7 +273,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                                     }
 
                                                     ?>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td><?php echo $r['NUMERO_VALOR']; ?></td>
                                                         <td>
                                                             <?php if ($r['ESTADO'] == "0") { ?>

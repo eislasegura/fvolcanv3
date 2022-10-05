@@ -139,7 +139,7 @@ if ($EMPRESAS   && $TEMPORADAS) {
                                         <div class="table-responsive">
                                             <table id="hexistencia" class="table-hover table-bordered" style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Embalado </th>
@@ -414,7 +414,7 @@ if ($EMPRESAS   && $TEMPORADAS) {
                                                         }
                                                         ?>
 
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $r['FOLIO_EXIINDUSTRIAL']; ?> </td>
                                                             <td><?php echo $r['FOLIO_AUXILIAR_EXIINDUSTRIAL']; ?> </td>
                                                             <td><?php echo $r['EMBALADO']; ?> </td>
@@ -456,7 +456,7 @@ if ($EMPRESAS   && $TEMPORADAS) {
                                                     <?php endforeach; ?>
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr class="text-left" id="filtro">
+                                                    <tr class="text-center" id="filtro">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Embalado </th>

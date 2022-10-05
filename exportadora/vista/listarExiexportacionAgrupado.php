@@ -126,7 +126,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                         <div class="table-responsive">
                                             <table id="agrupadopt" class="table-hover " style="width: 150%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Código Estandar </th>
                                                         <th>Envase/Estandar </th>
                                                         <th>Productor </th>
@@ -207,7 +207,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                             $NOMBRETEMPORADA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTOR; ?></td>

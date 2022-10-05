@@ -506,7 +506,7 @@ if ($_POST) {
                                                 <div class=" table-responsive">
                                                     <table id="detalle" class="table-hover " style="width: 100%;">
                                                         <thead>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <th>
                                                                     <a href="#" class="text-warning hover-warning">
                                                                         Número
@@ -536,7 +536,7 @@ if ($_POST) {
                                                                             $NOMBRETCALIBRE="No Aplica";
                                                                         }
                                                                     ?>
-                                                                    <tr class="text-left">
+                                                                    <tr class="text-center">
                                                                         <td>
                                                                             <a href="#" class="text-warning hover-warning">
                                                                                 <?php echo $CONTADOR; ?>

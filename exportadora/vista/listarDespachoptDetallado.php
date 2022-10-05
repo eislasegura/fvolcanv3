@@ -200,7 +200,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                     <div class="table-responsive">
                                         <table id="detalladodpt" class=" table-hover   " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>N° Folio </th>
                                                     <th>Fecha Embalado </th>
                                                     <th>Tipo Producto</th>
@@ -592,7 +592,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                             $FECHAREPALETIZAJE = "";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo "Producto Terminado"; ?> </td>

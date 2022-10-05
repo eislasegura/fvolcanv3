@@ -55,7 +55,7 @@
                                 <div class="table-responsive">
                                     <table id="modulo" class="table-hover " style="width: 100%;">
                                         <thead>
-                                            <tr class="text-left">
+                                            <tr class="text-center">
                                                 <th>Acciones</th>
                                                 <th>Cliente</th>
                                                 <th>Estado</th>

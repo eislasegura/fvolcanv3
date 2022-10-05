@@ -196,7 +196,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                     <div class="table-responsive">
                                         <table id="consolidadodgranel" class=" table-hover   " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>N° Folio </th>
                                                     <th>Fecha Embalado/Cosecha </th>
                                                     <th>Tipo Producto</th>
@@ -426,7 +426,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIMATERIAPRIMA']; ?> </td>
                                                             <td><?php echo $s['COSECHA']; ?></td>
                                                             <td><?php echo "Materia Prima"; ?> </td>
@@ -681,7 +681,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIINDUSTRIAL']; ?> </td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo "Producto Industrial"; ?> </td>

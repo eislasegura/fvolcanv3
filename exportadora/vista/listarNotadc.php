@@ -180,7 +180,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="modulo" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Número Nota</th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciónes</th>
@@ -248,7 +248,7 @@ include_once "../../assest/config/datosUrLP.php";
 
                                                     ?>
 
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td><?php echo $r['NUMERO_NOTA']; ?></td>
                                                         <td>
                                                             <?php if ($r['ESTADO'] == "0") { ?>
