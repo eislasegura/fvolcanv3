@@ -321,7 +321,7 @@ if ($EMPRESAS && $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_DRECEPCION']; ?></td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo "Producto Industrial"; ?> </td>
@@ -470,7 +470,7 @@ if ($EMPRESAS && $TEMPORADAS) {
                                                             $GASIFICADO = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_DRECEPCION']; ?></td>
                                                             <td><?php echo $s['COSECHA']; ?></td>
                                                             <td><?php echo "Materia Prima"; ?> </td>

@@ -180,7 +180,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="consolidadoptex" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>N° Folio </th>
                                                     <th>Fecha Embalado </th>
                                                     <th>Condición </th>
@@ -564,7 +564,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                             $FECHAREPALETIZAJE = "";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo $ESTADOSAG; ?></td>
@@ -887,7 +887,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                             $FECHAREPALETIZAJE = "";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $s['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                             <td><?php echo $s['EMBALADO']; ?></td>
                                                             <td><?php echo $ESTADOSAG; ?></td>

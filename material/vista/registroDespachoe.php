@@ -1249,7 +1249,7 @@ if (isset($_POST)) {
                                         <div class="table-responsive">
                                             <table id="detalle" class="table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th class="text-center">Operaciónes</th>
                                                         <th>Código Producto </th>
                                                         <th>Producto </th>
@@ -1284,7 +1284,7 @@ if (isset($_POST)) {
                                                                 $NOMBRETUMEDIDA = "Sin Datos";
                                                             }
                                                             ?>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td class="text-center">
                                                                     <form method="post" id="form1" name="form1">
                                                                         <input type="hidden" class="form-control" placeholder="ID INVENTARIOE" id="IDD" name="IDD" value="<?php echo $r['ID_INVENTARIO']; ?>" />

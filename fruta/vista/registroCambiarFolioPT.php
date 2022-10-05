@@ -152,7 +152,7 @@ include_once "../../assest/config/datosUrLE.php";
                                         <div class="table-responsive">
                                             <table id="hexistencia" class="table-hover " style="width: 300%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Folio Original</th>
                                                         <th>Folio Actual</th>
                                                         <th class="text-center">Operaciónes</th>
@@ -374,7 +374,7 @@ include_once "../../assest/config/datosUrLE.php";
                                                             $NOMBRETEMPORADA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $r['FOLIO_EXIEXPORTACION']; ?> </td>
                                                             <td><?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                             <td class="text-center">

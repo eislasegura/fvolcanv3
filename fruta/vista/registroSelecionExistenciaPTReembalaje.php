@@ -207,7 +207,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                         <div class="table-responsive">
                                             <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Estado</th>
                                                         <th>Folio </th>
                                                         <th>Estado Calidad</th>
@@ -303,7 +303,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             $NOMBRETEMBALAJE = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                         <?php 
                                                                 switch($r['ESTADO_FOLIO']){
                                                                     case 1: echo '<td style="background: #18d26b; color: white;">P. Completado</td>';

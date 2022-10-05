@@ -176,7 +176,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                         <div class="table-responsive">
                                             <table id="hexistencia" class="table-hover table-bordered" style="width: 300%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Embalado </th>
@@ -617,7 +617,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 $PREFRIO = "Sin Datos";
                                                             }
                                                             ?>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td>                                                                    
                                                                     <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                         <?php echo $r['FOLIO_EXIEXPORTACION']; ?> 
@@ -691,7 +691,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                     <?php endforeach; ?>
                                                 </tbody>
                                                 <tfoot>
-                                                    <tr class="text-left" id="filtro">
+                                                    <tr class="text-center" id="filtro">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Embalado </th>

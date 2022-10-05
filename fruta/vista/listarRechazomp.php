@@ -130,7 +130,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="rechazomp" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Numero</th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciones</th>
@@ -208,7 +208,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                     }
 
                                                     ?>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td> <?php echo $r['NUMERO_RECHAZO']; ?> </td>
                                                         <td>
                                                             <?php if ($r['ESTADO'] == "0") { ?>

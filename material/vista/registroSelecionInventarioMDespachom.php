@@ -186,7 +186,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                         <div class="table-responsive">
                                             <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Número Folio </th>
                                                         <th>Selección</th>
                                                         <th>Seleccion Cantidad</th>
@@ -232,7 +232,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             $NOMBRETUMEDIDA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $r['FOLIO_INVENTARIO']; ?> </td>
                                                             <td>
                                                                 <div class="form-group">

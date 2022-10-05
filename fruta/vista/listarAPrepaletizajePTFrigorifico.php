@@ -127,7 +127,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                         <div class="table-responsive">
                                             <table id="repaletizajept" class="table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Número </th>
                                                         <th>Estado </th>
                                                         <th class="text-center">Operaciónes </th>
@@ -200,7 +200,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                                             $SINPSAG="Sin Datos";       
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $r['NUMERO_REPALETIZAJE']; ?> </td>
                                                             <td>
                                                                 <?php if ($r['ESTADO'] == "0") { ?>

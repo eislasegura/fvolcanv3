@@ -158,7 +158,7 @@ include_once "../../assest/config/datosUrLP.php";
                                     <div class="table-responsive">
                                         <table id="detalledespachome" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Codigo Producto </th>
                                                     <th>Producto </th>
                                                     <th>Cantidad</th>
@@ -347,7 +347,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                             $NOMBRETUMEDIDA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">          
+                                                        <tr class="text-center">          
                                                             <td><?php echo $CODIGOPRODUCTO; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTO; ?></td>
                                                             <td><?php echo $s['CANTIDAD']; ?></td>

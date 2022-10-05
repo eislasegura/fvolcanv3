@@ -190,7 +190,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                             <div class="table-responsive">
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <th>Folio </th>
                                                             <th>Fecha Embalado </th>
                                                             <th>Selección</th>
@@ -246,7 +246,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                                 $NOMBRESPECIES = "Sin Datos";
                                                             }
                                                             ?>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td><?php echo $r['FOLIO_AUXILIAR_EXIINDUSTRIAL']; ?> </td>
                                                                 <td><?php echo $r['EMBALADO']; ?> </td>
                                                                 <td>
@@ -312,7 +312,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                                 $NOMBRESPECIES = "Sin Datos";
                                                             }
                                                             ?>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td><?php echo $r['FOLIO_AUXILIAR_EXIINDUSTRIAL']; ?> </td>
                                                                 <td><?php echo $r['EMBALADO']; ?> </td>
                                                                 <td>

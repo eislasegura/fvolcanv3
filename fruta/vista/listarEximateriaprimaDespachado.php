@@ -122,7 +122,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                         <div class="table-responsive">
                                             <table id="existenciampd" class="table-hover " style="width: 150%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Folio Original</th>
                                                         <!-- <th>Folio Nuevo</th> -->
                                                         <th>Fecha Cosecha </th>
@@ -422,7 +422,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             $NOMBRETEMPORADA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">                                                    
+                                                        <tr class="text-center">                                                    
                                                              <td>
                                                                 <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                    <?php echo $r['FOLIO_EXIMATERIAPRIMA']; ?>

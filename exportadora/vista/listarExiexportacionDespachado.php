@@ -171,7 +171,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                         <div class="table-responsive">
                                             <table id="existenciaptd" class="table-hover" style="width: 300%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Folio Original</th>
                                                         <th>Folio Nuevo</th>
                                                         <th>Fecha Embalado </th>
@@ -615,7 +615,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                                 $PREFRIO = "Sin Datos";
                                                             }
                                                             ?>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <td>                     
                                                                     <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                         <?php echo $r['FOLIO_EXIEXPORTACION']; ?> 

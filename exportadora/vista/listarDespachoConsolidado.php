@@ -217,7 +217,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                     <div class="table-responsive">
                                         <table id="consolidadodf" class=" table-hover   " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Número Referencia </th>
                                                     <th>Cliente</th>
                                                     <th>Mercado </th>
@@ -620,7 +620,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                             $FECHAREPALETIZAJE = "";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
 
                                                             <td><?php echo "No Aplica"; ?></td>
                                                             <td><?php echo "No Aplica"; ?></td>
@@ -1088,7 +1088,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                             $FECHAREPALETIZAJE = "";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">     
+                                                        <tr class="text-center">     
                                                             <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             <td><?php echo $NOMBREBROKER; ?></td>
                                                             <td><?php echo $NOMBREMERCADO; ?></td>
@@ -1345,7 +1345,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo "No Aplica"; ?></td>
                                                             <td><?php echo "No Aplica"; ?></td>
                                                             <td><?php echo "No Aplica"; ?></td>
@@ -1627,7 +1627,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo "No Aplica"; ?></td>
                                                             <td><?php echo "No Aplica"; ?></td>
                                                             <td><?php echo "No Aplica"; ?></td>

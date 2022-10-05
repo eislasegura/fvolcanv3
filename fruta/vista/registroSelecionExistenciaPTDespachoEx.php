@@ -213,7 +213,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                             <div class="table-responsive">
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <th>Folio </th>
                                                             <th>Estado Calidad</th>
                                                             <th>Condición </th>
@@ -321,7 +321,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                                 }
                                                                 ?>
 
-                                                                <tr class="text-left">
+                                                                <tr class="text-center">
                                                                     <td>                                                                   
                                                                         <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                             <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>

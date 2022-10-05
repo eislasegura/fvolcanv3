@@ -131,7 +131,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                         <div class="table-responsive">
                                             <table id="modulo" class="table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>Número </th>
                                                         <th>Fecha Ingreso</th>
                                                         <th>Número Despacho</th>
@@ -157,7 +157,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             $NOMBREPLANTA = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td> <?php echo $r['NUMERO_MGUIA']; ?> </td>
                                                             <td> <?php echo $r['INGRESO']; ?></td>
                                                             <td> <?php echo $r['NUMERO_DESPACHO']; ?> </td>

@@ -181,7 +181,7 @@ if (empty($ARRAYFOLIO3)) {
                                     <div class="table-responsive">
                                         <table id="despachomp" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Número </th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciónes</th>
@@ -322,7 +322,7 @@ if (empty($ARRAYFOLIO3)) {
 
                                                     $ARRAYMGUIAMP = $MGUIAMP_ADO->listarMguiaDespachoCBX($r['ID_DESPACHO']);
                                                     ?>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <td> <?php echo $r['NUMERO_DESPACHO']; ?> </td>
                                                         <td>
                                                             <?php if ($r['ESTADO'] == "0") { ?>

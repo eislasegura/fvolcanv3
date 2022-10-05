@@ -123,7 +123,7 @@ include_once "../../assest/config/datosUrLP.php";
                                         <div class="table-responsive">
                                             <table id="pcdespacho" class="table-hover " style="width: 100%;">
                                                 <thead>
-                                                    <tr class="text-left">
+                                                    <tr class="text-center">
                                                         <th>
                                                             <a href="#" class="text-warning hover-warning">
                                                                 Número
@@ -179,7 +179,7 @@ include_once "../../assest/config/datosUrLP.php";
 
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td>
                                                                 <a href="#" class="text-warning hover-warning">
                                                                     <?php echo $r['NUMERO_PCDESPACHO']; ?>

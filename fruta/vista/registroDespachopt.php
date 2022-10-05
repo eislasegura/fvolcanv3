@@ -1221,7 +1221,7 @@ if (isset($_POST)) {
                                                 <form method="post" id="form2">
                                                     <table id="detalle" class="table-hover " style="width: 190%;">
                                                         <thead>
-                                                            <tr class="text-left">
+                                                            <tr class="text-center">
                                                                 <th> N° Folio </th>
                                                                 <th>Condición </th>
                                                                 <th class="text-center">Operaciónes</th>
@@ -1324,7 +1324,7 @@ if (isset($_POST)) {
                                                                     }
 
                                                                     ?>
-                                                                    <tr class="text-left">
+                                                                    <tr class="text-center">
                                                                         <td><?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?> </td>
                                                                         <td><?php echo $ESTADOSAG; ?></td>
                                                                         <form method="post" id="form1">

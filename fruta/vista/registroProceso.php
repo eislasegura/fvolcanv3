@@ -802,7 +802,7 @@ if (isset($_POST)) {
                                     <div class="table-responsive">
                                         <table id="ingreso" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Folio </th>
                                                     <th class="text-center">Operaciones</th>
                                                     <th>Fecha Cosecha </th>
@@ -877,7 +877,7 @@ if (isset($_POST)) {
                                                         }
 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td><?php echo $r['FOLIO_AUXILIAR_EXIMATERIAPRIMA']; ?> </td>
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">
@@ -1003,7 +1003,7 @@ if (isset($_POST)) {
                                     <div class="table-responsive">
                                         <table id="salida" class="table-hover " style="width: 100%;">
                                             <thead>
-                                                <tr class="text-left">
+                                                <tr class="text-center">
                                                     <th>Estado</th>
                                                     <th>P. Terminado/Industrial</th>
                                                     <th>Folio</th>
@@ -1068,7 +1068,7 @@ if (isset($_POST)) {
                                                             $NOMBRETCATEGORIA = "Sin Datos";
                                                         } 
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             
                                                             <?php 
                                                                 switch($r['ESTADO_FOLIO']){
@@ -1139,7 +1139,7 @@ if (isset($_POST)) {
                                                             $NOMBREESTANDARI = "Sin Datos";
                                                         }
                                                         ?>
-                                                        <tr class="text-left">
+                                                        <tr class="text-center">
                                                             <td>-</td>
                                                             <td>P. Industrial</td>
                                                             <td><?php echo $r['FOLIO_DPINDUSTRIAL']; ?></td>
