@@ -18,7 +18,9 @@
 	<script src="../../api/cryptioadmin10/html/assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
 
 	
-    
+	<script src="../../api/cryptioadmin10/html/assets/vendor_components/raphael/raphael.min.js"></script>
+	<script src="../../api/cryptioadmin10/html/assets/vendor_components/morris.js/morris.min.js"></script>  
+
     <script src="../../api/cryptioadmin10/html/assets/vendor_components/sweetalert/sweetalert.min.js"></script>
     <script src="../../api/cryptioadmin10/html/assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js"></script>
    

@@ -78,223 +78,254 @@ if($ARRAYREGISTROSABIERTOS){
                     <div class="content-header">
                         <div class="d-flex align-items-center">
                             <div class="mr-auto">
-                                <h3 class="page-title">Inicio</h3>
-                                <div class="d-inline-block align-items-center">
-                                    <nav>
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>                                      
-                                        </ol>
-                                    </nav>
-                                </div>
+                                <h3 class="page-title">Dashboard</h3>
                             </div>
                             <?php include_once "../../assest/config/verIndicadorEconomico.php"; ?>
                         </div>
                     </div>
                     <!-- Main content -->                        
-                        <section class="content">
-                            <div class="row">	     
-                                <?php if($PFAVISO=="1"){ ?>    
-                                    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12 " >   
-                                        <!-- Default box -->
-                                        <div class="box box-solid box-info">
-                                            <div class="box-header with-border">
-                                                <h4 class="box-title">Avisos</h4>                                        
-                                                <ul class="box-controls pull-right">
-                                                    <!-- <li><a class="box-btn-close" href="#"></a></li> -->
-                                                    <li><a class="box-btn-slide" href="#"></a></li>	
-                                                    <li><a class="box-title" href="listarAvisos.php">Todo</a></li>
-                                                </ul>                                        
-                                            </div>
-                                            <div class="box-body p-0" id="aviso">
-                                                <ul class="todo-list">   
-                                                    <?php foreach ($ARRAYAVISOS1 as $r) : ?>
-                                                        <li class="p-10">
-                                                            <div class="box p-10 mb-0 d-block bb-2 border-danger">
-                                                                <!-- drag handle -->
-                                                                <span class="handle">
-                                                                    <i class="fa fa-plus"></i>
-                                                                </span>
-                                                                <!-- checkbox -->
-                                                                <span class="pull-right badge <?php echo $r["TPRIORIDAD"]?>"><?php echo $r["NOMBRETPRIORIDAD"]?></span>
-                                                                <span class="font-size-14 text-line"><a href="#"><?php echo $r["MENSAJE"]?></a> </span>
-                                                            </div>
-                                                        </li>
-                                                    <?php endforeach; ?>                                             
-                                                </ul>
-                                            </div>
-                                            <!-- /.box-body -->
-                                        </div>
-                                        <!-- /.box -->
-                                    </div>    
-                                <?php  } ?>   
-                                <?php if($PFRABIERTO=="1"){ ?>   
-                                    <?php if($PFGRANEL=="1"){ ?>            
-                                        <?php if($PFGRECEPCION=="1"){ ?>
-                                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 col-xs-4">                            
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Recepciones MP</span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $RECEPCIONMP; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>                         
-                                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 col-xs-4">                               
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Recepciones IND</span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $RECEPCIONIND; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>                               
-                                        <?php  } ?>                             
-                                    <?php  } ?>   
-                                    <?php if($PFFRIGORIFICO=="1"){ ?>            
-                                        <?php if($PFFRECEPCION=="1"){ ?> 
-                                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 col-xs-4">                              
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Recepciones PT</span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $RECEPCIONPT; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>                           
-                                        <?php  } ?>                             
-                                    <?php  } ?>  
-                                    <?php if($PFPACKING=="1"){ ?>            
-                                        <?php if($PFPPROCESO=="1"){ ?>
-                                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 col-xs-4">                                         
-                                                <div class="box pull-up  ribbon-box      ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Proceso </span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                            <div class="font-size-40"><?php echo $PROCESO; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>	 
-                                        <?php  } ?>     	
-                                        <?php if($PFPREEMBALEJE=="1"){ ?>                        
-                                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 col-xs-4">                                          
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Reembalaje  </span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $REEMBALAJE; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>   
-                                        <?php  } ?>                             
-                                    <?php  } ?>    
-                                    <?php if($PFFRIGORIFICO=="1"){ ?>            
-                                        <?php if($PFFRREPALETIZAJE=="1"){ ?> 
-                                            <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 col-xs-4">                                
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Repaletizaje  </span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $REPALETIZAJE; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </diV>
-                                            </div>  
-                                        <?php  } ?>                             
-                                    <?php  } ?>  
-                                    <?php if($PFGRANEL=="1"){ ?>            
-                                        <?php if($PFGRECEPCION=="1"){ ?>
-                                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 col-xs-6">                                              
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Despacho  MP</span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $DESPACHOMP; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>    
-                                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 col-xs-6">                                                
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Despacho  IND</span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $DESPACHOIND; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>  
-                                        <?php  } ?>                             
-                                    <?php  } ?>    
-                                    <?php if($PFFRIGORIFICO=="1"){ ?>            
-                                        <?php if($PFFRDESPACHO=="1"){ ?> 
-                                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 col-xs-6">                                               
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Despacho  PT</span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $DESPACHOPT; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>   
-                                            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6 col-xs-6">                                             
-                                                <div class="box pull-up  ribbon-box       ">
-                                                    <div class="box-body ">
-                                                        <div class="ribbon ribbon-warning"><span>Despacho EXPO </span></div>  
-                                                        <p class="my-2 mb-0 pt-5 ">
-                                                            <div class="text-center my-2">
-                                                                <div class="font-size-40"><?php echo $DESPACHOEXPO; ?></div>
-                                                                <span>Abiertos</span>
-                                                            </div>
-                                                        </p>
-                                                    </div>
-                                                </div>   
-                                            </div>   
-                                        <?php  } ?>                             
-                                    <?php  } ?>  
-                                <?php  } ?>                      
-                            </div>  
+                    <section class="content">
+                        <div class="row">
 
-                        </section>
+                        <div class="col-xl-12 col-12">
+                                <div class="box">
+                                    <div class="box-body">
+                                        <div class="table-responsive">
+                                            <div class="text-center">
+                                                <p class="mb-0" style="padding: 0px 1.5rem!important;">TOTAL KG. PLANTA EL ALAMO</p>
+                                                <h2 class="text-primary" style="padding: 0px 1.5rem!important;">10.235.8979 kg.</h2>
+                                            </div>
+                                            <table class="table no-border">
+                                                <tr>
+                                                    <td>
+                                                        <div class="new-progress-wrap" style="margin-top: 0px!important; margin-bottom: 0px!important;">
+                                                            <ul class="new-progress-line row list-unstyled" style="margin-top: 0px!important; margin-bottom: 0px!important;">
+
+                                                            <li class="col-12 current" style="display: flex; padding-left: 0px!important; padding-right:0px!important;">
+                                                                <div class="bg-warning" style="width:10%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Angus">123.000 Kg.</div>
+                                                                <div class="bg-primary" style="width:30%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="BBCH">123.000 Kg.</div>
+                                                                <div class="bg-success" style="width:25%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Greenvic">123.000 Kg.</div>
+                                                                <div class="bg-info" style="width:15%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Volcan Foods">123.000 Kg.</div>
+                                                                <div class="bg-danger" style="width:20%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="LLF">123.000 Kg.</div>
+                                                                <div class="progress bg-warning"></div>
+                                                            </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>				
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                            
+                            </div> 
+
+
+                            <div class="col-xl-7 col-12">
+                                <div class="box">
+                                    <div class="box-header with-border" style="padding: 7px 1.5rem!important;">
+                                    <h4 class="box-title">Información</h4>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-12">
+                                                <div class="box">
+                                                    <div class="box-body p-0">
+                                                        <div class="d-flex justify-content-between align-items-center p-5 bg-primary">
+                                                            <h4 class="font-weight-700 my-0">RECEPCIÓN MP</h4>
+                                                        </div>
+                                                        <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
+                                                            <div class="text-center br-1 w-p100">										
+                                                                <p class="mb-0">R. Abiertas MP</p>			
+                                                                <p class="mb-0">3</p>
+                                                            </div>
+                                                            <div class="text-center br-1 w-p100">										
+                                                                <p class="mb-0">R. Abiertas IND</p>			
+                                                                <p class="mb-0">2</p>
+                                                            </div>
+                                                            <div class="text-center br-1 w-p100">										
+                                                                <p class="mb-0">D. Abierto MP</p>			
+                                                                <p class="mb-0">7</p>
+                                                            </div>
+                                                            <div class="text-center w-p100">										
+                                                                <p class="mb-0">D. Abierto IND</p>			
+                                                                <p class="mb-0">0</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="d-flex justify-content-around p-10">
+                                                            <div class="justify-content-between w-p100 p-10 bg-success-light mr-5 rounded">	
+                                                        								
+                                                                <p>MP ACUMULADO</p>	
+                                                                <br/>		
+                                                                <h3 class="text-align: center;">10.452.360</h3>
+                                                            </div>
+                                                            <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
+                                                                <p>MP DÍA ANTERIOR</p>
+                                                                <br/>		
+                                                                <h3 class="text-align: center;">10.912.350</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-around p-10 bg-dark">
+                                                            <div class="w-p100 mr-5">										
+                                                            <h5 class="mb-0 mt-0">Seleccione Empresa</h5>
+                                                            </div>
+                                                            <div class="w-p100 ml-5">							
+                                                                <select class="form-control">
+                                                                    <option>Volcan Foods</option>
+                                                                    <option>Best Berry Chile</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div class="box">
+                                                    <div class="box-body p-0">
+                                                        <div class="d-flex justify-content-between align-items-center p-5 bg-warning">
+                                                            <h4 class="font-weight-700 my-0">PROCESO PACKING</h4>
+                                                        </div>
+                                                        <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
+                                                            <div class="text-center br-1 w-p100">										
+                                                                <p class="mb-0">Poce. Abiertos</p>			
+                                                                <p class="mb-0">3</p>
+                                                            </div>
+                                                            <div class="text-center br-1 w-p100">										
+                                                                <p class="mb-0">Rem. Abiertos</p>			
+                                                                <p class="mb-0">2</p>
+                                                            </div>
+                                                            <div class="text-center br-1 w-p100">										
+                                                                <p class="mb-0">Repa. Abierto</p>			
+                                                                <p class="mb-0">7</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="d-flex justify-content-around p-10">
+                                                            <div class="justify-content-between w-p100 p-10 bg-success-light mr-5 rounded">	
+                                                        								
+                                                                <p>MP PROCESADA</p>	
+                                                                <br/>		
+                                                                <h3 class="text-align: center;">52.360</h3>
+                                                            </div>
+                                                            <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
+                                                                <p>PROCE. DÍA ANTERIOR</p>
+                                                                <br/>		
+                                                                <h3 class="text-align: center;">2.350</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-around p-10 bg-dark">
+                                                            <div class="w-p100 mr-5">										
+                                                            <h5 class="mb-0 mt-0">Seleccione Empresa</h5>
+                                                            </div>
+                                                            <div class="w-p100 ml-5">							
+                                                                <select class="form-control">
+                                                                    <option>Volcan Foods</option>
+                                                                    <option>Best Berry Chile</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                            </div>
+                                            <!-- col -->
+                                            <div class="col-12">
+                                                <div class="box">
+                                                    <div class="box-body">
+                                                        <h4 class="box-title">Despacho PT</h4>
+                                                        <div id="graficofrigorifico"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /col -->
+                                        </div> 
+                                    </div>
+                                </div>
+				            </div>
+
+                        <div class="col-xl-5 col-12">
+                                <div class="box">
+                                    <div class="box-header with-border" style="padding: 7px 1.5rem!important;">
+                                    <h4 class="box-title">Notificaciones</h4>
+                                    </div>
+                                    <div class="box-body">
+                                        <div class="callout callout-danger">
+                                            <h5>Problemas en sistema</h5>
+                                            <p style="font-size: 11px;">Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
+                                            large screens because it prevents the site from stretching very wide.</p>
+                                            <button class="btn btn-primary" style="font-size: 10px;">Marcar como leído</button>
+                                        </div>
+                                        <div class="callout callout-success">
+                                            <h5>Actualizaciones</h5>
+                                            <p style="font-size: 11px;">Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
+                                            large screens because it prevents the site from stretching very wide.</p>
+                                            <button class="btn btn-primary" style="font-size: 10px;">Marcar como leído</button>
+                                        </div>
+
+                                        <div class="callout callout-warning">
+                                            <h5>Actualizaciones</h5>
+                                            <p style="font-size: 11px;">Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
+                                            large screens because it prevents the site from stretching very wide.</p>
+                                            <button class="btn btn-primary" style="font-size: 10px;">Marcar como leído</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+				            </div>
+                       
+                           	 
+
+                            
+
+                           
+                              
+                            
+                            
+                        </div>  
+                    </section>
                     <!-- /.content -->
                 </div>
             </div>
+
             <?php include_once "../../assest/config/footer.php"; ?>
             <?php include_once "../../assest/config/menuExtraFruta.php"; ?>
     </div>
     <!- LLAMADA URL DE ARCHIVOS DE DISEÑO Y JQUERY E OTROS -!>
         <?php include_once "../../assest/config/urlBase.php"; ?>
+        <script>
+    Morris.Bar({
+        element: 'graficofrigorifico',
+        data: [{
+            y: 'Angus',
+            a: 17600,
+            b: 9500
+        }, {
+            y: 'BBCH',
+            a: 8000,
+            b: 7000
+        }, {
+            y: 'Greenvic',
+            a: 550,
+            b: 4500
+        }, {
+            y: 'Volcan Foods',
+            a: 800,
+            b: 450
+        }, {
+            y: 'LLF',
+            a: 55000,
+            b: 45000
+        }],
+        xkey: 'y',
+        ykeys: ['a', 'b'],
+        labels: ['D. Exportación', 'D. Interplanta'],
+        barColors:['#ff3f3f', '#0080ff'],
+        hideHover: 'auto',
+        gridLineColor: '#eef0f2',
+        resize: true
+    });
+            </script>
 </body>
 </html>
