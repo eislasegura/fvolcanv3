@@ -8,10 +8,14 @@ class BDCONFIG {
 
     public function __construct()
     {
-        $this->HOST="185.37.231.180";
+        /*$this->HOST="185.37.231.180";
         $this->USER = "m230496_smart";
         $this->PASS="Eisla1245...";
-        $this->DBNAME="m230496_test";
+        $this->DBNAME="m230496_test";*/
+        $this->HOST="localhost";
+        $this->USER = "root";
+        $this->PASS="MikeGuazaky0212";
+        $this->DBNAME="mscode_fvolcan";
 
     }
     public function __GET($k){ return $this->$k; }
