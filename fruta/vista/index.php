@@ -12,7 +12,24 @@ $CONSULTA_ADO =  NEW CONSULTA_ADO;
 
 //INCIALIZAR VARIBALES A OCUPAR PARA LA FUNCIONALIDAD
 
-$RECEPCION=0;
+$query_kilosMpTotales = $CONSULTA_ADO->TotalKgMpRecepcionadosPlanta($TEMPORADAS);
+$query_datosPlanta = $CONSULTA_ADO->verPlanta($PLANTAS);
+$query_kilosMpTotalesEmpresaPlanta = $CONSULTA_ADO->TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADAS);
+
+if($query_kilosMpTotales){
+    $kilosMpTotales = $query_kilosMpTotales[0]["TOTAL"];
+}
+
+if ($query_datosPlanta) {
+    $nombePlanta = $query_datosPlanta[0]['NOMBRE_PLANTA'];
+}
+
+
+
+
+
+
+/*$RECEPCION=0;
 $RECEPCIONMP=0;
 $RECEPCIONIND=0;
 $RECEPCIONPT=0;
@@ -43,7 +60,7 @@ if($ARRAYREGISTROSABIERTOS){
     $PROCESO=$ARRAYREGISTROSABIERTOS[0]["PROCESO"];
     $REEMBALAJE=$ARRAYREGISTROSABIERTOS[0]["REEMBALAJE"];
     $REPALETIZAJE=$ARRAYREGISTROSABIERTOS[0]["REPALETIZAJE"];
-}
+}*/
 
 
 ?>
@@ -92,8 +109,8 @@ if($ARRAYREGISTROSABIERTOS){
                                     <div class="box-body">
                                         <div class="table-responsive">
                                             <div class="text-center">
-                                                <p class="mb-0" style="padding: 0px 1.5rem!important;">TOTAL KG. PLANTA EL ALAMO</p>
-                                                <h2 class="text-primary" style="padding: 0px 1.5rem!important;">10.235.8979 kg.</h2>
+                                                <p class="mb-0" style="padding: 0px 1.5rem!important;">TOTAL KG. PLANTA <?php echo strtoupper($nombePlanta); ?></p>
+                                                <h2 class="text-primary" style="padding: 0px 1.5rem!important;"><?php echo number_format(round($kilosMpTotales, 0), 0, ",", "."); ?> kg.</h2>
                                             </div>
                                             <table class="table no-border">
                                                 <tr>
@@ -102,11 +119,13 @@ if($ARRAYREGISTROSABIERTOS){
                                                             <ul class="new-progress-line row list-unstyled" style="margin-top: 0px!important; margin-bottom: 0px!important;">
 
                                                             <li class="col-12 current" style="display: flex; padding-left: 0px!important; padding-right:0px!important;">
-                                                                <div class="bg-warning" style="width:10%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Angus">123.000 Kg.</div>
-                                                                <div class="bg-primary" style="width:30%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="BBCH">123.000 Kg.</div>
-                                                                <div class="bg-success" style="width:25%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Greenvic">123.000 Kg.</div>
-                                                                <div class="bg-info" style="width:15%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Volcan Foods">123.000 Kg.</div>
-                                                                <div class="bg-danger" style="width:20%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="LLF">123.000 Kg.</div>
+                                                            <?php foreach ($query_kilosMpTotalesEmpresaPlanta as $rowsKilosTotalesEmpresaPlanta) : 
+                                                                $porcentaje = round((round($rowsKilosTotalesEmpresaPlanta["TOTAL"], 0) * 100)/round($kilosMpTotales, 0),0); 
+                                                                $color = substr(md5(rand()), 0, 6);     
+                                                            ?>
+                                                                <div class="" style="width:<?php echo $porcentaje;?>%; text-align: center; line-height: 50px; cursor: pointer; color: white; background-color: #<?php echo $color; ?>;" data-toggle="tooltip" data-placement="bottom" title="<?php echo $rowsKilosTotalesEmpresaPlanta["NOMBRE_EMPRESA"].' ('.number_format(round($rowsKilosTotalesEmpresaPlanta["TOTAL"], 0), 0, ",", ".").' Kg.)'; ?>"><?php echo number_format(round($rowsKilosTotalesEmpresaPlanta["TOTAL"], 0), 0, ",", "."); ?> Kg.</div>
+                                                            <?php endforeach; ?> 
+                                                        
                                                                 <div class="progress bg-warning"></div>
                                                             </li>
 

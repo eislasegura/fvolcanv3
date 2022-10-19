@@ -43,7 +43,7 @@ class CONSULTA_ADO
     {
         try {
 
-            $datos = $this->conexion->prepare("SELECT E.NOMBRE_EMPRESA, SUM(DR.KILOS_NETO_DRECEPCION) FROM FRUTA_RECEPCIONMP R 
+            $datos = $this->conexion->prepare("SELECT E.NOMBRE_EMPRESA, SUM(DR.KILOS_NETO_DRECEPCION)AS TOTAL FROM FRUTA_RECEPCIONMP R 
             JOIN FRUTA_DRECEPCIONMP DR ON DR.ID_RECEPCION = R.ID_RECEPCION 
             JOIN PRINCIPAL_EMPRESA E ON E.ID_EMPRESA = R.ID_EMPRESA 
             WHERE R.ESTADO_REGISTRO = 1 
@@ -70,7 +70,7 @@ class CONSULTA_ADO
     {
         try {
 
-            $datos = $this->conexion->prepare("SELECT SUM(DR.KILOS_NETO_DRECEPCION) FROM FRUTA_RECEPCIONMP R 
+            $datos = $this->conexion->prepare("SELECT SUM(DR.KILOS_NETO_DRECEPCION)AS TOTAL FROM FRUTA_RECEPCIONMP R 
             JOIN FRUTA_DRECEPCIONMP DR ON DR.ID_RECEPCION = R.ID_RECEPCION 
             JOIN PRINCIPAL_EMPRESA E ON E.ID_EMPRESA = R.ID_EMPRESA 
             WHERE R.ESTADO_REGISTRO = 1 
@@ -312,6 +312,25 @@ class CONSULTA_ADO
         } catch (Exception $e) {
             die($e->getMessage());
         }
+    }
+
+    public function verPlanta($ID_PLANTA){
+        try{
+            
+            $datos=$this->conexion->prepare("SELECT * FROM   principal_planta   WHERE   ID_PLANTA  = '".$ID_PLANTA."';");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+            
+            //	print_r($resultado);
+            //	var_dump($resultado);
+            
+            
+            return $resultado;
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+        
     }
 
     
