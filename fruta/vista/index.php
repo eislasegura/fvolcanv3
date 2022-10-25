@@ -178,19 +178,19 @@ if($ARRAYREGISTROSABIERTOS){
                                                         <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">R. Abiertas MP</p>			
-                                                                <p class="mb-0">3</p>
+                                                                <p class="mb-0"><?php if($query_recepcionAbiertaMP){ echo $query_recepcionAbiertaMP[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">R. Abiertas IND</p>			
-                                                                <p class="mb-0">2</p>
+                                                                <p class="mb-0"><?php if($query_recepcionAbiertaIND){ echo $query_recepcionAbiertaIND[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">D. Abierto MP</p>			
-                                                                <p class="mb-0">7</p>
+                                                                <p class="mb-0"><?php if($query_despachoAbiertoMP){ echo $query_despachoAbiertoMP[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center w-p100">										
                                                                 <p class="mb-0">D. Abierto IND</p>			
-                                                                <p class="mb-0">0</p>
+                                                                <p class="mb-0"><?php if($query_despachoAbiertoIND){ echo $query_despachoAbiertoIND[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                         </div>
                                                         
@@ -199,12 +199,12 @@ if($ARRAYREGISTROSABIERTOS){
                                                         								
                                                                 <p>MP ACUMULADO</p>	
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">10.452.360</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMP){ echo number_format(round($query_acumuladoMP[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                             <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
                                                                 <p>MP DÍA ANTERIOR</p>
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">10.912.350</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPDiaAnterior){ echo number_format(round($query_acumuladoMPDiaAnterior[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex justify-content-around p-10 bg-dark">
@@ -230,15 +230,15 @@ if($ARRAYREGISTROSABIERTOS){
                                                         <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">Poce. Abiertos</p>			
-                                                                <p class="mb-0">3</p>
+                                                                <p class="mb-0"><?php if($query_procesoAbierto){ echo $query_procesoAbierto[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">Rem. Abiertos</p>			
-                                                                <p class="mb-0">2</p>
+                                                                <p class="mb-0"><?php if($query_reembalajeAbierto){ echo $query_reembalajeAbierto[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">Repa. Abierto</p>			
-                                                                <p class="mb-0">7</p>
+                                                                <p class="mb-0"><?php if($query_repaletizajeAbierto){ echo $query_repaletizajeAbierto[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                         </div>
                                                         
@@ -247,12 +247,12 @@ if($ARRAYREGISTROSABIERTOS){
                                                         								
                                                                 <p>MP PROCESADA</p>	
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">52.360</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPProcesado){ echo number_format(round($query_acumuladoMPProcesado[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                             <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
                                                                 <p>PROCE. DÍA ANTERIOR</p>
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">2.350</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPProcesadoDiaAnterior){ echo number_format(round($query_acumuladoMPProcesadoDiaAnterior[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex justify-content-around p-10 bg-dark">
