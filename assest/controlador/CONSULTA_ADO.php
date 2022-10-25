@@ -37,6 +37,308 @@ class CONSULTA_ADO
     }
 
 
+    //CONSULTAS DASHBOARD FRUTA @MICHAEL.SALAS
+
+    public function TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT E.NOMBRE_EMPRESA, SUM(DR.KILOS_NETO_DRECEPCION)AS TOTAL FROM FRUTA_RECEPCIONMP R 
+            JOIN FRUTA_DRECEPCIONMP DR ON DR.ID_RECEPCION = R.ID_RECEPCION 
+            JOIN PRINCIPAL_EMPRESA E ON E.ID_EMPRESA = R.ID_EMPRESA 
+            WHERE R.ESTADO_REGISTRO = 1 
+            AND DR.ESTADO_REGISTRO = 1 
+            AND R.ESTADO = 0 
+            AND R.ID_TEMPORADA = '".$TEMPORADA."'
+            GROUP BY R.ID_EMPRESA");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalKgMpRecepcionadosPlanta($TEMPORADA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT SUM(DR.KILOS_NETO_DRECEPCION)AS TOTAL FROM FRUTA_RECEPCIONMP R 
+            JOIN FRUTA_DRECEPCIONMP DR ON DR.ID_RECEPCION = R.ID_RECEPCION 
+            JOIN PRINCIPAL_EMPRESA E ON E.ID_EMPRESA = R.ID_EMPRESA 
+            WHERE R.ESTADO_REGISTRO = 1 
+            AND DR.ESTADO_REGISTRO = 1 
+            AND R.ESTADO = 0 
+            AND R.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalRecepcionMpAbiertas($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_RECEPCION)AS NUMERO FROM FRUTA_RECEPCIONMP R WHERE R.ID_PLANTA = '".$PLANTA."' AND R.ID_EMPRESA = '".$EMPRESA."' AND R.ESTADO = 1 AND R.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalRecepcionIndAbiertas($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_RECEPCION)AS NUMERO FROM FRUTA_RECEPCIONIND R WHERE R.ID_PLANTA = '".$PLANTA."' AND R.ID_EMPRESA = '".$EMPRESA."' AND R.ESTADO = 1 AND R.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalDespachoMpAbiertas($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_DESPACHO)AS NUMERO FROM FRUTA_DESPACHOMP D WHERE D.ID_PLANTA = '".$PLANTA."' AND D.ID_EMPRESA = '".$EMPRESA."' AND D.ESTADO = 1 AND D.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalDespachoIndAbiertas($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_DESPACHO)AS NUMERO FROM FRUTA_DESPACHOIND D WHERE D.ID_PLANTA = '".$PLANTA."' AND D.ID_EMPRESA = '".$EMPRESA."' AND D.ESTADO = 1 AND D.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function TotalProcesosAbiertos($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_PROCESO)AS NUMERO FROM FRUTA_PROCESO P WHERE P.ID_PLANTA = '".$PLANTA."' AND P.ID_EMPRESA = '".$EMPRESA."' AND P.ESTADO = 1 AND P.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function TotalReembalajesAbiertos($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_REEMBALAJE)AS NUMERO FROM FRUTA_REEMBALAJE REE WHERE REE.ID_PLANTA = '".$PLANTA."' AND REE.ID_EMPRESA = '".$EMPRESA."' AND REE.ESTADO = 1 AND REE.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalRepaletizajesAbiertos($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT COUNT(ID_REPALETIZAJE)AS NUMERO FROM FRUTA_REPALETIZAJEEX REPA WHERE REPA.ID_PLANTA = '".$PLANTA."' AND REPA.ID_EMPRESA = '".$EMPRESA."' AND REPA.ESTADO = 1 AND REPA.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalKgMpRecepcionadoAcumulado($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT SUM(DR.KILOS_NETO_DRECEPCION)AS TOTAL FROM FRUTA_RECEPCIONMP R 
+            JOIN FRUTA_DRECEPCIONMP DR ON DR.ID_RECEPCION = R.ID_RECEPCION 
+            WHERE R.ID_PLANTA = '".$PLANTA."' AND R.ID_EMPRESA = '".$EMPRESA."' AND R.ESTADO = 0 AND R.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function TotalKgMpRecepcionadoDiaAnterior($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT SUM(DR.KILOS_NETO_DRECEPCION)AS TOTAL FROM FRUTA_RECEPCIONMP R 
+            JOIN FRUTA_DRECEPCIONMP DR ON DR.ID_RECEPCION = R.ID_RECEPCION 
+            WHERE R.ID_PLANTA = '".$PLANTA."' AND R.ID_EMPRESA = '".$EMPRESA."' AND R.ESTADO = 1 AND R.ID_TEMPORADA = '".$TEMPORADA."' AND DATE_FORMAT(R.FECHA_RECEPCION, '%Y-%m-%d') = DATE_FORMAT(date_sub(now(),interval 1 day), '%Y-%m-%d')");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalKgMpProcesado($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT SUM(P.KILOS_NETO_ENTRADA)AS TOTAL FROM FRUTA_PROCESO P 
+            WHERE P.ID_PLANTA = '".$PLANTA."' AND P.ID_EMPRESA = '".$EMPRESA."' AND P.ESTADO = 0 AND P.ID_TEMPORADA = '".$TEMPORADA."'");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+
+    public function TotalKgMpProcesadoDiaAnterior($TEMPORADA, $EMPRESA, $PLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT SUM(P.KILOS_NETO_ENTRADA)AS TOTAL FROM FRUTA_PROCESO P 
+            WHERE P.ID_PLANTA = '".$PLANTA."' AND P.ID_EMPRESA = '".$EMPRESA."' AND P.ESTADO = 0 AND P.ID_TEMPORADA = '".$TEMPORADA."' AND DATE_FORMAT(P.FECHA_PROCESO, '%Y-%m-%d') = DATE_FORMAT(date_sub(now(),interval 1 day), '%Y-%m-%d')");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function verPlanta($ID_PLANTA){
+        try{
+            
+            $datos=$this->conexion->prepare("SELECT * FROM   principal_planta   WHERE   ID_PLANTA  = '".$ID_PLANTA."';");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+            
+            //	print_r($resultado);
+            //	var_dump($resultado);
+            
+            
+            return $resultado;
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+        
+    }
+
+    
+
+
+
+
+/* FIN CONSULTAS DASHBOARD */
 
     //FUNCIONES ESPECIALIZADAS 
     //RECEPCION VS PROCESO

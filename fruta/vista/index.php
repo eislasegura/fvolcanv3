@@ -12,7 +12,44 @@ $CONSULTA_ADO =  NEW CONSULTA_ADO;
 
 //INCIALIZAR VARIBALES A OCUPAR PARA LA FUNCIONALIDAD
 
-$RECEPCION=0;
+$query_kilosMpTotales = $CONSULTA_ADO->TotalKgMpRecepcionadosPlanta($TEMPORADAS);
+$query_datosPlanta = $CONSULTA_ADO->verPlanta($PLANTAS);
+$query_kilosMpTotalesEmpresaPlanta = $CONSULTA_ADO->TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADAS);
+
+//recepciones
+$query_recepcionAbiertaMP = $CONSULTA_ADO->TotalRecepcionMpAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_recepcionAbiertaIND = $CONSULTA_ADO->TotalRecepcionIndAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_despachoAbiertoMP = $CONSULTA_ADO->TotalDespachoMpAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_despachoAbiertoIND = $CONSULTA_ADO->TotalDespachoIndAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
+
+//proceso
+$query_procesoAbierto = $CONSULTA_ADO->TotalProcesosAbiertos($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_reembalajeAbierto = $CONSULTA_ADO->TotalReembalajesAbiertos($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_repaletizajeAbierto = $CONSULTA_ADO->TotalRepaletizajesAbiertos($TEMPORADAS, $EMPRESAS, $PLANTAS);
+
+//acumulado
+$query_acumuladoMP = $CONSULTA_ADO->TotalKgMpRecepcionadoAcumulado($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_acumuladoMPDiaAnterior = $CONSULTA_ADO->TotalKgMpRecepcionadoDiaAnterior($TEMPORADAS, $EMPRESAS, $PLANTAS);
+
+$query_acumuladoMPProcesado = $CONSULTA_ADO->TotalKgMpProcesado($TEMPORADAS, $EMPRESAS, $PLANTAS);
+$query_acumuladoMPProcesadoDiaAnterior = $CONSULTA_ADO->TotalKgMpProcesadoDiaAnterior($TEMPORADAS, $EMPRESAS, $PLANTAS);
+
+
+
+if($query_kilosMpTotales){
+    $kilosMpTotales = $query_kilosMpTotales[0]["TOTAL"];
+}
+
+if ($query_datosPlanta) {
+    $nombePlanta = $query_datosPlanta[0]['NOMBRE_PLANTA'];
+}
+
+
+
+
+
+
+/*$RECEPCION=0;
 $RECEPCIONMP=0;
 $RECEPCIONIND=0;
 $RECEPCIONPT=0;
@@ -43,7 +80,7 @@ if($ARRAYREGISTROSABIERTOS){
     $PROCESO=$ARRAYREGISTROSABIERTOS[0]["PROCESO"];
     $REEMBALAJE=$ARRAYREGISTROSABIERTOS[0]["REEMBALAJE"];
     $REPALETIZAJE=$ARRAYREGISTROSABIERTOS[0]["REPALETIZAJE"];
-}
+}*/
 
 
 ?>
@@ -92,8 +129,8 @@ if($ARRAYREGISTROSABIERTOS){
                                     <div class="box-body">
                                         <div class="table-responsive">
                                             <div class="text-center">
-                                                <p class="mb-0" style="padding: 0px 1.5rem!important;">TOTAL KG. PLANTA EL ALAMO</p>
-                                                <h2 class="text-primary" style="padding: 0px 1.5rem!important;">10.235.8979 kg.</h2>
+                                                <p class="mb-0" style="padding: 0px 1.5rem!important;">TOTAL KG. PLANTA <?php echo strtoupper($nombePlanta); ?></p>
+                                                <h2 class="text-primary" style="padding: 0px 1.5rem!important;"><?php echo number_format(round($kilosMpTotales, 0), 0, ",", "."); ?> kg.</h2>
                                             </div>
                                             <table class="table no-border">
                                                 <tr>
@@ -102,11 +139,13 @@ if($ARRAYREGISTROSABIERTOS){
                                                             <ul class="new-progress-line row list-unstyled" style="margin-top: 0px!important; margin-bottom: 0px!important;">
 
                                                             <li class="col-12 current" style="display: flex; padding-left: 0px!important; padding-right:0px!important;">
-                                                                <div class="bg-warning" style="width:10%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Angus">123.000 Kg.</div>
-                                                                <div class="bg-primary" style="width:30%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="BBCH">123.000 Kg.</div>
-                                                                <div class="bg-success" style="width:25%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Greenvic">123.000 Kg.</div>
-                                                                <div class="bg-info" style="width:15%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="Volcan Foods">123.000 Kg.</div>
-                                                                <div class="bg-danger" style="width:20%; text-align: center; line-height: 50px; cursor: pointer;" data-toggle="tooltip" data-placement="bottom" title="LLF">123.000 Kg.</div>
+                                                            <?php foreach ($query_kilosMpTotalesEmpresaPlanta as $rowsKilosTotalesEmpresaPlanta) : 
+                                                                $porcentaje = round((round($rowsKilosTotalesEmpresaPlanta["TOTAL"], 0) * 100)/round($kilosMpTotales, 0),0); 
+                                                                $color = substr(md5(rand()), 0, 6);     
+                                                            ?>
+                                                                <div class="" style="width:<?php echo $porcentaje;?>%; text-align: center; line-height: 50px; cursor: pointer; color: white; background-color: #<?php echo $color; ?>;" data-toggle="tooltip" data-placement="bottom" title="<?php echo $rowsKilosTotalesEmpresaPlanta["NOMBRE_EMPRESA"].' ('.number_format(round($rowsKilosTotalesEmpresaPlanta["TOTAL"], 0), 0, ",", ".").' Kg.)'; ?>"><?php echo number_format(round($rowsKilosTotalesEmpresaPlanta["TOTAL"], 0), 0, ",", "."); ?> Kg.</div>
+                                                            <?php endforeach; ?> 
+                                                        
                                                                 <div class="progress bg-warning"></div>
                                                             </li>
 
@@ -139,19 +178,19 @@ if($ARRAYREGISTROSABIERTOS){
                                                         <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">R. Abiertas MP</p>			
-                                                                <p class="mb-0">3</p>
+                                                                <p class="mb-0"><?php if($query_recepcionAbiertaMP){ echo $query_recepcionAbiertaMP[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">R. Abiertas IND</p>			
-                                                                <p class="mb-0">2</p>
+                                                                <p class="mb-0"><?php if($query_recepcionAbiertaIND){ echo $query_recepcionAbiertaIND[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">D. Abierto MP</p>			
-                                                                <p class="mb-0">7</p>
+                                                                <p class="mb-0"><?php if($query_despachoAbiertoMP){ echo $query_despachoAbiertoMP[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center w-p100">										
                                                                 <p class="mb-0">D. Abierto IND</p>			
-                                                                <p class="mb-0">0</p>
+                                                                <p class="mb-0"><?php if($query_despachoAbiertoIND){ echo $query_despachoAbiertoIND[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                         </div>
                                                         
@@ -160,12 +199,12 @@ if($ARRAYREGISTROSABIERTOS){
                                                         								
                                                                 <p>MP ACUMULADO</p>	
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">10.452.360</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMP){ echo number_format(round($query_acumuladoMP[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                             <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
                                                                 <p>MP DÍA ANTERIOR</p>
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">10.912.350</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPDiaAnterior){ echo number_format(round($query_acumuladoMPDiaAnterior[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex justify-content-around p-10 bg-dark">
@@ -191,15 +230,15 @@ if($ARRAYREGISTROSABIERTOS){
                                                         <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">Poce. Abiertos</p>			
-                                                                <p class="mb-0">3</p>
+                                                                <p class="mb-0"><?php if($query_procesoAbierto){ echo $query_procesoAbierto[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">Rem. Abiertos</p>			
-                                                                <p class="mb-0">2</p>
+                                                                <p class="mb-0"><?php if($query_reembalajeAbierto){ echo $query_reembalajeAbierto[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                             <div class="text-center br-1 w-p100">										
                                                                 <p class="mb-0">Repa. Abierto</p>			
-                                                                <p class="mb-0">7</p>
+                                                                <p class="mb-0"><?php if($query_repaletizajeAbierto){ echo $query_repaletizajeAbierto[0]["NUMERO"]; } ?></p>
                                                             </div>
                                                         </div>
                                                         
@@ -208,12 +247,12 @@ if($ARRAYREGISTROSABIERTOS){
                                                         								
                                                                 <p>MP PROCESADA</p>	
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">52.360</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPProcesado){ echo number_format(round($query_acumuladoMPProcesado[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                             <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
                                                                 <p>PROCE. DÍA ANTERIOR</p>
                                                                 <br/>		
-                                                                <h3 class="text-align: center;">2.350</h3>
+                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPProcesadoDiaAnterior){ echo number_format(round($query_acumuladoMPProcesadoDiaAnterior[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
                                                             </div>
                                                         </div>
                                                         <div class="d-flex justify-content-around p-10 bg-dark">
