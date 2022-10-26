@@ -39,7 +39,7 @@ class CONSULTA_ADO
 
     //CONSULTAS DASHBOARD FRUTA @MICHAEL.SALAS
 
-    public function TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADA)
+    public function TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADA, $PLANTA)
     {
         try {
 
@@ -49,7 +49,8 @@ class CONSULTA_ADO
             WHERE R.ESTADO_REGISTRO = 1 
             AND DR.ESTADO_REGISTRO = 1 
             AND R.ESTADO = 0 
-            AND R.ID_TEMPORADA = '".$TEMPORADA."'
+            AND R.ID_TEMPORADA = '".$TEMPORADA."' 
+            AND R.ID_PLANTA = '".$PLANTA."'
             GROUP BY R.ID_EMPRESA");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -66,7 +67,7 @@ class CONSULTA_ADO
     }
 
 
-    public function TotalKgMpRecepcionadosPlanta($TEMPORADA)
+    public function TotalKgMpRecepcionadosPlanta($TEMPORADA, $PLANTA)
     {
         try {
 
@@ -76,7 +77,8 @@ class CONSULTA_ADO
             WHERE R.ESTADO_REGISTRO = 1 
             AND DR.ESTADO_REGISTRO = 1 
             AND R.ESTADO = 0 
-            AND R.ID_TEMPORADA = '".$TEMPORADA."'");
+            AND R.ID_TEMPORADA = '".$TEMPORADA."' 
+            AND R.ID_PLANTA = '".$PLANTA."'");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
