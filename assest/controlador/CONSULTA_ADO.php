@@ -39,7 +39,36 @@ class CONSULTA_ADO
 
     //CONSULTAS DASHBOARD FRUTA @MICHAEL.SALAS
 
-    public function TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADA)
+    
+
+    public function TotalKgPtDespachadoExportacion($TEMPORADA, $PLANTA)
+    {
+        try {
+        
+            $datos = $this->conexion->prepare("SELECT E.NOMBRE_EMPRESA, FORMAT(IFNULL(KILOS_NETO_EXIEXPORTACION,0),2,'de_DE') AS NETO FROM FRUTA_DESPACHOEX DEX 
+            JOIN FRUTA_EXIEXPORTACION DDEX ON DDEX.ID_DESPACHOEX = DEX.ID_DESPACHOEX 
+            JOIN PRINCIPAL_EMPRESA E ON E.ID_EMPRESA = DEX.ID_EMPRESA 
+            WHERE DEX.ESTADO_REGISTRO = 1 
+            AND DDEX.ESTADO_REGISTRO = 1 
+            AND DEX.ESTADO = 0 
+            AND DEX.ID_TEMPORADA = '".$TEMPORADA."' 
+            AND DEX.ID_PLANTA = '".$PLANTA."'
+            GROUP BY DEX.ID_EMPRESA");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+        
+                    //	print_r($resultado);
+                    //	var_dump($resultado);
+        
+        
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADA, $PLANTA)
     {
         try {
 
@@ -49,7 +78,8 @@ class CONSULTA_ADO
             WHERE R.ESTADO_REGISTRO = 1 
             AND DR.ESTADO_REGISTRO = 1 
             AND R.ESTADO = 0 
-            AND R.ID_TEMPORADA = '".$TEMPORADA."'
+            AND R.ID_TEMPORADA = '".$TEMPORADA."' 
+            AND R.ID_PLANTA = '".$PLANTA."'
             GROUP BY R.ID_EMPRESA");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -66,7 +96,7 @@ class CONSULTA_ADO
     }
 
 
-    public function TotalKgMpRecepcionadosPlanta($TEMPORADA)
+    public function TotalKgMpRecepcionadosPlanta($TEMPORADA, $PLANTA)
     {
         try {
 
@@ -76,7 +106,8 @@ class CONSULTA_ADO
             WHERE R.ESTADO_REGISTRO = 1 
             AND DR.ESTADO_REGISTRO = 1 
             AND R.ESTADO = 0 
-            AND R.ID_TEMPORADA = '".$TEMPORADA."'");
+            AND R.ID_TEMPORADA = '".$TEMPORADA."' 
+            AND R.ID_PLANTA = '".$PLANTA."'");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
