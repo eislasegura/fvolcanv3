@@ -428,7 +428,7 @@ $PDF->SetHTMLFooter('
     
 <footer>
 <div class="" style="text-align: center;  ">
-	<b>' . $EMPRESA . ' ' .$COC . '.</b> 
+	<b>' . $EMPRESA . ' - ' .$COC . '.</b> 
   </div>
 </footer>
     
