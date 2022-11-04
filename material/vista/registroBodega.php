@@ -603,6 +603,26 @@ if (isset($id_dato) && isset($accion_dato)) {
                         $SINO = 0;
                         $MENSAJE = "";
                     }
+                }else{
+
+                    $ARRAYVALIDARBODEGA3 = $BODEGA_ADO->listarBodegaPrincipal($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
+                    if($ARRAYVALIDARBODEGA3){
+                        $SINO = 1;
+                        echo '<script>
+                                Swal.fire({
+                                    icon:"warning",
+                                    title:"Accion restringida",
+                                    text:"Ya existe una bodega princiapl en esta planta",
+                                    showConfirmButton: true,
+                                    confirmButtonText:"Cerrar",
+                                    closeOnConfirm:false
+                                })
+                            </script>';
+                    } else {
+                        $SINO = 0;
+                        $MENSAJE = "";
+                    }
+
                 }
 
 
