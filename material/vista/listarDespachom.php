@@ -236,7 +236,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                         $TDESPACHO = "Devolución a Proveedor";
                                                         $ARRAYPROVEEDOR = $PROVEEDOR_ADO->verProveedor($r["ID_PROVEEDOR"]);
                                                         if ($ARRAYPROVEEDOR) {
-                                                            $CSGCSPDESTINO=$ARRAYPRODUCTOR[0]["CSG_PRODUCTOR"];
+                                                            $CSGCSPDESTINO="No Aplica";
                                                             $NOMBRDESTINO = $ARRAYPROVEEDOR[0]["NOMBRE_PROVEEDOR"];
                                                         } else {
                                                             $NOMBRDESTINO = "Sin Datos";
