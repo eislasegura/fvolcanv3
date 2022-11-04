@@ -31,6 +31,7 @@ $ID = "";
 $DIRECTORIODESTINO = "../../assest/img/empresa/";
 
 $NOMBREMPRESA = "";
+$COC = "";
 $RAZONSOCIAL = "";
 $DIRECCION    = "";
 $DVEMPRESA = "";
@@ -113,6 +114,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
+            $COC = "" . $r['COC'];
             $RAZONSOCIAL = "" . $r['RAZON_SOCIAL_EMPRESA'];
             $DIRECCION = "" . $r['DIRECCION_EMPRESA'];
             $GIRO = "" . $r['GIRO_EMPRESA'];
@@ -141,6 +143,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
+            $COC = "" . $r['COC'];
             $RAZONSOCIAL = "" . $r['RAZON_SOCIAL_EMPRESA'];
             $DIRECCION = "" . $r['DIRECCION_EMPRESA'];
             $GIRO = "" . $r['GIRO_EMPRESA'];
@@ -167,6 +170,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
+            $COC = "" . $r['COC'];
             $RAZONSOCIAL = "" . $r['RAZON_SOCIAL_EMPRESA'];
             $DIRECCION = "" . $r['DIRECCION_EMPRESA'];
             $GIRO = "" . $r['GIRO_EMPRESA'];
@@ -196,6 +200,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
+            $COC = "" . $r['COC'];
             $RAZONSOCIAL = "" . $r['RAZON_SOCIAL_EMPRESA'];
             $DIRECCION = "" . $r['DIRECCION_EMPRESA'];
             $GIRO = "" . $r['GIRO_EMPRESA'];
@@ -218,6 +223,9 @@ if($_POST){
     }
     if (isset($_REQUEST['NOMBREMPRESA'])) {
         $NOMBREMPRESA = $_REQUEST['NOMBREMPRESA'];
+    }
+    if (isset($_REQUEST['COC'])) {
+        $COC = $_REQUEST['COC'];
     }
     if (isset($_REQUEST['RAZONSOCIAL'])) {
         $RAZONSOCIAL = $_REQUEST['RAZONSOCIAL'];
@@ -272,6 +280,7 @@ if($_POST){
                 RUTEMPRESA = document.getElementById("RUTEMPRESA").value;
                 DVEMPRESA = document.getElementById("DVEMPRESA").value;
                 NOMBREMPRESA = document.getElementById("NOMBREMPRESA").value;
+                COC = document.getElementById("COC").value;
                 RAZONSOCIAL = document.getElementById("RAZONSOCIAL").value;
                 GIRO = document.getElementById("GIRO").value;
                 DIRECCION = document.getElementById("DIRECCION").value;
@@ -323,6 +332,14 @@ if($_POST){
                     return false;
                 }
                 document.form_reg_dato.NOMBREMPRESA.style.borderColor = "#4AF575";
+
+                if (COC == null || COC.length == 0 || /^\s+$/.test(COC)) {
+                    document.form_reg_dato.COC.focus();
+                    document.form_reg_dato.COC.style.borderColor = "#FF0000";
+                    document.getElementById('val_coc').innerHTML = "NO A INGRESADO DATO";
+                    return false;
+                }
+                document.form_reg_dato.COC.style.borderColor = "#4AF575";
 
 
 
@@ -466,6 +483,13 @@ if($_POST){
                                         <div class="box-body">
                                             <hr class="my-15">
                                             <div class="row">
+                                                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 col-xs-4">
+                                                    <div class="form-group">
+                                                        <label> Nombre </label>
+                                                        <input type="text" class="form-control" placeholder="COC a Mostrar " id="COC" name="COC" value="<?php echo $COC; ?>" <?php echo $DISABLED; ?> />
+                                                        <label id="val_coc" class="validacion"> </label>
+                                                    </div>
+                                                </div>
                                                  <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 col-xs-4">
                                                     <div class="form-group">
                                                         <label>Rut </label>
@@ -666,8 +690,10 @@ if($_POST){
                                             <table id="listar" class="table-hover " style="width: 100%;">
                                                 <thead>
                                                     <tr>
+                                                        
                                                         <th>Numero </th>
                                                         <th class="text-center">Operaciónes</th>
+                                                        <th>COC </th>
                                                         <th>Rut </th>
                                                         <th>DV </th>
                                                         <th>Nombre</th>
@@ -746,6 +772,7 @@ if($_POST){
                                                                     </div>
                                                                 </form>
                                                             </td>
+                                                            <td><?php echo $r['COC']; ?></td> 
                                                             <td><?php echo $r['RUT_EMPRESA']; ?></td>    
                                                             <td><?php echo $r['DV_EMPRESA']; ?></td>    
                                                             <td><?php echo $r['NOMBRE_EMPRESA']; ?></td>    
@@ -804,6 +831,7 @@ if($_POST){
                 $EMPRESA->__SET('RUT_EMPRESA', $_REQUEST['RUTEMPRESA']);
                 $EMPRESA->__SET('DV_EMPRESA', $_REQUEST['DVEMPRESA']);
                 $EMPRESA->__SET('NOMBRE_EMPRESA', $_REQUEST['NOMBREMPRESA']);
+                $EMPRESA->__SET('COC', $_REQUEST['COC']);
                 $EMPRESA->__SET('RAZON_SOCIAL_EMPRESA', $_REQUEST['RAZONSOCIAL']);
                 $EMPRESA->__SET('DIRECCION_EMPRESA', $_REQUEST['DIRECCION']);
                 $EMPRESA->__SET('GIRO_EMPRESA', $_REQUEST['GIRO']);
@@ -855,6 +883,7 @@ if($_POST){
                 $EMPRESA->__SET('RUT_EMPRESA', $_REQUEST['RUTEMPRESA']);
                 $EMPRESA->__SET('DV_EMPRESA', $_REQUEST['DVEMPRESA']);
                 $EMPRESA->__SET('NOMBRE_EMPRESA', $_REQUEST['NOMBREMPRESA']);
+                $EMPRESA->__SET('COC', $_REQUEST['COC']);
                 $EMPRESA->__SET('RAZON_SOCIAL_EMPRESA', $_REQUEST['RAZONSOCIAL']);
                 $EMPRESA->__SET('DIRECCION_EMPRESA', $_REQUEST['DIRECCION']);
                 $EMPRESA->__SET('GIRO_EMPRESA', $_REQUEST['GIRO']);
