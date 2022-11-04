@@ -160,6 +160,7 @@ $ENVASE = "";
 $PRECIOUS = "";
 $CALIBRE = "";
 $EMPRESA = "";
+$COC = "";
 $PLANTA = "";
 $TEMPORADA = "";
 $TOTALPRECIOUSNUEVO=0;
@@ -499,6 +500,7 @@ if($ARRAYICARGA){
     $ARRAYEMPRESA = $EMPRESA_ADO->verEmpresa($ARRAYICARGA[0]['ID_EMPRESA']);
     if($ARRAYEMPRESA){
       $NOMBREEMPRESA=$ARRAYEMPRESA[0]["NOMBRE_EMPRESA"];
+      $COC=$ARRAYEMPRESA[0]["COC"];
       $RAZONSOCIALEMPRESA = $ARRAYEMPRESA[0]["RAZON_SOCIAL_EMPRESA"];
       $RUTEMPRESA=$ARRAYEMPRESA[0]["RUT_EMPRESA"]."-".$ARRAYEMPRESA[0]["DV_EMPRESA"];
       $DIRECCIONEMPRESA=$ARRAYEMPRESA[0]["DIRECCION_EMPRESA"];
@@ -615,6 +617,7 @@ $html = '
         <td class="color2 left" width="70%">
           <b>'.$RAZONSOCIALEMPRESA.'</b> <br>
           '.$RUTEMPRESA.' <br>
+          '.$COC.' <br>
           '.$DIRECCIONEMPRESA.' <br>          
         </td>
         <td class="color2 right">
