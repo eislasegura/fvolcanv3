@@ -161,7 +161,8 @@ class EMPRESA_ADO {
                                                   ID_USUARIOM  ,
                                                   INGRESO  ,
                                                   MODIFICACION  , 
-                                                  ESTADO_REGISTRO  
+                                                  ESTADO_REGISTRO, 
+                                                  COC  
                                              ) VALUES
 	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1);";
             $this->conexion->prepare($query)
@@ -181,7 +182,8 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_PROVINCIA'),
                     $EMPRESA->__GET('ID_REGION'),
                     $EMPRESA->__GET('ID_USUARIOI'),
-                    $EMPRESA->__GET('ID_USUARIOM')
+                    $EMPRESA->__GET('ID_USUARIOM'),
+                    $EMPRESA->__GET('COC')
                     
                     
                     
@@ -213,7 +215,8 @@ class EMPRESA_ADO {
               ID_COMUNA  = ?,
               ID_PROVINCIA  = ?,
               ID_REGION  = ?,
-              ID_USUARIOM  = ?
+              ID_USUARIOM  = ?,
+              COC  = ?
 		WHERE   ID_EMPRESA  = ?;";
             $this->conexion->prepare($query)
             ->execute(
@@ -231,6 +234,7 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_PROVINCIA'),
                     $EMPRESA->__GET('ID_REGION'),
                     $EMPRESA->__GET('ID_USUARIOM'),
+                    $EMPRESA->__GET('COC'),
                     $EMPRESA->__GET('ID_EMPRESA')
                     
                 )
