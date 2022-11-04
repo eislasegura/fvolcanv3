@@ -2276,9 +2276,10 @@ class INVENTARIOM_ADO {
                                                     *, 
                                                     FORMAT(IFNULL(CANTIDAD_INVENTARIO,0),0,'de_DE') AS 'CANTIDAD' ,
                                                     FORMAT(IFNULL(VALOR_UNITARIO,0),3,'de_DE') AS 'VALOR'
-                                                FROM material_inventariom 
-                                                    WHERE ID_DESPACHO= '" . $IDDESPACHO . "' 
-                                                    AND ESTADO_REGISTRO = 1
+                                                    FROM material_inventariom IM 
+                                                    JOIN principal_bodega PB ON PB.ID_BODEGA = IM.ID_BODEGA
+                                                    WHERE IM.ID_DESPACHO= '" . $IDDESPACHO . "' 
+                                                    AND IM.ESTADO_REGISTRO = 1 AND PB.SUBBODEGA = 0
                                                     ;");
             $datos->execute();
             $resultado = $datos->fetchAll();
