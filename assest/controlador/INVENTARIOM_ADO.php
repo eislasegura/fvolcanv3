@@ -1003,7 +1003,7 @@ class INVENTARIOM_ADO {
                                                 AND ESTADO = 2
                                                 AND ID_EMPRESA = '".$IDEMPRESA."' 
                                                 AND ID_PLANTA = '".$IDPLANTA."'
-                                                AND ID_TEMPORADA = '".$IDTEMPORADA."'  ;	");
+                                                AND ID_TEMPORADA = '".$IDTEMPORADA."'  AND SUBBODEGA=0;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
