@@ -320,7 +320,11 @@ class BODEGA_ADO
     public function listarBodegaPorEmpresaCBX($IDEMPRESA, $IDPLANTA)
     {
         try {
-
+            /*echo "SELECT 
+            * 
+         FROM  principal_bodega  
+         WHERE  ESTADO_REGISTRO  = 1 
+         AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_PLANTA ='".$IDPLANTA."';	";*/
             $datos = $this->conexion->prepare("SELECT 
                                                 * 
                                              FROM  principal_bodega  
@@ -403,6 +407,31 @@ class BODEGA_ADO
                                                     AND ID_EMPRESA = '".$IDEMPRESA."'
                                                     AND ID_PLANTA = '".$IDPLANTA."'
                                                     AND SUBBODEGA = 1
+                                              ;	");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function listarBodegaPrincipal($IDEMPRESA,$IDPLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare(" SELECT * 
+                                                FROM  principal_bodega  
+                                                WHERE  ESTADO_REGISTRO  = 1                                              
+                                                    AND ID_EMPRESA = '".$IDEMPRESA."'
+                                                    AND ID_PLANTA = '".$IDPLANTA."'
+                                                    AND SUBBODEGA = 0
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
