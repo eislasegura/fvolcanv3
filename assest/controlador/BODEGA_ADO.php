@@ -166,7 +166,8 @@ class BODEGA_ADO
                                                      ID_USUARIOM ,
                                                      INGRESO ,
                                                      MODIFICACION ,
-                                                     ESTADO_REGISTRO 
+                                                     ESTADO_REGISTRO,
+                                                     SUBBODEGA 
                                                 ) VALUES
 	       	(?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1);";
             $this->conexion->prepare($query)
@@ -180,7 +181,8 @@ class BODEGA_ADO
                         $BODEGA->__GET('ID_EMPRESA'),
                         $BODEGA->__GET('ID_PLANTA'),
                         $BODEGA->__GET('ID_USUARIOI'),
-                        $BODEGA->__GET('ID_USUARIOM')
+                        $BODEGA->__GET('ID_USUARIOM'),
+                        $BODEGA->__GET('SUBBODEGA')
                     )
 
                 );
@@ -219,7 +221,8 @@ class BODEGA_ADO
              ENVASES = ?,
              ID_EMPRESA = ?,
              ID_PLANTA = ?,
-             ID_USUARIOM = ?
+             ID_USUARIOM = ?,
+             SUBBODEGA = ?
         WHERE 
            ID_BODEGA = ?;
             ";
@@ -233,6 +236,7 @@ class BODEGA_ADO
                         $BODEGA->__GET('ID_EMPRESA'),
                         $BODEGA->__GET('ID_PLANTA'),
                         $BODEGA->__GET('ID_USUARIOM'),
+                        $BODEGA->__GET('SUBBODEGA'),
                         $BODEGA->__GET('ID_BODEGA')
 
                     )
