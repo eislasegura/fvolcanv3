@@ -547,25 +547,57 @@ if (isset($id_dato) && isset($accion_dato)) {
             //OPERACION DE REGISTRO DE FILA
             if (isset($_REQUEST['GUARDAR'])) {
                 if ($_REQUEST['PRINCIPAL'] == 1) {
-                    $ARRAYVALIDARBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaPlantaPrincipalCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
-                    if ($ARRAYVALIDARBODEGA) {
+                    $ARRAYVALIDARBODEGACENTRAL = $BODEGA_ADO->listarBodegaPrincipalMateriales($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
+                    if($ARRAYVALIDARBODEGACENTRAL){
                         $SINO = 1;
                         echo '<script>
                                 Swal.fire({
                                     icon:"warning",
                                     title:"Accion restringida",
-                                    text:"Existe un registro asociado al los datos selecionados",
+                                    text:"Ya existe una bodega princiapl en esta planta",
                                     showConfirmButton: true,
                                     confirmButtonText:"Cerrar",
                                     closeOnConfirm:false
                                 })
                             </script>';
-                    } else {
-                        $SINO = 0;
-                        $MENSAJE = "";
+                    }else{
+                        $ARRAYVALIDARBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaPlantaPrincipalCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
+                        if ($ARRAYVALIDARBODEGA) {
+                            $SINO = 1;
+                            echo '<script>
+                                    Swal.fire({
+                                        icon:"warning",
+                                        title:"Accion restringida",
+                                        text:"Existe un registro asociado al los datos selecionados",
+                                        showConfirmButton: true,
+                                        confirmButtonText:"Cerrar",
+                                        closeOnConfirm:false
+                                    })
+                                </script>';
+                        } else {
+                            $SINO = 0;
+                            $MENSAJE = "";
+                        }
                     }
                 }
+
+
+
                 if ($_REQUEST['ENVASES'] == 1) {
+                    $ARRAYVALIDARBODEGACENTRAL = $BODEGA_ADO->listarBodegaPrincipalEnvases($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
+                    if($ARRAYVALIDARBODEGACENTRAL){
+                        $SINO = 1;
+                        echo '<script>
+                                Swal.fire({
+                                    icon:"warning",
+                                    title:"Accion restringida",
+                                    text:"Ya existe una bodega principal en esta planta",
+                                    showConfirmButton: true,
+                                    confirmButtonText:"Cerrar",
+                                    closeOnConfirm:false
+                                })
+                            </script>';
+                    }else{
                     $ARRAYVALIDARBODEGA2 = $BODEGA_ADO->listarBodegaPorEmpresaPlantaEnvasesCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
                     if($ARRAYVALIDARBODEGA2){
                         $SINO = 1;
@@ -583,9 +615,10 @@ if (isset($id_dato) && isset($accion_dato)) {
                         $SINO = 0;
                         $MENSAJE = "";
                     }
+                    }
                 }
 
-                if ($_REQUEST['SUBBODEGA'] == 1) {
+                /*if ($_REQUEST['SUBBODEGA'] == 0) {
                     $ARRAYVALIDARBODEGA2 = $BODEGA_ADO->listarBodegaPorEmpresaPlantaSubbodegaCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
                     if($ARRAYVALIDARBODEGA2){
                         $SINO = 1;
@@ -603,27 +636,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                         $SINO = 0;
                         $MENSAJE = "";
                     }
-                }else{
-
-                    $ARRAYVALIDARBODEGA3 = $BODEGA_ADO->listarBodegaPrincipal($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
-                    if($ARRAYVALIDARBODEGA3){
-                        $SINO = 1;
-                        echo '<script>
-                                Swal.fire({
-                                    icon:"warning",
-                                    title:"Accion restringida",
-                                    text:"Ya existe una bodega princiapl en esta planta",
-                                    showConfirmButton: true,
-                                    confirmButtonText:"Cerrar",
-                                    closeOnConfirm:false
-                                })
-                            </script>';
-                    } else {
-                        $SINO = 0;
-                        $MENSAJE = "";
-                    }
-
-                }
+                }*/
 
 
                 if ($SINO == 0) {
@@ -701,7 +714,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     }
                 }
 
-                if ($_REQUEST['SUBBODEGA'] == 1) {
+                /*if ($_REQUEST['SUBBODEGA'] == 0) {
                     $ARRAYVALIDARBODEGA2 = $BODEGA_ADO->listarBodegaPorEmpresaPlantaSubbodegaDistinoActualCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA'], $_REQUEST['ID']);
                     if($ARRAYVALIDARBODEGA2){
                         $SINO = 1;
@@ -719,7 +732,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                         $SINO = 0;
                         $MENSAJE = "";
                     }
-                }
+                }*/
                 if ($SINO == 0) {
                     //UTILIZACION METODOS SET DEL MODELO
                     //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO   
