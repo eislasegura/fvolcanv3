@@ -388,6 +388,31 @@ class BODEGA_ADO
             die($e->getMessage());
         }
     }
+
+    public function listarBodegaPorEmpresaPlantaSubbodegaCBX($IDEMPRESA,$IDPLANTA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare(" SELECT * 
+                                                FROM  principal_bodega  
+                                                WHERE  ESTADO_REGISTRO  = 1                                              
+                                                    AND ID_EMPRESA = '".$IDEMPRESA."'
+                                                    AND ID_PLANTA = '".$IDPLANTA."'
+                                                    AND SUBBODEGA = 1
+                                              ;	");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
     
     public function listarBodegaPorEmpresaPlantaEnvasesDistinoActualCBX($IDEMPRESA,$IDPLANTA, $IDBODEGA)
     {
@@ -400,6 +425,32 @@ class BODEGA_ADO
                                                     AND ID_PLANTA = '".$IDPLANTA."'
                                                     AND ID_BODEGA != '".$IDBODEGA."'
                                                     AND ENVASES = 1
+                                              ;	");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function listarBodegaPorEmpresaPlantaSubbodegaDistinoActualCBX($IDEMPRESA,$IDPLANTA, $IDBODEGA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare(" SELECT * 
+                                                FROM  principal_bodega  
+                                                WHERE  ESTADO_REGISTRO  = 1                                              
+                                                    AND ID_EMPRESA = '".$IDEMPRESA."'
+                                                    AND ID_PLANTA = '".$IDPLANTA."'
+                                                    AND ID_BODEGA != '".$IDBODEGA."'
+                                                    AND SUBBODEGA = 1
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();

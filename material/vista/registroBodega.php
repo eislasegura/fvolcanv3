@@ -25,6 +25,7 @@ $OP = "";
 $DISABLED = "";
 $PRINCIPAL = "";
 $ENVASES="";
+$SUBBODEGA="";
 
 $NOMBREBODEGA = "";
 $NOMBRECONTACTO = "";
@@ -100,6 +101,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $NOMBRECONTACTO = "" . $r['NOMBRE_CONTACTO_BODEGA'];
             $PRINCIPAL = "" . $r['PRINCIPAL'];
             $ENVASES = "" . $r['ENVASES'];
+            $SUBBODEGA = "" . $r['SUBBODEGA'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
             $PLANTABODEGA = "" . $r['ID_PLANTA'];
             $ESTADO = "" . $r['ESTADO_REGISTRO'];
@@ -122,6 +124,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $NOMBRECONTACTO = "" . $r['NOMBRE_CONTACTO_BODEGA'];
             $PRINCIPAL = "" . $r['PRINCIPAL'];
             $ENVASES = "" . $r['ENVASES'];
+            $SUBBODEGA = "" . $r['SUBBODEGA'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
             $PLANTABODEGA = "" . $r['ID_PLANTA'];
             $ESTADO = "" . $r['ESTADO_REGISTRO'];
@@ -143,6 +146,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $NOMBRECONTACTO = "" . $r['NOMBRE_CONTACTO_BODEGA'];
             $PRINCIPAL = "" . $r['PRINCIPAL'];
             $ENVASES = "" . $r['ENVASES'];
+            $SUBBODEGA = "" . $r['SUBBODEGA'];
             $PLANTABODEGA = "" . $r['ID_PLANTA'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
             $ESTADO = "" . $r['ESTADO_REGISTRO'];
@@ -166,6 +170,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $NOMBRECONTACTO = "" . $r['NOMBRE_CONTACTO_BODEGA'];
             $PRINCIPAL = "" . $r['PRINCIPAL'];
             $ENVASES = "" . $r['ENVASES'];
+            $SUBBODEGA = "" . $r['SUBBODEGA'];
             $EMPRESA = "" . $r['ID_EMPRESA'];
             $PLANTABODEGA = "" . $r['ID_PLANTA'];
             $ESTADO = "" . $r['ESTADO_REGISTRO'];
@@ -199,6 +204,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                 PLANTABODEGA = document.getElementById("PLANTABODEGA").selectedIndex;
                 PRINCIPAL = document.getElementById("PRINCIPAL").selectedIndex;
                 ENVASES = document.getElementById("ENVASES").selectedIndex;
+                SUBBODEGA = document.getElementById("SUBBODEGA").selectedIndex;
 
 
 
@@ -207,6 +213,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                 document.getElementById('val_planta').innerHTML = "";
                 document.getElementById('val_bprincipal').innerHTML = "";
                 document.getElementById('val_benvases').innerHTML = "";
+                document.getElementById('val_bsubbodega').innerHTML = "";
 
 
                 if (NOMBREBODEGA == null || NOMBREBODEGA.length == 0 || /^\s+$/.test(NOMBREBODEGA)) {
@@ -250,6 +257,14 @@ if (isset($id_dato) && isset($accion_dato)) {
                     return false;
                 }
                 document.form_reg_dato.ENVASES.style.borderColor = "#4AF575";
+
+                if (SUBBODEGA == null || SUBBODEGA == 0) {
+                    document.form_reg_dato.SUBBODEGA.focus();
+                    document.form_reg_dato.SUBBODEGA.style.borderColor = "#FF0000";
+                    document.getElementById('val_bsubbodega').innerHTML = "NO HA SELECCIONADO  NINGUNA ALTERNATIVA";
+                    return false;
+                }
+                document.form_reg_dato.SUBBODEGA.style.borderColor = "#4AF575";
 
             }
 
@@ -360,6 +375,17 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                         <label id="val_benvases" class="validacion"> </label>
                                                     </div>
                                                 </div>
+                                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                                    <div class="form-group">
+                                                        <label>Sub Bodega</label>
+                                                        <select class="form-control select2" id="SUBBODEGA" name="SUBBODEGA" style="width: 100%;" value="<?php echo $SUBBODEGA; ?>" <?php echo $DISABLED; ?>>
+                                                            <option> </option>
+                                                            <option value="0" <?php if ($SUBBODEGA == "0") {  echo "selected"; } ?>> No</option>
+                                                            <option value="1" <?php if ($SUBBODEGA == "1") {  echo "selected"; } ?>> Si</option>
+                                                        </select>
+                                                        <label id="val_bsubbodega" class="validacion"> </label>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <label id="val_mensaje" class="validacion"> <?php echo $MENSAJE; ?> </label>
                                         </div>
@@ -408,6 +434,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                         <th>Nombre Planta</th>
                                                         <th>Bodega Material</th>
                                                         <th>Bodega Envase</th>
+                                                        <th>Sub Bodega</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -433,6 +460,15 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                                 $NOMBREENVASES="Si Aplica";
                                                             }else{                                                                
                                                                 $NOMBREENVASES="Sin Datos";
+                                                            } 
+
+
+                                                            if($r["SUBBODEGA"]==0){
+                                                                $NOMBRESUBBODEGA="No Aplica";
+                                                            }else if($r["SUBBODEGA"]==1){
+                                                                $NOMBRESUBBODEGA="Si Aplica";
+                                                            }else{                                                                
+                                                                $NOMBRESUBBODEGA="Sin Datos";
                                                             } 
 
                                                             ?>
@@ -480,7 +516,8 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                             <td><?php echo $r['NOMBRE_BODEGA']; ?></td>
                                                             <td><?php echo $NOMBREPLANTABODEGA; ?></td>   
                                                             <td><?php echo $NOMBREPRINCIPAL; ?></td>   
-                                                            <td><?php echo $NOMBREENVASES; ?></td>   
+                                                            <td><?php echo $NOMBREENVASES; ?></td> 
+                                                            <td><?php echo $NOMBRESUBBODEGA; ?></td>   
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
@@ -548,6 +585,26 @@ if (isset($id_dato) && isset($accion_dato)) {
                     }
                 }
 
+                if ($_REQUEST['SUBBODEGA'] == 1) {
+                    $ARRAYVALIDARBODEGA2 = $BODEGA_ADO->listarBodegaPorEmpresaPlantaSubbodegaCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA']);
+                    if($ARRAYVALIDARBODEGA2){
+                        $SINO = 1;
+                        echo '<script>
+                                Swal.fire({
+                                    icon:"warning",
+                                    title:"Accion restringida",
+                                    text:"Existe un registro asociado al los datos selecionados",
+                                    showConfirmButton: true,
+                                    confirmButtonText:"Cerrar",
+                                    closeOnConfirm:false
+                                })
+                            </script>';
+                    } else {
+                        $SINO = 0;
+                        $MENSAJE = "";
+                    }
+                }
+
 
                 if ($SINO == 0) {
                     //UTILIZACION METODOS SET DEL MODELO
@@ -556,6 +613,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     $BODEGA->__SET('NOMBRE_CONTACTO_BODEGA', $_REQUEST['NOMBRECONTACTO']);
                     $BODEGA->__SET('PRINCIPAL', $_REQUEST['PRINCIPAL']);
                     $BODEGA->__SET('ENVASES', $_REQUEST['ENVASES']);
+                    $BODEGA->__SET('SUBBODEGA', $_REQUEST['SUBBODEGA']);
                     $BODEGA->__SET('ID_EMPRESA', $_REQUEST['EMPRESA']);
                     $BODEGA->__SET('ID_PLANTA', $_REQUEST['PLANTABODEGA']);
                     $BODEGA->__SET('ID_USUARIOI', $IDUSUARIOS);
@@ -622,6 +680,26 @@ if (isset($id_dato) && isset($accion_dato)) {
                         $MENSAJE = "";
                     }
                 }
+
+                if ($_REQUEST['SUBBODEGA'] == 1) {
+                    $ARRAYVALIDARBODEGA2 = $BODEGA_ADO->listarBodegaPorEmpresaPlantaSubbodegaDistinoActualCBX($_REQUEST['EMPRESA'], $_REQUEST['PLANTABODEGA'], $_REQUEST['ID']);
+                    if($ARRAYVALIDARBODEGA2){
+                        $SINO = 1;
+                        echo '<script>
+                                Swal.fire({
+                                    icon:"warning",
+                                    title:"Accion restringida",
+                                    text:"Existe un registro asociado al los datos selecionados",
+                                    showConfirmButton: true,
+                                    confirmButtonText:"Cerrar",
+                                    closeOnConfirm:false
+                                })
+                            </script>';
+                    } else {
+                        $SINO = 0;
+                        $MENSAJE = "";
+                    }
+                }
                 if ($SINO == 0) {
                     //UTILIZACION METODOS SET DEL MODELO
                     //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO   
@@ -629,6 +707,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     $BODEGA->__SET('NOMBRE_CONTACTO_BODEGA', $_REQUEST['NOMBRECONTACTO']);
                     $BODEGA->__SET('PRINCIPAL', $_REQUEST['PRINCIPAL']);
                     $BODEGA->__SET('ENVASES', $_REQUEST['ENVASES']);
+                    $BODEGA->__SET('SUBBODEGA', $_REQUEST['SUBBODEGA']);
                     $BODEGA->__SET('ID_EMPRESA', $_REQUEST['EMPRESA']);
                     $BODEGA->__SET('ID_PLANTA', $_REQUEST['PLANTABODEGA']);
                     $BODEGA->__SET('ID_USUARIOM', $IDUSUARIOS);
