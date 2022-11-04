@@ -483,9 +483,9 @@ if($_POST){
                                         <div class="box-body">
                                             <hr class="my-15">
                                             <div class="row">
-                                                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 col-xs-4">
+                                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                                     <div class="form-group">
-                                                        <label> Nombre </label>
+                                                        <label> COC </label>
                                                         <input type="text" class="form-control" placeholder="COC a Mostrar " id="COC" name="COC" value="<?php echo $COC; ?>" <?php echo $DISABLED; ?> />
                                                         <label id="val_coc" class="validacion"> </label>
                                                     </div>

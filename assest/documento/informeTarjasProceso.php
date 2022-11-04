@@ -62,6 +62,7 @@ $TOTALNETODINDUSTRIAL="";
 $TOTALBRUTODINDUSTRIAL="";
 
 $EMPRESA="";
+$COC="";
 $EMPRESAURL="";
 
 $html='';
@@ -119,6 +120,7 @@ $CSGPRODUCTOR=$ARRAYPRODUCTOR[0]['CSG_PRODUCTOR'];
 
 $ARRAYEMPRESA=$EMPRESA_ADO->verEmpresa($ARRAYPROCESO[0]['ID_EMPRESA']);
 $EMPRESA=$ARRAYEMPRESA[0]['NOMBRE_EMPRESA'];
+$COC=$ARRAYEMPRESA[0]['COC'];
 $EMPRESAURL=$ARRAYEMPRESA[0]['LOGO_EMPRESA'];
 
 if($EMPRESAURL==""){
@@ -426,7 +428,7 @@ $PDF->SetHTMLFooter('
     
 <footer>
 <div class="" style="text-align: center;  ">
-	<b>' . $EMPRESA . '.</b> 
+	<b>' . $EMPRESA . ' ' .$COC . '.</b> 
   </div>
 </footer>
     
