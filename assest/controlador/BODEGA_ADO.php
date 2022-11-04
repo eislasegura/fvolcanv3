@@ -313,7 +313,7 @@ class BODEGA_ADO
             die($e->getMessage());
         }
     }
-    public function listarBodegaPorEmpresaCBX($IDEMPRESA, $IDPLANTA, $IDTEMPORADA)
+    public function listarBodegaPorEmpresaCBX($IDEMPRESA, $IDPLANTA)
     {
         try {
 
@@ -321,7 +321,7 @@ class BODEGA_ADO
                                                 * 
                                              FROM  principal_bodega  
                                              WHERE  ESTADO_REGISTRO  = 1 
-                                             AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_PLANTA ='".$IDPLANTA."' AND ID_TEMPORADA = '".$IDTEMPORADA."';	");
+                                             AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_PLANTA ='".$IDPLANTA."';	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
