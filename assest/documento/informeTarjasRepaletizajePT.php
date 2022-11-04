@@ -39,6 +39,7 @@ $ALIASFOLIO = "";
 $CODIGOPRODUCTOR = "";
 $NOMBREPRODUCTOR = "";
 $EMPRESA = "";
+$COC = "";
 $EMPRESAURL = "";
 $FOLIOBASE = "";
 $TOTALENVASE = "";
@@ -82,6 +83,7 @@ $ARRAYFOLIO = $FOLIO_ADO->verFolio($FOLIO);
 $ARRAYEMPRESA = $EMPRESA_ADO->verEmpresa($ARRAYREPALETIZAJEMP[0]['ID_EMPRESA']);
 $EMPRESA = $ARRAYEMPRESA[0]['NOMBRE_EMPRESA'];
 $EMPRESAURL = $ARRAYEMPRESA[0]['LOGO_EMPRESA'];
+$COC = $ARRAYEMPRESA[0]['COC'];
 
 if ($EMPRESAURL == "") {
 	$EMPRESAURL = "img/empresa/no_disponible.png";
@@ -313,7 +315,7 @@ $PDF->SetHTMLFooter('
     
 <footer>
 <div class="" style="text-align: center;  ">
-	<b>' . $EMPRESA . '.</b> 
+	<b>' . $EMPRESA . ' - ' . $COC . '.</b> 
   </div>
 </footer>
     
