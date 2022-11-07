@@ -527,6 +527,7 @@ if (isset($_POST)) {
                                                     <option></option>
                                                     <option value="1" <?php if ($TRECHAZO == 1 ) {  echo "selected";  } ?>> Rechazado </option>
                                                     <option value="2" <?php if ($TRECHAZO == 2 ) {  echo "selected";  } ?>> Objetado </option> 
+                                                    <option value="2" <?php if ($TRECHAZO == 3 ) {  echo "selected";  } ?>> Decisión Comercial </option> 
                                                 </select>
                                                 <label id="val_trechazo" class="validacion"> </label>
                                             </div>

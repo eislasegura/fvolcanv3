@@ -296,7 +296,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                     </div> 
                                                                                     <hr> 
                                 
-                                                                                    <div class="btn-group btn-block col-12" role="group" aria-label="Acciones generales"> 
+                                                                                    <!--<div class="btn-group btn-block col-12" role="group" aria-label="Acciones generales"> 
                                                                                         <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Report Invoice" Onclick="abrirPestana('../../assest/documento/informeIcargaInvoiceII.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
                                                                                             <i class="fa fa-file-pdf-o"></i><br> Invoice II
                                                                                         </button>    
@@ -304,7 +304,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                                 <i class="fa fa-file-pdf-o"></i><br> Invoice v2 II
                                                                                         </button>                                                                                 
                                                                                     </div>   
-                                                                                    <hr>                         
+                                                                                    <hr>  -->                       
                                                                                     <div class="btn-group btn-block col-12" role="group" aria-label="Acciones generales">
                                                                                         <button type="button" class="btn  btn-danger  btn-sm" id="defecto" name="informe" data-toggle="tooltip"  title="Informe Carga Real" Onclick="abrirPestana('../../assest/documento/informeICargaReal.php?parametro=<?php echo $r['ID_ICARGA']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
                                                                                                 <i class="fa fa-file-pdf-o"></i><br>  Carga Real

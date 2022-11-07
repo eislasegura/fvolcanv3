@@ -102,6 +102,7 @@ $html = '
         <th class="color center ">Kilos Bruto </th>
         <th class="color center ">Fecha Embalado </th>
         <th class="color center ">CSG Productor </th>
+        <th class="color center ">GGN Productor </th>
         <th class="color center ">Nombre Productor </th>
         <th class="color center ">Variedad </th>
     </tr>
@@ -113,6 +114,7 @@ foreach ($ARRAYCONSOLIDADODESPACHO as $s) :
     $ARRAYPRODUCTOR = $PRODUCTOR_ADO->verProductor($s['ID_PRODUCTOR']);
     if ($ARRAYPRODUCTOR) {
         $CSGPRODUCTOR = $ARRAYPRODUCTOR[0]['CSG_PRODUCTOR'];
+        $GGNPRODUCTOR = $ARRAYPRODUCTOR[0]['GGN_PRODUCTOR'];
         $NOMBREPRODUCTOR = $ARRAYPRODUCTOR[0]['NOMBRE_PRODUCTOR'];
     } else {
         $CSGPRODUCTOR = "Sin Datos";
@@ -160,6 +162,7 @@ foreach ($ARRAYCONSOLIDADODESPACHO as $s) :
                 <td class="center">'.$s['BRUTO'].'</td>
                 <td class="center">'.$s['EMBALADO'].'</td>
                 <td class="center">'.$CSGPRODUCTOR.'</td>
+                <td class="center">'.$GGNPRODUCTOR.'</td>
                 <td class="center">'.$NOMBREPRODUCTOR.'</td>
                 <td class="center">'.$NOMBREVARIEDAD.'</td>
             </tr>
