@@ -85,6 +85,17 @@ if($ARRAYRECEPCION){
 	if ($ARRAYPRODUCTOR) {
 	  $NOMBREPRODUCTOR = $ARRAYPRODUCTOR[0]['NOMBRE_PRODUCTOR'];
 	  $CSGPRODUCTOR = $ARRAYPRODUCTOR[0]['CSG_PRODUCTOR'];
+      $GGNPRODUCTOR = $ARRAYPRODUCTOR[0]['CSG_PRODUCTOR'];
+
+      if($GGNPRODUCTOR == ''){
+
+        $SIGGNPRODUCTOR = '';
+
+      }else{
+        $SIGGNPRODUCTOR = '<div class="info2">
+        <b class="f11" style="text-transform: uppercase;"> GGN: </b>   <span class="f13">'.$GGNPRODUCTOR.'</span>
+    </div>';
+      }
 	}
 	
 	
@@ -216,6 +227,7 @@ foreach ($ARRAYDRECEPCION as $s) :
 		<div class="info2">
 			<b class="f11" style="text-transform: uppercase;"> CSG: </b>   <span class="f13">'.$CSGPRODUCTOR.'</span>
 		</div>
+        '.$SIGGNPRODUCTOR.'
         <br>
 		<div class="subtitulo2"></div>
         
