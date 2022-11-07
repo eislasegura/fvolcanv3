@@ -443,11 +443,12 @@ $html = '
       <table border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
-            <th colspan="15" class="center">DETALLE DE DESPACHO.</th>
+            <th colspan="17" class="center">DETALLE DE DESPACHO.</th>
           </tr>
           <tr>
             <th class="color left">Folio</th>
             <th class="color center ">CSG </th>
+            <th class="color center "> </th>
             <th class="color center ">GGN </th>
             <th class="color center ">Productor </th>
             <th class="color center ">Provincia  </th>  
@@ -456,12 +457,12 @@ $html = '
             <th class="color center ">Planta </th>
             <th class="color center ">Provincia  </th>   
             <th class="color center ">Comuna  </th>
-            <th class="color center">Fecha Embalado</th>
-            <th class="color center">Código Estandar</th>
+            <th class="color center">F. Embalado</th>
+            <th class="color center">Cod Estandar</th>
             <th class="color center">Envase/Estandar</th>
             <th class="color center ">Variedad </th>
             <th class="color center">Calibre</th>
-            <th class="color center">Cantidad Envase</th>
+            <th class="color center">Nº Envase</th>
 
           </tr>
         </thead>
@@ -576,6 +577,7 @@ foreach ($ARRAYEXIEXPORTACION as $d) :
                       <tr >
                           <th class=" left">' . $d['FOLIO_AUXILIAR_EXIEXPORTACION'] . '</th>
                           <td class="center">' . $CSGPRODUCTOR . '</td>
+                          <td class="center"></td>
                           <td class="center">' . $GGNPRODUCTOR . '</td>
                           <td class="center">' . $NOMBREPRODUCTOR . '</td>         
                           <td class="center">' . $PROVINCIAPRODUCTOR . '</td>    
@@ -613,6 +615,8 @@ foreach ($ARRAYEXIEXPORTACION as $d) :
               <th class="color3 center">&nbsp;</th>
               <th class="color3 center">&nbsp;</th>
               <th class="color3 center">&nbsp;</th>
+              <th class="color3 center">&nbsp;</th>
+              <th class="color3 center">&nbsp;</th>
               <th class="color3 right"> Total </th>
               <th class="color3 center">' . $TOTALENVASE2 . '</th>
           </tr>
@@ -624,6 +628,8 @@ $html = $html . '
               
           <tr class="bt">
               <th class="color left">&nbsp;</th>
+              <th class="color center">&nbsp;</th>
+              <th class="color center">&nbsp;</th>
               <th class="color center">&nbsp;</th>
               <th class="color center">&nbsp;</th>
               <th class="color center">&nbsp;</th>
