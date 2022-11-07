@@ -214,7 +214,7 @@ foreach ($ARRAYDRECEPCION as $s) :
 			<b class="f11"> Fecha Recepcion : </b>   <span class="f13">'.$FECHARECEPCION.'</span>
 		</div>
 		<div class="info2">
-			<b class="f11"> CSG: </b>   <span class="f13">'.$CSGPRODUCTOR.'</span>
+			<b class="f11" style="text-transform: uppercase;"> CSG: </b>   <span class="f13">'.$CSGPRODUCTOR.'</span>
 		</div>
         <br>
 		<div class="subtitulo2"></div>

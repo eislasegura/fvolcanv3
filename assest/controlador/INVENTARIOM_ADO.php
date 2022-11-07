@@ -994,16 +994,19 @@ class INVENTARIOM_ADO {
         try{
             
             $datos=$this->conexion->prepare("SELECT * ,
-                                                DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
-                                                DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION',
-                                                IFNULL(CANTIDAD_INVENTARIO,0) AS 'CANTIDAD', 
-                                                IFNULL(VALOR_UNITARIO,0) AS 'VALOR'   
-                                             FROM material_inventariom
-                                                WHERE ESTADO_REGISTRO = 1 
-                                                AND ESTADO = 2
-                                                AND ID_EMPRESA = '".$IDEMPRESA."' 
-                                                AND ID_PLANTA = '".$IDPLANTA."'
-                                                AND ID_TEMPORADA = '".$IDTEMPORADA."'  AND SUBBODEGA=0;	");
+            DATE_FORMAT(MI.INGRESO, '%Y-%m-%d') AS 'INGRESO',
+            DATE_FORMAT(MI.MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION',
+            IFNULL(MI.CANTIDAD_INVENTARIO,0) AS 'CANTIDAD', 
+            IFNULL(MI.VALOR_UNITARIO,0) AS 'VALOR'   
+         FROM material_inventariom MI
+        JOIN principal_bodega PB ON PB.ID_BODEGA = MI.ID_BODEGA
+                                                WHERE MI.ESTADO_REGISTRO = 1 
+                                                AND MI.ESTADO = 2
+                                                AND MI.ID_EMPRESA = '".$IDEMPRESA."' 
+                                                AND MI.ID_PLANTA = '".$IDPLANTA."'
+                                                AND MI.ID_TEMPORADA = '".$IDTEMPORADA."' AND PB.SUBBODEGA=0;	");
+
+            
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
