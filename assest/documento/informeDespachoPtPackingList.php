@@ -448,6 +448,7 @@ $html = '
           <tr>
             <th class="color left">Folio</th>
             <th class="color center ">CSG </th>
+            <th class="color center ">GGN </th>
             <th class="color center ">Productor </th>
             <th class="color center ">Provincia  </th>  
             <th class="color center ">Comuna  </th>          
@@ -484,6 +485,7 @@ foreach ($ARRAYEXIEXPORTACION as $d) :
     $ARRAYVERPRODUCTORID = $PRODUCTOR_ADO->verProductor($d['ID_PRODUCTOR']);
     if($ARRAYVERPRODUCTORID){
       $CSGPRODUCTOR = $ARRAYVERPRODUCTORID[0]["CSG_PRODUCTOR"];
+      $GGNPRODUCTOR = $ARRAYVERPRODUCTORID[0]["GGN_PRODUCTOR"];
       $NOMBREPRODUCTOR = $ARRAYVERPRODUCTORID[0]["NOMBRE_PRODUCTOR"];
       $ARRAYCOMUNA = $COMUNA_ADO->verComuna($ARRAYVERPRODUCTORID[0]["ID_COMUNA"]);
       if($ARRAYCOMUNA){
@@ -574,6 +576,7 @@ foreach ($ARRAYEXIEXPORTACION as $d) :
                       <tr >
                           <th class=" left">' . $d['FOLIO_AUXILIAR_EXIEXPORTACION'] . '</th>
                           <td class="center">' . $CSGPRODUCTOR . '</td>
+                          <td class="center">' . $GGNPRODUCTOR . '</td>
                           <td class="center">' . $NOMBREPRODUCTOR . '</td>         
                           <td class="center">' . $PROVINCIAPRODUCTOR . '</td>    
                           <td class="center">' . $COMUNAPRODUCTOR . '</td>          
