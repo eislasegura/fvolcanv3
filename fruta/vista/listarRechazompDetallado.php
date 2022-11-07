@@ -160,6 +160,8 @@ include_once "../../assest/config/datosUrLP.php";
                                                         $TRECHAZO="Rechazado";
                                                     }else if($r['TRECHAZO'] == 2){
                                                         $TRECHAZO="Objetado";
+                                                    }else if($r['TRECHAZO'] == 3){
+                                                        $TRECHAZO="Decisión Comercial";
                                                     }else{
                                                         $TRECHAZO="Sin Datos";
                                                     }
