@@ -122,7 +122,7 @@ if (isset($_GET["ad"])) {
     $acciond_dato = "";
 }
 
-$ARRAYPRODUCTO = $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS, $TEMPORADA);
+$ARRAYPRODUCTO = $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS, $TEMPORADAS);
 $ARRAYTUMEDIDA = $TUMEDIDA_ADO->listarTumedidaPorEmpresaCBX($EMPRESAS);
 $ARRAYBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaPlantaCBX($EMPRESAS, $PLANTAS);
 include_once "../../assest/config/validarDatosUrlD.php";
