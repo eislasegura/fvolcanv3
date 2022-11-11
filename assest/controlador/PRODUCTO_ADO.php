@@ -310,8 +310,8 @@ class PRODUCTO_ADO {
 
     public function listarProductoPorEmpresaCBX($IDEMPRESA, $ID_TEMPORADA){
         try{
-            echo "SELECT * 
-            FROM  material_producto  WHERE ESTADO_REGISTRO = 1  AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_TEMPORADA = '".$ID_TEMPORADA."';	";
+            /*echo "SELECT * 
+            FROM  material_producto  WHERE ESTADO_REGISTRO = 1  AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_TEMPORADA = '".$ID_TEMPORADA."';	";*/
             $datos=$this->conexion->prepare("SELECT * 
                                                 FROM  material_producto  WHERE ESTADO_REGISTRO = 1  AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_TEMPORADA = '".$ID_TEMPORADA."';	");
             $datos->execute();
