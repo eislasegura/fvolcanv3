@@ -11,7 +11,7 @@ class BDCONFIG {
         $this->HOST="localhost";
         $this->USER = "root";
         $this->PASS="";
-        $this->DBNAME="smartberries";
+        $this->DBNAME="smartberrie";
 
     }
     public function __GET($k){ return $this->$k; }
