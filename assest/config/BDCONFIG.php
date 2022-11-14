@@ -19,7 +19,6 @@ class BDCONFIG {
 
 
     static public function conectar(){
-        // $link = new PDO("mysql:host=localhost;dbname=cartas","forge","fgIg28u3smG0TXCUU5nd");
         $link = new PDO("mysql:host=localhost;dbname=smartberries","root","");
         $link->exec("set names utf8");
         $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
