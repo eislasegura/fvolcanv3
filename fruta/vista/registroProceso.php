@@ -1020,7 +1020,7 @@ if (isset($_POST)) {
                                                     <th>Embolsado </th>
                                                     <th>Tipo Manejo </th>
                                                     <th>Tipo Calibre </th>
-                                                    <th>Tipo Categoria </th>
+                                                    <th>Flowpack </th>
                                                 </tr>
                                             </thead>
                                             <tbody>

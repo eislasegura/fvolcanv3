@@ -823,7 +823,7 @@ if (isset($_POST)) {
                                                     <th>Kilo Bruto </th>
                                                     <th>Tipo Embalaje</th>
                                                     <th>Tipo Manejo </th>
-                                                    <th>Tipo Calibre </th>
+                                                    <th>Flowpack </th>
                                                     <th>Tipo Categoria </th>
                                                 </tr>
                                             </thead>
