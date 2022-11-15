@@ -292,7 +292,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
           </li>            
         <?php  } ?>    
         <?php if($PEEXPORTACION=="1"){ ?>
-          <li class="treeview">
+          <!--<li class="treeview">
             <a href="#">
               <img src="../../api/cryptioadmin10/html/images/svg-icon/sidebar-menu/exchange.svg" class="svg-icon" alt="">
               <span> Exportación</span>
@@ -325,7 +325,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                 </ul>
               </li>
             </ul>
-          </li>
+          </li>-->
         <?php  } ?>     
         <?php if($PELIQUIDACION=="1"){ ?>
           <li class="treeview">
