@@ -300,7 +300,7 @@ $html = '
           <div class="address"><b>Tipo Recepcion: </b>' . $NOMBRETIPO . '</div>
           <div class="address"><b>Estado Recepcion: </b> ' . $ESTADO . ' </div>
           <div class="address"><b>Numero Guia: </b>' . $NUMEROGUIA . ' </div>
-          <div class="address"><b>Kilos Guia: </b>' . $TOTALGUIA . '  </div>          ';
+          <div class="address"><b>Envases segun Guia: </b>' . $TOTALGUIA . '  </div>          ';
 if ($TIPORECEPCION == "2") {
   $html .= '
                       <div class="address"><b> Planta Origen:  </b>' . $PLANTAORIGEN . '</div>
