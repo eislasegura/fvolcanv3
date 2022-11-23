@@ -55,7 +55,7 @@ $ARRAYEMPRESA = "";
 
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
-$ARRAYBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaCBX($EMPRESAS);
+$ARRAYBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaCBX($EMPRESAS, $TEMPORADA);
 $ARRAYPLANTA = $PLANTA_ADO->listarPlantaPropiaCBX();
 $ARRAYEMPRESA = $EMPRESA_ADO->listarEmpresaCBX();
 include_once "../../assest/config/validarDatosUrl.php";
