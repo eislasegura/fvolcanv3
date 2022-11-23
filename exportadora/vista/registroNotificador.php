@@ -259,13 +259,13 @@ if (isset($id_dato) && isset($accion_dato)) {
                     document.form_reg_dato.NOMBRENOTIFICADOR.style.borderColor = "#4AF575";
 
 
-                    if (EORINOTIFICADOR == null || EORINOTIFICADOR.length == 0 || /^\s+$/.test(EORINOTIFICADOR)) {
+                   /* if (EORINOTIFICADOR == null || EORINOTIFICADOR.length == 0 || /^\s+$/.test(EORINOTIFICADOR)) {
                         document.form_reg_dato.EORINOTIFICADOR.focus();
                         document.form_reg_dato.EORINOTIFICADOR.style.borderColor = "#FF0000";
                         document.getElementById('val_eori').innerHTML = "NO A INGRESADO DATO";
                         return false;
                     }
-                    document.form_reg_dato.EORINOTIFICADOR.style.borderColor = "#4AF575";
+                    document.form_reg_dato.EORINOTIFICADOR.style.borderColor = "#4AF575"; */
 
 
                     if (DIRECCIONNOTIFICADOR == null || DIRECCIONNOTIFICADOR.length == 0 || /^\s+$/.test(DIRECCIONNOTIFICADOR)) {
