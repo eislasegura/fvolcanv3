@@ -302,7 +302,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
             </a>
             <ul class="treeview-menu">
               <li class="treeview">
-                <!--<a href="#">Inst. Carga
+                <a href="#">Inst. Carga
                   <span class="pull-left-container">
                     <i class=" fa fa-angle-right pull-right"></i>
                   </span>
@@ -312,7 +312,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                   <li><a href="listarICarga.php">Agrupado Inst. Carga</i></a></li>
                   <li><a href="listarICargaDetallado.php">Detallado Inst. Carga</i></a></li>
                 </ul>
-              </li> -->
+              </li> 
               <li class="treeview">
                 <a href="#">Nota D/C
                   <span class="pull-left-container">
