@@ -992,7 +992,7 @@ class INVENTARIOM_ADO {
 
     public function listarInventarioPorEmpresaPlantaTemporadaDisponibleCBX($IDEMPRESA,$IDPLANTA,$IDTEMPORADA){
         try{
-            
+
             $datos=$this->conexion->prepare("SELECT * ,
             DATE_FORMAT(MI.INGRESO, '%Y-%m-%d') AS 'INGRESO',
             DATE_FORMAT(MI.MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION',

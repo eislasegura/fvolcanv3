@@ -551,6 +551,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                   <ul class="treeview-menu">
                     <li><a href="registroICarga.php">Registro Inst. Carga<i class="ti-more"></i></a></li>
                     <li><a href="listarICarga.php">Agrupado Inst. Carga<i class="ti-more"></i></a></li>
+                    <li><a href="listarICargaDetallado.php">Detallado Inst. Carga</i></a></li>
                   </ul>
                 </li>
                 <li class="treeview">
