@@ -2451,8 +2451,8 @@ if (isset($_POST)) {
                                             <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                                 <div class="form-group">
                                                     <label>Fecha Real ETA</label>
-                                                    <input type="hidden" class="form-control" placeholder="FECHA PROCESO" id="FECHAETAREALE" name="FECHAETAREALE" value="<?php echo $FECHAETAREAL; ?>" />
-                                                    <input type="date" class="form-control" placeholder="Fecha ETA Real" id="FECHAETAREAL" name="FECHAETAREAL" value="<?php echo $FECHAETAREAL; ?>" <?php echo $DISABLED; ?> />
+                                                    <input type="hidden" class="form-control" placeholder="FECHA PROCESO" id="FECHAETAREALE" name="FECHAETAREALE" value="<?php echo $FECHAETA; ?>" />
+                                                    <input type="date" class="form-control" placeholder="Fecha ETA Real" id="FECHAETAREAL" name="FECHAETAREAL" value="<?php echo $FECHAETA; ?>" <?php echo $DISABLED; ?> />
                                                     <label id="val_fechaetareal" class="validacion"> </label>
                                                 </div>
                                             </div>
