@@ -16,7 +16,7 @@ $query_kilosMpTotales = $CONSULTA_ADO->TotalKgMpRecepcionadosPlanta($TEMPORADAS,
 $query_datosPlanta = $CONSULTA_ADO->verPlanta($PLANTAS);
 $query_kilosMpTotalesEmpresaPlanta = $CONSULTA_ADO->TotalKgMpRecepcionadosEmpresaPlanta($TEMPORADAS, $PLANTAS);
 
-//recepciones
+ //recepciones
 $query_recepcionAbiertaMP = $CONSULTA_ADO->TotalRecepcionMpAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
 $query_recepcionAbiertaIND = $CONSULTA_ADO->TotalRecepcionIndAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
 $query_despachoAbiertoMP = $CONSULTA_ADO->TotalDespachoMpAbiertas($TEMPORADAS, $EMPRESAS, $PLANTAS);
@@ -160,170 +160,10 @@ if($ARRAYREGISTROSABIERTOS){
                                 </div>
                             
                             </div> 
-
-
-                            <div class="col-xl-7 col-12">
-                                <div class="box">
-                                    <div class="box-header with-border" style="padding: 7px 1.5rem!important;">
-                                    <h4 class="box-title">Información</h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-12">
-                                                <div class="box">
-                                                    <div class="box-body p-0">
-                                                        <div class="d-flex justify-content-between align-items-center p-5 bg-primary">
-                                                            <h4 class="font-weight-700 my-0">RECEPCIÓN MP</h4>
-                                                        </div>
-                                                        <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
-                                                            <div class="text-center br-1 w-p100">										
-                                                                <p class="mb-0">R. Abiertas MP</p>			
-                                                                <p class="mb-0"><?php if($query_recepcionAbiertaMP){ echo $query_recepcionAbiertaMP[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                            <div class="text-center br-1 w-p100">										
-                                                                <p class="mb-0">R. Abiertas IND</p>			
-                                                                <p class="mb-0"><?php if($query_recepcionAbiertaIND){ echo $query_recepcionAbiertaIND[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                            <div class="text-center br-1 w-p100">										
-                                                                <p class="mb-0">D. Abierto MP</p>			
-                                                                <p class="mb-0"><?php if($query_despachoAbiertoMP){ echo $query_despachoAbiertoMP[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                            <div class="text-center w-p100">										
-                                                                <p class="mb-0">D. Abierto IND</p>			
-                                                                <p class="mb-0"><?php if($query_despachoAbiertoIND){ echo $query_despachoAbiertoIND[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="d-flex justify-content-around p-10">
-                                                            <div class="justify-content-between w-p100 p-10 bg-success-light mr-5 rounded">	
-                                                        								
-                                                                <p>MP ACUMULADO</p>	
-                                                                <br/>		
-                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMP){ echo number_format(round($query_acumuladoMP[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
-                                                            </div>
-                                                            <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
-                                                                <p>MP DÍA ANTERIOR</p>
-                                                                <br/>		
-                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPDiaAnterior){ echo number_format(round($query_acumuladoMPDiaAnterior[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-around p-10 bg-dark">
-                                                            <div class="w-p100 mr-5">										
-                                                            <h5 class="mb-0 mt-0">Seleccione Empresa</h5>
-                                                            </div>
-                                                            <div class="w-p100 ml-5">							
-                                                                <select class="form-control">
-                                                                    <option>Volcan Foods</option>
-                                                                    <option>Best Berry Chile</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>  
-                                            </div>
-                                            <div class="col-lg-6 col-12">
-                                                <div class="box">
-                                                    <div class="box-body p-0">
-                                                        <div class="d-flex justify-content-between align-items-center p-5 bg-warning">
-                                                            <h4 class="font-weight-700 my-0">PROCESO PACKING</h4>
-                                                        </div>
-                                                        <div class="d-flex justify-content-around align-items-center p-5 bg-secondary-light">
-                                                            <div class="text-center br-1 w-p100">										
-                                                                <p class="mb-0">Poce. Abiertos</p>			
-                                                                <p class="mb-0"><?php if($query_procesoAbierto){ echo $query_procesoAbierto[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                            <div class="text-center br-1 w-p100">										
-                                                                <p class="mb-0">Rem. Abiertos</p>			
-                                                                <p class="mb-0"><?php if($query_reembalajeAbierto){ echo $query_reembalajeAbierto[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                            <div class="text-center br-1 w-p100">										
-                                                                <p class="mb-0">Repa. Abierto</p>			
-                                                                <p class="mb-0"><?php if($query_repaletizajeAbierto){ echo $query_repaletizajeAbierto[0]["NUMERO"]; } ?></p>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                        <div class="d-flex justify-content-around p-10">
-                                                            <div class="justify-content-between w-p100 p-10 bg-success-light mr-5 rounded">	
-                                                        								
-                                                                <p>MP PROCESADA</p>	
-                                                                <br/>		
-                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPProcesado){ echo number_format(round($query_acumuladoMPProcesado[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
-                                                            </div>
-                                                            <div class="justify-content-between w-p100 p-10 bg-info-light ml-5 rounded">							
-                                                                <p>PROCE. DÍA ANTERIOR</p>
-                                                                <br/>		
-                                                                <h3 class="text-align: center;"><?php if($query_acumuladoMPProcesadoDiaAnterior){ echo number_format(round($query_acumuladoMPProcesadoDiaAnterior[0]["TOTAL"], 0), 0, ",", "."); } ?></h3>
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-around p-10 bg-dark">
-                                                            <div class="w-p100 mr-5">										
-                                                            <h5 class="mb-0 mt-0">Seleccione Empresa</h5>
-                                                            </div>
-                                                            <div class="w-p100 ml-5">							
-                                                                <select class="form-control">
-                                                                    <option>Volcan Foods</option>
-                                                                    <option>Best Berry Chile</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>  
-                                            </div>
-                                            <!-- col -->
-                                            <div class="col-12">
-                                                <div class="box">
-                                                    <div class="box-body">
-                                                        <h4 class="box-title">Despacho PT</h4>
-                                                        <div id="graficofrigorifico"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /col -->
-                                        </div> 
-                                    </div>
-                                </div>
-				            </div>
-
-                        <div class="col-xl-5 col-12">
-                                <div class="box">
-                                    <div class="box-header with-border" style="padding: 7px 1.5rem!important;">
-                                    <h4 class="box-title">Notificaciones</h4>
-                                    </div>
-                                    <div class="box-body">
-                                        <div class="callout callout-danger">
-                                            <h5>Problemas en sistema</h5>
-                                            <p style="font-size: 11px;">Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
-                                            large screens because it prevents the site from stretching very wide.</p>
-                                            <button class="btn btn-primary" style="font-size: 10px;">Marcar como leído</button>
-                                        </div>
-                                        <div class="callout callout-success">
-                                            <h5>Actualizaciones</h5>
-                                            <p style="font-size: 11px;">Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
-                                            large screens because it prevents the site from stretching very wide.</p>
-                                            <button class="btn btn-primary" style="font-size: 10px;">Marcar como leído</button>
-                                        </div>
-
-                                        <div class="callout callout-warning">
-                                            <h5>Actualizaciones</h5>
-                                            <p style="font-size: 11px;">Add the layout-boxed class to the body tag to get this layout. The boxed layout is helpful when working on
-                                            large screens because it prevents the site from stretching very wide.</p>
-                                            <button class="btn btn-primary" style="font-size: 10px;">Marcar como leído</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-				            </div>
-                       
-                           	 
-
-                            
-
-                           
-                              
-                            
-                            
                         </div>  
                     </section>
+
+                    
                     <!-- /.content -->
                 </div>
             </div>
