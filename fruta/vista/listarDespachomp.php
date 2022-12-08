@@ -225,7 +225,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                         }
                                                     }
                                                     if ($r['TDESPACHO'] == "4") {
-                                                        $TDESPACHO = "Despacho de Descarte(R)";
+                                                        $TDESPACHO = "Otros";
                                                         $NUMEROGUIADEPACHO="No Aplica";
                                                         $CSGCSPDESTINO="No Aplica";
                                                         $DESTINO = $r['REGALO_DESPACHO'];

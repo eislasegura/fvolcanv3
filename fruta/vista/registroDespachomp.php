@@ -953,7 +953,7 @@ if (isset($_POST)) {
                                                     <option value="1" <?php if ($TDESPACHO == "1") { echo "selected"; } ?>> Interplanta</option>
                                                     <option value="2" <?php if ($TDESPACHO == "2") { echo "selected"; } ?>> Devolución a Productor </option>
                                                     <option value="3" <?php if ($TDESPACHO == "3") { echo "selected"; } ?>> Venta</option>
-                                                    <option value="4" <?php if ($TDESPACHO == "4") { echo "selected"; } ?>> Despacho de Descarte(R)</option>
+                                                    <option value="4" <?php if ($TDESPACHO == "4") { echo "selected"; } ?>> Otros</option>
                                                     <option value="5" <?php if ($TDESPACHO == "5") { echo "selected"; } ?>> Planta Externa</option>
                                                     <option value="6" <?php if ($TDESPACHO == "6") { echo "selected"; } ?>> Despacho a Productor </option>
                                                 </select>

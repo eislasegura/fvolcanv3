@@ -285,7 +285,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     */
 
 
-                    if (SAGAGCARGA == null || SAGAGCARGA == 0) {
+                    /* if (SAGAGCARGA == null || SAGAGCARGA == 0) {
                         document.form_reg_dato.SAGAGCARGA.focus();
                         document.form_reg_dato.SAGAGCARGA.style.borderColor = "#FF0000";
                         document.getElementById('val_sag').innerHTML = "NO A INGRESADO DATO";
@@ -294,7 +294,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     document.form_reg_dato.SAGAGCARGA.style.borderColor = "#4AF575";
 
 
-                    if (DIRECCIONAGCARGA == null || DIRECCIONAGCARGA.length == 0 || /^\s+$/.test(DIRECCIONAGCARGA)) {
+                    /* if (DIRECCIONAGCARGA == null || DIRECCIONAGCARGA.length == 0 || /^\s+$/.test(DIRECCIONAGCARGA)) {
                         document.form_reg_dato.DIRECCIONAGCARGA.focus();
                         document.form_reg_dato.DIRECCIONAGCARGA.style.borderColor = "#FF0000";
                         document.getElementById('val_direccion').innerHTML = "NO A INGRESADO DATO";
@@ -303,7 +303,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                     document.form_reg_dato.DIRECCIONAGCARGA.style.borderColor = "#4AF575";
 
                 
-                        if (COMUNA == null || COMUNA == 0) {
+                      /*  if (COMUNA == null || COMUNA == 0) {
                             document.form_reg_dato.COMUNA.focus();
                             document.form_reg_dato.COMUNA.style.borderColor = "#FF0000";
                             document.getElementById('val_comuna').innerHTML = "NO HA SELECCIONADO  NINGUNA ALTERNATIVA";

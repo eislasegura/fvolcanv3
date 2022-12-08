@@ -63,7 +63,7 @@ $ARRAYTAINDUSTRIAL = "";
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 $ARRAYESTANDAR = $EINDUSTRIAL_ADO->listarEstandarPorEmpresaCBX($EMPRESAS);
-$ARRAYPRODUCTO= $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS);
+$ARRAYPRODUCTO= $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS, $TEMPORADAS);
 $ARRAYESPECIES = $ESPECIES_ADO->listarEspeciesCBX();
 include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/datosUrl.php";
