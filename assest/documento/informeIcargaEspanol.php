@@ -1174,7 +1174,7 @@ $PDF->SetHTMLFooter('
 
 
 <footer>
-Informe generado por Departamento TI Fruticola Volcan <a href="mailto:ti@fvolcan.cl">ti@fvolcan.cl.</a>
+Informe generado por Departamento de operaciones Agrícola Caliboro Ltda. <a href="mailto:eisla@agricolacaliboro.cl">eisla@agricolacaliboro.cl</a>
 <br>
 Impreso por: <b>' . $NOMBRE . '.</b> Hora impresión: <b>' . $HORAFINAL2 . '</b>
 </footer>
