@@ -415,7 +415,7 @@ $html = '
       </h2>
       <div id="details" class="clearfix">        
         <div id="invoice">
-          <div class="date"><b>Código Reporte: </b>REP-DESPTPL </div>  
+          <div class="date"><b>Código BRC: </b>REP-DESPTPL </div>  
           <div class="date"><b>Fecha Despacho: </b>' . $FECHADESPACHOEX . ' </div>
           <div class="date"><b>Empresa: </b>' . $EMPRESA . '</div>
           <div class="date"><b>Planta: </b>' . $PLANTA . '</div>
