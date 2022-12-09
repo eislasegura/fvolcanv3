@@ -286,6 +286,7 @@ $html = '
         <b> Numero Recepcion: ' . $NUMERORECEPCION . '</b>
       </h2>
       <div id="details" class="clearfix">
+      
         
         <div id="invoice">
           <div class="date"><b>Código Reporte: </b>REP-RECMP</div>  

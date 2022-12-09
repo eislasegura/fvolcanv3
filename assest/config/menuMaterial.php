@@ -458,9 +458,6 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
               <?php if($PMMATERIALES=="1"){ ?>    
                 <li><a href="listarInventariomOcompra.php">Existencia Materiales </a></li>
               <?php  } ?>  
-              <?php if($PMENVASE=="1"){ ?>    
-                <li><a href="listarInventarioeOcompra.php">Existencia Envases </a></li>
-              <?php  } ?>  
             </ul>
           </li>
         <?php  } ?> 

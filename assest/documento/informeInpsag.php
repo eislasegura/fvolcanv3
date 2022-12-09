@@ -284,10 +284,10 @@ $html = '
            <img src="../../assest/img/logo.png" width="150px" height="45px"/>
       </div>
       <div id="company">
-        <h2 class="name">Soc. Agrícola El Álamo Ltda.</h2>
-        <div>Camino a Antuco, Kilómetro N°13</div>
+        <h2 class="name">Agrícola Caliboro Ltda.</h2>
+        <div>Fundó San Miguel de Caliboro </div>
         <div>Los Ángeles, Chile.</div>
-        <div><a href="mailto:ti@fvolcan.com">ti@fvolcan.cl</a></div>
+        <div><a href="mailto:eisla@agricolacaliboro.cl">eisla@agricolacaliboro.cl</a></div>
       </div>
     </header>
     <main>
@@ -299,7 +299,7 @@ $html = '
       <div id="details" class="clearfix">
         
         <div id="invoice">
-          <div class="date"><b>Código BRC: </b>REP-INSPS </div>  
+          <div class="date"><b>Código Reporte: </b>REP-INSPS </div>  
           <div class="date"><b>Fecha Inspección: </b>' . $FECHAINPSAG . ' </div>
           <div class="address"><b> Planta: </b>' . $PLANTA . '</div>
           <div class="address"><b> Temporada: </b>' . $TEMPORADA . '</div>
@@ -470,7 +470,7 @@ $PDF->SetHTMLFooter('
 
 
 <footer>
-Informe generado por Departamento TI Fruticola Volcan <a href="mailto:ti@fvolcan.cl">ti@fvolcan.cl.</a>
+Informe generado por Departamento de operaciones Agrícola Caliboro Ltda. <a href="mailto:eisla@agricolacaliboro.cl">eisla@agricolacaliboro.cl</a>
 <br>
 Impreso por: <b>' . $NOMBRE . '.</b> Hora impresión: <b>' . $HORAFINAL2 . '</b>
 </footer>
