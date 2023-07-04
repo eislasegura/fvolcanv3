@@ -427,12 +427,15 @@ $PDF->SetHTMLFooter('
 
     
 <footer>
-<div class="" style="text-align: center;  ">
-	<b>' . $EMPRESA . ' - ' .$COC . '</b> 
+<div class="" style="text-align: center;text-transform:uppercase !important;  ">
+	<b style="text-transform:uppercase !important;">' . $EMPRESA . ' - ' .$COC . '</b> 
   </div>
 </footer>
     
 ');
+
+echo 'Prueba';
+print_r("prueba2");
 
 $PDF->SetTitle($TIPOINFORME); //titulo pdf
 $PDF->SetCreator($CREADOR); //CREADOR PDF

@@ -19,7 +19,7 @@ include_once '../../assest/controlador/PRODUCTOR_ADO.php';
 include_once '../../assest/controlador/COMPRADOR_ADO.php';
 
 include_once '../../assest/controlador/DESPACHOPT_ADO.php';
-include_once '../../assest/controlador/EXIEXPORTACION_ADO.php';
+//include_once '../../assest/controlador/EXIEXPORTACION_ADO.php';
 
 
 

@@ -581,8 +581,8 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                         <th>Numero </th>
                                                         <th>Operaciones</th>
                                                         <th>Nombre </th>
-                                                        <th>Direción </th>
-                                                        <th>EORI </th>
+                                                        <th>Eori </th>
+                                                        <th>Direccion </th>
                                                         <th>Contacto 1</th>
                                                         <th>Cargo 1</th>
                                                         <th>Email 1</th>

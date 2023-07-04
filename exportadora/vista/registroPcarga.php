@@ -35,7 +35,7 @@ $ARRAYNUMEROQ = "";
 
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
-$ARRAYPCARGA = $PCARGA_ADO->listarPcargaCBX($EMPRESAS);
+$ARRAYPCARGA = $PCARGA_ADO->listarPcargaCBX();
 include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/datosUrl.php";
 

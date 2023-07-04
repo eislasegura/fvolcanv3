@@ -363,6 +363,12 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                     <i class="fa fa-file-pdf-o"></i> Comercial
                                                                                 </button>
                                                                             </span>
+                                                                            <span href="#" class="dropdown-item" data-toggle="tooltip" title="Informe">
+                                                                                <button type="button" class="btn  btn-success  btn-block" id="defecto" name="informe" title="Comercial" Onclick="abrirPestana('../../assest/documento/informeDespachoPtInterComercial.php?parametro=<?php echo $r['ID_DESPACHO']; ?>&&usuario=<?php echo $IDUSUARIOS; ?>'); ">
+                                                                                    <i class="fa fa-file-pdf-o"></i> Comercial
+                                                                                </button>
+                                                                            </span>
+
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -891,7 +891,7 @@ if ($_POST) {
                                         <?php if ($CATEGORIAESTANDAR == "1") { ?>
                                             <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6">
                                                 <div class="form-group">
-                                                    <label>Flowpack</label>
+                                                    <label>Tipo Categoria</label>
                                                     <input type="hidden" id="TCATEGORIAE" name="TCATEGORIAE" value="<?php echo $TCATEGORIA; ?>" />                                                   
                                                     <select class="form-control select2" id="TCATEGORIA" name="TCATEGORIA" style="width: 100%;" <?php echo $DISABLED; ?>>
                                                         <option></option>

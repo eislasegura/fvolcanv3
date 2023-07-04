@@ -1474,6 +1474,8 @@ class EXIMATERIAPRIMA_ADO
                                                     FROM fruta_eximateriaprima
                                                     WHERE ESTADO_REGISTRO = 1
                                                     AND ESTADO = 2
+                                                    /**esta linea de abajo**/
+                                                    AND KILOS_NETO_EXIMATERIAPRIMA>0 
                                                     AND ID_EMPRESA = '" . $EMPRESA . "' 
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");

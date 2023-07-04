@@ -18,7 +18,7 @@
         private   $ID_EMPRESA;
         private   $ID_PLANTA;
         private   $ID_USUARIOI;
-        private   $ID_USUARIOM;
+        private   $ID_USUARIOM;        
         
         //FUNCIONES GET Y SET
         public function __GET($k){ return $this->$k; }

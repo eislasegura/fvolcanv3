@@ -1,7 +1,7 @@
 <html lang="es-Ep">
 
 <head>
-    <title>Agricola Caliboro</title>
+    <title>Sistemas</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -27,7 +27,7 @@
                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12 col-xs-12">
                         <div class="bg-white-10 rounded5">
                             <div class="content-top-agile p-10 pb-0">
-                                <h2 class="text-white">SELECCIONE MODULO</h2>
+                                <h2 class="text-white">SELECCION SISTEMAS</h2>
                             </div>
                             <div class="p-30">
                                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
@@ -44,20 +44,20 @@
                                         </a>
                                     </div>
                                 </div>
-                                <!-- <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
+                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                     <div class="form-group">
                                         <a href="exportadora">
                                             <button type="button" class="btn bg-gradient-info btn-block " id="ENTRAR" name="ENTRAR">Exportadora</button>
                                         </a>
                                     </div>
-                                </div> -->
-                               <!-- <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
+                                </div>
+                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                     <div class="form-group">
                                         <a href="estadistica">
                                             <button type="button" class="btn bg-gradient-info btn-block " id="ENTRAR" name="ENTRAR">Estadisticas</button>
                                         </a>
                                     </div>
-                                </div> -->
+                                </div>
                                 <!--
                                 <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                     <div class="form-group">

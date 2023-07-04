@@ -44,9 +44,11 @@ $ARRAYFOLIOPOEXPO = "";
 
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
-
-if (isset($_GET["id"])) {
-    $id_dato = $_GET["id"];
+$id_dato;
+$accion_dato;
+$urlo_dato;
+if (isset($_GET["ID"])) {
+    $id_dato = $_GET["ID"];
 }else{
     $id_dato = "";
 }

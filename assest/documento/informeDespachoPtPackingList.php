@@ -302,12 +302,16 @@ if($ARRAYDESPACHOEX){
   $ARRAYTEMPORADA = $TEMPORADA_ADO->verTemporada($ARRAYDESPACHOEX[0]['ID_TEMPORADA']);
   $TEMPORADA = $ARRAYTEMPORADA[0]['NOMBRE_TEMPORADA'];
   $PLANTA = $ARRAYPLANTA[0]['NOMBRE_PLANTA'];
-  
+
   
   
   
   $CSPPLANTA = $ARRAYPLANTA[0]['CODIGO_SAG_PLANTA'];
   $RAZONPLANTA = $ARRAYPLANTA[0]['RAZON_SOCIAL_PLANTA'];  
+  if($IDOP==368 || $IDOP==369){
+    $PLANTA='El Alamo';
+    $CSPPLANTA=' 153296';
+  }
   
   
   $ARRAYCOMUNA3 = $COMUNA_ADO->verComuna($ARRAYPLANTA[0]['ID_COMUNA']);
@@ -415,7 +419,7 @@ $html = '
       </h2>
       <div id="details" class="clearfix">        
         <div id="invoice">
-          <div class="date"><b>Código Reporte: </b>REP-DESPTPL </div>  
+          <div class="date"><b>Código BRC: </b>REP-DESPTPL </div>  
           <div class="date"><b>Fecha Despacho: </b>' . $FECHADESPACHOEX . ' </div>
           <div class="date"><b>Empresa: </b>' . $EMPRESA . '</div>
           <div class="date"><b>Planta: </b>' . $PLANTA . '</div>
@@ -518,7 +522,11 @@ foreach ($ARRAYEXIEXPORTACION as $d) :
     $ARRAYPLANTA2=$PLANTA_ADO->verPlanta($d['ID_PLANTA2']);
     if($ARRAYPLANTA2){
       $CSPPLANTA=$ARRAYPLANTA2[0]["CODIGO_SAG_PLANTA"];
-      $NOMBREPLANTA=$ARRAYPLANTA2[0]["NOMBRE_PLANTA"];        
+      $NOMBREPLANTA=$ARRAYPLANTA2[0]["NOMBRE_PLANTA"];   
+      if($IDOP==368 || $IDOP==369){
+        $CSPPLANTA='153296';
+        $NOMBREPLANTA='El Alamo';
+      }     
       $ARRAYCOMUNA=$COMUNA_ADO->verComuna2($ARRAYPLANTA2[0]["ID_COMUNA"]);
       if($ARRAYCOMUNA){
         $COMUNAPLANTA=$ARRAYCOMUNA[0]["COMUNA"];
@@ -547,6 +555,12 @@ foreach ($ARRAYEXIEXPORTACION as $d) :
       $REGIONPLANTA="";
       $PAISPLANTA="";
     }
+    if( $IDOP==374){
+    $CSPPLANTA=' 119559';
+    $NOMBREPLANTA="Lakeblue SPA."; 
+     $COMUNAPLANTA="Futrono";
+      $PROVINCIAPLANTA="Ranco";
+  }
 
     $ARRAYVESPECIES = $VESPECIES_ADO->verVespecies($d['ID_VESPECIES']);
     $ARRAYEEXPORTACION = $EEXPORTACION_ADO->verEstandar($d['ID_ESTANDAR']);
@@ -790,7 +804,7 @@ $html = $html . '
             </div>
             <div id="invoice">
               <div class="date"><b><hr></b></div>
-              <div class="date center">  Firma Contraparte <br> o <br> Despachador Autorizado</div>
+              <div class="date center">'.$NOMBRECONTRAPARTE.' </div>
               <div class="date center">  </div>
             </div>
           </div>

@@ -360,7 +360,8 @@ class EINDUSTRIAL_ADO
                                             FROM estandar_eindustrial 
                                             WHERE ESTADO_REGISTRO = 1
                                             AND ID_EMPRESA = '".$IDEMPRESA."'
-                                            AND TESTANDAR = 1 ;	");
+                                            /*AND TESTANDAR = 1 */
+                                            ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;

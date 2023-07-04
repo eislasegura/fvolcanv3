@@ -818,6 +818,7 @@ if($_POST){
                                                 <button type="button" class="btn  btn-warning " data-toggle="tooltip" title="Cancelar" name="CANCELAR" value="CANCELAR" Onclick="irPagina('registroProductor.php');">
                                                     <i class="ti-trash"></i>Cancelar
                                                 </button>
+                                             
                                                 <?php if ($OP == "editar") { ?>
                                                     <button type="submit" class="btn btn-primary" name="EDITAR" value="EDITAR"   data-toggle="tooltip" title="Guardar" Onclick="return validacion()">
                                                         <i class="ti-save-alt"></i> Guardar

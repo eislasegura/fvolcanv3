@@ -46,7 +46,7 @@ class BODEGA_ADO
     {
         try {
 
-            $datos = $this->conexion->prepare("SELECT * FROM  principal_bodega  limit 8;	");
+            $datos = $this->conexion->prepare("SELECT * FROM  principal_bodega  limit 20;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
@@ -66,7 +66,7 @@ class BODEGA_ADO
     {
         try {
 
-            $datos = $this->conexion->prepare("SELECT * FROM  principal_bodega  WHERE  ESTADO_REGISTRO  = 1;	");
+            $datos = $this->conexion->prepare("SELECT * FROM  principal_bodega  WHERE  ESTADO_REGISTRO  = 1;");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
@@ -166,8 +166,8 @@ class BODEGA_ADO
                                                      ID_USUARIOM ,
                                                      INGRESO ,
                                                      MODIFICACION ,
-                                                     ESTADO_REGISTRO,
-                                                     SUBBODEGA 
+                                                     ESTADO_REGISTRO
+                                                      
                                                 ) VALUES
 	       	(?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1);";
             $this->conexion->prepare($query)
@@ -182,7 +182,6 @@ class BODEGA_ADO
                         $BODEGA->__GET('ID_PLANTA'),
                         $BODEGA->__GET('ID_USUARIOI'),
                         $BODEGA->__GET('ID_USUARIOM'),
-                        $BODEGA->__GET('SUBBODEGA')
                     )
 
                 );
@@ -221,8 +220,8 @@ class BODEGA_ADO
              ENVASES = ?,
              ID_EMPRESA = ?,
              ID_PLANTA = ?,
-             ID_USUARIOM = ?,
-             SUBBODEGA = ?
+             ID_USUARIOM = ?
+             
         WHERE 
            ID_BODEGA = ?;
             ";
@@ -236,7 +235,7 @@ class BODEGA_ADO
                         $BODEGA->__GET('ID_EMPRESA'),
                         $BODEGA->__GET('ID_PLANTA'),
                         $BODEGA->__GET('ID_USUARIOM'),
-                        $BODEGA->__GET('SUBBODEGA'),
+                        
                         $BODEGA->__GET('ID_BODEGA')
 
                     )
@@ -325,10 +324,9 @@ class BODEGA_ADO
          FROM  principal_bodega  
          WHERE  ESTADO_REGISTRO  = 1 
          AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_PLANTA ='".$IDPLANTA."';	";*/
-            $datos = $this->conexion->prepare("SELECT 
-                                                * 
+            $datos = $this->conexion->prepare("SELECT  * 
                                              FROM  principal_bodega  
-                                             WHERE  ESTADO_REGISTRO  = 1 
+                                             WHERE  ESTADO_REGISTRO  =  1
                                              AND ID_EMPRESA = '".$IDEMPRESA."' AND ID_PLANTA ='".$IDPLANTA."';	");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -381,7 +379,7 @@ class BODEGA_ADO
                                                 WHERE  ESTADO_REGISTRO  = 1                                              
                                                     AND ID_EMPRESA = '".$IDEMPRESA."'
                                                     AND ID_PLANTA = '".$IDPLANTA."'
-                                                    AND ENVASES = 1
+                                                     
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -406,7 +404,7 @@ class BODEGA_ADO
                                                 WHERE  ESTADO_REGISTRO  = 1                                              
                                                     AND ID_EMPRESA = '".$IDEMPRESA."'
                                                     AND ID_PLANTA = '".$IDPLANTA."'
-                                                    AND SUBBODEGA = 1 
+                                                     
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -422,6 +420,7 @@ class BODEGA_ADO
         }
     }
 
+
     public function listarBodegaPrincipalMateriales($IDEMPRESA,$IDPLANTA)
     {
         try {
@@ -431,7 +430,7 @@ class BODEGA_ADO
                                                 WHERE  ESTADO_REGISTRO  = 1                                              
                                                     AND ID_EMPRESA = '".$IDEMPRESA."'
                                                     AND ID_PLANTA = '".$IDPLANTA."'
-                                                    AND SUBBODEGA = 0 AND PRINCIPAL = 1
+                                                    AND PRINCIPAL = 1
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -456,7 +455,7 @@ class BODEGA_ADO
                                                 WHERE  ESTADO_REGISTRO  = 1                                              
                                                     AND ID_EMPRESA = '".$IDEMPRESA."'
                                                     AND ID_PLANTA = '".$IDPLANTA."'
-                                                    AND SUBBODEGA = 0 AND ENVASES = 1
+                                                     AND ENVASES = 1
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
@@ -507,7 +506,7 @@ class BODEGA_ADO
                                                     AND ID_EMPRESA = '".$IDEMPRESA."'
                                                     AND ID_PLANTA = '".$IDPLANTA."'
                                                     AND ID_BODEGA != '".$IDBODEGA."'
-                                                    AND SUBBODEGA = 1
+                                                    
                                               ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();

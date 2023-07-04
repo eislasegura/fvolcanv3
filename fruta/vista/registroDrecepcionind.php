@@ -204,7 +204,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_da
                 $COBRO = $ARRAYVERESTANDAR[0]['COBRO'];
                 $PESOENVASEESTANDAR = $ARRAYVERESTANDAR[0]['PESO_ENVASE_ESTANDAR'];
                 $ARRAYVESPECIES = $VESPECIES_ADO->buscarVespeciesPorEspeciesPorEmpresaCBX($ARRAYVERESTANDAR[0]['ID_ESPECIES'],$EMPRESAS);
-            }            $TMANEJO = "" . $r['ID_TMANEJO'];
+            }            
+            $TMANEJO = "" . $r['ID_TMANEJO'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -237,7 +238,8 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_da
                 $COBRO = $ARRAYVERESTANDAR[0]['COBRO'];
                 $PESOENVASEESTANDAR = $ARRAYVERESTANDAR[0]['PESO_ENVASE_ESTANDAR'];
                 $ARRAYVESPECIES = $VESPECIES_ADO->buscarVespeciesPorEspeciesPorEmpresaCBX($ARRAYVERESTANDAR[0]['ID_ESPECIES'],$EMPRESAS);
-            }            $TMANEJO = "" . $r['ID_TMANEJO'];
+            }            
+            $TMANEJO = "" . $r['ID_TMANEJO'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -248,6 +250,9 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_da
             $ESTADO = "" . $r['ESTADO'];
 
         endforeach;
+    }
+    if ($OP == "") {
+        $ARRAYVESPECIES = $VESPECIES_ADO->buscarVespeciesPorEspeciesPorEmpresaCBX(25,$EMPRESAS);
     }
 
     //ver =  OBTENCION DE DATOS PARA LA VISUALIZACION DEL REGISTRO
@@ -334,13 +339,15 @@ if ($_POST) {
     if (isset($_REQUEST['VESPECIES'])) {
         $VESPECIES = $_REQUEST['VESPECIES'];
     }
+    //
     if (isset($_REQUEST['ESTANDAR'])) {
+        $ARRAYVESPECIES = $VESPECIES_ADO->buscarVespeciesPorEspeciesPorEmpresaCBX(25,151);
         $ESTANDAR = $_REQUEST['ESTANDAR'];
         $ARRAYVERESTANDAR = $EINDUSTRIAL_ADO->verEstandar($ESTANDAR);
         if ($ARRAYVERESTANDAR) {
             $COBRO = $ARRAYVERESTANDAR[0]['COBRO'];
             $PESOENVASEESTANDAR = $ARRAYVERESTANDAR[0]['PESO_ENVASE_ESTANDAR'];
-            $ARRAYVESPECIES = $VESPECIES_ADO->buscarVespeciesPorEspeciesPorEmpresaCBX($ARRAYVERESTANDAR[0]['ID_ESPECIES'],$EMPRESAS);
+            //$ARRAYVESPECIES = $VESPECIES_ADO->buscarVespeciesPorEspeciesPorEmpresaCBX($ARRAYVERESTANDAR[0]['ID_ESPECIES'],$EMPRESAS);
             if ($_REQUEST['PESOPALLETRECEPCION']) {
                 $PESOPALLETRECEPCION = $_REQUEST['PESOPALLETRECEPCION'];
             } else {
@@ -640,7 +647,7 @@ if ($_POST) {
                                                 <label>Productor </label>
                                                 <?php if ($TRECEPCION == 1) { ?>
                                                     <input type="hidden" class="form-control" placeholder="PRODUCTOR" id="PRODUCTOR" name="PRODUCTOR" value="<?php echo $PRODUCTOR; ?>" />
-                                                    <input type="text" class="form-control" placeholder="Productor" id="PRODUCTORV" name="PRODUCTORV" value="<?php echo $PRODUCTORDATOS; ?>" disabled style='background-color: #eeeeee;'"/>
+                                                    <input type="text" class="form-control" placeholder="Productor" id="PRODUCTORV" name="PRODUCTORV" value="<?php echo $PRODUCTORDATOS; ?>" disabled style='background-color: #eeeeee;'/>
                                                  <?php } ?>
                                                 <?php if ($TRECEPCION == 2) { ?>
                                                     <select class=" form-control select2" id="PRODUCTOR" name="PRODUCTOR" style="width: 100%;" <?php echo $DISABLED; ?> <?php echo $DISABLEDSTYLE; ?>>
@@ -695,10 +702,13 @@ if ($_POST) {
                                                 <label>Variedad</label><br>
                                                 <select class="form-control select2" id="VESPECIES" name="VESPECIES" style="width: 100%;" <?php echo $DISABLED; ?>>
                                                     <option></option>
-                                                    <?php foreach ($ARRAYVESPECIES as $r) : ?>
-                                                        <?php if ($ARRAYVESPECIES) {    ?>
-                                                            <option value="<?php echo $r['ID_VESPECIES']; ?>" <?php if ($VESPECIES == $r['ID_VESPECIES']) {  echo "selected";  } ?>>
-                                                               <?php   echo $r['NOMBRE_VESPECIES'];   ?>
+                                                    <?php foreach ($ARRAYVESPECIES as $r2) : ?>
+                                                        <?php if ($ARRAYVESPECIES) {    
+                                                            $nom_var45=$r2['NOMBRE_VESPECIES'];
+                                                           // $nom_var45=substr($nom_var45, 0,10);
+                                                        ?>
+                                                            <option value="<?php echo $r2['ID_VESPECIES']; ?>" <?php if ($VESPECIES == $r2['ID_VESPECIES']) {  echo "selected";  } ?> >
+                                                               <?php   echo  $nom_var45;  ?>
                                                             </option>
                                                         <?php } else { ?>
                                                             <option>No Hay Datos Registrados</option>
@@ -753,7 +763,7 @@ if ($_POST) {
                                                 <label>Kilo Neto</label>
                                                 <input type="hidden" class="form-control" placeholder="KILOSPROMEDIODRECEPCION" id="KILOSPROMEDIODRECEPCION" name="KILOSPROMEDIODRECEPCION" value="<?php echo $KILOSPROMEDIODRECEPCION; ?>" />
                                                 <input type="hidden" class="form-control" placeholder="KILOSNETODRECEPCION" id="KILOSNETODRECEPCION" name="KILOSNETODRECEPCION" value="<?php echo $KILOSNETODRECEPCION; ?>" />
-                                                <input type="number" step="0.00" class="form-control" placeholder="Kilo Neto" id="KILOSNETODRECEPCIONV" name="KILOSNETODRECEPCIONV" value="<?php echo $KILOSNETODRECEPCION; ?>" disabled style='background-color: #eeeeee;'" />
+                                                <input type="number" step="0.00" class="form-control" placeholder="Kilo Neto" id="KILOSNETODRECEPCIONV" name="KILOSNETODRECEPCIONV" value="<?php echo $KILOSNETODRECEPCION; ?>" disabled style='background-color: #eeeeee;' />
                                                 <label id=" val_kilosneto" class="validacion"> </label>
                                             </div>
                                         </div>

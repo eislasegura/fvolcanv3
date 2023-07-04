@@ -64,11 +64,10 @@ class PCARGA_ADO {
     }
 
     //LISTAR TODO
-    public function listarPcargaCBX($IDEMPRESA){
+    public function listarPcargaCBX(){
         try{
             
-            $datos=$this->conexion->prepare("SELECT * FROM  fruta_pcarga  
-                WHERE ESTADO_REGISTRO = 1 AND ID_EMPRESA= '".$IDEMPRESA."'; ");
+            $datos=$this->conexion->prepare("SELECT * FROM  fruta_pcarga  WHERE ESTADO_REGISTRO = 1;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;

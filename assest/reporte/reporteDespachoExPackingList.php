@@ -218,14 +218,25 @@ if (isset($_REQUEST['usuario'])) {
     $IDOP = $_REQUEST['parametro'];
   }
   
+  //echo "<pre>";
+  //echo "<b>ARRAYUSUARIO</b><br>";
+  //print_r($ARRAYUSUARIO[0]);
+  //echo "</pre>";
   
 
 
 
 $ARRAYDESPACHOEX=$DESPACHOEX_ADO->verDespachoex2($IDOP);
-if($ARRAYDESPACHOEX){     
-
+if($ARRAYDESPACHOEX){   
+  //echo "<pre>";  
+  //echo "<b>ARRAYDESPACHOEX</b><br>";
+  //print_r($ARRAYDESPACHOEX[0]);
+  //echo "</pre>";
   $ARRAYTOMADO = $EXIEXPORTACION_ADO->buscarPordespachoEx($ARRAYDESPACHOEX[0]['ID_DESPACHOEX']);  
+  //echo "<pre>";  
+  //echo "<b>ARRAYTOMADO</b><br>";
+  //print_r($ARRAYTOMADO[0]);
+  //echo "</pre>";
   $NUMERODESPACHOEX = $ARRAYDESPACHOEX[0]['NUMERO_DESPACHOEX'];
   $NUMEROPLANILLA = $ARRAYDESPACHOEX[0]['NUMERO_PLANILLA_DESPACHOEX'];
   $NUMEROSELLO=$ARRAYDESPACHOEX[0]['NUMERO_SELLO_DESPACHOEX'];
@@ -251,11 +262,20 @@ if($ARRAYDESPACHOEX){
 
   $IDUSUARIOI = $ARRAYDESPACHOEX[0]['ID_USUARIOI'];  
   $ARRAYUSUARIO2 = $USUARIO_ADO->ObtenerNombreCompleto($IDUSUARIOI);
+  //echo "<pre>";
+  //echo "<b>ARRAYUSUARIO2</b><br>";
+  //print_r($ARRAYUSUARIO2[0]);
+  //echo "</pre>";
   $NOMBRERESPONSABLE = $ARRAYUSUARIO2[0]["NOMBRE_COMPLETO"]; 
 
-
+  //print_r("HOOOOO".$ARRAYDESPACHOEX[0]['ID_ICARGA']);
   $ARRAYICARGA=$ICARGA_ADO->verIcarga2($ARRAYDESPACHOEX[0]['ID_ICARGA']);
-  if($ARRAYICARGA){
+  
+  if(sizeof($ARRAYICARGA)>0){
+    //echo "<pre>";
+  //echo "<b>ARRAYICARGA</b><br>";
+  //print_r($ARRAYICARGA[0]);
+  //echo "</pre>";
       $NUMEROICARGA=$ARRAYICARGA[0]["NUMERO_ICARGA"];
       $NUMEROIREFERENCIA=$ARRAYICARGA[0]["NREFERENCIA_ICARGA"];
       $FECHA=$ARRAYICARGA[0]["FECHA"];
@@ -504,9 +524,17 @@ if($ARRAYDESPACHOEX){
   
 
 
-
-  $ARRAYEMPRESA = $EMPRESA_ADO->verEmpresa($ARRAYICARGA[0]['ID_EMPRESA']);
-  if($ARRAYEMPRESA){
+  $vvvv="";
+  if(isset($ARRAYICARGA[0]['ID_EMPRESA'])){
+    $vvvv=$ARRAYICARGA[0]['ID_EMPRESA'];
+  }
+  $ARRAYEMPRESA = $EMPRESA_ADO->verEmpresa($vvvv);
+  //$ARRAYEMPRESA = $EMPRESA_ADO->verEmpresa(151);
+  if(sizeof($ARRAYEMPRESA)>0){
+    //echo "<pre>";
+  //echo "<b>ARRAYEMPRESA</b><br>";
+  //print_r($ARRAYEMPRESA[0]);
+  //echo "</pre>";
     $NOMBREEMPRESA=$ARRAYEMPRESA[0]["NOMBRE_EMPRESA"];
     $RAZONSOCIALEMPRESA = $ARRAYEMPRESA[0]["RAZON_SOCIAL_EMPRESA"];
     $RUTEMPRESA=$ARRAYEMPRESA[0]["RUT_EMPRESA"]."-".$ARRAYEMPRESA[0]["DV_EMPRESA"];
@@ -526,6 +554,10 @@ if($ARRAYDESPACHOEX){
   }
   $ARRAYVERPLANTA = $PLANTA_ADO->verPlanta($ARRAYDESPACHOEX[0]['ID_PLANTA']);
   if($ARRAYVERPLANTA){
+    //echo "<pre>";
+  //echo "<b>ARRAYVERPLANTA</b><br>";
+  //print_r($ARRAYVERPLANTA[0]);
+  //echo "</pre>";
     $LUGARDECARGA=$ARRAYVERPLANTA[0]["RAZON_SOCIAL_PLANTA"];
     $CODIGOSAGPLANTA=$ARRAYVERPLANTA[0]["CODIGO_SAG_PLANTA"];
     $NOMBREPLANTA=$ARRAYVERPLANTA[0]["NOMBRE_PLANTA"];
@@ -539,12 +571,19 @@ if($ARRAYDESPACHOEX){
  
   $ARRAYTEMPORADA = $TEMPORADA_ADO->verTemporada($ARRAYDESPACHOEX[0]['ID_TEMPORADA']);  
   if($ARRAYTEMPORADA){
+     //echo "<pre>";
+  //echo "<b>ARRAYTEMPORADA</b><br>";
+  //print_r($ARRAYTEMPORADA[0]);
+  //echo "</pre>";
     $NOMBRETEMPORADA=$ARRAYTEMPORADA[0]["NOMBRE_TEMPORADA"];
   }else{
     $NOMBRETEMPORADA="Sin Datos";
   }
 
 } 
+else{
+  print_r("ERROR ARRAY");
+}
 
 
    
@@ -611,6 +650,10 @@ foreach ($ARRAYTOMADO as $r) :
 
     $ARRAYVERPRODUCTORID = $PRODUCTOR_ADO->verProductor($r['ID_PRODUCTOR']);
     if ($ARRAYVERPRODUCTORID) {
+       //echo "<pre>";
+ // echo "<b>ARRAYVERPRODUCTORID</b><br>";
+  //print_r($ARRAYVERPRODUCTORID[0]);
+  //echo "</pre>";
         $GGNPRODUCTOR = $ARRAYVERPRODUCTORID[0]['GGN_PRODUCTOR'];
         $CSGPRODUCTOR = $ARRAYVERPRODUCTORID[0]['CSG_PRODUCTOR'];
         $NOMBREPRODUCTOR = $ARRAYVERPRODUCTORID[0]['NOMBRE_PRODUCTOR'];
@@ -657,7 +700,7 @@ foreach ($ARRAYTOMADO as $r) :
         $NOMBRETCALIBRE = "Sin Datos";
     }
   
-    $html = $html . '    
+$html = $html . '    
             <tr class="center">        
                 <td class=" center">' . $r['FOLIO_AUXILIAR_EXIEXPORTACION'] . '</td>
                 <td class=" center">' . $r['EMBALADO'] . '</td>
@@ -720,9 +763,9 @@ if ($TEMBARQUE == "3") {
 
 $html = $html . '
         </tbody>
-      </table>
+      </table> 
       ';
-
+//echo $html;
 
 
 
@@ -731,6 +774,11 @@ $html = $html . '
 date_default_timezone_set('America/Santiago');
 //SE LE PASA LA FECHA ACTUAL A UN ARREGLO
 $ARRAYFECHADOCUMENTO = getdate();
+//echo "<pre>";
+//echo "<b>ARRAYFECHADOCUMENTO</b><br>";
+//print_r($ARRAYFECHADOCUMENTO[0]);
+//echo "</pre>";
+
 
 //SE OBTIENE INFORMACION RELACIONADA CON LA HORA
 $HORA = "" . $ARRAYFECHADOCUMENTO['hours'];
@@ -800,9 +848,11 @@ $FECHANOMBRE = $NOMBREDIA . ", " . $DIA . " de " . $NOMBREMES . " del " . $ANO;
 //CREACION NOMBRE DEL ARCHIVO
 $NOMBREARCHIVO = "PackingListDespachoEx_";
 $FECHADOCUMENTO = $FECHANORMAL . "_" . $HORAFINAL;
+//echo $FECHADOCUMENTO;
 $TIPODOCUMENTO = "Informe";
 $FORMATO = ".xlsx";
 $NOMBREARCHIVOFINAL = $NOMBREARCHIVO . $FECHADOCUMENTO . $FORMATO;
+//echo $NOMBREARCHIVOFINAL;
 
 //CONFIGURACIOND DEL DOCUMENTO
 $TIPOPAPEL = "LETTER";
@@ -848,7 +898,9 @@ $HOJA = $EXCEL->getActiveSheet();
 
 
 $reader = new \PhpOffice\PhpSpreadsheet\Reader\Html();
+//echo ''.$html;
 $EXCEL = $reader->loadFromString($html);
+//print_r( $EXCEL);
 //$reader->setSheetIndex(1);
 //$EXCEL = $reader->loadFromString($secondHtmlString, $EXCEL);
 
@@ -882,6 +934,8 @@ header('Pragma: public'); // HTTP/1.0
 
 
 //GENERACION DEL ARCHIVO EXCEL
+//$writer = new \DOMDocument('1.0', 'UTF-8');
+
 $writer = new Xlsx($EXCEL);
 $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($EXCEL, "Xlsx");
 ob_end_clean();

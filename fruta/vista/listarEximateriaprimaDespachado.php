@@ -319,7 +319,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 }
                                                             }
                                                             if ($ARRAYDESPACHO[0]['TDESPACHO'] == "4") {
-                                                                $TDESPACHO = "Otros";
+                                                                $TDESPACHO = "Despacho de Descarte";
                                                                 $NUMEROGUIADESPACHO = "No Aplica";
                                                                 $CSGCSPDESTINO="No Aplica";
                                                                 $DESTINO = $ARRAYDESPACHO[0]['REGALO_DESPACHO'];

@@ -108,7 +108,7 @@ class MOCOMPRA_ADO {
     public function listarMcompraCBX2(){
         try{
             
-            $datos=$this->conexion->prepare("SELECT * FROM material_mocompra WHERE ESTADO_REGISTRO= 0;	");
+            $datos=$this->conexion->prepare("SELECT * FROM material_mocompra WHERE ESTADO_REGISTRO= 1;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
@@ -180,7 +180,10 @@ class MOCOMPRA_ADO {
                     $MOCOMPRA->__GET('ID_PLANTA'),
                     $MOCOMPRA->__GET('ID_TEMPORADA'),
                     $MOCOMPRA->__GET('ID_USUARIOI'),
-                    $MOCOMPRA->__GET('ID_USUARIOM')
+                    $MOCOMPRA->__GET('ID_USUARIOM'),
+                    $MOCOMPRA->__GET('FECHA_INGRESO_MOCOMPRA'),
+                    $MOCOMPRA->__GET('ESTADO_REGISTRO')
+                    
                     
                 )
                 
@@ -326,8 +329,8 @@ class MOCOMPRA_ADO {
             $resultado = $datos->fetchAll();
             $datos=null;
             
-            //	print_r($resultado);
-            //	var_dump($resultado);
+          //  print_r($resultado);
+            //var_dump($resultado);
             
             
             return $resultado;

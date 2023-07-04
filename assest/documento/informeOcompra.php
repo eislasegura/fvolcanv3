@@ -231,10 +231,11 @@ $html = '
            <img src="../../assest/img/logo.png" width="150px" height="45px"/>
       </div>
       <div id="company">
-        <h2 class="name">Agrícola Caliboro Ltda.</h2>
-        <div>Fundó San Miguel de Caliboro </div>
+        <h2 class="name">Exportadora Volcán Foods Ltda.</h2>
+        <h2 class="name">77.223.122-9.</h2>
+        <div>Fundo El Álamo, Los Ángeles.</div>
         <div>Los Ángeles, Chile.</div>
-        <div><a href="mailto:eisla@agricolacaliboro.cl">eisla@agricolacaliboro.cl</a></div>
+    
       </div>
     </header>
     <main>
@@ -244,7 +245,7 @@ $html = '
       </h2>
       <div id="details" class="clearfix">        
         <div id="invoice">
-          <div class="date"><b>Código Reporte: </b>REP-OC</div>  
+          <div class="date"><b>Código BRC: </b>REP-OC</div>  
           <div class="date"><b>Fecha OC: </b>' . $FECHAOCOMPRA . ' </div>
           <div class="date"><b>Empresa: </b>' . $EMPRESA . '</div>
           <div class="date"><b>Temporada: </b>' . $TEMPORADA . '</div>
@@ -444,7 +445,7 @@ $PDF->SetHTMLHeader('
 $PDF->SetHTMLFooter('
 
 <footer>
-Informe generado por Departamento de operaciones Agrícola Caliboro Ltda. <a href="mailto:eisla@agricolacaliboro.cl">eisla@agricolacaliboro.cl</a>
+Informe generado por Departamento TI Fruticola Volcan <a href="mailto:ti@fvolcan.cl">ti@fvolcan.cl.</a>
 <br>
 Impreso por: <b>' . $NOMBRE . '.</b> Hora impresión: <b>' . $HORAFINAL2 . '</b>
 </footer>

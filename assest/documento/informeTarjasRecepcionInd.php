@@ -220,33 +220,41 @@ foreach ($ARRAYDINDUSTRIAL as $r) :
 
 
   $html=$html.'   
-  <table border="0" cellspacing="0" cellpadding="0" >
+  <table border="0" cellspacing="0" cellpadding="10" >
     <thead>    
       <tr>
         <th class=" center">Fecha Embalado</th>
         <th class=" center ">CSG </th>
         <th class=" center ">Nombre Productor </th>
         <th class=" center">Kilos Neto</th>
-        <th class=" center ">Variedad </th>
+        <th class=" center"style="font-size:12px">Variedad </th>
       </tr>
     </thead>
+
      <tbody>
     ';
 
     $html=$html.' 
     <tr >
-        <td class="center"> '.$r['EMBALADO'].'</td>
-        <td  class="center  ">'.$ARRAYVERPRODUCTORID[0]['CSG_PRODUCTOR'].'</td>
-        <td  class="center  ">'.$ARRAYVERPRODUCTORID[0]['NOMBRE_PRODUCTOR'].'</td>
-        <td  class="center ">'.$r['NETO'].'</td>
-        <td  class="center  ">'.$ARRAYVERVESPECIESID[0]['NOMBRE_VESPECIES'].'</td>
+        <td  class="center" style="font-size:12px">'.$r['EMBALADO'].'</td>
+        <td  class="center" style="font-size:12px">'.$ARRAYVERPRODUCTORID[0]['CSG_PRODUCTOR'].'</td>
+        <td  class="center" style="font-size:12px">'.$ARRAYVERPRODUCTORID[0]['NOMBRE_PRODUCTOR'].'</td>
+        <td  class="center" style="font-size:12px">'.$r['NETO'].'</td>
+        <td  class="center" style="font-size:12px">'.$ARRAYVERVESPECIESID[0]['NOMBRE_VESPECIES'].'</td>
     </tr>
     ';  
-
     
+
+        
     $html=$html.'
     </tbody>
   </table>
+  <br>
+  <footer>
+<div class="" style="text-align: center;  ">
+    <b>' . $EMPRESA . '.</b> 
+  </div>
+</footer>
   
   ';
 
@@ -282,7 +290,7 @@ $html=$html.'
 require_once '../../api/mpdf/mpdf/autoload.php';
 require_once '../../api/mpdf/qrcode/autoload.php';
 
-$PDF = new \Mpdf\Mpdf(['format'=>[150,100] ]);
+$PDF = new \Mpdf\Mpdf(['format'=>[110,200] ]);
 //$PDF = new \Mpdf\Mpdf();
 //$PDF = new \Mpdf\Mpdf(['format'=> 'Letter']);
 
@@ -325,11 +333,7 @@ $PDF->SetHTMLFooter('
 
 
     
-<footer>
-<div class="" style="text-align: center;  ">
-	<b>' . $EMPRESA . '.</b> 
-  </div>
-</footer>
+
     
 ');
 

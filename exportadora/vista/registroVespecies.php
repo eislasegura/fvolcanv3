@@ -272,13 +272,14 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                         <label id="val_nombre" class="validacion"> </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                               <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                                     <div class="form-group">
                                                         <label>Codigo Sag </label>
                                                         <input type="text" class="form-control" placeholder="Codgio Sag" id="CODIGOSAGVESPECIES" name="CODIGOSAGVESPECIES" value="<?php echo $CODIGOSAGVESPECIES; ?>" <?php echo $DISABLED; ?> />
                                                         <label id="val_codigosag" class="validacion"> </label>
                                                     </div>
-                                                </div>                                            
+                                                </div> -->
+
                                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                                     <div class="form-group">
                                                         <label> Especies</label>
@@ -421,7 +422,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             <!-- /.content-wrapper -->
             <!- LLAMADA ARCHIVO DEL DISEÑO DEL FOOTER Y MENU USUARIO -!>
                 <?php include_once "../../assest/config/footer.php"; ?>
-                <?php include_once "../../assest/config/menuExtra.php"; ?>
+                <?php include_once "../../assest/config/menuExpo.php"; ?>
     </div>
     <!- LLAMADA URL DE ARCHIVOS DE DISEÑO Y JQUERY E OTROS -!>
         <?php include_once "../../assest/config/urlBase.php"; ?>

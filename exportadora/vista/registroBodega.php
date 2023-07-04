@@ -55,7 +55,7 @@ $ARRAYEMPRESA = "";
 
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
-$ARRAYBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaCBX($EMPRESAS, $ARRAYTEMPORADAS);
+$ARRAYBODEGA = $BODEGA_ADO->listarBodegaPorEmpresaCBX($EMPRESAS, $EMPRESAS);
 $ARRAYPLANTA = $PLANTA_ADO->listarPlantaPropiaCBX();
 $ARRAYEMPRESA = $EMPRESA_ADO->listarEmpresaCBX();
 include_once "../../assest/config/validarDatosUrl.php";
@@ -373,8 +373,8 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                     <i class="ti-trash"></i>Cancelar
                                                 </button>
                                                 <?php if ($OP == "editar") { ?>
-                                                    <button type="submit" class="btn btn-primary" name="EDITAR" value="EDITAR"   data-toggle="tooltip" title="Guardar" Onclick="return validacion()">
-                                                        <i class="ti-save-alt"></i> Guardar
+                                                    <button type="submit" class="btn btn-primary" name="EDITAR" value="EDITAR"   data-toggle="tooltip" title="Editar" Onclick="return validacion()">
+                                                        <i class="ti-save-alt"></i> Editar
                                                     </button>
                                                 <?php } else if($OP == "0") { ?>
                                                     <button type="submit" class="btn btn-danger" name="ELIMINAR" value="ELIMINAR"  data-toggle="tooltip" title="Deshabilitar"  >

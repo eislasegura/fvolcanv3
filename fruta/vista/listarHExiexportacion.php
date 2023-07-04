@@ -226,7 +226,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Embolsado</th>
                                                         <th>Gasificacion</th>
                                                         <th>Prefrío</th>
-                                                        <th>Flowpack </th>
+                                                        <th>Tipo Categoria </th>
                                                         <th>Tipo Color </th>      
                                                         <th>Días</th>
                                                         <th>Ingreso</th>

@@ -133,7 +133,7 @@ class DESPACHOEX_ADO
                                                      FECHAETD_DESPACHOEX AS 'ETD' ,
                                                      FORMAT(NUMERO_GUIA_DESPACHOEX,0,'de_DE') AS 'TOTAL_GUIA'  
                                             FROM fruta_despachoex
-                                            WHERE ID_DESPACHOEX= '" . $ID . "';");
+                                            WHERE ID_DESPACHOEX= '" . $ID . "'");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;

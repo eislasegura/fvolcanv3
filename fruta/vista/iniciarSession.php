@@ -67,7 +67,7 @@ $ARRAYVERPTUSUARIO="";
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Agricola Caliboro</title>
+        <title>Fruticola Volcan</title>
 
         <link rel="icon" href="../../assest/img/favicon.png">
 

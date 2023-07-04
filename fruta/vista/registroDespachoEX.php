@@ -1488,12 +1488,12 @@ if (isset($_POST)) {
                                             </div>
                                             <div class="col-xxl-3 col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 col-xs-12">
                                                 <div class="form-group">
-                                                    <label>Con inspección?</label>
+                                                    <label>InspecciónN</label>
                                                     <input type="hidden" class="form-control" placeholder="TINPUSDA" id="TINPUSDAE" name="TINPUSDAE" value="<?php echo $TINPUSDA; ?>" />
                                                     <select class="form-control select2" id="TINPUSDA" name="TINPUSDA" style="width: 100%;" <?php echo $DISABLED; ?> <?php echo $DISABLED2; ?> >
                                                         <option></option>
-                                                        <option value="1" <?php if ($TINPUSDA == "1") { echo "selected"; } ?>> Sin Ispeccion </option>
-                                                        <option value="0" <?php if ($TINPUSDA == "0") { echo "selected"; } ?>> Con Inspeccion</option>
+                                                        <option value="1" <?php if ($TINPUSDA == "1") { echo "selected"; } ?>> No </option>
+                                                        <option value="0" <?php if ($TINPUSDA == "0") { echo "selected"; } ?>> Si</option>
                                                     </select>
                                                     <label id="val_tinpusda" class="validacion"> </label> 
                                                 </div> 

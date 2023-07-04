@@ -289,7 +289,7 @@ if ($EMPRESAS  &&  $TEMPORADAS) {
                                                         }
                                                     }
                                                     if ($r['TDESPACHO'] == "4") {
-                                                        $TDESPACHO = "Otros";
+                                                        $TDESPACHO = "Despacho de Descarte";
                                                         $NUMEROGUIADEPACHO="No Aplica";
                                                         $DESTINO = $r['REGALO_DESPACHO'];
                                                     }

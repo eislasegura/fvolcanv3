@@ -521,7 +521,7 @@ if (isset($_POST)) {
                                             <div class="form-group">
                                                 <label>Número OC Interna</label>
                                                 <input type="hidden" class="form-control" placeholder="NUMEROIOCOMPRAE" id="NUMEROIOCOMPRAE" name="NUMEROIOCOMPRAE" value="<?php echo $NUMEROIOCOMPRA; ?>" />
-                                                <input type="text" class="form-control" placeholder="Número OC Interna " id="NUMEROIOCOMPRA" name="NUMEROIOCOMPRA" value="<?php echo $NUMEROIOCOMPRA; ?>"  <?php echo $DISABLED2; ?>/>
+                                                <input type="text" class="form-control" placeholder="Número OC Interna " id="NUMEROIOCOMPRA" name="NUMEROIOCOMPRA" value="<?php echo $NUMEROIOCOMPRA; ?>" />
                                                 <label id="val_numeroi" class="validacion"> </label>
                                             </div>
                                         </div>

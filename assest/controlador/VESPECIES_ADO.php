@@ -294,17 +294,13 @@ class VESPECIES_ADO
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
-
             //	print_r($resultado);
             //	var_dump($resultado);
-
-
             return $resultado;
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
-
     public function buscarVespeciesPorEspeciesPorEmpresaCBX($ID, $IDEMPRESA)
     {
         try {
@@ -316,18 +312,13 @@ class VESPECIES_ADO
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
-
-            //	print_r($resultado);
-            //	var_dump($resultado);
-
-
+            //print_r($resultado);
+            //var_dump($resultado);
             return $resultado;
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
-
-
     public function buscarVespeciesPorEspeciesCBX2($ID)
     {
         try {
@@ -336,11 +327,8 @@ class VESPECIES_ADO
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
-
             //	print_r($resultado);
             //	var_dump($resultado);
-
-
             return $resultado;
         } catch (Exception $e) {
             die($e->getMessage());
@@ -353,12 +341,9 @@ class VESPECIES_ADO
             $datos=$this->conexion->prepare("SELECT * FROM  fruta_vespecies   WHERE  ESTADO_REGISTRO  = 1 AND ID_EMPRESA = '".$IDEMPRESA."' ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
-            $datos=null;
-            
+            $datos=null;         
             //	print_r($resultado);
-            //	var_dump($resultado);
-            
-            
+            //	var_dump($resultado);         
             return $resultado;
         }catch(Exception $e){
             die($e->getMessage());

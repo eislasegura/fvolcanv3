@@ -101,7 +101,7 @@ class EMPRESA_ADO {
     public function verEmpresa($ID){
         try{
             
-            $datos=$this->conexion->prepare("SELECT * FROM   principal_empresa   WHERE   ID_EMPRESA  = '".$ID."';");
+            $datos=$this->conexion->prepare("SELECT * FROM   principal_empresa   WHERE   ID_EMPRESA  = '".$ID."'");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
