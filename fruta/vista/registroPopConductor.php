@@ -248,13 +248,13 @@ if (isset($_REQUEST['GUARDAR'])) {
                                                         <label id="val_telefono" class="validacion"> </label>
                                                     </div>
                                                 </div>
-                                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                                 <!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                                     <div class="form-group">
                                                         <label>Email </label>
                                                         <input type="text" class="form-control" placeholder="Email Conductor" id="EMAILCONDUCTOR" name="EMAILCONDUCTOR" value="<?php echo $EMAILCONDUCTOR; ?>" <?php echo $DISABLED; ?> />
                                                         <label id="val_email" class="validacion"> </label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                  <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                                     <div class="form-group">
                                                         <label>Nota </label>

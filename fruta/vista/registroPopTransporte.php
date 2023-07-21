@@ -168,13 +168,13 @@ if (isset($_REQUEST['GUARDAR'])) {
                     document.form_reg_dato.RAZONSOCIALTRANSPORTE.style.borderColor = "#4AF575";
                     */
 
-                    if (DIRRECIONTRANSPORTE == null || DIRRECIONTRANSPORTE.length == 0 || /^\s+$/.test(DIRRECIONTRANSPORTE)) {
+                    /* if (DIRRECIONTRANSPORTE == null || DIRRECIONTRANSPORTE.length == 0 || /^\s+$/.test(DIRRECIONTRANSPORTE)) {
                         document.form_reg_dato.DIRRECIONTRANSPORTE.focus();
                         document.form_reg_dato.DIRRECIONTRANSPORTE.style.borderColor = "#FF0000";
                         document.getElementById('val_dirrecion').innerHTML = "NO A INGRESADO DATO";
                         return false;
                     }
-                    document.form_reg_dato.DIRRECIONTRANSPORTE.style.borderColor = "#4AF575";
+                    document.form_reg_dato.DIRRECIONTRANSPORTE.style.borderColor = "#4AF575"; */
                
                     /*
 
@@ -289,7 +289,7 @@ if (isset($_REQUEST['GUARDAR'])) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <labe>Contacto</labe>
+                                            <!--<labe>Contacto</labe>
                                             <hr class="my-15">
                                             <div class="row">
                                                  <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
@@ -314,7 +314,7 @@ if (isset($_REQUEST['GUARDAR'])) {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- /.box-body -->                        
                                         <div class="box-footer">
                                             <div class="btn-group   col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">                                    
