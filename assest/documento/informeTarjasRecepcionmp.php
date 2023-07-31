@@ -250,11 +250,13 @@ foreach ($ARRAYDRECEPCION as $s) :
     }
 
   $html=$html.'
+
+  <br><br>
 		<div class="'.$TAMAÑO.' center " width="100%">
 			<b >'.$NOMBREPRODUCTOR.' </b> 
 		</div>
        
-		<br>
+		<br><br><br>
 
 		<div class="subtitulo2"></div>
 
@@ -302,14 +304,12 @@ foreach ($ARRAYDRECEPCION as $s) :
         <div class="f20 center">
             <b>  '.$s['ENVASE'].'  </b> 
         </div>
-		<br>
-		<div class="subtitulo2"></div>
-        <div class="subtitulo center" style="font-size: 18px; text-align: center;">
-			 <barcode code="'.$s['FOLIO_DRECEPCION'].'" size="0.9" type="QR"  class="barcode" disableborder="1" />
-		</div>
+		<br><br><br><br>
+		
         <div class="titulo center">
            <b style="font-size: 10px;">  '.$EMPRESA.' </b>
-        </div>        
+        </div>     
+        <br><br><br><br>   
       </div>  
 	  <div class="salto" style=" page-break-after: always; border: none;   margin: 0;   padding: 0;"></div>   
     ';
@@ -351,7 +351,7 @@ $ASUNTO = "TARJA ";
 
 //API DE GENERACION DE PDF
 require_once '../../api/mpdf/mpdf/autoload.php';
-require_once '../../api/mpdf/qrcode/autoload.php';
+
 
 $PDF = new \Mpdf\Mpdf(['format'=>[100,200] ]);
 //$PDF = new \Mpdf\Mpdf();
