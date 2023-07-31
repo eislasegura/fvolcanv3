@@ -164,7 +164,7 @@ class EMPRESA_ADO {
                                                   ESTADO_REGISTRO, 
                                                   COC  
                                              ) VALUES
-	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1);";
+	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, ?);";
             $this->conexion->prepare($query)
             ->execute(
                 array(
@@ -184,12 +184,9 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_USUARIOI'),
                     $EMPRESA->__GET('ID_USUARIOM'),
                     $EMPRESA->__GET('COC')
-                    
-                    
-                    
-                )
-                
+                    )
                 );
+        //die($query);
             
         }catch(Exception $e){
             die($e->getMessage());
