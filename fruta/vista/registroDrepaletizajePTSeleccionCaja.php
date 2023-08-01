@@ -313,13 +313,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                             <th>Condición </th>
                                                             <th>Selección</th>
                                                             <th>Seleccion Cajas</th>
+                                                            <th>Cantidad Envase </th>
                                                             <th>Fecha Embalado </th>
                                                             <th>Código Estandar </th>
                                                             <th>Envase/Estandar </th>
                                                             <th>CSG</th>
                                                             <th>Productor</th>
                                                             <th>Variedad</th>
-                                                            <th>Cantidad Envase </th>
+                                                            
                                                             <th>Kilo Neto </th>
                                                             <th>Tipo Manejo</th>
                                                             <th>Tipo Calibre</th>
@@ -456,13 +457,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                                                                 <input type="number" class="form-control" name="CAJAS[]" placeholder="Envases">
                                                                             </div>
                                                                         </td>
+                                                                        <td><?php echo $ENVASERESTANTE; ?></td>
                                                                         <td><?php echo $r['EMBALADO']; ?></td>
                                                                         <td><?php echo $CODIGOESTANDAR; ?></td>
                                                                         <td><?php echo $NOMBREESTANDAR; ?></td>
                                                                         <td><?php echo $CSGPRODUCTOR; ?></td>
                                                                         <td><?php echo $NOMBREPRODUCTOR; ?></td>
                                                                         <td><?php echo $NOMBREVESPECIES; ?></td>
-                                                                        <td><?php echo $ENVASERESTANTE; ?></td>
+                                                                        
                                                                         <td><?php echo $r['NETO']; ?></td>
                                                                         <td><?php echo $NOMBRETMANEJO; ?></td>
                                                                         <td><?php echo $NOMBRETCALIBRE; ?></td>
