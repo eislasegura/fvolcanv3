@@ -218,6 +218,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             <th>Estado Calidad</th>
                                                             <th>Condición </th>
                                                             <th>Selección</th>
+                                                            <th>Stock</th>
                                                             <th>Fecha Embalado </th>
                                                             <th>Código Estandar </th>
                                                             <th>Envase/Estandar </th>
@@ -229,7 +230,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             <th>Tipo Manejo</th>
                                                             <th>Tipo Calibre</th>
                                                             <th>Tipo Embalaje</th>
-                                                            <th>Stock</th>
+                                                            
                                                             <th>Numero Referencia</th>
                                                         </tr>
                                                     </thead>
@@ -335,6 +336,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                                             <label for="SELECIONAREXISTENCIA<?php echo $r['ID_EXIEXPORTACION']; ?>"> Seleccionar</label>
                                                                         </div>
                                                                     </td>
+                                                                    <td><?php echo $r['STOCKR']; ?></td>
                                                                     <td><?php echo $r['EMBALADO']; ?></td>
                                                                     <td><?php echo $CODIGOESTANDAR; ?></td>
                                                                     <td><?php echo $NOMBREESTANDAR; ?></td>
@@ -346,7 +348,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                                     <td><?php echo $NOMBRETMANEJO; ?></td>
                                                                     <td><?php echo $NOMBRETCALIBRE; ?></td>
                                                                     <td><?php echo $NOMBRETEMBALAJE; ?></td>
-                                                                    <td><?php echo $r['STOCKR']; ?></td>
+                                                                    
                                                                     <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                                 </tr>
                                                             <?php endforeach; ?>

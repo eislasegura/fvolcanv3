@@ -6,18 +6,18 @@ include_once "../../assest/config/validarUsuarioMaterial.php";
 
 //LLAMADA ARCHIVOS NECESARIOS PARA LAS OPERACIONES
 
-include_once '../../assest/controlador/TMONEDAM_ADO.php';
+include_once '../../assest/controlador/TMONEDA_ADO.php';
 
 
-include_once '../../assest/modelo/TMONEDAM.php';
+include_once '../../assest/modelo/TMONEDA.php';
 
 //INCIALIZAR LAS VARIBLES
 //INICIALIZAR CONTROLADOR
-$TMONEDA_ADO =  new TMONEDAM_ADO();
+$TMONEDA_ADO =  new TMONEDA_ADO();
 
 //INIICIALIZAR MODELO
 
-$TMONEDA =  new TMONEDAM();
+$TMONEDA =  new TMONEDA();
 
 
 //INCIALIZAR VARIBALES A OCUPAR PARA LA FUNCIONALIDAD

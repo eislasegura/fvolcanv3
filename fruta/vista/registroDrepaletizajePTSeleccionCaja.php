@@ -285,10 +285,12 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
                                         <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                             <div class="form-group">
                                                 <br>
+                                                <?php if($ESTADO_FOLIOMANUAL == 1){ ?>
                                                 <input type="checkbox" class="chk-col-danger" name="FOLIOMANUAL" id="FOLIOMANUAL" <?php echo $DISABLED3; ?> <?php echo $DISABLEDSTYLE3; ?> <?php if ($FOLIOMANUAL == "on") {
                                                                                                                                                                                                 echo "checked";
                                                                                                                                                                                             } ?> onchange="this.form.submit()">
                                                 <label for="FOLIOMANUAL"> Folio Manual</label>
+                                                <?php }?>
 
                                                 <label>Estado Folio</label><br>
                                                 <select class="form-control select2" id="EFOLIO" name="EFOLIO" style="width: 100%;">

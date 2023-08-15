@@ -570,6 +570,7 @@ if($_POST){
                                             <table id="listar" class="table-hover " style="width: 100%;">
                                                 <thead>
                                                     <tr>
+                                                        
                                                         <th>Numero</th>
                                                         <th class="text-center">Operaciónes</th>
                                                         <th>Codigo SAG </th>
@@ -615,6 +616,7 @@ if($_POST){
                                                             }
                                                             ?>
                                                         <tr class="center">
+                                                            
                                                             <td><?php echo $CONTADOR; ?> </td>                                                                      
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">

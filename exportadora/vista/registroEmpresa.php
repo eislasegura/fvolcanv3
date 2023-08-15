@@ -30,6 +30,8 @@ $ID = "";
 
 $DIRECTORIODESTINO = "../../assest/img/empresa/";
 
+$FOLIOMANUAL = "";
+
 $NOMBREMPRESA = "";
 $COC = "";
 $RAZONSOCIAL = "";
@@ -111,6 +113,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
         foreach ($ARRAYEMPRESASID as $r) :
+            $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
@@ -140,6 +143,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
         foreach ($ARRAYEMPRESASID as $r) :
+            $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
@@ -167,6 +171,9 @@ if (isset($id_dato) && isset($accion_dato)) {
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
         foreach ($ARRAYEMPRESASID as $r) :
+
+            $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
+
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
@@ -197,6 +204,9 @@ if (isset($id_dato) && isset($accion_dato)) {
         //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
         foreach ($ARRAYEMPRESASID as $r) :
+
+            $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
+
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
@@ -215,6 +225,9 @@ if (isset($id_dato) && isset($accion_dato)) {
 }
 
 if($_POST){
+    if (isset($_REQUEST['FOLIO_MANUAL'])) {
+        $FOLIOMANUAL = $_REQUEST['FOLIO_MANUAL'];
+    }
     if (isset($_REQUEST['RUTEMPRESA'])) {
         $RUTEMPRESA = $_REQUEST['RUTEMPRESA'];
     }
@@ -276,6 +289,8 @@ if($_POST){
         <script type="text/javascript">
             //VALIDACION DE FORMULARIO
             function validacion() {
+
+                FOLIOMANUAL = document.getElementById("FOLIOMANUAL").selectedIndex;
 
                 RUTEMPRESA = document.getElementById("RUTEMPRESA").value;
                 DVEMPRESA = document.getElementById("DVEMPRESA").value;
@@ -483,6 +498,17 @@ if($_POST){
                                         <div class="box-body">
                                             <hr class="my-15">
                                             <div class="row">
+                                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Folio Manual</label>
+                                                        <select class="form-control select2" id="FOLIOMANUAL" name="FOLIOMANUAL" style="width: 100%;" value="<?php echo $FOLIOMANUAL; ?>" <?php echo $DISABLED; ?>>
+                                                            <option></option>
+                                                            <option value="1" <?php if ($FOLIOMANUAL == "1") { echo "selected"; } ?>> Si </option>
+                                                            <option value="2" <?php if ($FOLIOMANUAL == "2") { echo "selected"; } ?>> No </option>
+                                                        </select>
+                                                        <label id="val_foliomanual" class="validacion"> </label>
+                                                    </div>
+                                                </div>
                                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                                     <div class="form-group">
                                                         <label> COC </label>
@@ -690,7 +716,7 @@ if($_POST){
                                             <table id="listar" class="table-hover " style="width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                        
+                                                        <th>FM</th>
                                                         <th>Numero </th>
                                                         <th class="text-center">Operaciónes</th>
                                                         <th>COC </th>
@@ -730,8 +756,18 @@ if($_POST){
                                                             }else{
                                                                 $NOMBREREGION="Sin Datos";
                                                             } 
+
+                                                            if($r["FOLIO_MANUAL"]==1){
+                                                                $FMANUAL="Si";
+                                                            }else if($r["FOLIO_MANUAL"]==2){
+                                                                $FMANUAL="No";
+                                                            }else{                                                                
+                                                                $FMANUAL="Sin Datos";
+                                                            }
+
                                                             ?>
                                                         <tr class="center">    
+                                                            <td><?php echo $FMANUAL; ?></td>
                                                             <td><?php echo $CONTADOR; ?> </td>                                                                                      
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">
@@ -828,6 +864,7 @@ if($_POST){
 
                 //UTILIZACION METODOS SET DEL MODELO
                 //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO   
+                $EMPRESA->__SET('FOLIO_MANUAL', $_REQUEST['FOLIOMANUAL']);
                 $EMPRESA->__SET('RUT_EMPRESA', $_REQUEST['RUTEMPRESA']);
                 $EMPRESA->__SET('DV_EMPRESA', $_REQUEST['DVEMPRESA']);
                 $EMPRESA->__SET('NOMBRE_EMPRESA', $_REQUEST['NOMBREMPRESA']);
@@ -880,6 +917,7 @@ if($_POST){
                 //UTILIZACION METODOS SET DEL MODELO
                 //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO  
 
+                $EMPRESA->__SET('FOLIO_MANUAL', $_REQUEST['FOLIOMANUAL']);
                 $EMPRESA->__SET('RUT_EMPRESA', $_REQUEST['RUTEMPRESA']);
                 $EMPRESA->__SET('DV_EMPRESA', $_REQUEST['DVEMPRESA']);
                 $EMPRESA->__SET('NOMBRE_EMPRESA', $_REQUEST['NOMBREMPRESA']);
