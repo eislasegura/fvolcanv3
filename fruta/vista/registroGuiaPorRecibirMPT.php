@@ -47,14 +47,32 @@ $ARRAYOBTENERNUMERO = "";
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 $ARRAYPLANTA = $PLANTA_ADO->listarPlantaCBX();
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
 
 
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
 
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1']) && isset($_SESSION['urlO'])) {
-    $IDP = $_SESSION['parametro'];
-    $OPP = $_SESSION['parametro1'];
-    $URLO = $_SESSION['urlO'];
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
+    $IDP = $id_dato;
+    $OPP = $accion_dato;
+    $URLO = $urlo_dato;
 
     $ARRAYDESPACHOMP = $DESPACHOPT_ADO->verDespachopt($IDP);
     //OBTENCIONS DE LOS DATODS DE LA COLUMNAS DE LA FILA OBTENIDA
@@ -230,7 +248,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="btn-group btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12 " role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op');">
+                                        <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php');">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
                                         <button type="submit" class="btn  btn-danger" data-toggle="tooltip" title="Rechazar" name="GUARDAR" value="GUARDAR" <?php echo $DISABLED; ?> onclick="return validacion()">
