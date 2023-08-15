@@ -742,6 +742,7 @@ if ($_POST) {
                                     <h4 class="box-title">Registro Producto Terminado</h4>                                        
                                 </div>
                                 <div class="box-body ">
+                                    <?php if($ESTADO_FOLIOMANUAL == 1){ ?>
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" placeholder="FOLIOMANUAL" id="FOLIOMANUALE" name="FOLIOMANUALE" value="<?php echo $FOLIOMANUAL; ?>" />
                                         <input type="checkbox" class="chk-col-danger" name="FOLIOMANUAL" id="FOLIOMANUAL" <?php echo $DISABLED2; ?> <?php echo $DISABLEDSTYLE2; ?> <?php if ($FOLIOMANUAL == "on") {
@@ -749,6 +750,7 @@ if ($_POST) {
                                                                                                                                                                                     } ?> onchange="this.form.submit()">
                                         <label for="FOLIOMANUAL"> Folio Manual</label>
                                     </div>
+                                    <?php }?>
                                     <div class="row">
                                         <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6  ">
                                             <div class="form-group">

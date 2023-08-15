@@ -7,6 +7,7 @@
     $PLANTAS = "";
     $TEMPORADAS = "";
     $NOMBRESUSUARIOSLOGIN="";
+    $ESTADO_FOLIOMANUAL = "";
 
     $ARRAYEMPRESAS = "";
     $ARRAYPLANTAS = "";
@@ -88,7 +89,7 @@
     $TEMPORADA_ADO =  new TEMPORADA_ADO();
 
 
-
+    
 
     if (isset($_SESSION["NOMBRE_USUARIO"])) {
         $IDUSUARIOS = $_SESSION["ID_USUARIO"];
@@ -242,3 +243,8 @@
               </script>"
         ;   
     }
+
+    $ARRAYEMPRESAS  =$EMPRESA_ADO->verEmpresa($_SESSION["ID_EMPRESA"]);
+        if($ARRAYEMPRESAS){  
+            $ESTADO_FOLIOMANUAL = $ARRAYEMPRESAS[0]['FOLIO_MANUAL'];  
+        } 

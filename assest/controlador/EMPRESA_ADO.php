@@ -162,9 +162,10 @@ class EMPRESA_ADO {
                                                   INGRESO  ,
                                                   MODIFICACION  , 
                                                   ESTADO_REGISTRO, 
-                                                  COC  
+                                                  COC ,
+                                                  FOLIO_MANUAL 
                                              ) VALUES
-	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, ?);";
+	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, ?, ?);";
             $this->conexion->prepare($query)
             ->execute(
                 array(
@@ -183,7 +184,8 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_REGION'),
                     $EMPRESA->__GET('ID_USUARIOI'),
                     $EMPRESA->__GET('ID_USUARIOM'),
-                    $EMPRESA->__GET('COC')
+                    $EMPRESA->__GET('COC'),
+                    $EMPRESA->__GET('FOLIO_MANUAL')
                     )
                 );
         //die($query);
@@ -213,7 +215,8 @@ class EMPRESA_ADO {
               ID_PROVINCIA  = ?,
               ID_REGION  = ?,
               ID_USUARIOM  = ?,
-              COC  = ?
+              COC  = ?,
+              FOLIO_MANUAL  = ?
 		WHERE   ID_EMPRESA  = ?;";
             $this->conexion->prepare($query)
             ->execute(
@@ -232,6 +235,7 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_REGION'),
                     $EMPRESA->__GET('ID_USUARIOM'),
                     $EMPRESA->__GET('COC'),
+                    $EMPRESA->__GET('FOLIO_MANUAL'),
                     $EMPRESA->__GET('ID_EMPRESA')
                     
                 )

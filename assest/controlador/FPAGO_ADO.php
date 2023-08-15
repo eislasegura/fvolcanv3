@@ -162,6 +162,8 @@ class FPAGO_ADO
                                                  ESTADO_REGISTRO 
                                             ) VALUES
 	       	( ?, ?, ?, ?, ?, ?,  SYSDATE(), SYSDATE(), 1);";
+
+//echo $query;
             $this->conexion->prepare($query)
                 ->execute(
                     array(
