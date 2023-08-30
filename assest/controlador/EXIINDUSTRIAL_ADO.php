@@ -215,9 +215,10 @@ class EXIINDUSTRIAL_ADO
                                                     INGRESO,
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO
+                                                    ESTADO_REGISTRO,
+                                                    ID_TCALIBRE
                                                 ) VALUES
-	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  2, 1);";
+	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  2, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -238,7 +239,8 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_EMPRESA'),
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
-                        $EXIINDUSTRIAL->__GET('ID_PROCESO')
+                        $EXIINDUSTRIAL->__GET('ID_PROCESO'),
+                        $EXIINDUSTRIAL->__GET('ID_TCALIBRE')
 
                     )
 
