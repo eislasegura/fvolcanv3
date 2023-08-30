@@ -590,6 +590,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                 <li><a href="registroTetiqueta.php"></i>Etiqueta</a></li>
                 <li><a href="registroTembalaje.php"></i>Embalaje</a></li>
                 <li><a href="registroTcalibre.php"></i>Calibre</a></li>
+                <li><a href="registroTcalibreind.php"></i>Calibre Industrial</a></li>
               </ul>
             </li>          
             <li class="treeview">
