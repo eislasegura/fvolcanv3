@@ -21,6 +21,7 @@ include_once '../../assest/controlador/PROCESO_ADO.php';
 
 include_once '../../assest/controlador/TMANEJO_ADO.php';
 include_once '../../assest/controlador/TCALIBRE_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 include_once '../../assest/controlador/TCATEGORIA_ADO.php';
 
 
@@ -63,6 +64,7 @@ $PROCESO_ADO =  new PROCESO_ADO();
 
 $TMANEJO_ADO =  new TMANEJO_ADO();
 $TCALIBRE_ADO =  new TCALIBRE_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 $TCATEGORIA_ADO =  new TCATEGORIA_ADO();
 
 //INIICIALIZAR MODELO
@@ -1138,6 +1140,13 @@ if (isset($_POST)) {
                                                             $CODIGOESTANDARI = "Sin Datos";
                                                             $NOMBREESTANDARI = "Sin Datos";
                                                         }
+
+                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBREIND']);
+                                                        if ($ARRAYTCALIBREIND) {
+                                                            $NOMBRETCALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                        } else {
+                                                            $NOMBRETCALIBREIND = "Sin Datos";
+                                                        }
                                                         ?>
                                                         <tr class="text-center">
                                                             <td>-</td>
@@ -1181,7 +1190,7 @@ if (isset($_POST)) {
                                                             <td>-</td>
                                                             <td>-</td>
                                                             <td>-</td>
-                                                            <td>-</td>
+                                                            <td> <?php echo $NOMBRETCALIBREIND; ?> </td>
                                                             <td>-</td>
                                                         </tr>
                                                     <?php endforeach; ?>

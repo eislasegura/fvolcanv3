@@ -503,10 +503,10 @@ include_once "../../assest/config/datosUrLP.php";
         }
 
         if (isset($_REQUEST['RECHAZARURL'])) {
-           $id_dato = $_REQUEST['ID'];
-           $accion_dato = "rechazar";
-            $_SESSION["urlO"] = $_REQUEST['URLO'];
-            echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLM'] . ".php?op&id='.$id_dato.'&a='.$accion_dato.';</script>";
+            $id_dato = $_REQUEST['ID'];
+            $accion_dato = "rechazar";
+            $urlo_dato = $_REQUEST['URLO'];
+            echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLM'] . ".php?op&id=".$id_dato."&a=".$accion_dato."&urlo=".$urlo_dato."';</script>";
         }    
     ?>
 </body>

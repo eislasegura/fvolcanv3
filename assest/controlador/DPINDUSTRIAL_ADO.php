@@ -124,9 +124,10 @@ class DPINDUSTRIAL_ADO
                                                 INGRESO,
                                                 MODIFICACION,
                                                 ESTADO,
-                                                ESTADO_REGISTRO
+                                                ESTADO_REGISTRO,
+                                                ID_TCALIBREIND
                                              ) VALUES
-	       	( ?, ?, ?,  ?, ?, ?,  ?, ?, ?,  SYSDATE(), SYSDATE(), 1, 1);";
+	       	( ?, ?, ?,  ?, ?, ?,  ?, ?, ?,  SYSDATE(), SYSDATE(), 1, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -139,11 +140,13 @@ class DPINDUSTRIAL_ADO
                         $DPINDUSTRIAL->__GET('ID_VESPECIES'),
                         $DPINDUSTRIAL->__GET('ID_ESTANDAR'),
                         $DPINDUSTRIAL->__GET('ID_PRODUCTOR'),
-                        $DPINDUSTRIAL->__GET('ID_PROCESO')
+                        $DPINDUSTRIAL->__GET('ID_PROCESO'),
+                        $DPINDUSTRIAL->__GET('ID_TCALIBREIND')
 
                     )
 
                 );
+                //echo $query;
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -177,7 +180,8 @@ class DPINDUSTRIAL_ADO
           ID_VESPECIES = ? ,
           ID_ESTANDAR = ? ,
           ID_PRODUCTOR = ?,
-          ID_PROCESO = ?          
+          ID_PROCESO = ? ,
+          ID_CALIBREIND = ?           
 		WHERE ID_DPINDUSTRIAL= ? ;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -189,6 +193,7 @@ class DPINDUSTRIAL_ADO
                         $DPINDUSTRIAL->__GET('ID_ESTANDAR'),
                         $DPINDUSTRIAL->__GET('ID_PRODUCTOR'),
                         $DPINDUSTRIAL->__GET('ID_PROCESO'),
+                        $DPINDUSTRIAL->__GET('ID_CALIBREIND'),
                         $DPINDUSTRIAL->__GET('ID_DPINDUSTRIAL')
 
                     )

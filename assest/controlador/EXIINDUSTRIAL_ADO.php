@@ -215,9 +215,10 @@ class EXIINDUSTRIAL_ADO
                                                     INGRESO,
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO
+                                                    ESTADO_REGISTRO,
+                                                    ID_TCALIBRE
                                                 ) VALUES
-	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  2, 1);";
+	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  2, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -238,7 +239,8 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_EMPRESA'),
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
-                        $EXIINDUSTRIAL->__GET('ID_PROCESO')
+                        $EXIINDUSTRIAL->__GET('ID_PROCESO'),
+                        $EXIINDUSTRIAL->__GET('ID_TCALIBRE')
 
                     )
 
@@ -273,9 +275,10 @@ class EXIINDUSTRIAL_ADO
                                                     INGRESO,
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO
+                                                    ESTADO_REGISTRO,
+                                                    ID_TCALIBRE
                                                 ) VALUES
-	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  1, 1);";
+	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  1, 1,?);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -296,7 +299,8 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_EMPRESA'),
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
-                        $EXIINDUSTRIAL->__GET('ID_REEMBALAJE')
+                        $EXIINDUSTRIAL->__GET('ID_REEMBALAJE'),
+                        $EXIINDUSTRIAL->__GET('ID_TCALIBRE')
 
                     )
 
@@ -1054,7 +1058,8 @@ class EXIINDUSTRIAL_ADO
                 ID_EMPRESA = ?,
                 ID_PLANTA = ?, 
                 ID_TEMPORADA = ? ,
-                ID_REEMBALAJE = ?           
+                ID_REEMBALAJE = ? ,
+                ID_TCALIBRE = ?            
 		WHERE ID_EXIINDUSTRIAL= ?;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -1071,6 +1076,7 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
                         $EXIINDUSTRIAL->__GET('ID_REEMBALAJE'),
+                        $EXIINDUSTRIAL->__GET('ID_TCALIBRE'),
                         $EXIINDUSTRIAL->__GET('ID_EXIINDUSTRIAL')
                     )
 
