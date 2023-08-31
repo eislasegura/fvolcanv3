@@ -9,6 +9,7 @@ include_once '../../assest/controlador/EINDUSTRIAL_ADO.php';
 include_once '../../assest/controlador/VESPECIES_ADO.php';
 include_once '../../assest/controlador/FOLIO_ADO.php';
 include_once '../../assest/controlador/PRODUCTOR_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 include_once '../../assest/controlador/TMANEJO_ADO.php';
 include_once '../../assest/controlador/REEMBALAJE_ADO.php';
 
@@ -27,6 +28,7 @@ $EINDUSTRIAL_ADO =  new EINDUSTRIAL_ADO();
 $VESPECIES_ADO =  new VESPECIES_ADO();
 $FOLIO_ADO =  new FOLIO_ADO();
 $PRODUCTOR_ADO =  new PRODUCTOR_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 $TMANEJO_ADO =  new TMANEJO_ADO();
 $REEMBALAJE_ADO =  new REEMBALAJE_ADO();
 
@@ -51,6 +53,7 @@ $IDDPROCESOINDUSTRIAL = "";
 
 $ESTANDAR = "";
 $PVESPECIES = "";
+$TCALIBREIND = "";
 $FOLIO = "";
 $FOLIOALIAS = "";
 
@@ -96,6 +99,7 @@ $ARRAYESTANDAR = "";
 $ARRAYPVESPECIES;
 $ARRAYVESPECIES;
 $ARRAYPRODUCTOR = "";
+$ARRAYTCALIBREIND = "";
 
 $ARRAYDPROCESOINDUSTRIAL = "";
 $ARRAYDPROCESOINDUSTRIAL2 = "";
@@ -103,6 +107,7 @@ $ARRAYDPROCESOINDUSTRIAL2 = "";
 $ARRAYVERFOLIOPOIND = "";
 
 $ARRAYESTANDAR = $EINDUSTRIAL_ADO->listarEstandarProcesoPorEmpresaCBX($EMPRESAS);
+$ARRAYTCALIBREIND = $TCALIBREIND_ADO->listarCalibreIndPorEmpresaCBX($EMPRESAS);
 $ARRAYTMANEJO = $TMANEJO_ADO->listarTmanejoCBX();
 $ARRAYFECHAACTUAL = $DRINDUSTRIAL_ADO->obtenerFecha();
 $FECHAEMBALADODINDUSTRIAL = $ARRAYFECHAACTUAL[0]['FECHA'];
@@ -204,6 +209,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
             $FECHAEMBALADODINDUSTRIAL = "" . $r['FECHA_EMBALADO_DRINDUSTRIAL'];
             $KILOSNETO = "" . $r['KILOS_NETO_DRINDUSTRIAL'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
+            $TCALIBREIND = "" . $r['ID_TCALIBREIND'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -229,6 +235,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
             $FECHAEMBALADODINDUSTRIAL = "" . $r['FECHA_EMBALADO_DRINDUSTRIAL'];
             $KILOSNETO = "" . $r['KILOS_NETO_DRINDUSTRIAL'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
+            $TCALIBREIND = "" . $r['ID_TCALIBREIND'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -256,6 +263,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
             $FECHAEMBALADODINDUSTRIAL = "" . $r['FECHA_EMBALADO_DRINDUSTRIAL'];
             $KILOSNETO = "" . $r['KILOS_NETO_DRINDUSTRIAL'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
+            $TCALIBREIND = "" . $r['ID_TCALIBREIND'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -283,6 +291,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
             $FECHAEMBALADODINDUSTRIAL = "" . $r['FECHA_EMBALADO_DRINDUSTRIAL'];
             $KILOSNETO = "" . $r['KILOS_NETO_DRINDUSTRIAL'];
             $TMANEJO = "" . $r['ID_TMANEJO'];
+            $TCALIBREIND = "" . $r['ID_TCALIBREIND'];
             $ESTANDAR = "" . $r['ID_ESTANDAR'];
             $VESPECIES = "" . $r['ID_VESPECIES'];
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -311,6 +320,9 @@ if ($_POST) {
     if (isset($_REQUEST['TMANEJO'])) {
         $TMANEJO = $_REQUEST['TMANEJO'];
     }
+    if (isset($_REQUEST['TCALIBREIND'])) {
+        $TCALIBREIND = $_REQUEST['TCALIBREIND'];
+    }
 }
 
 ?>
@@ -334,11 +346,13 @@ if ($_POST) {
                     ESTANDAR = document.getElementById("ESTANDAR").selectedIndex;
                     KILOSNETO = document.getElementById("KILOSNETO").value;
                     TMANEJO = document.getElementById("TMANEJO").selectedIndex;
+                    TCALIBREIND = document.getElementById("TCALIBREIND").selectedIndex;
 
                     document.getElementById('val_fechaembalado').innerHTML = "";
                     document.getElementById('val_estandar').innerHTML = "";
                     document.getElementById('val_neto').innerHTML = "";
                     document.getElementById('val_tmanejo').innerHTML = "";
+                    document.getElementById('val_tcalibreind').innerHTML = "";
 
                     if (FECHAEMBALADODINDUSTRIAL == null || FECHAEMBALADODINDUSTRIAL.length == 0 || /^\s+$/.test(FECHAEMBALADODINDUSTRIAL)) {
                         document.form_reg_dato.FECHAEMBALADODINDUSTRIAL.focus();
@@ -371,6 +385,14 @@ if ($_POST) {
                         return false;
                     }
                     document.form_reg_dato.TMANEJO.style.borderColor = "#4AF575";
+
+                    if (TCALIBREIND == null || TCALIBREIND == 0) {
+                        document.form_reg_dato.TCALIBREIND.focus();
+                        document.form_reg_dato.TCALIBREIND.style.borderColor = "#FF0000";
+                        document.getElementById('val_tcalibreind').innerHTML = "NO HA SELECIONADO ALTERNATIVA";
+                        return false;
+                    }
+                    document.form_reg_dato.TCALIBREIND.style.borderColor = "#4AF575";
 
 
                 }
@@ -489,6 +511,22 @@ if ($_POST) {
                                                 <label id="val_neto" class="validacion"> </label>
                                             </div>
                                         </div>
+                                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 ">
+                                            <div class="form-group">
+                                                <label>Calibre Industrial</label>
+                                                <select class="form-control select2" id="TCALIBREIND" name="TCALIBREIND" style="width: 100%;" <?php echo $DISABLED; ?>>
+                                                    <option></option>
+                                                    <?php foreach ($ARRAYTCALIBREIND as $r) : ?>
+                                                        <?php if ($ARRAYTCALIBREIND) {    ?>
+                                                            <option value="<?php echo $r['ID_TCALIBREIND']; ?>" <?php if ($TCALIBREIND == $r['ID_TCALIBREIND']) {  echo "selected";  } ?>> <?php echo $r['NOMBRE_TCALIBREIND'] ?> </option>
+                                                        <?php } else { ?>
+                                                            <option>No Hay Datos Registrados</option>
+                                                        <?php } ?>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <label id="val_tcalibreind" class="validacion"> </label>
+                                            </div>
+                                        </div>
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label>Tipo Manejo</label><br>
@@ -602,6 +640,7 @@ if ($_POST) {
                 $DRINDUSTRIAL->__SET('FECHA_EMBALADO_DRINDUSTRIAL', $_REQUEST['FECHAEMBALADODINDUSTRIAL']);
                 $DRINDUSTRIAL->__SET('KILOS_NETO_DRINDUSTRIAL', $_REQUEST['KILOSNETO']);
                 $DRINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
+                $DRINDUSTRIAL->__SET('ID_TCALIBREIND', $_REQUEST['TCALIBREIND']);
                 $DRINDUSTRIAL->__SET('ID_FOLIO', $FOLIO);
                 $DRINDUSTRIAL->__SET('ID_VESPECIES',  $_REQUEST['VESPECIES']);
                 $DRINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
@@ -622,6 +661,7 @@ if ($_POST) {
                 $EXIINDUSTRIAL->__SET('FECHA_REEMBALAJE', $_REQUEST['FECHAREEMBALAJE']);
                 $EXIINDUSTRIAL->__SET('TCOBRO', $TCOBRO);
                 $EXIINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
+                $EXIINDUSTRIAL->__SET('ID_TCALIBRE', $_REQUEST['TCALIBREIND']);
                 $EXIINDUSTRIAL->__SET('ID_FOLIO', $FOLIO);
                 $EXIINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                 $EXIINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
@@ -663,6 +703,7 @@ if ($_POST) {
                 $DRINDUSTRIAL->__SET('FECHA_EMBALADO_DRINDUSTRIAL', $_REQUEST['FECHAEMBALADODINDUSTRIAL']);
                 $DRINDUSTRIAL->__SET('KILOS_NETO_DRINDUSTRIAL', $_REQUEST['KILOSNETO']);
                 $DRINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
+                $DRINDUSTRIAL->__SET('ID_TCALIBREIND', $_REQUEST['TCALIBREIND']);
                 $DRINDUSTRIAL->__SET('ID_VESPECIES',  $_REQUEST['VESPECIES']);
                 $DRINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                 $DRINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
@@ -681,6 +722,7 @@ if ($_POST) {
                     $EXIINDUSTRIAL->__SET('FECHA_REEMBALAJE', $_REQUEST['FECHAREEMBALAJE']);
                     $EXIINDUSTRIAL->__SET('TCOBRO', $TCOBRO);
                     $EXIINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
+                    $EXIINDUSTRIAL->__SET('ID_TCALIBRE', $_REQUEST['TCALIBREIND']);
                     $EXIINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                     $EXIINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
                     $EXIINDUSTRIAL->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
@@ -707,6 +749,7 @@ if ($_POST) {
                     $EXIINDUSTRIAL->__SET('FECHA_REEMBALAJE', $_REQUEST['FECHAREEMBALAJE']);
                     $EXIINDUSTRIAL->__SET('TCOBRO', $TCOBRO);
                     $EXIINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
+                    $EXIINDUSTRIAL->__SET('ID_TCALIBRE', $_REQUEST['TCALIBREIND']);
                     $EXIINDUSTRIAL->__SET('ID_FOLIO', $FOLIO);
                     $EXIINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                     $EXIINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
