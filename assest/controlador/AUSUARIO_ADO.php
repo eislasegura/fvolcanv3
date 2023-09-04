@@ -396,7 +396,7 @@ class AUSUARIO_ADO {
 
                                                 INGRESO 
                                             ) VALUES
-	       	                                (  ".$NUMERO.",  ".$TMODULO.",  ".$TOPERACION.",   '".$MENSAJE."',  '".$TABLA."', ".$REGISTRO.",  ".$USUARIO.", ".$EMPRESA.", ".$PLANTA.", ".$TEMPORADA.",    SYSDATE()  );";
+	       	                                (  '".$NUMERO."',  '".$TMODULO."',  '".$TOPERACION."',   '".$MENSAJE."',  '".$TABLA."', '".$REGISTRO."',  '".$USUARIO."', '".$EMPRESA."', '".$PLANTA."', '".$TEMPORADA."',    SYSDATE()  );";
 
                                          
             $this->conexion->prepare($query)
