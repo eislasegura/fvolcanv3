@@ -163,9 +163,10 @@ class EMPRESA_ADO {
                                                   MODIFICACION  , 
                                                   ESTADO_REGISTRO, 
                                                   COC ,
-                                                  FOLIO_MANUAL 
+                                                  FOLIO_MANUAL,
+                                                  USO_CALIBRE 
                                              ) VALUES
-	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, ?, ?);";
+	       	(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE(), SYSDATE(), 1, ?, ?, ?);";
             $this->conexion->prepare($query)
             ->execute(
                 array(
@@ -185,7 +186,8 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_USUARIOI'),
                     $EMPRESA->__GET('ID_USUARIOM'),
                     $EMPRESA->__GET('COC'),
-                    $EMPRESA->__GET('FOLIO_MANUAL')
+                    $EMPRESA->__GET('FOLIO_MANUAL'),
+                    $EMPRESA->__GET('USO_CALIBRE')
                     )
                 );
         //die($query);
@@ -216,7 +218,8 @@ class EMPRESA_ADO {
               ID_REGION  = ?,
               ID_USUARIOM  = ?,
               COC  = ?,
-              FOLIO_MANUAL  = ?
+              FOLIO_MANUAL  = ?,
+              USO_CALIBRE  = ?
 		WHERE   ID_EMPRESA  = ?;";
             $this->conexion->prepare($query)
             ->execute(
@@ -236,6 +239,7 @@ class EMPRESA_ADO {
                     $EMPRESA->__GET('ID_USUARIOM'),
                     $EMPRESA->__GET('COC'),
                     $EMPRESA->__GET('FOLIO_MANUAL'),
+                    $EMPRESA->__GET('USO_CALIBRE'),
                     $EMPRESA->__GET('ID_EMPRESA')
                     
                 )

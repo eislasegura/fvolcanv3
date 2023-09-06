@@ -27,6 +27,7 @@
         private   $ID_USUARIOI;
         private   $ID_USUARIOM;
         private   $FOLIO_MANUAL;
+        private   $USO_CALIBRE;
         
         
         //FUNCIONES GET Y SET

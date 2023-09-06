@@ -31,6 +31,7 @@ $ID = "";
 $DIRECTORIODESTINO = "../../assest/img/empresa/";
 
 $FOLIOMANUAL = "";
+$USOCALIBRE = "";
 
 $NOMBREMPRESA = "";
 $COC = "";
@@ -114,6 +115,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
         foreach ($ARRAYEMPRESASID as $r) :
             $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
+            $USOCALIBRE = "" . $r['USO_CALIBRE'];
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
@@ -144,6 +146,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         //PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
         foreach ($ARRAYEMPRESASID as $r) :
             $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
+            $USOCALIBRE = "" . $r['USO_CALIBRE'];
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
             $NOMBREMPRESA = "" . $r['NOMBRE_EMPRESA'];
@@ -173,6 +176,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         foreach ($ARRAYEMPRESASID as $r) :
 
             $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
+            $USOCALIBRE = "" . $r['USO_CALIBRE'];
 
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
@@ -206,6 +210,7 @@ if (isset($id_dato) && isset($accion_dato)) {
         foreach ($ARRAYEMPRESASID as $r) :
 
             $FOLIOMANUAL = "" . $r['FOLIO_MANUAL'];
+            $USOCALIBRE = "" . $r['USO_CALIBRE'];
 
             $RUTEMPRESA = "" . $r['RUT_EMPRESA'];
             $DVEMPRESA = "" . $r['DV_EMPRESA'];
@@ -227,6 +232,9 @@ if (isset($id_dato) && isset($accion_dato)) {
 if($_POST){
     if (isset($_REQUEST['FOLIO_MANUAL'])) {
         $FOLIOMANUAL = $_REQUEST['FOLIO_MANUAL'];
+    }
+    if (isset($_REQUEST['USO_CALIBRE'])) {
+        $USOCALIBRE = $_REQUEST['USO_CALIBRE'];
     }
     if (isset($_REQUEST['RUTEMPRESA'])) {
         $RUTEMPRESA = $_REQUEST['RUTEMPRESA'];
@@ -291,7 +299,7 @@ if($_POST){
             function validacion() {
 
                 FOLIOMANUAL = document.getElementById("FOLIOMANUAL").selectedIndex;
-
+                USOCALIBRE = document.getElementById("USOCALIBRE").selectedIndex;
                 RUTEMPRESA = document.getElementById("RUTEMPRESA").value;
                 DVEMPRESA = document.getElementById("DVEMPRESA").value;
                 NOMBREMPRESA = document.getElementById("NOMBREMPRESA").value;
@@ -299,23 +307,23 @@ if($_POST){
                 RAZONSOCIAL = document.getElementById("RAZONSOCIAL").value;
                 GIRO = document.getElementById("GIRO").value;
                 DIRECCION = document.getElementById("DIRECCION").value;
-
                 COMUNA = document.getElementById("COMUNA").selectedIndex;
-                    PROVINCIA = document.getElementById("PROVINCIA").selectedIndex;
-                    REGION = document.getElementById("REGION").selectedIndex;
-
+                PROVINCIA = document.getElementById("PROVINCIA").selectedIndex;
+                REGION = document.getElementById("REGION").selectedIndex;
                 TELEFONO = document.getElementById("TELEFONO").value;
                 ENCARGADODECOMPRA = document.getElementById("ENCARGADODECOMPRA").value;
 
+                document.getElementById('val_uso_calibre').innerHTML = "";
+                document.getElementById('val_folio_manual').innerHTML = "";
                 document.getElementById('val_rut_empresa').innerHTML = "";
                 document.getElementById('val_dv_empresa').innerHTML = "";
                 document.getElementById('val_nombree').innerHTML = "";
                 document.getElementById('val_giro').innerHTML = "";
                 document.getElementById('val_razonsocial').innerHTML = "";
                 document.getElementById('val_direccion').innerHTML = "";
-                    document.getElementById('val_comuna').innerHTML = "";
-                    document.getElementById('val_provincia').innerHTML = "";
-                    document.getElementById('val_region').innerHTML = "";
+                document.getElementById('val_comuna').innerHTML = "";
+                document.getElementById('val_provincia').innerHTML = "";
+                document.getElementById('val_region').innerHTML = "";
                 document.getElementById('val_telefono').innerHTML = "";
                 document.getElementById('val_encargado_compra').innerHTML = "";
 
@@ -498,7 +506,7 @@ if($_POST){
                                         <div class="box-body">
                                             <hr class="my-15">
                                             <div class="row">
-                                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
+                                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-6 col-xs-12">
                                                     <div class="form-group">
                                                         <label>Folio Manual</label>
                                                         <select class="form-control select2" id="FOLIOMANUAL" name="FOLIOMANUAL" style="width: 100%;" value="<?php echo $FOLIOMANUAL; ?>" <?php echo $DISABLED; ?>>
@@ -506,7 +514,19 @@ if($_POST){
                                                             <option value="1" <?php if ($FOLIOMANUAL == "1") { echo "selected"; } ?>> Si </option>
                                                             <option value="2" <?php if ($FOLIOMANUAL == "2") { echo "selected"; } ?>> No </option>
                                                         </select>
-                                                        <label id="val_foliomanual" class="validacion"> </label>
+                                                        <label id="val_folio_manual" class="validacion"> </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-6 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label>Uso Calibre</label>
+                                                        <select class="form-control select2" id="USOCALIBRE" name="USOCALIBRE" style="width: 100%;" value="<?php echo $USOCALIBRE; ?>" <?php echo $DISABLED; ?>>
+                                                            <option></option>
+                                                            <option value="1" <?php if ($USOCALIBRE == "1") { echo "selected"; } ?>> Si </option>
+                                                            <option value="2" <?php if ($USOCALIBRE == "2") { echo "selected"; } ?>> No </option>
+                                                        </select>
+                                                        <label id="val_uso_calibre" class="validacion"> </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
@@ -716,7 +736,8 @@ if($_POST){
                                             <table id="listar" class="table-hover " style="width: 100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th>FM</th>
+                                                        <th>Folio Manual</th>
+                                                        <th>Uso Calibre</th>
                                                         <th>Numero </th>
                                                         <th class="text-center">Operaciónes</th>
                                                         <th>COC </th>
@@ -765,9 +786,18 @@ if($_POST){
                                                                 $FMANUAL="Sin Datos";
                                                             }
 
+                                                            if($r["USO_CALIBRE"]==1){
+                                                                $UCALIBRE="Si";
+                                                            }else if($r["USO_CALIBRE"]==2){
+                                                                $UCALIBRE="No";
+                                                            }else{                                                                
+                                                                $UCALIBRE="Sin Datos";
+                                                            }
+
                                                             ?>
                                                         <tr class="center">    
                                                             <td><?php echo $FMANUAL; ?></td>
+                                                            <td><?php echo $UCALIBRE; ?></td>
                                                             <td><?php echo $CONTADOR; ?> </td>                                                                                      
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">
@@ -865,6 +895,7 @@ if($_POST){
                 //UTILIZACION METODOS SET DEL MODELO
                 //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO   
                 $EMPRESA->__SET('FOLIO_MANUAL', $_REQUEST['FOLIOMANUAL']);
+                $EMPRESA->__SET('USO_CALIBRE', $_REQUEST['USOCALIBRE']);
                 $EMPRESA->__SET('RUT_EMPRESA', $_REQUEST['RUTEMPRESA']);
                 $EMPRESA->__SET('DV_EMPRESA', $_REQUEST['DVEMPRESA']);
                 $EMPRESA->__SET('NOMBRE_EMPRESA', $_REQUEST['NOMBREMPRESA']);
@@ -918,6 +949,7 @@ if($_POST){
                 //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO  
 
                 $EMPRESA->__SET('FOLIO_MANUAL', $_REQUEST['FOLIOMANUAL']);
+                $EMPRESA->__SET('USO_CALIBRE', $_REQUEST['USOCALIBRE']);
                 $EMPRESA->__SET('RUT_EMPRESA', $_REQUEST['RUTEMPRESA']);
                 $EMPRESA->__SET('DV_EMPRESA', $_REQUEST['DVEMPRESA']);
                 $EMPRESA->__SET('NOMBRE_EMPRESA', $_REQUEST['NOMBREMPRESA']);
