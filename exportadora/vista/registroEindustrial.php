@@ -169,6 +169,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $COBRO = "" . $r['COBRO'];
             $ESPECIES = "" . $r['ID_ESPECIES'];
             $PRODUCTO = "" . $r['ID_PRODUCTO'];
+            $AGRUPACION = "" . $r['AGRUPACION'];
 
         endforeach;
     }
@@ -196,6 +197,7 @@ if (isset($id_dato) && isset($accion_dato)) {
             $COBRO = "" . $r['COBRO'];
             $ESPECIES = "" . $r['ID_ESPECIES'];
             $PRODUCTO = "" . $r['ID_PRODUCTO'];
+            $AGRUPACION = "" . $r['AGRUPACION'];
 
 
         endforeach;
@@ -239,6 +241,7 @@ if (isset($_POST)) {
         $ESPECIES = "" . $_REQUEST['ESPECIES'];
     }
 
+  
 
 
 }
