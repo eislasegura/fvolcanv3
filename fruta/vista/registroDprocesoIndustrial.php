@@ -344,13 +344,19 @@ if ($_POST) {
                     ESTANDAR = document.getElementById("ESTANDAR").selectedIndex;
                     KILOSNETO = document.getElementById("KILOSNETO").value;
                     TMANEJO = document.getElementById("TMANEJO").selectedIndex;
-                    TCALIBREIND = document.getElementById("TCALIBREIND").selectedIndex;
+
+                    <?php if($ESTADO_USO_CALIBRE == 1){ ?>
+                        TCALIBREIND = document.getElementById("TCALIBREIND").selectedIndex;
+                    <?php } ?>
 
                     document.getElementById('val_fechaembalado').innerHTML = "";
                     document.getElementById('val_estandar').innerHTML = "";
                     document.getElementById('val_neto').innerHTML = "";
                     document.getElementById('val_tmanejo').innerHTML = "";
-                    document.getElementById('val_tcalibreind').innerHTML = "";
+
+                    <?php if($ESTADO_USO_CALIBRE == 1){ ?>
+                        document.getElementById('val_tcalibreind').innerHTML = "";
+                    <?php } ?>
 
                     if (FECHAEMBALADODINDUSTRIAL == null || FECHAEMBALADODINDUSTRIAL.length == 0 || /^\s+$/.test(FECHAEMBALADODINDUSTRIAL)) {
                         document.form_reg_dato.FECHAEMBALADODINDUSTRIAL.focus();
@@ -384,6 +390,7 @@ if ($_POST) {
                     }
                     document.form_reg_dato.TMANEJO.style.borderColor = "#4AF575";
 
+                    <?php if($ESTADO_USO_CALIBRE == 1){ ?>
                     if (TCALIBREIND == null || TCALIBREIND == 0) {
                         document.form_reg_dato.TCALIBREIND.focus();
                         document.form_reg_dato.TCALIBREIND.style.borderColor = "#FF0000";
@@ -391,6 +398,7 @@ if ($_POST) {
                         return false;
                     }
                     document.form_reg_dato.TCALIBREIND.style.borderColor = "#4AF575";
+                    <?php } ?>
 
 
                 }
@@ -510,6 +518,7 @@ if ($_POST) {
                                                 <label id="val_neto" class="validacion"> </label>
                                             </div>
                                         </div>
+                                        <?php if($ESTADO_USO_CALIBRE == 1){ ?>
                                         <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 ">
                                             <div class="form-group">
                                                 <label>Calibre Industrial</label>
@@ -528,6 +537,7 @@ if ($_POST) {
                                                 <label id="val_tcalibreind" class="validacion"> </label>
                                             </div>
                                         </div>
+                                        <?php } ?>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label>Tipo Manejo</label><br>
