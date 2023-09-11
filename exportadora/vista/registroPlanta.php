@@ -1,6 +1,6 @@
 <?php
 
-include_once "../../assest/config/validarUsuarioExpo.php";
+include_once "../../assest/config/validarUsuarioMaterial.php";
 
 //LLAMADA ARCHIVOS NECESARIOS PARA LAS OPERACIONES
 
@@ -66,13 +66,26 @@ include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/datosUrl.php";
 
 
+if (isset($_GET["id"])) {
+    $id_dato = $_GET["id"];
+}else{
+    $id_dato = "";
+}
+
+
+if (isset($_GET["a"])) {
+    $accion_dato = $_GET["a"];
+}else{
+    $accion_dato = "";
+}
+
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION Y VISUALIZACION
 //PREGUNTA SI LA URL VIENE  CON DATOS "parametro" y "parametro1"
-if (isset($_SESSION['parametro']) && isset($_SESSION['parametro1'])) {
+if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['parametro'];
-    $OP = $_SESSION['parametro1'];
+    $IDOP = $id_dato;
+    $OP = $accion_dato;
 
     //IDENTIFICACIONES DE OPERACIONES
     //OPERACION DE CAMBIO DE ESTADO
@@ -345,7 +358,7 @@ if($_POST){
 <body class="hold-transition light-skin fixed sidebar-mini theme-primary" >
     <div class="wrapper">
         <!- LLAMADA AL MENU PRINCIPAL DE LA PAGINA-!>
-            <?php include_once "../../assest/config/menuExpo.php"; ?>
+            <?php include_once "../../assest/config/menuMaterial.php"; ?>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <div class="container-full">
@@ -557,6 +570,7 @@ if($_POST){
                                             <table id="listar" class="table-hover " style="width: 100%;">
                                                 <thead>
                                                     <tr>
+                                                        
                                                         <th>Numero</th>
                                                         <th class="text-center">Operaciónes</th>
                                                         <th>Codigo SAG </th>
@@ -602,6 +616,7 @@ if($_POST){
                                                             }
                                                             ?>
                                                         <tr class="center">
+                                                            
                                                             <td><?php echo $CONTADOR; ?> </td>                                                                      
                                                             <td class="text-center">
                                                                 <form method="post" id="form1">
@@ -669,7 +684,7 @@ if($_POST){
             <!-- /.content-wrapper -->
             <!- LLAMADA ARCHIVO DEL DISEÑO DEL FOOTER Y MENU USUARIO -!>
                 <?php include_once "../../assest/config/footer.php"; ?>
-                <?php include_once "../../assest/config/menuExtraExpo.php"; ?>
+                <?php include_once "../../assest/config/menuExtraMaterial.php"; ?>
     </div>
     <!- LLAMADA URL DE ARCHIVOS DE DISEÑO Y JQUERY E OTROS -!>
         <?php include_once "../../assest/config/urlBase.php"; ?>
@@ -694,7 +709,7 @@ if($_POST){
                 //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
                 $PLANTA_ADO->agregarPlanta($PLANTA);
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",3,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Planta.","principal_planta","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );  
+                $AUSUARIO_ADO->agregarAusuario2("NULL",2,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Planta.","principal_planta","NULL",$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );  
 
                 //REDIRECCIONAR A PAGINA registroPlanta.php
                 echo '<script>
@@ -730,7 +745,7 @@ if($_POST){
                 //LLAMADA AL METODO DE EDICION DEL CONTROLADOR
                 $PLANTA_ADO->actualizarPlanta($PLANTA);
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",3,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Planta.","principal_planta", $_REQUEST['ID'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );     
+                $AUSUARIO_ADO->agregarAusuario2("NULL",2,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Planta.","principal_planta", $_REQUEST['ID'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );     
 
                 //REDIRECCIONAR A PAGINA registroPlanta.php
                 
@@ -754,7 +769,7 @@ if($_POST){
                 $PLANTA_ADO->deshabilitar($PLANTA);
              
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",3,4,"".$_SESSION["NOMBRE_USUARIO"].", Deshabilitar  Planta.","principal_planta", $_REQUEST['ID'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );                
+                $AUSUARIO_ADO->agregarAusuario2("NULL",2,4,"".$_SESSION["NOMBRE_USUARIO"].", Deshabilitar  Planta.","principal_planta", $_REQUEST['ID'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );                
                 
                 echo '<script>
                     Swal.fire({
@@ -775,7 +790,7 @@ if($_POST){
                 $PLANTA->__SET('ID_PLANTA', $_REQUEST['ID']);
                 $PLANTA_ADO->habilitar($PLANTA);
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",3,5,"".$_SESSION["NOMBRE_USUARIO"].", Habilitar  Planta.","principal_planta", $_REQUEST['ID'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );                               
+                $AUSUARIO_ADO->agregarAusuario2("NULL",2,5,"".$_SESSION["NOMBRE_USUARIO"].", Habilitar  Planta.","principal_planta", $_REQUEST['ID'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'],'NULL',$_SESSION['ID_TEMPORADA'] );                               
 
                 echo '<script>
                     Swal.fire({
