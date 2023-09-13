@@ -921,7 +921,7 @@ if (isset($id_dato) && isset($accion_dato)) {
                                                             <td><?php echo $r['PESO_BRUTO_ESTANDAR']; ?></td>  
                                                             <td><?php echo $r['PESO_ENVASE_ESTANDAR']; ?></td>  
                                                             <td><?php echo $r['PDESHIDRATACION_ESTANDAR']; ?></td>  
-                                                            <td><?php echo $r['PESO_ENVASE_ESTANDAR']; ?></td>  
+                                                            <td><?php echo $r['PESO_PALLET_ESTANDAR']; ?></td>  
                                                             <td><?php echo $r['CANTIDAD_ENVASE_ESTANDAR']; ?></td>  
                                                             <td><?php echo $NOMBREESPECIES; ?></td>  
                                                             <td><?php echo $NOMBRETEMBALAJE; ?></td>  
