@@ -21,6 +21,7 @@ include_once '../../assest/controlador/EINDUSTRIAL_ADO.php';
 include_once '../../assest/controlador/TMANEJO_ADO.php';
 include_once '../../assest/controlador/TCALIBRE_ADO.php';
 include_once '../../assest/controlador/TCATEGORIA_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 
 //INCIALIZAR LAS VARIBLES
 //INICIALIZAR CONTROLADOR
@@ -40,6 +41,7 @@ $EINDUSTRIAL_ADO =  new EINDUSTRIAL_ADO();
 $TMANEJO_ADO =  new TMANEJO_ADO();
 $TCALIBRE_ADO =  new TCALIBRE_ADO();
 $TCATEGORIA_ADO =  new TCATEGORIA_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 
 $DREXPORTACION_ADO =  new DREXPORTACION_ADO();
 $DRINDUSTRIAL_ADO =  new DRINDUSTRIAL_ADO();
@@ -620,6 +622,7 @@ $html = $html . '
             <th class="color center">Fecha Embalado</th>
             <th class="color center">Código Estandar</th>
             <th class="color center">Envase/Estandar</th>
+            <th class="color center">Calibre</th>
             <th class="color center">Kilos Neto</th>
             <th class="color center ">% </th>
             <th class="color center ">Variedad </th>
@@ -648,12 +651,20 @@ foreach ($ARRAYDINDUSTRIAL as $r) :
   } else {
     $NETOINDU = 0;
   }
+
+  $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBREIND']);
+  if ($ARRAYTCALIBREIND) {
+      $NOMBRETCALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+  } else {
+      $NOMBRETCALIBREIND = "Sin Datos";
+  }
   $html = $html . '    
         <tr>
             <th class=" left"> ' . $r['FOLIO_DRINDUSTRIAL'] . '</th>
             <td class=" center"> ' . $r['EMBALADO'] . '</td>
             <td class=" center"> ' . $CODIGOESTANDAR . '</td>
             <td class=" center"> ' . $NOMBREESTANDAR . '</td>
+            <td class=" center"> ' . $NOMBRETCALIBREIND . '</td>
             <td class=" center"> ' . $r['KILOS_NETO_DRINDUSTRIAL'] . '</td>
             <td class=" center"> ' . $NETOINDU . '</td>
             <td class=" center "> ' . $NOMBREVARIEDAD . ' </td>
