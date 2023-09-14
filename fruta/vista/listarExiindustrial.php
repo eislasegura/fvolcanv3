@@ -16,6 +16,7 @@ include_once '../../assest/controlador/FOLIO_ADO.php';
 include_once '../../assest/controlador/TPROCESO_ADO.php';
 include_once '../../assest/controlador/TREEMBALAJE_ADO.php';
 include_once '../../assest/controlador/TMANEJO_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 
 include_once '../../assest/controlador/DESPACHOIND_ADO.php';
 include_once '../../assest/controlador/RECEPCIONIND_ADO.php';
@@ -40,6 +41,7 @@ $FOLIO_ADO =  new FOLIO_ADO();
 $TPROCESO_ADO =  new TPROCESO_ADO();
 $TMANEJO_ADO =  new TMANEJO_ADO();
 $TREEMBALAJE_ADO =  new TREEMBALAJE_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 
 $DESPACHOIND_ADO =  new DESPACHOIND_ADO();
 $RECEPCIONIND_ADO =  new RECEPCIONIND_ADO();
@@ -140,6 +142,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Días</th>
                                                         <th>Código Estandar</th>
                                                         <th>Envase/Estandar</th>
+                                                        <th>Calibre</th>
                                                         <th>CSG</th>
                                                         <th>Productor</th>
                                                         <th>Especies</th>
@@ -225,6 +228,14 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         } else {
                                                             $NOMBREVESPECIES = "Sin Datos";
                                                             $NOMBRESPECIES = "Sin Datos";
+                                                        }
+
+
+                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBREIND']);
+                                                        if ($ARRAYTCALIBREIND) {
+                                                            $NOMBRETCALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                        } else {
+                                                            $NOMBRETCALIBREIND = "Sin Datos";
                                                         }
 
 
@@ -341,6 +352,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             <td><?php echo $r['DIAS']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
+                                                            <td><?php echo $NOMBRETCALIBREIND; ?></td>
+                                                            
                                                             <td><?php echo $CSGPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBRESPECIES; ?></td>
