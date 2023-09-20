@@ -1,6 +1,6 @@
 <?php
 
-include_once "../../assest/config/validarUsuarioMaterial.php";
+include_once "../../assest/config/validarUsuarioFruta.php";
 //LLAMADA ARCHIVOS NECESARIOS PARA LAS OPERACIONES
 
 include_once '../../assest/controlador/PRODUCTO_ADO.php';
@@ -91,7 +91,7 @@ $ARRAYVERFOLIO;
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 
 
-$ARRAYPRODUCTO = $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS);
+$ARRAYPRODUCTO = $PRODUCTO_ADO->listarProductoPorEmpresaCBX($EMPRESAS, $TEMPORADAS);
 $ARRAYTUMEDIDA = $TUMEDIDA_ADO->listarTumedidaPorEmpresaCBX($EMPRESAS);
 include_once "../../assest/config/validarDatosUrlD.php";
 
@@ -101,21 +101,37 @@ if (isset($_GET["id"])) {
     $id_dato = "";
 }
 
-
 if (isset($_GET["a"])) {
     $accion_dato = $_GET["a"];
 }else{
     $accion_dato = "";
 }
 
+if (isset($_GET["urlo"])) {
+    $urlo_dato = $_GET["urlo"];
+}else{
+    $urlo_dato = "";
+}
+
+if (isset($_GET["idd"])) {
+    $idd_dato = $_GET["idd"];
+}else{
+    $idd_dato = "";
+}
+
+if (isset($_GET["ad"])) {
+    $acciond_dato = $_GET["ad"];
+}else{
+    $acciond_dato = "";
+}
+
 //OBTENCION DE DATOS ENVIADOR A LA URL
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLP = $_SESSION['urlO'];
+    $URLP = $urlo_dato;
 
     $ARRAYRECEPCION = $RECEPCIONE_ADO->verRecepcion($IDP);
-   
     foreach ($ARRAYRECEPCION as $r) :
         $BODEGA = $r["ID_BODEGA"];
         $TRECEPCION = $r["TRECEPCION"];
@@ -123,16 +139,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO'])) {
     endforeach;
 }
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
-
-
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
-if (isset($id_dato) && isset($accion_dato) && isset($_SESSION['urlO']) && isset($_SESSION['dparametro']) && isset($_SESSION['dparametro1'])) {
+if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato) && isset($idd_dato) && isset($acciond_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
-    $IDOP = $_SESSION['dparametro'];
-    $OP = $_SESSION['dparametro1'];
+    $IDOP = $idd_dato;
+    $OP = $acciond_dato;
     $IDP = $id_dato;
     $OPP = $accion_dato;
-    $URLP = $_SESSION['urlO'];
+    $URLP = $urlo_dato;
 
     //IDENTIFICACIONES DE OPERACIONES
     //$VALORTOTAL = "";
@@ -308,7 +322,7 @@ if (isset($_POST)) {
 <body class="hold-transition light-skin fixed sidebar-mini theme-primary" >
     <div class="wrapper">
         <!- LLAMADA AL MENU PRINCIPAL DE LA PAGINA-!>
-            <?php  include_once "../../assest/config/menuMaterial.php";
+            <?php  include_once "../../assest/config/menuFruta.php";
             ?>
             <div class="content-wrapper">
                 <div class="container-full">
@@ -406,7 +420,7 @@ if (isset($_POST)) {
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="btn-group  col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                        <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>');">
+                                        <button type="button" class="btn  btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLP; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
                                             <i class="ti-back-left "></i> Volver
                                         </button>
                                         <?php if ($OP == "") { ?>
@@ -442,7 +456,7 @@ if (isset($_POST)) {
             </div>
             <!- LLAMADA ARCHIVO DEL DISEÑO DEL FOOTER Y MENU USUARIO -!>
                 <?php include_once "../../assest/config/footer.php";   ?>
-                <?php include_once "../../assest/config/menuExtraMaterial.php"; ?>
+                <?php include_once "../../assest/config/menuExtraFruta.php"; ?>
     </div>
     <!- LLAMADA URL DE ARCHIVOS DE DISEÑO Y JQUERY E OTROS -!>
         <?php include_once "../../assest/config/urlBase.php"; ?>
@@ -467,7 +481,7 @@ if (isset($_POST)) {
                 $INVENTARIOE_ADO->agregarInventarioRecepcion($INVENTARIOE);
 
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",2,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle de Recepción Envases.","material_inventarioe", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                $AUSUARIO_ADO->agregarAusuario2("NULL",1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de detalle de Recepción Envases.","material_inventarioe", "NULL" ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
                 
                 $id_dato =  $_REQUEST['IDP'];
@@ -480,7 +494,7 @@ if (isset($_POST)) {
                             showConfirmButton:true,
                             confirmButtonText:"Volver a recepcion"
                         }).then((result)=>{
-                            location.href ="'. $_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                            location.href ="'. $_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                         })
                     </script>';
             }
@@ -500,7 +514,7 @@ if (isset($_POST)) {
                 $INVENTARIOE->__SET('ID_INVENTARIO', $_REQUEST['IDD']);
                 $INVENTARIOE_ADO->actualizarInventarioRecepcion($INVENTARIOE);
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",2,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de detalle de Recepción Envases.","material_inventarioe", $_REQUEST['IDD'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                $AUSUARIO_ADO->agregarAusuario2("NULL",1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de detalle de Recepción Envases.","material_inventarioe", $_REQUEST['IDD'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 
                 $id_dato =  $_REQUEST['IDP'];
                 $accion_dato =  $_REQUEST['OPP'];
@@ -512,7 +526,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver a recepcion"
                     }).then((result)=>{
-                        location.href ="'. $_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                        location.href ="'. $_REQUEST['URLP'].'.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                     })
                 </script>';
             }
@@ -525,7 +539,7 @@ if (isset($_POST)) {
                 $INVENTARIOE_ADO->deshabilitar($INVENTARIOE);
 
 
-                $AUSUARIO_ADO->agregarAusuario2("NULL",2,4,"".$_SESSION["NOMBRE_USUARIO"].", Deshabilitar  detalle de Recepción Envases.","material_inventarioe", $_REQUEST['IDD'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                $AUSUARIO_ADO->agregarAusuario2("NULL",1,4,"".$_SESSION["NOMBRE_USUARIO"].", Deshabilitar  detalle de Recepción Envases.","material_inventarioe", $_REQUEST['IDD'] ,$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                 $id_dato =  $_REQUEST['IDP'];
                 $accion_dato =  $_REQUEST['OPP'];
@@ -537,7 +551,7 @@ if (isset($_POST)) {
                         showConfirmButton:true,
                         confirmButtonText:"Volver a recepcion"
                     }).then((result)=>{
-                        location.href ="' . $_REQUEST['URLP'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href ="' . $_REQUEST['URLP'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
             }

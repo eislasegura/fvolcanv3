@@ -264,6 +264,8 @@
               </li>
             </ul>
         </div>
+        <shadow> select : <<?php $this->ncurses_keyok(
+          , enable) ?></shadow>
         <!-- /.tab-pane -->
       </div>
     </aside>

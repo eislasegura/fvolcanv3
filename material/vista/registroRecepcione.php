@@ -177,8 +177,6 @@ if (empty($ARRAYBODEGAENVASES)) {
 }
 
 
-//OBTENCION DE DATOS ENVIADOR A LA URL
-
 if (isset($_GET["id"])) {
     $id_dato = $_GET["id"];
 }else{
@@ -191,6 +189,8 @@ if (isset($_GET["a"])) {
 }else{
     $accion_dato = "";
 }
+
+//OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 if (isset($id_dato) && isset($accion_dato)) {
     //ALMACENAR DATOS DE VARIABLES DE LA URL
@@ -1369,7 +1369,7 @@ if (isset($_POST)) {
                     $_REQUEST['TEMPORADA'],
                 );
                 //REDIRECCIONAR A PAGINA registroRecepcion.php 
-                $AUSUARIO_ADO->agregarAusuario2($NUMERO,2,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Recepción Envases.","material_recepcione", $ARRYAOBTENERID[0]['ID_RECEPCION'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                $AUSUARIO_ADO->agregarAusuario2($NUMERO,1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Recepción Envases.","material_recepcione", $ARRYAOBTENERID[0]['ID_RECEPCION'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                 
                 $id_dato = $ARRYAOBTENERID[0]['ID_RECEPCION'];
                 $accion_dato = "crear";
@@ -1382,7 +1382,7 @@ if (isset($_POST)) {
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroRecepcione.php?";                            
+                        location.href = "registroRecepcione.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
                     })
                 </script>';
             }
@@ -1420,7 +1420,7 @@ if (isset($_POST)) {
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
                     $RECEPCIONE_ADO->actualizarRecepcion($RECEPCIONE);
                 
-                    $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,2,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Recepción Envases.","material_recepcione", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                    $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Recepción Envases.","material_recepcione", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
                     if ($accion_dato == "crear") {
                         $id_dato = $_REQUEST['IDP'];
@@ -1512,7 +1512,7 @@ if (isset($_POST)) {
                     $RECEPCIONE->__SET('ID_RECEPCION', $_REQUEST['IDP']);
                     $RECEPCIONE_ADO->cerrado($RECEPCIONE);
 
-                    $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,2,3,"".$_SESSION["NOMBRE_USUARIO"].", Cerrar  Recepción Envases.","material_recepcione", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
+                    $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,3,"".$_SESSION["NOMBRE_USUARIO"].", Cerrar  Recepción Envases.","material_recepcione", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
 
 
                     //REDIRECCIONAR A PAGINA registroRecepcion.php 
