@@ -231,7 +231,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         }
 
 
-                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBREIND']);
+                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBRE']);
                                                         if ($ARRAYTCALIBREIND) {
                                                             $NOMBRETCALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
                                                         } else {

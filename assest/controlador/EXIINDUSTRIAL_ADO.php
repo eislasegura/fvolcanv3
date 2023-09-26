@@ -1966,7 +1966,8 @@ class EXIINDUSTRIAL_ADO
                                                     DATE_FORMAT(existencia.INGRESO, '%Y-%m-%d ') AS 'INGRESO',
                                                     DATE_FORMAT(existencia.MODIFICACION, '%Y-%m-%d ') AS 'MODIFICACION',      
                                                     existencia.FECHA_EMBALADO_EXIINDUSTRIAL AS 'EMBALADO',     
-                                                    IFNULL(existencia.KILOS_NETO_EXIINDUSTRIAL,0) AS 'NETO' 
+                                                    IFNULL(existencia.KILOS_NETO_EXIINDUSTRIAL,0) AS 'NETO',
+                                                    ID_TCALIBRE  
                                                 FROM fruta_exiindustrial existencia, estandar_eindustrial estandar 
                                                 WHERE existencia.ID_ESTANDAR=estandar.ID_ESTANDAR
                                                 AND  existencia.ESTADO = 2
