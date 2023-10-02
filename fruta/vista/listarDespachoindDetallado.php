@@ -9,6 +9,7 @@ include_once '../../assest/controlador/VESPECIES_ADO.php';
 include_once '../../assest/controlador/PRODUCTOR_ADO.php';
 include_once '../../assest/controlador/TMANEJO_ADO.php';
 include_once '../../assest/controlador/TCALIBRE_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 include_once '../../assest/controlador/TEMBALAJE_ADO.php';
 include_once '../../assest/controlador/DFINAL_ADO.php';
 
@@ -47,6 +48,7 @@ $VESPECIES_ADO =  new VESPECIES_ADO();
 $PRODUCTOR_ADO = new PRODUCTOR_ADO();
 $TMANEJO_ADO =  new TMANEJO_ADO();
 $TCALIBRE_ADO =  new TCALIBRE_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 $TEMBALAJE_ADO =  new TEMBALAJE_ADO();
 $DFINAL_ADO =  new DFINAL_ADO();
 
@@ -215,6 +217,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                     <th>Tipo Despacho </th>
                                                     <th>Destino </th>
                                                     <th>Tipo Manejo</th>
+                                                    <th>Código Calibre </th>
                                                     <th>Tipo Calibre </th>
                                                     <th>Tipo Embalaje </th>
                                                     <th>Stock</th>
@@ -328,8 +331,19 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                     $ARRAYTOMADO = $EXIINDUSTRIAL_ADO->buscarPorDespacho($r['ID_DESPACHO']);
                                                     ?>
 
-                                                    <?php foreach ($ARRAYTOMADO as $s) : ?>
+                                                    <?php foreach ($ARRAYTOMADO as $s) : ?> <!-- cconsulta -->
                                                         <?php
+
+                                                        $ARRAYVERCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($s['ID_TCALIBRE']);
+                                                        if ($ARRAYVERCALIBREIND) {
+                                                            $CALIBREIND = $ARRAYVERCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                            $NUM_CALIBREIND = $ARRAYVERCALIBREIND[0]['NUMERO_TCALIBREIND'];
+                                                        } else {
+                                                            $CALIBREIND = "Sin Datos";
+                                                            $NUM_CALIBREIND = "Sin Datos";
+                                                        }
+
+
                                                         $ARRAYVERPRODUCTORID = $PRODUCTOR_ADO->verProductor($s['ID_PRODUCTOR']);
                                                         if ($ARRAYVERPRODUCTORID) {
                                                             $CSGPRODUCTOR = $ARRAYVERPRODUCTORID[0]['CSG_PRODUCTOR'];
@@ -465,7 +479,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             <td><?php echo $TDESPACHO; ?></td>
                                                             <td><?php echo $DESTINO; ?></td>
                                                             <td><?php echo $NOMBRETMANEJO; ?></td>
-                                                            <td><?php echo "Sin Datos"; ?></td>
+                                                            <td><?php echo $NUM_CALIBREIND; ?></td><!-- aqui calibre-->
+                                                            <td><?php echo $CALIBREIND; ?></td><!-- aqui calibre-->
                                                             <td><?php echo "Sin Datos"; ?></td>
                                                             <td><?php echo "Sin Datos"; ?></td>
                                                             <td><?php echo "Sin Datos"; ?></td>
