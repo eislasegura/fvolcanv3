@@ -142,6 +142,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Días</th>
                                                         <th>Código Estandar</th>
                                                         <th>Envase/Estandar</th>
+                                                        <th>Código Calibre</th>
                                                         <th>Calibre</th>
                                                         <th>CSG</th>
                                                         <th>Productor</th>
@@ -233,9 +234,11 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
 
                                                         $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBRE']);
                                                         if ($ARRAYTCALIBREIND) {
-                                                            $NOMBRETCALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                            $CALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                            $NUM_CALIBREIND = $ARRAYTCALIBREIND[0]['NUMERO_TCALIBREIND'];
                                                         } else {
-                                                            $NOMBRETCALIBREIND = "Sin Datos";
+                                                            $CALIBREIND = "Sin Datos";
+                                                            $NUM_CALIBREIND = "Sin Datos";
                                                         }
 
 
@@ -352,7 +355,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             <td><?php echo $r['DIAS']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
-                                                            <td><?php echo $NOMBRETCALIBREIND; ?></td>
+
+                                                            <td><?php echo $NUM_CALIBREIND; ?></td>
+                                                            <td><?php echo $CALIBREIND; ?></td>
                                                             
                                                             <td><?php echo $CSGPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTOR; ?></td>

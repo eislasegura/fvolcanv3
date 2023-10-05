@@ -7,6 +7,7 @@ include_once '../../assest/controlador/EXIINDUSTRIAL_ADO.php';
 include_once '../../assest/controlador/EINDUSTRIAL_ADO.php';
 include_once '../../assest/controlador/ERECEPCION_ADO.php';
 include_once '../../assest/controlador/EEXPORTACION_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 
 include_once '../../assest/controlador/PRODUCTOR_ADO.php';
 include_once '../../assest/controlador/VESPECIES_ADO.php';
@@ -32,6 +33,7 @@ $EXIINDUSTRIAL_ADO =  new EXIINDUSTRIAL_ADO();
 $EINDUSTRIAL_ADO =  new EINDUSTRIAL_ADO();
 $ERECEPCION_ADO =  new ERECEPCION_ADO();
 $EEXPORTACION_ADO =  new EEXPORTACION_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 
 $PRODUCTOR_ADO =  new PRODUCTOR_ADO();
 $VESPECIES_ADO =  new VESPECIES_ADO();
@@ -142,6 +144,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         <th>Código Estandar</th>
                                                         <th>Envase/Estandar</th>
                                                         <th>CSG</th>
+                                                        <th>Código Calibre </th>
+                                                        <th>Tipo Calibre </th>
                                                         <th>Productor</th>
                                                         <th>Especies</th>
                                                         <th>Variedad</th>
@@ -233,6 +237,15 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                         } else {
                                                             $NOMBREVESPECIES = "Sin Datos";
                                                             $NOMBRESPECIES = "Sin Datos";
+                                                        }
+
+                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBRE']);
+                                                        if ($ARRAYTCALIBREIND) {
+                                                            $CALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                            $NUM_CALIBREIND = $ARRAYTCALIBREIND[0]['NUMERO_TCALIBREIND'];
+                                                        } else {
+                                                            $CALIBREIND = "Sin Datos";
+                                                            $NUM_CALIBREIND = "Sin Datos";
                                                         }
 
                                                         $ARRAYRECEPCION = $RECEPCIONIND_ADO->verRecepcion2($r['ID_RECEPCION']);
@@ -416,6 +429,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
                                                             <td><?php echo $CSGPRODUCTOR; ?></td>
+                                                            <td><?php echo $NUM_CALIBREIND; ?></td>
+                                                            <td><?php echo $CALIBREIND; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBRESPECIES; ?></td>
                                                             <td><?php echo $NOMBREVESPECIES; ?></td>
