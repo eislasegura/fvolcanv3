@@ -3,8 +3,6 @@
 include_once "../../assest/config/validarUsuarioOpera.php";
 
 //LLAMADA ARCHIVOS NECESARIOS PARA LAS OPERACIONES
-
-
 include_once '../../assest/controlador/EXIINDUSTRIAL_ADO.php';
 include_once '../../assest/controlador/EINDUSTRIAL_ADO.php';
 include_once '../../assest/controlador/ERECEPCION_ADO.php';
@@ -18,6 +16,7 @@ include_once '../../assest/controlador/FOLIO_ADO.php';
 include_once '../../assest/controlador/TPROCESO_ADO.php';
 include_once '../../assest/controlador/TREEMBALAJE_ADO.php';
 include_once '../../assest/controlador/TMANEJO_ADO.php';
+include_once '../../assest/controlador/TCALIBREIND_ADO.php';
 
 include_once '../../assest/controlador/DESPACHOIND_ADO.php';
 include_once '../../assest/controlador/RECEPCIONIND_ADO.php';
@@ -42,6 +41,7 @@ $FOLIO_ADO =  new FOLIO_ADO();
 $TPROCESO_ADO =  new TPROCESO_ADO();
 $TREEMBALAJE_ADO =  new TREEMBALAJE_ADO();
 $TMANEJO_ADO =  new TMANEJO_ADO();
+$TCALIBREIND_ADO =  new TCALIBREIND_ADO();
 
 
 $DESPACHOIND_ADO =  new DESPACHOIND_ADO();
@@ -142,6 +142,8 @@ if ( $TEMPORADAS) {
                                                         <th>Días</th>
                                                         <th>Código Estandar</th>
                                                         <th>Envase/Estandar</th>
+                                                        <th>Código Calibre</th>
+                                                        <th>Calibre</th>
                                                         <th>CSG</th>
                                                         <th>Productor</th>
                                                         <th>Especies</th>
@@ -227,6 +229,15 @@ if ( $TEMPORADAS) {
                                                         } else {
                                                             $NOMBREVESPECIES = "Sin Datos";
                                                             $NOMBRESPECIES = "Sin Datos";
+                                                        }
+
+                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBRE']);
+                                                        if ($ARRAYTCALIBREIND) {
+                                                            $CALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                            $NUM_CALIBREIND = $ARRAYTCALIBREIND[0]['NUMERO_TCALIBREIND'];
+                                                        } else {
+                                                            $CALIBREIND = "Sin Datos";
+                                                            $NUM_CALIBREIND = "Sin Datos";
                                                         }
 
 
@@ -343,6 +354,8 @@ if ( $TEMPORADAS) {
                                                             <td><?php echo $r['DIAS']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
+                                                            <td><?php echo $NUM_CALIBREIND; ?></td>
+                                                            <td><?php echo $CALIBREIND; ?></td>
                                                             <td><?php echo $CSGPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBRESPECIES; ?></td>
