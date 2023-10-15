@@ -615,7 +615,7 @@ $html = $html . '
         <thead>
            
           <tr>
-            <th colspan="7" class="center">PRODUCTO INDUSTRIAL.</th>
+            <th colspan="8" class="center">PRODUCTO INDUSTRIAL.</th>
           </tr>
           <tr>
             <th class="color left">Folio</th>
@@ -675,6 +675,7 @@ endforeach;
 $html = $html . '    
         <tr>
             <th class="color left"> </th>
+            <th class="color center"> </th>
             <th class="color center"> </th>
             <th class="color center"> </th>
             <th class="color right">Sub Total </th>
