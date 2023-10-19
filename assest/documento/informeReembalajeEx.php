@@ -527,13 +527,13 @@ foreach ($ARRAYDEXPORTACION as $r) :
   }else{    
     $NOMBREVARIEDAD = "Sin Datos";
   }
-  $ARRAYEVEEXPORTACIONID = $EEXPORTACION_ADO->verEstandar($r['ID_ESTANDAR']);
-  if($ARRAYEVEEXPORTACIONID){
-    $CODIGOESTANDAR=$ARRAYEVEEXPORTACIONID[0]['CODIGO_ESTANDAR'];
-    $NOMBREESTANDAR=$ARRAYEVERERECEPCIONID[0]['NOMBRE_ESTANDAR'];
+  $ARRAYEVEEXPORTACIONID2 = $EEXPORTACION_ADO->verEstandar($r['ID_ESTANDAR']);
+  if($ARRAYEVEEXPORTACIONID2){
+    $CODIGOESTANDAR2=$ARRAYEVEEXPORTACIONID2[0]['CODIGO_ESTANDAR'];
+    $NOMBREESTANDAR2=$ARRAYEVEEXPORTACIONID2[0]['NOMBRE_ESTANDAR'];
   }else{    
-    $CODIGOESTANDAR = "Sin Datos";
-    $NOMBREESTANDAR = "Sin Datos";
+    $CODIGOESTANDAR2 = "Sin Datos";
+    $NOMBREESTANDAR2 = "Sin Datos";
   }
   $ARRAYTMANEJO = $TMANEJO_ADO->verTmanejo($r['ID_TMANEJO']);
   if($ARRAYTMANEJO){
@@ -569,8 +569,8 @@ foreach ($ARRAYDEXPORTACION as $r) :
         <tr>
             <th class=" left"> ' . $r['FOLIO_DREXPORTACION'] . '</th>
             <td class=" center"> ' . $r['EMBALADO'] . '</td>
-            <td class=" center"> ' . $CODIGOESTANDAR . '</td>
-            <td class=" center"> ' . $NOMBREESTANDAR . '</td>
+            <td class=" center"> ' . $CODIGOESTANDAR2 . '</td>
+            <td class=" center"> ' . $NOMBREESTANDAR2 . '</td>
             <td class=" center">' . $r['ENVASE'] . ' </td>
             <td class=" center"> ' . $r['NETO'] . '</td>
             <td class=" center"> ' . $r['PORCENTAJE'] .   '%</td>

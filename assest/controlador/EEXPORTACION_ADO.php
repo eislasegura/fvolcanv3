@@ -110,7 +110,7 @@ class EEXPORTACION_ADO
             $resultado = $datos->fetchAll();
             $datos=null;
 
-            //	print_r($resultado);
+            //echo "SELECT * FROM  estandar_eexportacion  WHERE  ID_ESTANDAR = '" . $ID . "'";
             //	var_dump($resultado);
 
 
