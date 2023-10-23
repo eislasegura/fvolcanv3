@@ -1994,7 +1994,7 @@ class EXIEXPORTACION_ADO
                                                 GROUP BY FOLIO_AUXILIAR_EXIEXPORTACION
                                           ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2288,7 +2288,7 @@ class EXIEXPORTACION_ADO
                                                 GROUP BY FOLIO_AUXILIAR_EXIEXPORTACION
                                           ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);

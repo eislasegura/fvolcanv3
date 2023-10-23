@@ -2006,7 +2006,7 @@ class EXIINDUSTRIAL_ADO
                                                 AND existencia.ID_PLANTA = '" . $PLANTA . "'
                                                 AND existencia.ID_TEMPORADA = '" . $TEMPORADA . "'	");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2066,7 +2066,7 @@ class EXIINDUSTRIAL_ADO
                                             AND existencia.ID_PLANTA = '" . $PLANTA . "'
                                             AND existencia.ID_TEMPORADA = '" . $TEMPORADA . "'	");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2096,7 +2096,7 @@ class EXIINDUSTRIAL_ADO
                                                 AND existencia.ID_PLANTA = '" . $PLANTA . "'
                                                 AND existencia.ID_TEMPORADA = '" . $TEMPORADA . "'	");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2244,7 +2244,7 @@ class EXIINDUSTRIAL_ADO
                                             AND ID_PLANTA = '" . $PLANTA . "'
                                             AND ID_TEMPORADA = '" . $TEMPORADA . "'	");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);

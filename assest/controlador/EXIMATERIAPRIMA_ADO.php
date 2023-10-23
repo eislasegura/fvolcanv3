@@ -1264,7 +1264,7 @@ class EXIMATERIAPRIMA_ADO
                                     WHERE ID_DESPACHO= '" . $IDDESPACHO . "'                                           
                                     AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1286,7 +1286,7 @@ class EXIMATERIAPRIMA_ADO
                                     AND ESTADO_REGISTRO = 1
                                     AND ESTADO = 7;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1307,7 +1307,7 @@ class EXIMATERIAPRIMA_ADO
                                     AND ESTADO_REGISTRO = 1
                                     AND ESTADO = 9;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1330,7 +1330,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND PRECIO_PALLET IS  NULL
                                         ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1367,7 +1367,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ESTADO = 2
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1402,7 +1402,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_EMPRESA = '" . $EMPRESA . "' 
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1437,7 +1437,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_EMPRESA = '" . $EMPRESA . "' 
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1480,7 +1480,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1516,7 +1516,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1552,7 +1552,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_EMPRESA = '" . $EMPRESA . "' 
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1588,7 +1588,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_EMPRESA = '" . $EMPRESA . "' 
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1626,7 +1626,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1662,7 +1662,7 @@ class EXIMATERIAPRIMA_ADO
                                                         AND ID_PLANTA = '" . $PLANTA . "'
                                                         AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1696,7 +1696,7 @@ class EXIMATERIAPRIMA_ADO
                                                         ID_EMPRESA = '" . $EMPRESA . "' 
                                                         AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1734,7 +1734,7 @@ class EXIMATERIAPRIMA_ADO
                                                         AND ID_PLANTA = '" . $PLANTA . "'
                                                         AND ID_TEMPORADA = '" . $TEMPORADA . "';  ");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1770,7 +1770,7 @@ class EXIMATERIAPRIMA_ADO
                                                 
                                                 ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1789,7 +1789,7 @@ class EXIMATERIAPRIMA_ADO
             $datos = $this->conexion->prepare("SELECT * FROM fruta_eximateriaprima 
                                               WHERE ID_RECEPCION= '" . $IDRECEPCION . "' AND ESTADO = 1   AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1808,7 +1808,7 @@ class EXIMATERIAPRIMA_ADO
             $datos = $this->conexion->prepare("SELECT * FROM fruta_eximateriaprima 
                                               WHERE ID_RECEPCION= '" . $IDRECEPCION . "'    AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1829,7 +1829,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_PROCESO= '" . $IDPROCESO . "'  
                                                       AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1855,7 +1855,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_PROCESO= '" . $IDPROCESO . "'  
                                                       AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1882,7 +1882,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_DESPACHO= '" . $IDDESPACHO . "'  
                                                       AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1908,7 +1908,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_DESPACHO= '" . $IDDESPACHO . "'  
                                                       AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1936,7 +1936,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_RECHAZADO= '" . $IDRECHAZADO . "'  
                                                 AND ESTADO_REGISTRO = 1 ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1964,7 +1964,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
                                                 AND ESTADO_REGISTRO = 1 ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -1991,7 +1991,7 @@ class EXIMATERIAPRIMA_ADO
                                                 AND ESTADO_REGISTRO = 1
                                                 AND ESTADO = 10;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2020,7 +2020,7 @@ class EXIMATERIAPRIMA_ADO
                                                 AND ESTADO_REGISTRO = 1
                                                 AND ESTADO = 12;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2047,7 +2047,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_RECHAZADO= '" . $IDRECHAZADO . "'  
                                                 AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2075,7 +2075,7 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE ID_LEVANTAMIENTO= '" . $IDLEVANTAMIENTO . "'  
                                                 AND ESTADO_REGISTRO = 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2103,7 +2103,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ESTADO_REGISTRO = 1
                                                     AND ESTADO !=0;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2127,7 +2127,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE   FOLIO_AUXILIAR_EXIMATERIAPRIMA LIKE '" . $FOLIOAUXILIAREXIMATERIAPRIMA . "'
                                                ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2165,7 +2165,7 @@ class EXIMATERIAPRIMA_ADO
                                             AND ID_PLANTA = '" . $PLANTA . "'
                                             AND ID_TEMPORADA = '" . $TEMPORADA . "';");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2203,7 +2203,7 @@ class EXIMATERIAPRIMA_ADO
                                                 AND ID_PLANTA = '" . $PLANTA . "'
                                                 AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2243,7 +2243,7 @@ class EXIMATERIAPRIMA_ADO
                                                 AND ID_PLANTA = '" . $PLANTA . "'
                                                 AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2307,7 +2307,7 @@ class EXIMATERIAPRIMA_ADO
                                                 AND ID_PLANTA = '" . $PLANTA . "'
                                                 AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2334,7 +2334,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2361,7 +2361,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_EMPRESA = '" . $EMPRESA . "' 
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2388,7 +2388,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2416,7 +2416,7 @@ class EXIMATERIAPRIMA_ADO
                                                     AND ID_PLANTA = '" . $PLANTA . "'
                                                     AND ID_TEMPORADA = '" . $TEMPORADA . "' ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2438,7 +2438,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_PROCESO = '" . $IDPROCESO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2461,7 +2461,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_PROCESO = '" . $IDPROCESO . "'
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2486,7 +2486,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_RECHAZADO = '" . $IDRECHAZADO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2511,7 +2511,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_LEVANTAMIENTO = '" . $IDLEVANTAMIENTO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2535,7 +2535,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_RECHAZADO = '" . $IDRECHAZADO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2560,7 +2560,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_LEVANTAMIENTO = '" . $IDLEVANTAMIENTO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2587,7 +2587,7 @@ class EXIMATERIAPRIMA_ADO
                                              AND ID_TEMPORADA = '" . $TEMPORADA . "' 
                                              AND ID_PROCESO IS NOT NULL ;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2610,7 +2610,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_DESPACHO = '" . $IDDESPACHO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
@@ -2634,7 +2634,7 @@ class EXIMATERIAPRIMA_ADO
                                              WHERE ID_DESPACHO = '" . $IDDESPACHO . "' 
                                              AND  ESTADO_REGISTRO= 1;");
             $datos->execute();
-            $resultado = $datos->fetchAll();
+            $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
 
             //	print_r($resultado);
