@@ -1446,7 +1446,7 @@ if (isset($_POST)) {
                         $_REQUEST['FECHADESPACHO'],
                         $_REQUEST['EMPRESA'],
                         $_REQUEST['PLANTA'],
-                        $_REQUEST['TEMPORADA'],
+                        $_REQUEST['TEMPORADA']
                     );     
 
                     $AUSUARIO_ADO->agregarAusuario2($NUMERO,1,1,"".$_SESSION["NOMBRE_USUARIO"].", Registro de Despacho Materia Prima.","fruta_despachomp", $ARRYAOBTENERID[0]['ID_DESPACHO'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
@@ -1512,7 +1512,7 @@ if (isset($_POST)) {
                             $_REQUEST['FECHADESPACHO'],
                             $_REQUEST['EMPRESA'],
                             $_REQUEST['PLANTA'],
-                            $_REQUEST['TEMPORADA'],
+                            $_REQUEST['TEMPORADA']
                         );              
                         $DESPACHOE->__SET('ID_DESPACHO', $ARRYAOBTENERIDE[0]["ID_DESPACHO"]);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
@@ -1642,7 +1642,7 @@ if (isset($_POST)) {
                         $_REQUEST['FECHADESPACHO'],
                         $_REQUEST['EMPRESA'],
                         $_REQUEST['PLANTA'],
-                        $_REQUEST['TEMPORADA'],
+                        $_REQUEST['TEMPORADA']
                     );              
                     $DESPACHOE->__SET('ID_DESPACHO', $ARRYAOBTENERIDE[0]["ID_DESPACHO"]);
                     //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
@@ -1738,6 +1738,8 @@ if (isset($_POST)) {
                 //UTILIZACION METODOS SET DEL MODELO
                 //SETEO DE ATRIBUTOS DE LA CLASE, OBTENIDO EN EL FORMULARIO
 
+
+                //CONSULTA QUE EXISTAN REGISTROS EN EL DETALLE PARA DESPACHAR
                 $ARRAYDDESPACHOMP2 = $EXIMATERIAPRIMA_ADO->verExistenciaPorDespacho($_REQUEST['IDP']);
                 if (empty($ARRAYDDESPACHOMP2)) {
                     // $MENSAJE = "TIENE  QUE HABER AL MENOS UNA EXISTENCIA DE PRODUCTO TERMINADO";
@@ -1880,7 +1882,7 @@ if (isset($_POST)) {
                             $_REQUEST['FECHADESPACHO'],
                             $_REQUEST['EMPRESA'],
                             $_REQUEST['PLANTA'],
-                            $_REQUEST['TEMPORADA'],
+                            $_REQUEST['TEMPORADA']
                         );              
                         $DESPACHOE->__SET('ID_DESPACHO', $ARRYAOBTENERIDE[0]["ID_DESPACHO"]);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
@@ -1965,9 +1967,13 @@ if (isset($_POST)) {
                         $AUSUARIO_ADO->agregarAusuario2($NUMEROVER,1,2,"".$_SESSION["NOMBRE_USUARIO"].", Modificación de Despacho Envases. Origen Despacho Materia Prima.","material_despachoe", $_REQUEST['IDP'],$_SESSION["ID_USUARIO"],$_SESSION['ID_EMPRESA'], $_SESSION['ID_PLANTA'],$_SESSION['ID_TEMPORADA'] );  
                         
                         $ARRAYINVENTARIOE = $INVENTARIOE_ADO->buscarPorDespacho2($ARRAYDESPACHOE[0]["ID_DESPACHO"]);
+                        
                         if(empty($ARRAYINVENTARIOE)){
-                            $ARRAYTOMADOAGRUPADO=$EXIMATERIAPRIMA_ADO->buscarPorDespachoAgrupadoEstandarProducto($_REQUEST['IDP']);
-                            foreach ($ARRAYTOMADOAGRUPADO as $r ) {                            
+                            $ARRAYTOMADOAGRUPADO=$EXIMATERIAPRIMA_ADO->buscarPorDespachoAgrupadoEstandarProducto($_REQUEST['IDP']);//no trae
+                            //flag 1
+                           // die('testzz'); 
+                            foreach ($ARRAYTOMADOAGRUPADO as $r ) {      
+                                                     
                                 $INVENTARIOE->__SET('TDESPACHOE',  $_REQUEST['TDESPACHOE']);
                                 $INVENTARIOE->__SET('CANTIDAD_SALIDA', $r["ENVASE"]);
                                 $INVENTARIOE->__SET('VALOR_UNITARIO', 0);

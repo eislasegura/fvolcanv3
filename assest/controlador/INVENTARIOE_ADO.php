@@ -262,6 +262,7 @@ class INVENTARIOE_ADO
                                                         ESTADO_REGISTRO
                                                     ) VALUES
 	       	( ?, ?, ?, ?,   ?, ?, ?, ?,  0,  SYSDATE() , SYSDATE(),  1, 1);";
+            //var_dump($query);
             $this->conexion->prepare($query)
                 ->execute(
                     array(

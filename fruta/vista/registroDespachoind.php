@@ -1304,7 +1304,7 @@ if (isset($_POST)) {
                     $_REQUEST['FECHADESPACHO'],
                     $_REQUEST['EMPRESA'],
                     $_REQUEST['PLANTA'],
-                    $_REQUEST['TEMPORADA'],
+                    $_REQUEST['TEMPORADA']
                 );
 
                 //REDIRECCIONAR A PAGINA registroDespachoind.php

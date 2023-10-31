@@ -1764,11 +1764,25 @@ class EXIMATERIAPRIMA_ADO
                                                 WHERE existencia.ID_ESTANDAR= estandar.ID_ESTANDAR 
                                                 AND estandar.ID_PRODUCTO=producto.ID_PRODUCTO 
                                                 AND existencia.ESTADO_REGISTRO = 1
-                                                AND existencia.ESTADO = 7
+                                                AND existencia.ESTADO = 8
                                                 AND existencia.ID_DESPACHO= '" . $IDDESPACHO . "'  
                                                 GROUP BY estandar.ID_PRODUCTO  
                                                 
                                                 ;");
+                                                //7 en despacho
+                                                //8 despachado
+                                                //9 en transito
+                           /* die("SELECT                                                     
+                            estandar.ID_PRODUCTO,
+                            producto.ID_TUMEDIDA, 
+                            IFNULL(SUM(existencia.CANTIDAD_ENVASE_EXIMATERIAPRIMA),0) AS 'ENVASE'
+                        FROM fruta_eximateriaprima existencia, estandar_erecepcion estandar, material_producto producto 
+                        WHERE existencia.ID_ESTANDAR= estandar.ID_ESTANDAR 
+                        AND estandar.ID_PRODUCTO=producto.ID_PRODUCTO 
+                        AND existencia.ESTADO_REGISTRO = 1
+                        AND existencia.ESTADO = 7
+                        AND existencia.ID_DESPACHO= '" . $IDDESPACHO . "'  
+                        GROUP BY estandar.ID_PRODUCTO");  */              
             $datos->execute();
             $resultado = $datos->fetchAll(PDO::FETCH_ASSOC);
             $datos=null;
