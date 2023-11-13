@@ -360,7 +360,7 @@ include_once "../../assest/config/reporteUrl.php";
                                                         <td> <?php echo $r['NUMERO_DESPACHO']; ?> </td>  
                                                         <td> <?php echo $r['NUMERO_GUIA_DESPACHO']; ?> </td> 
                                                         <td> <?php echo "0"; ?> </td>   
-                                                        <td> <?php echo -$r['CONSUMO']; ?> </td>                      
+                                                        <td> <?php echo +$r['CONSUMO']; ?> </td>                      
                                                         <td> <?php echo -$r['CONSUMO']; ?> </td>
                                                               
                                                       
