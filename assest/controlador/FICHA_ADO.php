@@ -1002,7 +1002,7 @@ class FICHA_ADO {
                                             GROUP BY  
                                                 detalle.ID_ESTANDAR,  
                                                 dficha.ID_PRODUCTO, 
-                                                ficha.ID_FICHA, 
+                                                dficha.ID_DFICHA,
                                                 proceso.ID_PROCESO, 
                                                 proceso.ID_EMPRESA,  
                                                 proceso.ID_PLANTA,
@@ -1064,13 +1064,62 @@ class FICHA_ADO {
                                             GROUP BY  
                                                 detalle.ID_ESTANDAR,  
                                                 dficha.ID_PRODUCTO, 
-                                                ficha.ID_FICHA, 
+                                                dficha.ID_DFICHA, 
                                                 proceso.ID_PROCESO, 
                                                 proceso.ID_EMPRESA,  
                                                 proceso.ID_PLANTA,
-                                                proceso.ID_TEMPORADA   
+                                                proceso.ID_TEMPORADA
+                                                   
                                             
                                             ;	");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+            
+            //	print_r($resultado);
+            //	var_dump($resultado);
+            
+            
+            return $resultado;
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+        
+    }
+
+    public function listarKardexConsumoFichaDespachoPt($IDEMPRESA, $IDPLANTA, $IDTEMPORADA){
+        try{
+            
+            $datos=$this->conexion->prepare("SELECT 
+fruta_despachopt.ID_DESPACHO,
+fruta_despachopt.NUMERO_DESPACHO,
+fruta_despachopt.NUMERO_GUIA_DESPACHO,
+DATE_FORMAT(fruta_despachopt.FECHA_DESPACHO, '%Y-%m/%d') AS 'FECHADESPACHO',   
+folio.ID_ESTANDAR,
+material_dficha.ID_DFICHA,
+material_dficha.ID_PRODUCTO, 
+material_producto.CODIGO_PRODUCTO AS 'CODIGO',   
+material_producto.NOMBRE_PRODUCTO AS 'PRODUCTO', 
+material_tumedida.NOMBRE_TUMEDIDA,
+IFNULL(folio.CANTIDAD_ENVASE_EXIEXPORTACION,0)*material_dficha.FACTOR_CONSUMO_DFICHA  AS 'CONSUMO',
+principal_empresa.NOMBRE_EMPRESA,
+(SELECT NOMBRE_PLANTA FROM principal_planta WHERE principal_planta.ID_PLANTA = fruta_despachopt.ID_PLANTA)AS 'PLANTAORIGEN',
+(SELECT NOMBRE_PLANTA FROM principal_planta WHERE principal_planta.ID_PLANTA = fruta_despachopt.ID_PLANTA3)AS 'PLANTADESTINO',
+principal_temporada.NOMBRE_TEMPORADA 
+FROM fruta_exiexportacion folio
+LEFT JOIN fruta_despachopt ON fruta_despachopt.ID_DESPACHO = folio.ID_DESPACHO
+LEFT JOIN principal_empresa ON principal_empresa.ID_EMPRESA = fruta_despachopt.ID_EMPRESA
+LEFT JOIN principal_temporada ON principal_temporada.ID_TEMPORADA = fruta_despachopt.ID_TEMPORADA 
+LEFT JOIN material_ficha ON material_ficha.ID_ESTANDAR = folio.ID_ESTANDAR
+LEFT JOIN material_dficha ON material_dficha.ID_FICHA = material_ficha.ID_FICHA
+LEFT JOIN material_producto ON material_producto.ID_PRODUCTO = material_dficha.ID_PRODUCTO
+LEFT JOIN material_tumedida ON material_tumedida.ID_TUMEDIDA = material_producto.ID_TUMEDIDA
+WHERE folio.ESTADO = '8' 
+AND fruta_despachopt.ESTADO_REGISTRO = 1
+AND fruta_despachopt.ID_EMPRESA = '" . $IDEMPRESA . "'   
+AND fruta_despachopt.ID_PLANTA = '" . $IDPLANTA . "'      
+AND fruta_despachopt.ID_TEMPORADA = '" . $IDTEMPORADA . "'
+AND fruta_despachopt.ID_DESPACHO = '3'");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;

@@ -1332,7 +1332,8 @@ class INVENTARIOM_ADO {
                                                                 inventario.ID_RECEPCION,
                                                                 inventario.ID_EMPRESA , 
                                                                 inventario.ID_PLANTA , 
-                                                                inventario.ID_TEMPORADA  
+                                                                inventario.ID_TEMPORADA,
+                                                                inventario.ID_BODEGA		  
             
             
                                                        
@@ -1427,7 +1428,8 @@ class INVENTARIOM_ADO {
                                                     inventario.ID_DESPACHO2 , 
                                                     inventario.ID_EMPRESA , 
                                                     inventario.ID_PLANTA , 
-                                                    inventario.ID_TEMPORADA
+                                                    inventario.ID_TEMPORADA,
+                                                    inventario.ID_BODEGA
             
                                                        
                                         	;");
@@ -1557,7 +1559,8 @@ class INVENTARIOM_ADO {
                                                 inventario.ID_DESPACHO, 
                                                 inventario.ID_EMPRESA , 
                                                 inventario.ID_PLANTA , 
-                                                inventario.ID_TEMPORADA
+                                                inventario.ID_TEMPORADA,
+                                                inventario.ID_BODEGA
             
             ;");
             $datos->execute();
@@ -1669,7 +1672,8 @@ class INVENTARIOM_ADO {
                                                                 inventario.ID_RECEPCION,
                                                                 inventario.ID_EMPRESA , 
                                                                 inventario.ID_PLANTA , 
-                                                                inventario.ID_TEMPORADA  
+                                                                inventario.ID_TEMPORADA,
+                                                                inventario.ID_BODEGA  
             
             
                                                        
@@ -1763,7 +1767,8 @@ class INVENTARIOM_ADO {
                                                     inventario.ID_DESPACHO2 , 
                                                     inventario.ID_EMPRESA , 
                                                     inventario.ID_PLANTA , 
-                                                    inventario.ID_TEMPORADA
+                                                    inventario.ID_TEMPORADA,
+                                                    inventario.ID_BODEGA
             
                                                        
                                         	;");
@@ -1892,7 +1897,8 @@ class INVENTARIOM_ADO {
                                                 inventario.ID_DESPACHO, 
                                                 inventario.ID_EMPRESA , 
                                                 inventario.ID_PLANTA , 
-                                                inventario.ID_TEMPORADA
+                                                inventario.ID_TEMPORADA,
+                                                inventario.ID_BODEGA
             
             ;");
             $datos->execute();

@@ -1086,7 +1086,7 @@ class INVENTARIOE_ADO
                                                     inventario.ID_PRODUCTO, inventario.ID_EMPRESA, 
                                                     inventario.ID_PLANTA, inventario.ID_TEMPORADA, 
                                                     inventario.ID_RECEPCION, inventario.ID_DESPACHO,
-                                                    inventario.ID_DESPACHO2                                                
+                                                    inventario.ID_DESPACHO2, inventario.ID_BODEGA                                              
                                                 ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
