@@ -15,6 +15,7 @@ include_once '../../assest/controlador/PROVEEDOR_ADO.php';
 include_once '../../assest/controlador/DESPACHOE_ADO.php';
 include_once '../../assest/controlador/RECEPCIONE_ADO.php';
 include_once '../../assest/controlador/INVENTARIOE_ADO.php';
+include_once '../../assest/controlador/FICHA_ADO.php';
 
 
 //INCIALIZAR LAS VARIBLES
@@ -31,6 +32,7 @@ $COMPRADOR_ADO =  new COMPRADOR_ADO();
 $DESPACHOE_ADO =  new DESPACHOE_ADO();
 $RECEPCIONE_ADO =  new RECEPCIONE_ADO();
 $INVENTARIOE_ADO =  new INVENTARIOE_ADO();
+$FICHA_ADO =  new FICHA_ADO();
 
 
 //INCIALIZAR VARIBALES A OCUPAR PARA LA FUNCIONALIDAD
@@ -52,6 +54,7 @@ $NUMEROGUIA = "";
 //INICIALIZAR ARREGLOS
 $ARRAYINVENTARIO = "";
 $ARRAYINVENTARIOTOTALES = "";
+$ARRAYINVENTARIOCONSUMODESPACHOPT = "";
 
 $ARRAYVERBODEGA = "";
 $ARRAYVERTUMEDIDA = "";
@@ -61,6 +64,7 @@ $ARRAYDRECEPCION = "";
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES
 if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
     $ARRAYINVENTARIO = $INVENTARIOE_ADO->listarKardexPorEmpresaPlantaTemporadaCBX($EMPRESAS, $PLANTAS, $TEMPORADAS);
+    $ARRAYINVENTARIOCONSUMODESPACHOPT = $FICHA_ADO->listarKardexConsumoFichaDespachoPt($EMPRESAS, $PLANTAS,  $TEMPORADAS);
 }
 include_once "../../assest/config/validarDatosUrl.php";
 include_once "../../assest/config/reporteUrl.php";
@@ -340,6 +344,26 @@ include_once "../../assest/config/reporteUrl.php";
                                                         <td><?php echo $r['ENTRADA']; ?></td>
                                                         <td><?php echo $r['SALIDA']; ?></td>
                                                         <td><?php echo $r['SALDO']; ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                                <?php foreach ($ARRAYINVENTARIOCONSUMODESPACHOPT as $r) : ?>
+                                                    <tr class="center">
+                                                        <td> <?php echo $r['CODIGO']; ?> </td>
+                                                        <td> <?php echo $r['PRODUCTO']; ?> </td>
+                                                        <td> <?php echo $r['NOMBRE_TUMEDIDA']; ?> </td> 
+                                                        <td> <?php echo "Despacho Producto Terminado"; ?> </td>  
+                                                        <td> <?php echo $r['FECHADESPACHO']; ?> </td> 
+                                                        <td> <?php echo $r['NOMBRE_EMPRESA']; ?> </td>
+                                                        <td> <?php echo $r['PLANTAORIGEN']; ?> </td> 
+                                                        <td> <?php echo $r['PLANTAORIGEN']; ?> </td> 
+                                                        <td> <?php echo $r['PLANTADESTINO']; ?> </td> 
+                                                        <td> <?php echo $r['NUMERO_DESPACHO']; ?> </td>  
+                                                        <td> <?php echo $r['NUMERO_GUIA_DESPACHO']; ?> </td> 
+                                                        <td> <?php echo "0"; ?> </td>   
+                                                        <td> <?php echo -$r['CONSUMO']; ?> </td>                      
+                                                        <td> <?php echo -$r['CONSUMO']; ?> </td>
+                                                              
+                                                      
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
