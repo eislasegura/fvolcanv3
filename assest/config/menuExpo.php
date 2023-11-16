@@ -690,6 +690,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                   </li>
                   <li><a href="registroExportadora.php"></i>Exportadora</a></li>
                   <li><a href="registroAtmosfera.php"></i>Atmosfera</a></li>
+                  <li><a href="registroEmisionbl.php"></i>Emision BL</a></li>
                   <li><a href="registroConsignatorio.php"></i>Consignatorio</a></li>
                   <li><a href="registroNotificador.php"></i>Notificador </a></li>
                   <li><a href="registroBroker.php"></i>Cliente </a></li>

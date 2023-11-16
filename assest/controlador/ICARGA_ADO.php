@@ -189,6 +189,9 @@ class ICARGA_ADO
             if ($ICARGA->__GET('ID_CONSIGNATARIO') == NULL) {
                 $ICARGA->__SET('ID_CONSIGNATARIO', NULL);
             }
+            if ($ICARGA->__GET('ID_EMISIONBL') == NULL) {
+                $ICARGA->__SET('ID_EMISIONBL', NULL);
+            }
             if ($ICARGA->__GET('ID_EXPPORTADORA') == NULL) {
                 $ICARGA->__SET('ID_EXPPORTADORA', NULL);
             }
@@ -308,6 +311,7 @@ class ICARGA_ADO
                                             NAVE_ICARGA, 
                                             ID_EXPPORTADORA, 
                                             ID_CONSIGNATARIO, 
+                                            ID_EMISIONBL, 
                                             ID_NOTIFICADOR, 
                                             ID_BROKER, 
                                             ID_RFINAL,
@@ -348,7 +352,7 @@ class ICARGA_ADO
                                             ESTADO_REGISTRO
                                         ) 
             VALUES
-	       	    (  ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+	       	    (  ?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
                  0, 0, 0, 0, SYSDATE(), SYSDATE(), 1, 2, 1);";
             $this->conexion->prepare($query)
                 ->execute(
@@ -383,6 +387,7 @@ class ICARGA_ADO
                         $ICARGA->__GET('NAVE_ICARGA'),
                         $ICARGA->__GET('ID_EXPPORTADORA'),
                         $ICARGA->__GET('ID_CONSIGNATARIO'),
+                        $ICARGA->__GET('ID_EMISIONBL'),
                         $ICARGA->__GET('ID_NOTIFICADOR'),
                         $ICARGA->__GET('ID_BROKER'),
                         $ICARGA->__GET('ID_RFINAL'),
@@ -439,6 +444,9 @@ class ICARGA_ADO
     {
         if ($ICARGA->__GET('ID_CONSIGNATARIO') == NULL) {
             $ICARGA->__SET('ID_CONSIGNATARIO', NULL);
+        }
+        if ($ICARGA->__GET('ID_EMISIONBL') == NULL) {
+            $ICARGA->__SET('ID_EMISIONBL', NULL);
         }
         if ($ICARGA->__GET('ID_EXPPORTADORA') == NULL) {
             $ICARGA->__SET('ID_EXPPORTADORA', NULL);
@@ -565,6 +573,7 @@ class ICARGA_ADO
             TOTAL_US_ICARGA = ?,   
             ID_EXPPORTADORA = ?, 
             ID_CONSIGNATARIO = ?, 
+            ID_EMISIONBL = ?, 
             ID_NOTIFICADOR = ?, 
             ID_BROKER = ?, 
             ID_RFINAL = ?,
@@ -628,6 +637,7 @@ class ICARGA_ADO
                         $ICARGA->__GET('TOTAL_US_ICARGA'),
                         $ICARGA->__GET('ID_EXPPORTADORA'),
                         $ICARGA->__GET('ID_CONSIGNATARIO'),
+                        $ICARGA->__GET('ID_EMISIONBL'),
                         $ICARGA->__GET('ID_NOTIFICADOR'),
                         $ICARGA->__GET('ID_BROKER'),
                         $ICARGA->__GET('ID_RFINAL'),
