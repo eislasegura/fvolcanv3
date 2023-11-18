@@ -132,6 +132,7 @@ $ARRAYTCONTENEDOR = "";
 $ARRAYTVEHICULO = "";
 $ARRAYAERONAVE = "";
 $ARRAYNAVE = "";
+$ARRAYNAVIERA = "";
 $ARRAYDFINAL = "";
 $PDESTINO = "";
 
@@ -253,6 +254,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                         <th>Agente Aduana</th>
                                                         <th>Agente Carga</th>
                                                         <th>Tipo Embarque</th> 
+                                                        <th>Naviera</th>
                                                         <th>Nave</th>
                                                         <th>Forma Pago</th>
                                                         <th>Modalidad Venta</th>
@@ -448,6 +450,12 @@ include_once "../../assest/config/datosUrLP.php";
                                                             }else{
                                                               $NOMBREDESTINO="Sin Datos";
                                                             }
+                                                            $ARRAYNAVIERA = $NAVIERA_ADO->buscarNombreNaviera($r['ID_NAVIERA']);
+                                                            if($ARRAYNAVIERA){
+                                                                $NOMBRENAVIERA = $ARRAYNAVIERA[0]["NOMBRE_NAVIERA"];
+                                                            }else{
+                                                                $NOMBRENAVIERA = "Sin Datos";
+                                                            }
                                                         }
                                                         if ($r['TEMBARQUE_ICARGA'] == "2") {
                                                             $TEMBARQUE = "Aereo";
@@ -459,6 +467,12 @@ include_once "../../assest/config/datosUrLP.php";
                                                             }else{
                                                               $NOMBREDESTINO="Sin Datos";
                                                             }
+                                                            $ARRAYNAVIERA = $NAVIERA_ADO->buscarNombreNaviera($r['ID_NAVIERA']);
+                                                            if($ARRAYNAVIERA){
+                                                                $NOMBRENAVIERA = $ARRAYNAVIERA[0]["NOMBRE_NAVIERA"];
+                                                            }else{
+                                                                $NOMBRENAVIERA = "Sin Datos";
+                                                            }
                                                         }
                                                         if ($r['TEMBARQUE_ICARGA'] == "3") {
                                                             $TEMBARQUE = "Maritimo";
@@ -469,6 +483,12 @@ include_once "../../assest/config/datosUrLP.php";
                                                               $NOMBREDESTINO=$ARRAYPDESTINO[0]["NOMBRE_PDESTINO"];
                                                             }else{
                                                               $NOMBREDESTINO="Sin Datos";
+                                                            }
+                                                            $ARRAYNAVIERA = $NAVIERA_ADO->buscarNombreNaviera($r['ID_NAVIERA']);
+                                                            if($ARRAYNAVIERA){
+                                                                $NOMBRENAVIERA = $ARRAYNAVIERA[0]["NOMBRE_NAVIERA"];
+                                                            }else{
+                                                                $NOMBRENAVIERA = "Sin Datos";
                                                             }
                                                         }
                                                     
@@ -546,6 +566,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                                 <td> <?php echo $NOMBREAADUANA; ?> </td>
                                                                 <td> <?php echo $NOMBREAGCARGA; ?> </td>
                                                                 <td> <?php echo $TEMBARQUE; ?> </td>
+                                                                <td> <?php echo $NOMBRENAVIERA; ?> </td>
                                                                 <td> <?php echo $NAVE; ?> </td>
                                                                 <td> <?php echo $NOMBREFPAGO; ?> </td>
                                                                 <td> <?php echo $NOMBREMVENTA; ?> </td>
