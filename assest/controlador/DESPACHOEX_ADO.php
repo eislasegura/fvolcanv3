@@ -971,7 +971,7 @@ AND a.ESTADO_REGISTRO = 1; ");
                                                     FROM fruta_despachoex
                                                 WHERE 
                                                     ID_ICARGA = '" . $IDICARGA . "'   
-                                                GROUP BY ID_PLANTA       
+                                                GROUP BY ID_PLANTA, FECHA_DESPACHOEX, NUMERO_SELLO_DESPACHOEX      
                                                     ; ");
             $datos->execute();
             $resultado = $datos->fetchAll();

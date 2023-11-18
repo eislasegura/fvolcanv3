@@ -43,6 +43,7 @@ include_once '../../assest/controlador/TFLETE_ADO.php';
 
 include_once '../../assest/controlador/TCONTENEDOR_ADO.php';
 include_once '../../assest/controlador/ATMOSFERA_ADO.php';
+include_once '../../assest/controlador/EMISIONBL_ADO.php';
 include_once '../../assest/controlador/PAIS_ADO.php';
 include_once '../../assest/controlador/SEGURO_ADO.php';
 
@@ -107,6 +108,7 @@ $CVENTA_ADO =  new CVENTA_ADO();
 $TFLETE_ADO =  new TFLETE_ADO();
 $TCONTENEDOR_ADO =  new TCONTENEDOR_ADO();
 $ATMOSFERA_ADO =  new ATMOSFERA_ADO();
+$EMISIONBL_ADO =  new EMISIONBL_ADO();
 $SEGURO_ADO =  new SEGURO_ADO();
 
 $EEXPORTACION_ADO = new EEXPORTACION_ADO();
@@ -238,11 +240,15 @@ if($ARRAYICARGA){
       
 
 
-
+    
     $ARRAYDCARGA = $DICARGA_ADO->buscarPorIcarga2($IDOP);
+   
     $ARRAYDCARGATOTAL2 = $DICARGA_ADO->totalesPorIcarga2($IDOP);
+
     $ARRAYCONSOLIDADODESPACHO =  $DESPACHOEX_ADO->consolidadoDespachoExistencia2($IDOP);
+
     $ARRAYCONSOLIDADODESPACHOTOTAL =  $DESPACHOEX_ADO->obtenerTotalconsolidadoDespachoExistencia2($IDOP);
+
 
     $TOTALENVASECONSOLIADO=$ARRAYCONSOLIDADODESPACHOTOTAL[0]['ENVASE'];
     $TOTALNETOCONSOLIADO=$ARRAYCONSOLIDADODESPACHOTOTAL[0]['NETO'];
@@ -255,7 +261,9 @@ if($ARRAYICARGA){
 
     
     $ARRAYDESPACHOEX=$DESPACHOEX_ADO->buscarDespachoExPorIcarga($IDOP);
+    
     $ARRAYDESPACHOEX2=$DESPACHOEX_ADO->buscarDespachoExPorIcargaAgrupadoPorPlanta($IDOP);
+    echo 1;
     if($ARRAYDESPACHOEX){
       $NUMEROCONTENEDOR=$ARRAYDESPACHOEX[0]['NUMERO_CONTENEDOR_DESPACHOEX'];   
       
@@ -392,6 +400,12 @@ if($ARRAYICARGA){
         $NOMBREATMOSFERA=$ARRAYATMOSFERA[0]["NOMBRE_ATMOSFERA"];
       }else{
         $NOMBREATMOSFERA="Sin Datos";
+      }
+      $ARRAYEMISIONBL =$EMISIONBL_ADO->verEmisionbl( $ARRAYICARGA[0]['ID_EMISIONBL']);
+      if($ARRAYEMISIONBL){
+        $NOMBREEMISIONBL=$ARRAYEMISIONBL[0]["NOMBRE_EMISIONBL"];
+      }else{
+        $NOMBREEMISIONBL="Sin Datos";
       }
       $ARRAYTCONTENEDOR =$TCONTENEDOR_ADO->verTcontenedor( $ARRAYICARGA[0]['ID_TCONTENEDOR']);
       if($ARRAYTCONTENEDOR){
@@ -735,15 +749,16 @@ $html='
            <th class="color2 left">Fumigado: </th>    
            <td class="color2 left">'.$FUMIGADO.'</td>      
            <th class="color2 left">Número Contenedor: </th>       
-           <td class="color2 left">'.$NUMEROCONTENEDOR.'</td>    
+           <td class="color2 left">'.$NUMEROCONTENEDOR.'</td>
+               
          </tr>  
          <tr>       
            <th class="color2 left">Fecha Real ETA : </th> 
            <td class="color2 left">'.$FECHAETAREAL.'</td>      
            <th class="color2 left">&nbsp; </th>    
            <td class="color2 left">&nbsp;</td>      
-           <th class="color2 left">&nbsp; </th>       
-           <td class="color2 left">&nbsp;</td>    
+           <th class="color2 left">Emisión BL: </th>       
+           <td class="color2 left">'.$NOMBREEMISIONBL.'</td>  
          </tr>    
          ';
          if ($TEMBARQUE == "1") {

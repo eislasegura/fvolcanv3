@@ -43,6 +43,7 @@ include_once '../../assest/controlador/TFLETE_ADO.php';
 
 include_once '../../assest/controlador/TCONTENEDOR_ADO.php';
 include_once '../../assest/controlador/ATMOSFERA_ADO.php';
+include_once '../../assest/controlador/EMISIONBL_ADO.php';
 include_once '../../assest/controlador/PAIS_ADO.php';
 include_once '../../assest/controlador/SEGURO_ADO.php';
 
@@ -100,6 +101,7 @@ $CVENTA_ADO =  new CVENTA_ADO();
 $TFLETE_ADO =  new TFLETE_ADO();
 $TCONTENEDOR_ADO =  new TCONTENEDOR_ADO();
 $ATMOSFERA_ADO =  new ATMOSFERA_ADO();
+$EMISIONBL_ADO =  new EMISIONBL_ADO();
 $SEGURO_ADO =  new SEGURO_ADO();
 
 $EEXPORTACION_ADO = new EEXPORTACION_ADO();
@@ -369,6 +371,12 @@ if($ARRAYICARGA){
         $NOMBREATMOSFERA=$ARRAYATMOSFERA[0]["NOMBRE_ATMOSFERA"];
       }else{
         $NOMBREATMOSFERA="No Data";
+      }
+      $ARRAYEMISIONBL =$EMISIONBL_ADO->verEmisionbl( $ARRAYICARGA[0]['ID_EMISIONBL']);
+      if($ARRAYEMISIONBL){
+        $NOMBREEMISIONBL=$ARRAYEMISIONBL[0]["NOMBRE_EMISIONBL"];
+      }else{
+        $NOMBREEMISIONBL="Sin Datos";
       }
       $ARRAYTCONTENEDOR =$TCONTENEDOR_ADO->verTcontenedor( $ARRAYICARGA[0]['ID_TCONTENEDOR']);
       if($ARRAYTCONTENEDOR){
@@ -722,8 +730,8 @@ $html='
            <td class="color2 left">'.$FECHAETAREAL.'</td>      
            <th class="color2 left">&nbsp; </th>    
            <td class="color2 left">&nbsp;</td>      
-           <th class="color2 left">&nbsp; </th>       
-           <td class="color2 left">&nbsp;</td>    
+           <th class="color2 left">Issue BL: </th>       
+           <td class="color2 left">'.$NOMBREEMISIONBL.'</td>     
          </tr>  
          ';
          if ($TEMBARQUE == "1") {
