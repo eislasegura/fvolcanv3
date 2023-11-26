@@ -993,6 +993,19 @@ class INVENTARIOM_ADO {
     public function listarInventarioPorEmpresaPlantaTemporadaDisponibleCBX($IDEMPRESA,$IDPLANTA,$IDTEMPORADA){
         try{
 
+
+           /* echo "SELECT * ,
+            DATE_FORMAT(MI.INGRESO, '%Y-%m-%d') AS 'INGRESO',
+            DATE_FORMAT(MI.MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION',
+            IFNULL(MI.CANTIDAD_INVENTARIO,0) AS 'CANTIDAD', 
+            IFNULL(MI.VALOR_UNITARIO,0) AS 'VALOR'   
+         FROM material_inventariom MI
+        JOIN principal_bodega PB ON PB.ID_BODEGA = MI.ID_BODEGA
+                                                WHERE MI.ESTADO_REGISTRO = 1 
+                                                AND MI.ESTADO = 2
+                                                AND MI.ID_EMPRESA = '".$IDEMPRESA."' 
+                                                AND MI.ID_PLANTA = '".$IDPLANTA."'
+                                                AND MI.ID_TEMPORADA = '".$IDTEMPORADA."' AND PB.SUBBODEGA=0;	";*/
             $datos=$this->conexion->prepare("SELECT * ,
             DATE_FORMAT(MI.INGRESO, '%Y-%m-%d') AS 'INGRESO',
             DATE_FORMAT(MI.MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION',
@@ -1004,7 +1017,7 @@ class INVENTARIOM_ADO {
                                                 AND MI.ESTADO = 2
                                                 AND MI.ID_EMPRESA = '".$IDEMPRESA."' 
                                                 AND MI.ID_PLANTA = '".$IDPLANTA."'
-                                                AND MI.ID_TEMPORADA = '".$IDTEMPORADA."' AND PB.SUBBODEGA=0;	");
+                                                AND MI.ID_TEMPORADA = '".$IDTEMPORADA."';	");
 
             
             $datos->execute();
