@@ -407,6 +407,15 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             $ESTADO = "En Transito";
                                                         }
 
+                                                        $ARRAYTCALIBREIND = $TCALIBREIND_ADO->verCalibreInd($r['ID_TCALIBRE']);
+                                                        if ($ARRAYTCALIBREIND) {
+                                                            $CALIBREIND = $ARRAYTCALIBREIND[0]['NOMBRE_TCALIBREIND'];
+                                                            $NUM_CALIBREIND = $ARRAYTCALIBREIND[0]['NUMERO_TCALIBREIND'];
+                                                        } else {
+                                                            $CALIBREIND = "Sin Datos";
+                                                            $NUM_CALIBREIND = "Sin Datos";
+                                                        }
+
                                                         $ARRAYVERPRODUCTORID = $PRODUCTOR_ADO->verProductor($r['ID_PRODUCTOR']);
                                                         if ($ARRAYVERPRODUCTORID) {
 
@@ -493,6 +502,12 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             <td><?php echo $r['DIAS']; ?></td>
                                                             <td><?php echo $CODIGOESTANDAR; ?></td>
                                                             <td><?php echo $NOMBREESTANDAR; ?></td>
+
+
+                                                            <td><?php echo $NUM_CALIBREIND; ?></td>
+                                                            <td><?php echo $CALIBREIND; ?></td>
+
+
                                                             <td><?php echo $CSGPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBREPRODUCTOR; ?></td>
                                                             <td><?php echo $NOMBRESPECIES; ?></td>
