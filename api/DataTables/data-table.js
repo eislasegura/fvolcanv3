@@ -7689,7 +7689,7 @@ $(function () {
             //PRIMERA FORMA DE OBTENER TOTTALES,SI DESCUENTA LO FILTRADO
             'drawCallback':function(){
                 var api =this.api();  
-                var totalnetoconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(11,{page:'current'}).data().sum()).toFixed(2));            
+                var totalnetoconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(13,{page:'current'}).data().sum()).toFixed(2));            
                 //console.log("neto: "+  totalnetoconsolidado);
                 $("#TOTALNETOV").text(totalnetoconsolidado);
             },
@@ -8470,7 +8470,7 @@ $(function () {
             //PRIMERA FORMA DE OBTENER TOTTALES,SI DESCUENTA LO FILTRADO
             'drawCallback':function(){
                 var api =this.api();  
-                var totalnetoconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(10,{page:'current'}).data().sum()).toFixed(2));            
+                var totalnetoconsolidado = new Intl.NumberFormat('de-DE').format(parseFloat(api.column(12,{page:'current'}).data().sum()).toFixed(2));            
                 //console.log("neto: "+  totalnetoconsolidado);
                 $("#TOTALNETOV").text(totalnetoconsolidado);
             },
