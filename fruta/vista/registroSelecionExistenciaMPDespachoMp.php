@@ -1,5 +1,7 @@
 <?php
 
+var_dump($_REQUEST);
+
 include_once "../../assest/config/validarUsuarioFruta.php";
 
 //LLAMADA ARCHIVOS NECESARIOS PARA LAS OPERACIONES
@@ -104,6 +106,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
 
     $ARRAYEXIMATERIAPRIMA = $EXIMATERIAPRIMA_ADO->buscarPorEmpresaPlantaTemporada($EMPRESAS, $PLANTAS, $TEMPORADAS);
 }
+
 
 
 ?>

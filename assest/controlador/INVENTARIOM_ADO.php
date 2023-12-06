@@ -647,6 +647,7 @@ class INVENTARIOM_ADO {
             ESTADO = 3,           
             ID_DESPACHO = ?          
 		WHERE ID_INVENTARIO= ? ;";
+        //die($query);
             $this->conexion->prepare($query)
                 ->execute(
                     array(

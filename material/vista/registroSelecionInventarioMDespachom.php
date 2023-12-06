@@ -1,5 +1,7 @@
 <?php
 
+//var_dump($_REQUEST);
+
 include_once "../../assest/config/validarUsuarioMaterial.php";
 
 //LLAMADA ARCHIVOS NECESARIOS PARA LAS OPERACIONES
@@ -13,6 +15,9 @@ include_once '../../assest/controlador/RECEPCIONM_ADO.php';
 include_once '../../assest/controlador/INVENTARIOM_ADO.php';
 
 include_once "../../assest/modelo/INVENTARIOM.php";
+
+
+
 
 //INCIALIZAR LAS VARIBLES
 //INICIALIZAR CONTROLADOR
@@ -78,17 +83,20 @@ if (isset($_GET["urlo"])) {
     $urlo_dato = "";
 }
 
+
+
 if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
     $URLO = $urlo_dato;
     $ARRAYINVENTARIO = $INVENTARIOM_ADO->listarInventarioPorEmpresaPlantaTemporadaDisponibleCBX($EMPRESAS, $PLANTAS, $TEMPORADAS);
 }
+
 include_once "../../assest/config/validarDatosUrlD.php";
 
 
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -99,9 +107,9 @@ include_once "../../assest/config/validarDatosUrlD.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
     <meta name="author" content="">
-    <!- LLAMADA DE LOS ARCHIVOS NECESARIOS PARA DISEÑO Y FUNCIONES BASE DE LA VISTA -!>
+
         <?php include_once "../../assest/config/urlHead.php"; ?>
-        <!- FUNCIONES BASES -!>
+ 
             <script type="text/javascript">
                 //REDIRECCIONAR A LA PAGINA SELECIONADA
 
@@ -129,6 +137,23 @@ include_once "../../assest/config/validarDatosUrlD.php";
                     window.open(url, 'window', opciones);
                 }
             </script>
+
+<script type="text/javascript">
+              
+              //FUNCION PARA CERRAR VENTANA Y ACTUALIZAR PRINCIPAL
+              /*function cerrar() {
+                  window.opener.refrescar()
+                  window.close();
+              }
+
+              function irPagina(url) {
+                  location.href = "" + url;
+              }*/
+          </script>
+
+
+
+
 </head>
 
 <body class="hold-transition light-skin fixed sidebar-mini theme-primary" >
@@ -165,6 +190,19 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                 <h4 class="card-title">Seleccionar existencia</h4>                                        
                             </div>
                         <form class="form" role="form" method="post" name="form_reg_dato" id="form_reg_dato">
+                        <div class="card-footer">
+                                <div class="btn-group btn-rounded btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
+                                    <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
+                                        <i class="ti-back-left "></i> Volver
+                                    </button>
+                                    <button type="submit" class="btn btn-rounded btn-primary" data-toggle="tooltip" title="Por Folio" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
+                                        <i class="ti-save-alt"></i> P. Folio
+                                    </button>
+                                    <button type="submit" class="btn btn-rounded btn-info" data-toggle="tooltip" title="Por Cantidad" name="DIVIDIR" value="DIVIDIR" <?php echo $DISABLED; ?>>
+                                        <i class="ti-save-alt"></i> P. Cantidad
+                                    </button>
+                                </div>
+                            </div> 
                             <div class="card-body">
                                 <input type="hidden" class="form-control" placeholder="ID DESPACHO" id="IDP" name="IDP" value="<?php echo $IDP; ?>" />
                                 <input type="hidden" class="form-control" placeholder="OP DESPACHO" id="OPP" name="OPP" value="<?php echo $OPP; ?>" />
@@ -266,19 +304,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="btn-group btn-rounded btn-block  col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                    <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('<?php echo $URLO; ?>.php?op&id=<?php echo $id_dato; ?>&a=<?php echo $accion_dato; ?>&urlo=<?php echo $urlo_dato; ?>');">
-                                        <i class="ti-back-left "></i> Volver
-                                    </button>
-                                    <button type="submit" class="btn btn-rounded btn-primary" data-toggle="tooltip" title="Por Folio" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
-                                        <i class="ti-save-alt"></i> P. Folio
-                                    </button>
-                                    <button type="submit" class="btn btn-rounded btn-info" data-toggle="tooltip" title="Por Cantidad" name="DIVIDIR" value="DIVIDIR" <?php echo $DISABLED; ?>>
-                                        <i class="ti-save-alt"></i> P. Cantidad
-                                    </button>
-                                </div>
-                            </div>    
+                              
                             <!-- /.box -->
                         </form>
                 </section>
@@ -307,12 +333,20 @@ include_once "../../assest/config/validarDatosUrlD.php";
             })
         </script>
     <?php 
+
+        //echo 'ACCCION ES '.$_REQUEST['AGREGAR'];
         if (isset($_REQUEST['AGREGAR'])) {
+
+            echo '<script> console.log("prueba"); </script>';
+
+          //echo '1';
             $IDDESPACHO = $_REQUEST['IDP'];
             if (isset($_REQUEST['SELECIONAREXISTENCIA'])) {
                 $SELECIONAREXISTENCIA = $_REQUEST['SELECIONAREXISTENCIA'];
                 $SINO = "0";
+               // die(2);
             } else {
+               // die(3);
                 $SINO = "1";
                 $id_dato =  $_REQUEST['IDP'];
                 $accion_dato =  $_REQUEST['OPP'];
@@ -325,12 +359,13 @@ include_once "../../assest/config/validarDatosUrlD.php";
                         confirmButtonText:"Cerrar",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href = "registroSelecionInventarioMDespachom.php?op&id='.$id_dato.'&a='.$accion_dato.'";                            
+                        location.href = "registroSelecionInventarioMDespachom.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                            
                     })
                 </script>';
             }
-             
-            if($SINO==0){   
+            //die(4);
+            if($SINO==0){  
+               // die(5); 
                 //var_dump($SELECIONAREXISTENCIA);
                 foreach ($SELECIONAREXISTENCIA as $r) :
                     $IDEXISMATERIAPRIMA = $r;
@@ -343,7 +378,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
 
                 endforeach;        
 
-
+                
 
                 $id_dato =  $_REQUEST['IDP'];
                 $accion_dato =  $_REQUEST['OPP'];
@@ -356,10 +391,10 @@ include_once "../../assest/config/validarDatosUrlD.php";
                         confirmButtonText:"Volver a Despacho",
                         closeOnConfirm:false
                     }).then((result)=>{
-                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                        location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                     })
                 </script>';
-            }     
+            }   
             
         }
         if (isset($_REQUEST['DIVIDIR'])) {
@@ -472,7 +507,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                 confirmButtonText:"Volver al despacho",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
                         //echo "<script type='text/javascript'> location.href ='" . $_REQUEST['URLO'] . ".php?op';</script>";
@@ -488,7 +523,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                 confirmButtonText:"Volver al despacho",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                                location.href="' . $_REQUEST['URLO'] . '.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
                     }                   
@@ -506,7 +541,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                 confirmButtonText:"Cerrar",
                                 closeOnConfirm:false
                             }).then((result)=>{
-                                location.href="registroSelecionInventarioMDespachom.php?op&id='.$id_dato.'&a='.$accion_dato.'";                        
+                                location.href="registroSelecionInventarioMDespachom.php?op&id='.$id_dato.'&a='.$accion_dato.'&urlo='.$urlo_dato.'";                        
                             })
                         </script>';
                     }
