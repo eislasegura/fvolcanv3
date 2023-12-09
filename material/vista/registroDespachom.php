@@ -1436,11 +1436,16 @@ if (isset($_POST)) {
                     $DESPACHOM_ADO->Confirmado($DESPACHOM);
 
                     $ARRAYEXISENCIADESPACHOM = $INVENTARIOM_ADO->buscarPorEnDespacho($_REQUEST['IDP']);
+                    //echo '1x';
                     foreach ($ARRAYEXISENCIADESPACHOM as $r) :
+                        //echo '2x';
 
-                        if ($_REQUEST['TDESPACHOE'] == "1") {
+                        if ($_REQUEST['TDESPACHOE'] == "1") {//A SUBBODEGA
                             $ARRAYVALIDAREXISTENICA = $INVENTARIOM_ADO->buscarPorDespachoFolio($_REQUEST['IDP'], $r['FOLIO_INVENTARIO']);
+                            //echo '3x';
                             if (empty($ARRAYVALIDAREXISTENICA)) {
+                                //echo '4x';
+                                //die();
                                 $INVENTARIOM->__SET('FOLIO_INVENTARIO', $r['FOLIO_INVENTARIO']);
                                 $INVENTARIOM->__SET('FOLIO_AUXILIAR_INVENTARIO', $r['FOLIO_AUXILIAR_INVENTARIO']);
                                 $INVENTARIOM->__SET('ALIAS_DINAMICO_FOLIO', $r['ALIAS_DINAMICO_FOLIO']);
@@ -1465,15 +1470,15 @@ if (isset($_POST)) {
                             }
                             $INVENTARIOM->__SET('ID_INVENTARIO', $r['ID_INVENTARIO']);
                             //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-                           $INVENTARIOM_ADO->despachado($INVENTARIOM);
-                        } else if ($_REQUEST['TDESPACHOE'] == "2") {
+                           $INVENTARIOM_ADO->despachado($INVENTARIOM);// ESTADO 4 DESPACHADO
+                        } else if ($_REQUEST['TDESPACHOE'] == "2") {//INTERPLANTA
                             $INVENTARIOM->__SET('ID_INVENTARIO', $r['ID_INVENTARIO']);
                             //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-                           $INVENTARIOM_ADO->enTransito($INVENTARIOM);
+                           $INVENTARIOM_ADO->enTransito($INVENTARIOM);//ESTADO 5 EN TRANSITO
                         } else {
                             $INVENTARIOM->__SET('ID_INVENTARIO', $r['ID_INVENTARIO']);
                             //LLAMADA AL METODO DE EDITAR DEL CONTROLADOR
-                            $INVENTARIOM_ADO->despachado($INVENTARIOM);
+                            $INVENTARIOM_ADO->despachado($INVENTARIOM);//ESTADO 4
                         }
                     endforeach;
 

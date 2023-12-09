@@ -2295,6 +2295,15 @@ class INVENTARIOM_ADO {
     {
         try {
 
+            /*echo " SELECT 
+            *, 
+            FORMAT(IFNULL(CANTIDAD_INVENTARIO,0),0,'de_DE') AS 'CANTIDAD' ,
+            FORMAT(IFNULL(VALOR_UNITARIO,0),3,'de_DE') AS 'VALOR'
+            FROM material_inventariom IM 
+            JOIN principal_bodega PB ON PB.ID_BODEGA = IM.ID_BODEGA
+            WHERE IM.ID_DESPACHO= '" . $IDDESPACHO . "' 
+            AND IM.ESTADO_REGISTRO = 1
+            ;";*/
             $datos = $this->conexion->prepare(" SELECT 
                                                     *, 
                                                     FORMAT(IFNULL(CANTIDAD_INVENTARIO,0),0,'de_DE') AS 'CANTIDAD' ,
@@ -2345,13 +2354,20 @@ class INVENTARIOM_ADO {
     {
         try {
 
+           /* echo " SELECT 
+            * 
+        FROM material_inventariom 
+            WHERE ID_DESPACHO= '" . $IDDESPACHO . "' 
+            AND FOLIO_INVENTARIO = '" . $FOLIOINVENTARIO . "'
+            AND ESTADO_REGISTRO = 1
+            AND ESTADO = 2 ;";*/
             $datos = $this->conexion->prepare(" SELECT 
                                                     * 
                                                 FROM material_inventariom 
                                                     WHERE ID_DESPACHO= '" . $IDDESPACHO . "' 
                                                     AND FOLIO_INVENTARIO = '" . $FOLIOINVENTARIO . "'
                                                     AND ESTADO_REGISTRO = 1
-                                                    AND ESTADO = 2 ;");
+                                                    AND ESTADO = 3 ;");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
