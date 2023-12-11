@@ -202,7 +202,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                         if ($r['TEMBARQUE_ICARGA'] == "3") {
                                                             $TEMBARQUE = "Maritimo";
                                                         }
-                                                        $ARRAYTCONTENEDOR = $TCONTENEDOR_ADO->verTcontenedor($r['ID_TCONTENEDOR']);
+                                                        $ARRAYTCONTENEDOR = $TCONTENEDOR_ADO->verTcontenedorCarga($r['ID_TCONTENEDOR']);
                                                         if ($ARRAYTCONTENEDOR) {
                                                             $NOMBRETCONTENEDOR = $ARRAYTCONTENEDOR[0]['NOMBRE_TCONTENEDOR'];
                                                         } else {
@@ -234,7 +234,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                             $NUMEROCONTENEDOR=$r['NCONTENEDOR_ICARGA'];
                                                         }      
                                                         
-                                                        $ARRAYNAVIERA = $NAVIERA_ADO->buscarNombreNaviera($r['ID_NAVIERA']);
+                                                        $ARRAYNAVIERA = $NAVIERA_ADO->buscarNombreNavieraID($r['ID_NAVIERA']);
                                                             if($ARRAYNAVIERA){
                                                                 $NOMBRENAVIERA = $ARRAYNAVIERA[0]["NOMBRE_NAVIERA"];
                                                             }else{

@@ -137,6 +137,26 @@ class NAVIERA_ADO {
         
     }
 
+
+    public function buscarNombreNavieraID($ID){
+        try{
+            
+            $datos=$this->conexion->prepare("SELECT * FROM  transporte_naviera  WHERE  ID_NAVIERA  = '".$ID."';");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+            
+            //	print_r($resultado);
+            //	var_dump($resultado);
+            
+            
+            return $resultado;
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+        
+    }
+
     
     
     

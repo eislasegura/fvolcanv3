@@ -120,6 +120,26 @@ class TCONTENEDOR_ADO
         }
     }
 
+     //VER LA INFORMACION RELACIONADA EN BASE AL ID INGRESADO A LA FUNCION
+     public function verTcontenedorCarga($ID)
+     {
+         try {
+ 
+             $datos = $this->conexion->prepare("SELECT * FROM  fruta_TCONTENEDOR  WHERE  ID_TCONTENEDOR = '" . $ID . "';");
+             $datos->execute();
+             $resultado = $datos->fetchAll();
+             $datos=null;
+ 
+             //	print_r($resultado);
+             //	var_dump($resultado);
+ 
+ 
+             return $resultado;
+         } catch (Exception $e) {
+             die($e->getMessage());
+         }
+     }
+
 
 
     //BUSCAR CONSIDENCIA DE ACUERDO AL CARACTER INGRESADO EN LA FUNCION
