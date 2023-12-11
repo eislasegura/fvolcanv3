@@ -13,6 +13,7 @@ include_once '../../assest/controlador/NAVE_ADO.php';
 include_once '../../assest/controlador/DFINAL_ADO.php';
 include_once '../../assest/controlador/DESPACHOEX_ADO.php';
 include_once '../../assest/controlador/NAVIERA_ADO.php';
+include_once '../../assest/controlador/EMISIONBL_ADO.php';
 
 
 include_once '../../assest/modelo/ICARGA.php';
@@ -29,6 +30,7 @@ $NAVE_ADO =  new NAVE_ADO();
 $DFINAL_ADO =  new DFINAL_ADO();
 $DESPACHOEX_ADO =  new DESPACHOEX_ADO();
 $NAVIERA_ADO =  new NAVIERA_ADO();
+$EMISIONBL_ADO =  new EMISIONBL_ADO();
 //INICIALIZAR MODELO
 
 $ICARGA =  new ICARGA();
@@ -40,6 +42,7 @@ $TOTALBRUTO = "";
 $TOTALUS   = "";
 
 $FECHADESDE = "";
+$EMISIONBL = "";
 $FECHAHASTA = "";
 
 
@@ -47,6 +50,7 @@ $FECHAHASTA = "";
 $ARRAYICARGA = "";
 $ARRAYTOTALICARGA = "";
 
+$ARRAYEMISIONBL = "";
 $ARRAYTCONTENEDOR = "";
 $ARRAYTVEHICULO = "";
 $ARRAYAERONAVE = "";
@@ -155,7 +159,10 @@ include_once "../../assest/config/datosUrLP.php";
                                                         <th>Fecha ETA</th>
                                                         <th>Fecha Real ETA</th>
                                                         <th>BL/AWB </th>
+                                                        <th>Emisión BL </th>
                                                         <th>Naviera </th>
+                                                        <th>Nave </th>
+                                                        <th>Viaje </th>
                                                         <th>Tipo Contenedor</th>
                                                         <th>N° Contenedor</th>
                                                         <th>Días Estimados</th>
@@ -239,6 +246,13 @@ include_once "../../assest/config/datosUrLP.php";
                                                                 $NOMBRENAVIERA = $ARRAYNAVIERA[0]["NOMBRE_NAVIERA"];
                                                             }else{
                                                                 $NOMBRENAVIERA = "Sin Datos";
+                                                            }
+
+                                                            $ARRAYEMISIONBL = $EMISIONBL_ADO->verEmisionbl($r['ID_EMISIONBL']);
+                                                            if($ARRAYEMISIONBL){
+                                                                $NOMBREEMISIONBL = $ARRAYEMISIONBL[0]["NOMBRE_EMISIONBL"];
+                                                            }else{
+                                                                $NOMBREEMISIONBL = "Sin Datos";
                                                             }
                                                         ?>
                                                         <tr class="text-center">
@@ -344,7 +358,10 @@ include_once "../../assest/config/datosUrLP.php";
                                                             <td> <?php echo $r['FECHAETA']; ?> </td>
                                                             <td> <?php echo $r['FECHAETAREAL']; ?> </td>
                                                             <td> <?php echo $r['BLAWB']; ?> </td>
+                                                            <td> <?php echo $NOMBREEMISIONBL; ?> </td>
                                                             <td> <?php echo $NOMBRENAVIERA; ?> </td>
+                                                            <td> <?php echo $r['NAVE_ICARGA']; ?> </td>
+                                                            <td> <?php echo $r['NVIAJE_ICARGA']; ?> </td>
                                                             <td> <?php echo $NOMBRETCONTENEDOR; ?> </td>
                                                             <td> <?php echo $NUMEROCONTENEDOR; ?> </td>
                                                             <td> <?php echo $r['ESTIMADO']; ?> </td>
