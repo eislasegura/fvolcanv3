@@ -8,10 +8,10 @@ class BDCONFIG {
 
     public function __construct()
     {
-        $this->HOST="localhost";
-        $this->USER = "root";
-        $this->PASS="";
-        $this->DBNAME="smartberries";
+        $this->HOST="45.236.164.112";
+        $this->USER = "visiondc_berrie";
+        $this->PASS="Berrie.2024";
+        $this->DBNAME="visiondc_berrie";
 
     }
     public function __GET($k){ return $this->$k; }
