@@ -391,7 +391,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             if ($ARRAYREEMBALAJE) {
                                                                 $NUMEROREEMBALEJE = $ARRAYREEMBALAJE[0]["ID_TREEMBALAJE"];
                                                                 $FECHAREEMBALEJE = $ARRAYREEMBALAJE[0]["FECHA"];
-                                                                $ARRAYTREEMBALAJE = $TREEMBALAJE_ADO->verTreembalaje($ARRAYREEMBALAJE[0]["ID_TREEMBALAJE"]);
+                                                                $ARRAYTREEMBALAJE = $TREEMBALAJE_ADO->verTreembalaje($ARRAYREEMBALAJE[0]["ID_REEMBALAJE"]);
                                                                 if ($ARRAYTREEMBALAJE) {
                                                                     $TREEMBALAJE = $ARRAYTREEMBALAJE[0]["NOMBRE_TREEMBALAJE"];
                                                                 }

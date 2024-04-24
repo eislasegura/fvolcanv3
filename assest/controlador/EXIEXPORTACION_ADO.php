@@ -1901,7 +1901,7 @@ class EXIEXPORTACION_ADO
             $datos=null;
 
             //	print_r($resultado);
-            //	var_dump($resultado);
+            	//var_dump($resultado);
 
 
             return $resultado;
