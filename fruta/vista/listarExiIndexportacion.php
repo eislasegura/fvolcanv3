@@ -99,7 +99,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
 <html lang="es">
 
 <head>
-    <title>Existencia Producto Terminado</title>
+    <title>Existencia Industrial Producto terminado</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
@@ -147,7 +147,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                             <li class="breadcrumb-item" aria-current="page">Módulo</li>
                                             <li class="breadcrumb-item" aria-current="page">Existencia</li>
                                             <li class="breadcrumb-item" aria-current="page">Disponible</li>
-                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#">Existencia Producto Terminado </a>
+                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#">Existencia Industrial Producto terminado </a>
                                             </li>
                                         </ol>
                                     </nav>
