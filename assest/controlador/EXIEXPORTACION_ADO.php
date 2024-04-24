@@ -2110,6 +2110,40 @@ class EXIEXPORTACION_ADO
         }
     }
 
+    public function listarExiexportacionAgrupadoPorFolioEmpresaPlantaTemporadaDisponibleIndustrial($EMPRESA, $PLANTA, $TEMPORADA)
+    {
+        try {
+
+
+            $datos = $this->conexion->prepare("SELECT 
+                                                    FOLIO_AUXILIAR_EXIEXPORTACION,                                               
+                                                    IFNULL(SUM(CANTIDAD_ENVASE_EXIEXPORTACION),0) AS 'ENVASE', 
+                                                    IFNULL(SUM(KILOS_NETO_EXIEXPORTACION),0)AS 'NETO',
+                                                    IFNULL(SUM(KILOS_DESHIRATACION_EXIEXPORTACION),0) AS 'DESHIRATACION',
+                                                    IFNULL(SUM(KILOS_BRUTO_EXIEXPORTACION),0)AS 'BRUTO'
+                                                FROM fruta_exiexportacion 
+                                                WHERE 
+                                                        ID_EMPRESA = '" . $EMPRESA . "' 
+                                                        AND ID_PLANTA = '" . $PLANTA . "'
+                                                        AND ID_TEMPORADA = '" . $TEMPORADA . "'  
+                                                        AND ESTADO_REGISTRO = 1
+                                                        AND ESTADO = 11                                               
+                                                GROUP BY FOLIO_AUXILIAR_EXIEXPORTACION
+                                          ;");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function listarExiexportacionTemporadaPorFolioDisponible(  $TEMPORADA, $FOLIO)
     {
         try {
@@ -2236,6 +2270,8 @@ class EXIEXPORTACION_ADO
             die($e->getMessage());
         }
     }
+
+
 
     public function listarExiexportacionAgrupadoPorFolioEmpresaTemporadaDespachado($EMPRESA,  $TEMPORADA)
     {
