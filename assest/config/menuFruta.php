@@ -826,7 +826,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
               </span>
             </a>
             <ul class="treeview-menu">
-            <li class="treeview">
+            <li class="treeview" style="display:none;">
                 <a href="#">En Desarrollo
                   <span class="pull-left-container">
                     <i class=" fa fa-angle-right pull-right"></i>
