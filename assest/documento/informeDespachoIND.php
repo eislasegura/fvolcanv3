@@ -124,6 +124,11 @@ if($ARRAYDESPACHO){
   $TOTALDELTA= $ARRAYDESPACHOTOTAL[0]['DELTA'];
   $TOTALPRECIO = $ARRAYDESPACHOTOTAL[0]['PRECIO'];
   
+
+  $NOMBREENVASE1 = $ARRAYDESPACHO[0]['NOMBREENVASE1'];
+  $NOMBREENVASE2 = $ARRAYDESPACHO[0]['NOMBREENVASE2'];
+  $CANTIDADENVASE1 = $ARRAYDESPACHO[0]['CANTIDADENVASE1'];
+  $CANTIDADENVASE2 = $ARRAYDESPACHO[0]['CANTIDADENVASE2'];
   
   
   $NUMERO = $ARRAYDESPACHO[0]['NUMERO_DESPACHO'];
@@ -523,7 +528,18 @@ $html = $html . '
       <div class="address">Conductor: ' . $CONDUCTOR . '</div>
       <div class="address">Patente Camion: ' . $PATENTECAMION . '</div>
       <div class="address">Patente Carro: ' . $PATENTECARRO . '</div>
+      <br>
+      <br/>
+      <div class="address"><b>Informacion De Envases</b></div>
+      <br/>
+      <div class="address"><b>Nombre Envase 1:</b>  ' . $NOMBREENVASE1 . ' </div>
+      <div class="address"><b>Cantidad Envase 1:</b>  ' . $CANTIDADENVASE1 . ' </div>
+      <br/>
+      <div class="address"><b>Nombre Envase 2:</b>  ' . $NOMBREENVASE1 . ' </div>
+      <div class="address"><b>Cantidad Envase 2:</b>  ' . $CANTIDADENVASE2 . ' </div>
+      
     </div>
+
     <div id="client">
       <div class="address"><b>Observaciones</b></div>
       <div class="address">  ' . $OBSERVACIONES . ' </div>

@@ -67,6 +67,10 @@ $FECHADESPACHO = "";
 $NUMEROGUIADESPACHO = "";
 $PATENTECARRO = "";
 $PATENTEVEHICULO = "";
+$NOMBREENVASE1 = "";
+$NOMBREENVASE2 = "";
+$CANTIDADENVASE1 = "";
+$CANTIDADENVASE2 = "";
 $OBSERVACIONDESPACHO = "";
 $NUMEROSELLODESPACHO = "";
 $REGALO = "";
@@ -239,6 +243,12 @@ if (isset($id_dato) && isset($accion_dato)) {
             $PATENTEVEHICULO = "" . $r['PATENTE_CAMION'];
             $PATENTECARRO = "" . $r['PATENTE_CARRO'];
             $OBSERVACIONDESPACHO = "" . $r['OBSERVACION_DESPACHO'];
+
+            $NOMBREENVASE1 = "" . $r['NOMBREENVASE1'];
+            $NOMBREENVASE2 = "" . $r['NOMBREENVASE2'];
+            $CANTIDADENVASE1 = "" . $r['CANTIDADENVASE1'];
+            $CANTIDADENVASE2 = "" . $r['CANTIDADENVASE2'];
+
             $CONDUCTOR = "" . $r['ID_CONDUCTOR'];
             $TRANSPORTE = "" . $r['ID_TRANSPORTE'];
             $TDESPACHO = "" . $r['TDESPACHO'];
@@ -293,6 +303,13 @@ if (isset($id_dato) && isset($accion_dato)) {
             $PATENTEVEHICULO = "" . $r['PATENTE_CAMION'];
             $PATENTECARRO = "" . $r['PATENTE_CARRO'];
             $OBSERVACIONDESPACHO = "" . $r['OBSERVACION_DESPACHO'];
+
+            $NOMBREENVASE1 = "" . $r['NOMBREENVASE1'];
+            $NOMBREENVASE2 = "" . $r['NOMBREENVASE2'];
+            $CANTIDADENVASE1 = "" . $r['CANTIDADENVASE1'];
+            $CANTIDADENVASE2 = "" . $r['CANTIDADENVASE2'];
+
+
             $CONDUCTOR = "" . $r['ID_CONDUCTOR'];
             $TRANSPORTE = "" . $r['ID_TRANSPORTE'];
             $TDESPACHO = "" . $r['TDESPACHO'];
@@ -347,6 +364,13 @@ if (isset($id_dato) && isset($accion_dato)) {
             $PATENTEVEHICULO = "" . $r['PATENTE_CAMION'];
             $PATENTECARRO = "" . $r['PATENTE_CARRO'];
             $OBSERVACIONDESPACHO = "" . $r['OBSERVACION_DESPACHO'];
+
+            $NOMBREENVASE1 = "" . $r['NOMBREENVASE1'];
+            $NOMBREENVASE2 = "" . $r['NOMBREENVASE2'];
+            $CANTIDADENVASE1 = "" . $r['CANTIDADENVASE1'];
+            $CANTIDADENVASE2 = "" . $r['CANTIDADENVASE2'];
+
+
             $CONDUCTOR = "" . $r['ID_CONDUCTOR'];
             $TRANSPORTE = "" . $r['ID_TRANSPORTE'];
             $TDESPACHO = "" . $r['TDESPACHO'];
@@ -412,6 +436,26 @@ if (isset($_POST)) {
     if (isset($_REQUEST['OBSERVACIONDESPACHOMP'])) {
 
         $OBSERVACIONDESPACHOMP = "" . $_REQUEST['OBSERVACIONDESPACHOMP'];
+    }
+
+    if (isset($_REQUEST['NOMBREENVASE1'])) {
+
+        $NOMBREENVASE1 = "" . $_REQUEST['NOMBREENVASE1'];
+    }
+
+    if (isset($_REQUEST['NOMBREENVASE2'])) {
+
+        $NOMBREENVASE2 = "" . $_REQUEST['NOMBREENVASE2'];
+    }
+
+    if (isset($_REQUEST['CANTIDADENVASE1'])) {
+
+        $CANTIDADENVASE1 = "" . $_REQUEST['CANTIDADENVASE1'];
+    }
+
+    if (isset($_REQUEST['CANTIDADENVASE2'])) {
+
+        $CANTIDADENVASE2 = "" . $_REQUEST['CANTIDADENVASE2'];
     }
 
     if (isset($_REQUEST['NUMEROSELLODESPACHO'])) {
@@ -1032,6 +1076,42 @@ if (isset($_POST)) {
                                         <?php } ?>
                                     </div>
                                     <div class="row">
+                                        <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Tipo Envase 1</label>
+                                                <input type="hidden" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $NOMBREENVASE1; ?>" />
+                                                <input type="text" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $NOMBREENVASE1; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />
+                                                <label id="val_nombreenvase1" class="validacion"> </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Cantidad Envases</label>
+                                                <input type="hidden" class="form-control" placeholder="Cantidad de Envases" id="CANTIDADENVASE1" name="CANTIDADENVASE1" value="<?php echo $CANTIDADENVASE1; ?>" />
+                                                <input type="text" class="form-control" placeholder="Cantidad de Envases" id="CANTIDADENVASE1" name="CANTIDADENVASE1" value="<?php echo $CANTIDADENVASE1; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />
+                                                <label id="val_patentecarro" class="validacion"> </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Tipo Envase 2</label>
+                                                <input type="hidden" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $NOMBREENVASE2; ?>" />
+                                                <input type="text" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $NOMBREENVASE2; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />
+                                                <label id="val_nombreenvase2" class="validacion"> </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label>Cantidad Envases</label>
+                                                <input type="hidden" class="form-control" placeholder="Cantidad de Envases" id="CANTIDADENVASE2" name="CANTIDADENVASE2" value="<?php echo $CANTIDADENVASE2; ?>" />
+                                                <input type="text" class="form-control" placeholder="Cantidad de Envases" id="CANTIDADENVASE2" name="CANTIDADENVASE2" value="<?php echo $CANTIDADENVASE2; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />
+                                                <label id="val_patentecarro" class="validacion"> </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                    <div class="row">
                                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                             <div class="form-group">
                                                 <label>Observaciónes </label>
@@ -1268,6 +1348,12 @@ if (isset($_POST)) {
                 $DESPACHOIND->__SET('PATENTE_CAMION', $_REQUEST['PATENTEVEHICULO']);
                 $DESPACHOIND->__SET('PATENTE_CARRO', $_REQUEST['PATENTECARRO']);
                 $DESPACHOIND->__SET('OBSERVACION_DESPACHO', $_REQUEST['OBSERVACIONDESPACHO']);
+
+                $DESPACHOIND->__SET('NOMBREENVASE1', $_REQUEST['NOMBREENVASE1']);
+                $DESPACHOIND->__SET('NOMBREENVASE2', $_REQUEST['NOMBREENVASE2']);
+                $DESPACHOIND->__SET('CANTIDADENVASE1', $_REQUEST['CANTIDADENVASE1']);
+                $DESPACHOIND->__SET('CANTIDADENVASE2', $_REQUEST['CANTIDADENVASE2']);
+
                 $DESPACHOIND->__SET('ID_CONDUCTOR', $_REQUEST['CONDUCTOR']);
                 $DESPACHOIND->__SET('ID_TRANSPORTE', $_REQUEST['TRANSPORTE']);
                 $DESPACHOIND->__SET('TDESPACHO', $_REQUEST['TDESPACHO']);
@@ -1334,6 +1420,12 @@ if (isset($_POST)) {
                 $DESPACHOIND->__SET('PATENTE_CAMION', $_REQUEST['PATENTEVEHICULOE']);
                 $DESPACHOIND->__SET('PATENTE_CARRO', $_REQUEST['PATENTECARROE']);
                 $DESPACHOIND->__SET('OBSERVACION_DESPACHO', $_REQUEST['OBSERVACIONDESPACHO']);
+
+                $DESPACHOIND->__SET('NOMBREENVASE1', $_REQUEST['NOMBREENVASE1']);
+                $DESPACHOIND->__SET('NOMBREENVASE2', $_REQUEST['NOMBREENVASE2']);
+                $DESPACHOIND->__SET('CANTIDADENVASE1', $_REQUEST['CANTIDADENVASE1']);
+                $DESPACHOIND->__SET('CANTIDADENVASE2', $_REQUEST['CANTIDADENVASE2']);
+
                 $DESPACHOIND->__SET('ID_CONDUCTOR', $_REQUEST['CONDUCTORE']);
                 $DESPACHOIND->__SET('ID_TRANSPORTE', $_REQUEST['TRANSPORTEE']);
                 $DESPACHOIND->__SET('TDESPACHO', $_REQUEST['TDESPACHOE']);
@@ -1446,6 +1538,12 @@ if (isset($_POST)) {
                     $DESPACHOIND->__SET('PATENTE_CAMION', $_REQUEST['PATENTEVEHICULOE']);
                     $DESPACHOIND->__SET('PATENTE_CARRO', $_REQUEST['PATENTECARROE']);
                     $DESPACHOIND->__SET('OBSERVACION_DESPACHO', $_REQUEST['OBSERVACIONDESPACHO']);
+
+                    $DESPACHOIND->__SET('NOMBREENVASE1', $_REQUEST['NOMBREENVASE1']);
+                    $DESPACHOIND->__SET('NOMBREENVASE2', $_REQUEST['NOMBREENVASE2']);
+                    $DESPACHOIND->__SET('CANTIDADENVASE1', $_REQUEST['CANTIDADENVASE1']);
+                    $DESPACHOIND->__SET('CANTIDADENVASE2', $_REQUEST['CANTIDADENVASE2']);
+
                     $DESPACHOIND->__SET('ID_CONDUCTOR', $_REQUEST['CONDUCTORE']);
                     $DESPACHOIND->__SET('ID_TRANSPORTE', $_REQUEST['TRANSPORTEE']);
                     $DESPACHOIND->__SET('TDESPACHO', $_REQUEST['TDESPACHOE']);

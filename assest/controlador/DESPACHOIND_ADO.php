@@ -220,10 +220,14 @@ class DESPACHOIND_ADO
                                                 MODIFICACION, 
                                                 ESTADO, 
                                                 ESTADO_DESPACHO,  
-                                                ESTADO_REGISTRO
+                                                ESTADO_REGISTRO,
+                                                NOMBREENVASE1,
+                                                NOMBREENVASE2,
+                                                CANTIDADENVASE1,
+                                                CANTIDADENVASE2
                                             )
              VALUES
-               ( ?, ?, ?,  ?, ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,    0, 0,  SYSDATE(),  SYSDATE(), 1, 1, 1);";
+               ( ?, ?, ?,  ?, ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,   ?, ?, ?, ?, ?,    0, 0,  SYSDATE(),  SYSDATE(), 1, 1, 1, ?, ?, ?, ?);";
 
             $this->conexion->prepare($query)
                 ->execute(
@@ -249,7 +253,12 @@ class DESPACHOIND_ADO
                         $DESPACHOIND->__GET('ID_PLANTA'),
                         $DESPACHOIND->__GET('ID_TEMPORADA'),
                         $DESPACHOIND->__GET('ID_USUARIOI'),
-                        $DESPACHOIND->__GET('ID_USUARIOM')
+                        $DESPACHOIND->__GET('ID_USUARIOM'),
+
+                        $DESPACHOIND->__GET('NOMBREENVASE1'),
+                        $DESPACHOIND->__GET('NOMBREENVASE2'),
+                        $DESPACHOIND->__GET('CANTIDADENVASE1'),
+                        $DESPACHOIND->__GET('CANTIDADENVASE2')
                     )
 
                 );
@@ -305,7 +314,11 @@ class DESPACHOIND_ADO
                         ID_COMPRADOR = ?,
                         ID_CONDUCTOR = ?,
                         ID_TRANSPORTE = ?, 
-                        ID_USUARIOM = ? 
+                        ID_USUARIOM = ?,
+                        NOMBREENVASE1 = ?,
+                        NOMBREENVASE2 = ?,
+                        CANTIDADENVASE1 = ?,
+                        CANTIDADENVASE2 = ?
                 WHERE ID_DESPACHO= ?  ;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -325,7 +338,12 @@ class DESPACHOIND_ADO
                         $DESPACHOIND->__GET('ID_CONDUCTOR'),
                         $DESPACHOIND->__GET('ID_TRANSPORTE'),
                         $DESPACHOIND->__GET('ID_USUARIOM'),
+                        $DESPACHOIND->__GET('NOMBREENVASE1'),
+                        $DESPACHOIND->__GET('NOMBREENVASE2'),
+                        $DESPACHOIND->__GET('CANTIDADENVASE1'),
+                        $DESPACHOIND->__GET('CANTIDADENVASE2'),
                         $DESPACHOIND->__GET('ID_DESPACHO')
+                        
 
                     )
 
