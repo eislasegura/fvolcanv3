@@ -2080,7 +2080,21 @@ class EXIEXPORTACION_ADO
     public function listarExiexportacionAgrupadoPorFolioEmpresaPlantaTemporadaDisponible($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
-
+/*echo "SELECT 
+FOLIO_AUXILIAR_EXIEXPORTACION,                                               
+IFNULL(SUM(CANTIDAD_ENVASE_EXIEXPORTACION),0) AS 'ENVASE', 
+IFNULL(SUM(KILOS_NETO_EXIEXPORTACION),0)AS 'NETO',
+IFNULL(SUM(KILOS_DESHIRATACION_EXIEXPORTACION),0) AS 'DESHIRATACION',´
+IFNULL(SUM(KILOS_BRUTO_EXIEXPORTACION),0)AS 'BRUTO'
+FROM fruta_exiexportacion 
+WHERE 
+    ID_EMPRESA = '" . $EMPRESA . "' 
+    AND ID_PLANTA = '" . $PLANTA . "'
+    AND ID_TEMPORADA = '" . $TEMPORADA . "'  
+    AND ESTADO_REGISTRO = 1
+    AND ESTADO = 2  
+    AND ESTADO_FOLIO = 0				                                             
+GROUP BY FOLIO_AUXILIAR_EXIEXPORTACIO";*/
             $datos = $this->conexion->prepare("SELECT 
                                                     FOLIO_AUXILIAR_EXIEXPORTACION,                                               
                                                     IFNULL(SUM(CANTIDAD_ENVASE_EXIEXPORTACION),0) AS 'ENVASE', 
@@ -2097,6 +2111,7 @@ class EXIEXPORTACION_ADO
                                                         AND ESTADO_FOLIO = 0				                                             
                                                 GROUP BY FOLIO_AUXILIAR_EXIEXPORTACION
                                           ;");
+                                          
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
