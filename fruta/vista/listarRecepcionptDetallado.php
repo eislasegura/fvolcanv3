@@ -209,7 +209,7 @@ if ($EMPRESAS && $PLANTAS && $TEMPORADAS) {
                                                     <th>Nombre Conductor </th>
                                                     <th>Patente Camión </th>
                                                     <th>Patente Carro </th>
-                                                    <th>Semana Recepcion </th>
+                                                    <th>Semana Recepción </th>
                                                     <th>Semana Guia </th>
                                                     <th>Empresa</th>
                                                     <th>Planta</th>

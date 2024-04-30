@@ -157,7 +157,7 @@ include_once "../../assest/config/datosUrLP.php";
                                         <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                         <li class="breadcrumb-item" aria-current="page">Módulo</li>
                                         <li class="breadcrumb-item" aria-current="page">Granel</li>
-                                        <li class="breadcrumb-item" aria-current="page">Recepcion</li>
+                                        <li class="breadcrumb-item" aria-current="page">Recepción</li>
                                         <li class="breadcrumb-item" aria-current="page">Industrial</li>
                                         <li class="breadcrumb-item active" aria-current="page"> <a href="#"> Detallado Recepción </a>  </li>
                                     </ol>
@@ -199,7 +199,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                     <th>Nombre Conductor </th>
                                                     <th>Patente Camión </th>
                                                     <th>Patente Carro </th>
-                                                    <th>Semana Recepcion </th>
+                                                    <th>Semana Recepción </th>
                                                     <th>Semana Guia </th>
                                                     <th>Empresa</th>
                                                     <th>Planta</th>

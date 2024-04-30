@@ -145,15 +145,15 @@ include_once "../../assest/config/datosUrLAP.php";
                                         <table id="recepcionind" class="table-hover " style="width: 100%;">
                                             <thead>
                                                 <tr class="text-center">
-                                                    <th>Numero Recepcion </th>
+                                                    <th>Numero Recepción </th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciones</th>
-                                                    <th>Fecha Recepcion </th>
+                                                    <th>Fecha Recepción </th>
                                                     <th>Numero Guia </th>
-                                                    <th>Hora Recepcion </th>
-                                                    <th>Tipo Recepcion</th>
+                                                    <th>Hora Recepción </th>
+                                                    <th>Tipo Recepción</th>
                                                     <th>CSG/CSP Recepción</th>
-                                                    <th>Origen Recepcion</th>
+                                                    <th>Origen Recepción</th>
                                                     <th>Fecha Guia </th>
                                                     <th>Total Kilos Guia</th>
                                                     <th>Cantidad Envase</th>
@@ -165,7 +165,7 @@ include_once "../../assest/config/datosUrLAP.php";
                                                     <th>Nombre Conductor </th>
                                                     <th>Patente Camión </th>
                                                     <th>Patente Carro </th>
-                                                    <th>Semana Recepcion </th>
+                                                    <th>Semana Recepcin </th>
                                                     <th>Semana Guia </th>
                                                     <th>Empresa</th>
                                                     <th>Planta</th>

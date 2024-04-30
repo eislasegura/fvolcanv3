@@ -74,7 +74,7 @@ include_once "../../assest/config/datosUrLP.php";
 <html lang="es">
 
 <head>
-    <title>Agrupado Recepcion</title>
+    <title>Agrupado Recepción</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
@@ -129,7 +129,7 @@ include_once "../../assest/config/datosUrLP.php";
                                         <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                         <li class="breadcrumb-item" aria-current="page">Módulo</li>
                                         <li class="breadcrumb-item" aria-current="page">Granel</li>
-                                        <li class="breadcrumb-item" aria-current="page">Recepcion</li>
+                                        <li class="breadcrumb-item" aria-current="page">Recepción</li>
                                         <li class="breadcrumb-item" aria-current="page">Materia Prima</li>
                                         <li class="breadcrumb-item active" aria-current="page"> <a href="#"> Agrupado Recepción </a> </li>
                                     </ol>
@@ -149,28 +149,28 @@ include_once "../../assest/config/datosUrLP.php";
                                         <table id="recepcionmp" class="table-hover " style="width: 100%;">
                                             <thead>
                                                 <tr class="text-center">
-                                                    <th>Numero Recepcion </th>
+                                                    <th>Numero Recepción </th>
                                                     <th>Estado</th>
                                                     <th class="text-center">Operaciones</th>
-                                                    <th>Origen Recepcion</th>
+                                                    <th>Origen Recepción</th>
                                                     <th>CSG/CSP Recepción</th>
-                                                    <th>Numero Guia </th>
-                                                    <th>Fecha Guia </th>
-                                                    <th>Fecha Recepcion </th>
-                                                    <th>Hora Recepcion </th>
-                                                    <th>Tipo Recepcion</th>
-                                                    <th>Total Kilos Guia</th>
+                                                    <th>Numero Guía </th>
+                                                    <th>Fecha Guía </th>
+                                                    <th>Fecha Recepción </th>
+                                                    <th>Hora Recepción </th>
+                                                    <th>Tipo Recepción</th>
+                                                    <th>Total Kilos Guía</th>
                                                     <th>Cantidad Envase</th>
                                                     <th>Total Kilos Neto</th>
                                                     <th>Total Kilos Bruto</th>
                                                     <th>Fecha Ingreso</th>
-                                                    <th>Fecha Modificacion</th>
+                                                    <th>Fecha Modificación</th>
                                                     <th>Transporte </th>
                                                     <th>Nombre Conductor </th>
                                                     <th>Patente Camión </th>
                                                     <th>Patente Carro </th>
-                                                    <th>Semana Recepcion </th>
-                                                    <th>Semana Guia </th>
+                                                    <th>Semana Recepción </th>
+                                                    <th>Semana Guía </th>
                                                     <th>Empresa</th>
                                                     <th>Planta</th>
                                                     <th>Temporada</th>

@@ -599,9 +599,9 @@ if ($_POST) {
                                             <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                             <li class="breadcrumb-item" aria-current="page">Modulo</li>
                                             <li class="breadcrumb-item" aria-current="page">Granel</li>
-                                            <li class="breadcrumb-item" aria-current="page">Recepcion</li>
+                                            <li class="breadcrumb-item" aria-current="page">Recepción</li>
                                             <li class="breadcrumb-item" aria-current="page">Industrial</li>
-                                            <li class="breadcrumb-item" aria-current="page">Recepcion Industrial</li>
+                                            <li class="breadcrumb-item" aria-current="page">Recepción Industrial</li>
                                             <li class="breadcrumb-item active" aria-current="page"> <a href="#">Registro Detalle </a>  </li>
                                         </ol>
                                     </nav>
