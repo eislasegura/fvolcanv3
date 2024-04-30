@@ -88,7 +88,11 @@ class RECEPCIONPT_ADO
     public function verRecepcion($ID)
     {
         try {
-
+/*ECHO "SELECT *,
+DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
+DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 
+FROM fruta_recepcionpt 
+WHERE ID_RECEPCION= '" . $ID . "';";*/
             $datos = $this->conexion->prepare("SELECT *,
                                                     DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO',
                                                     DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 

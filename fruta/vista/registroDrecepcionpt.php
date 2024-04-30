@@ -184,9 +184,10 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $OPP = $accion_dato;
     $URLO = $urlo_dato;
 
-
+//echo 'dato1'.$IDP;
     $ARRAYRECEPCION = $RECEPCIONPT_ADO->verRecepcion($IDP);
     foreach ($ARRAYRECEPCION as $r) :
+    //echo 'dato'.$r['FECHA_RECEPCION'];
         $TRECEPCION = "" . $r['TRECEPCION'];
         if ($TRECEPCION == "1") {
             $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
@@ -198,6 +199,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
         }
         if ($TRECEPCION == "2") {
             $PLANTA2 = "" . $r['ID_PLANTA2'];
+            $FECHARECEPCION = "" . $r['FECHA_RECEPCION'];
         }
     endforeach;
 }
