@@ -163,7 +163,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                 <div class="row">
                                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                         <div class="table-responsive">
-                                            <table id="existenciapt" class="table-hover" style="width: 300%;">
+                                            <table id="existenciapt" class="table-hover" style="width: 100%;">
                                                 <thead>
                                                     <tr class="text-center">
                                                         <th>Folio Original</th>
@@ -226,7 +226,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
 
                                                         <?php $ARRAYEXISTENCIA=$EXIEXPORTACION_ADO->listarExiexportacionEmpresaPlantaTemporadaPorFolioDisponible($EMPRESAS, $PLANTAS, $TEMPORADAS,$s['FOLIO_AUXILIAR_EXIEXPORTACION'] );  ?>                                                                                                                    
                                                         <?php foreach ($ARRAYEXISTENCIA as $r) : ?>
-                                                            <?php  $CONTADOR+=1;   ?>
+                                                            <?php
+                                                                if($r['COLOR']==1){}else{
+                                                                $CONTADOR+=1;   ?>
                                                             <?php
                                                             if ($r['ESTADO'] == "0") {
                                                                 $ESTADO = "Elimnado";
@@ -588,7 +590,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 <td><?php echo $NOMBRETEMPORADA; */?></td> -->
                                                                 <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             </tr>                                                       
-                                                        <?php endforeach; ?>        
+                                                        <?php } endforeach; ?>        
                                                     <?php endforeach; ?>
                                                 </tbody>
                                             </table>
