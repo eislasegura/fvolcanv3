@@ -226,7 +226,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
 
                                                         <?php $ARRAYEXISTENCIA=$EXIEXPORTACION_ADO->listarExiexportacionEmpresaPlantaTemporadaPorFolioDisponible($EMPRESAS, $PLANTAS, $TEMPORADAS,$s['FOLIO_AUXILIAR_EXIEXPORTACION'] );  ?>                                                                                                                    
                                                         <?php foreach ($ARRAYEXISTENCIA as $r) : ?>
-                                                            <?php  $CONTADOR+=1;   ?>
+                                                            <?php 
+                                                                if($r['COLOR']==1){  $CONTADOR+=1;   ?>
                                                             <?php
                                                             if ($r['ESTADO'] == "0") {
                                                                 $ESTADO = "Elimnado";
@@ -588,7 +589,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 <td><?php echo $NOMBRETEMPORADA; */?></td> -->
                                                                 <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             </tr>                                                       
-                                                        <?php endforeach; ?>        
+                                                        <?php } endforeach; ?>        
                                                     <?php endforeach; ?>
                                                 </tbody>
                                             </table>
