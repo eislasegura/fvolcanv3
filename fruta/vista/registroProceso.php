@@ -1401,6 +1401,7 @@ if (isset($_POST)) {
             $ARRAYEXIMATERIAPRIMATOMADO = $EXIMATERIAPRIMA_ADO->buscarPorProceso($_REQUEST['IDP']);
             $ARRAYDEXPORTACIONPORPROCESO = $DPEXPORTACION_ADO->buscarPorProceso($_REQUEST['IDP']);
             $ARRATDINDUSTRIALPORPROCESO = $DPINDUSTRIAL_ADO->buscarPorProceso($_REQUEST['IDP']);
+
             if (empty($ARRAYEXIMATERIAPRIMATOMADO)) {
                 $SINO = "1";
                 $MENSAJE = $MENSAJE. " Tiene que haber al menos un registro de existencia seleccionado.";                
@@ -1422,6 +1423,10 @@ if (isset($_POST)) {
             } else {
                 $SINO = "0";
                 $MENSAJE = $MENSAJE;
+            } 
+            if($DIFERENCIAKILOSNETOEXPO < 0){
+                $SINO = "1";
+                $MENSAJE = $MENSAJE. " La diferencia de kilos debe ser igual 0.";  
             }
             if($SINO == 1){
                     echo '<script>
