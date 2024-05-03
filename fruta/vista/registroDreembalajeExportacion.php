@@ -879,7 +879,7 @@ if ($_POST) {
                                                 <label id="val_tmanejo" class="validacion"> </label>
                                             </div>
                                         </div> 
-                                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 ">
+                                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 " style="display: none;">
                                             <div class="form-group">
                                                 <label>Estado Folio</label><br>
                                                 <select class="form-control select2" id="EFOLIO" name="EFOLIO" style="width: 100%;" <?php echo $DISABLED; ?>>
