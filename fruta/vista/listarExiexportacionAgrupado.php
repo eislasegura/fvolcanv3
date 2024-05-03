@@ -166,9 +166,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                             <table id="existenciapt" class="table-hover" style="width: 100%;">
                                                 <thead>
                                                     <tr class="text-center">
-                                                        <th>Folio Auxiliar</th>
-                                                        <th>Código Estandar</th>
-                                                        <th>Estandar</th>
+                                                        <th>Folio final</th>
+                                                        <th>Código Estándar</th>
+                                                        <th>Estándar</th>
                                                         <th>Cantidad Envases</th>
                                                         <th>Kilos Neto</th>
                                                         <th>Kilos Bruto</th>
