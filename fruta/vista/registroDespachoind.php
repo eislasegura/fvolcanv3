@@ -1079,8 +1079,20 @@ if (isset($_POST)) {
                                         <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                             <div class="form-group">
                                                 <label>Tipo Envase 1</label>
-                                                <input type="hidden" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $NOMBREENVASE1; ?>" />
-                                                <input type="text" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $NOMBREENVASE1; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />
+
+                                                <input type="hidden" class="form-control" placeholder="NOMBREENVASE1" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $TDESPACHO; ?>" />
+                                                <select class="form-control select2" id="NOMBREENVASE1" name="NOMBREENVASE1" style="width: 100%;" onchange="this.form.submit()" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?>>
+                                                    <option></option>
+                                                    <option value="1" <?php if ($TDESPACHO == "1") { echo "selected"; } ?>> Envase 1</option>
+                                                    <option value="2" <?php if ($TDESPACHO == "2") { echo "selected"; } ?>> Envase 2 </option>
+                                                    <option value="3" <?php if ($TDESPACHO == "3") { echo "selected"; } ?>> Envase 3</option>
+                                                    <option value="4" <?php if ($TDESPACHO == "4") { echo "selected"; } ?>> Envase 4</option>
+                                                    <option value="5" <?php if ($TDESPACHO == "5") { echo "selected"; } ?>> Envase 5</option>
+                                                </select>
+
+
+                                                <!--<input type="hidden" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $NOMBREENVASE1; ?>" />
+                                                <input type="text" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE1" name="NOMBREENVASE1" value="<?php echo $NOMBREENVASE1; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />-->
                                                 <label id="val_nombreenvase1" class="validacion"> </label>
                                             </div>
                                         </div>
@@ -1095,8 +1107,17 @@ if (isset($_POST)) {
                                         <div class="col-xxl-2 col-xl-4 col-lg-6 col-md-6 col-sm-6 col-6 col-xs-6">
                                             <div class="form-group">
                                                 <label>Tipo Envase 2</label>
-                                                <input type="hidden" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $NOMBREENVASE2; ?>" />
-                                                <input type="text" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $NOMBREENVASE2; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />
+                                                <input type="hidden" class="form-control" placeholder="NOMBREENVASE2" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $TDESPACHO; ?>" />
+                                                <select class="form-control select2" id="NOMBREENVASE2" name="NOMBREENVASE2" style="width: 100%;" onchange="this.form.submit()" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?>>
+                                                    <option></option>
+                                                    <option value="1" <?php if ($TDESPACHO == "1") { echo "selected"; } ?>> Envase 1</option>
+                                                    <option value="2" <?php if ($TDESPACHO == "2") { echo "selected"; } ?>> Envase 2 </option>
+                                                    <option value="3" <?php if ($TDESPACHO == "3") { echo "selected"; } ?>> Envase 3</option>
+                                                    <option value="4" <?php if ($TDESPACHO == "4") { echo "selected"; } ?>> Envase 4</option>
+                                                    <option value="5" <?php if ($TDESPACHO == "5") { echo "selected"; } ?>> Envase 5</option>
+                                                </select>
+                                                <!--<input type="hidden" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $NOMBREENVASE2; ?>" />
+                                                <input type="text" class="form-control" placeholder="Nombre del Envase" id="NOMBREENVASE2" name="NOMBREENVASE2" value="<?php echo $NOMBREENVASE2; ?>" <?php echo $DISABLED; ?> <?php echo $DISABLED3; ?> />-->
                                                 <label id="val_nombreenvase2" class="validacion"> </label>
                                             </div>
                                         </div>
