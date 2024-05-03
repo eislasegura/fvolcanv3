@@ -10,7 +10,7 @@ curl_close($curl);
 // Decodificar la respuesta JSON
 $api_data = json_decode($api_response, true);
 
-$localVersion = "1.1.10";
+$localVersion = "1.1.50";
 $remoteVersion = $api_data['version'];
 
 
