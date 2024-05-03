@@ -1758,7 +1758,7 @@ class EXIEXPORTACION_ADO
     public function listarExiexportacionAgrupadoPorFolioEmpresaPlantaTemporada($EMPRESA, $PLANTA, $TEMPORADA)
     {
         try {
-
+  
             $datos = $this->conexion->prepare("SELECT 
                                                     FOLIO_AUXILIAR_EXIEXPORTACION,                                               
                                                     IFNULL(CANTIDAD_ENVASE_EXIEXPORTACION,0) AS 'ENVASE', 
@@ -1871,6 +1871,8 @@ class EXIEXPORTACION_ADO
     public function listarExiexportacionEmpresaPlantaTemporadaPorFolio($EMPRESA, $PLANTA, $TEMPORADA, $FOLIO)
     {
         try {
+
+  
 
             $datos = $this->conexion->prepare("SELECT *,  
                                                     DATEDIFF(SYSDATE(), FECHA_EMBALADO_EXIEXPORTACION) AS 'DIAS',             

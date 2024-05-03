@@ -389,9 +389,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                             }
                                                             $ARRAYREEMBALAJE = $REEMBALAJE_ADO->verReembalaje2($r['ID_REEMBALAJE']);
                                                             if ($ARRAYREEMBALAJE) {
-                                                                $NUMEROREEMBALEJE = $ARRAYREEMBALAJE[0]["ID_TREEMBALAJE"];
+                                                                $NUMEROREEMBALEJE = $ARRAYREEMBALAJE[0]["NUMERO_REEMBALAJE"];
                                                                 $FECHAREEMBALEJE = $ARRAYREEMBALAJE[0]["FECHA"];
-                                                                $ARRAYTREEMBALAJE = $TREEMBALAJE_ADO->verTreembalaje($ARRAYREEMBALAJE[0]["ID_REEMBALAJE"]);
+                                                                $ARRAYTREEMBALAJE = $TREEMBALAJE_ADO->verTreembalaje($ARRAYREEMBALAJE[0]["ID_TREEMBALAJE"]);
                                                                 if ($ARRAYTREEMBALAJE) {
                                                                     $TREEMBALAJE = $ARRAYTREEMBALAJE[0]["NOMBRE_TREEMBALAJE"];
                                                                 }
