@@ -163,7 +163,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                 <div class="row">
                                     <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-xs-12">
                                         <div class="table-responsive">
-                                            <table id="existenciapt" class="table-hover" style="width: 100%;">
+                                            <table id="existenciaptagrupado" class="table-hover" style="width: 100%;">
                                                 <thead>
                                                     <tr class="text-center">
                                                         <th>Folio final</th>
@@ -225,7 +225,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                             <div class="input-group mb-2">
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">Total Envase</div>
-                                                    <button class="btn   btn-default" id="TOTALENVASEV" name="TOTALENVASEV" >                                                           
+                                                    <button class="btn   btn-default" id="TOTALENVASEVAGRUPADO" name="TOTALENVASEVAGRUPADO" >                                                           
                                                     </button>
                                                 </div>
                                             </div>
