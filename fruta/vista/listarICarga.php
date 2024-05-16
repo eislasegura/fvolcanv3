@@ -290,6 +290,11 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                                 <button type="submit" class="btn  btn-warning " id="EDITARURL" name="EDITARURL" data-toggle="tooltip"  title="Editar">
                                                                                                     <i class="ti-pencil-alt"></i> Editar
                                                                                                 </button>
+                                                                                        <?php } ?> 
+                                                                                        <?php if ($r['ESTADO'] == "1") { ?>
+                                                                                                <a type="submit" class="btn  btn-primary " id="ASIGNARFOLIOURL" name="ASIGNARFOLIOURL" data-toggle="tooltip"  title="Asignar Folios A Instructivo" href="./registroSeleccionExistenciaReferencia.php?op&id=<?php echo $r['ID_ICARGA']; ?>">
+                                                                                                    <i class="ti-pencil-alt"></i> Asignar Folios A Instructivo
+                                                                                                </a>
                                                                                         <?php } ?>                                                                                          
                                                                                         <?php if ($ARRAYDESPACHOEX) { ?>
                                                                                             <button type="submit" class="btn btn-success " id="CARGADO" name="CARGADO"  data-toggle="tooltip"  title="Cargado"

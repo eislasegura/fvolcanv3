@@ -205,7 +205,21 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 <td><?php echo $r['KILOS_NETO']; ?></td>
                                                                 <td><?php echo $r['KILOS_BRUTO']; ?></td>
                                                                 <td><?php echo $r['KILOS_DESHIDRATACION']; ?></td>
-                                                                <td><?php echo $r['NUMERO_REFERENCIA']; ?></td>
+
+                                                                <?php 
+            
+                                                                    $ARRAYREFERENCIA = $ICARGA_ADO->verReferencia($r['NUMERO_REFERENCIA']);
+                                                                    if ($ARRAYREFERENCIA) {
+                                                                        $NREFERENCIA = $ARRAYREFERENCIA[0]['NREFERENCIA_ICARGA'];
+                                                                      
+                                                                    } else {
+                                                                        $NREFERENCIA = "Sin Datos";
+                                                                  
+                                                                    }
+                                                           
+                                                                ?>
+
+                                                                <td><?php echo $NREFERENCIA; ?></td>
                                                           
                                                                 
                                                                 

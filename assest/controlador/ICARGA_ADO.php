@@ -127,6 +127,29 @@ class ICARGA_ADO
         }
     }
 
+    public function verReferencia($ID)
+    {
+        try {
+
+            $datos = $this->conexion->prepare(" SELECT *,
+                                                DATE_FORMAT(INGRESO, '%Y-%m-%d') AS 'INGRESO', 
+                                                DATE_FORMAT(MODIFICACION, '%Y-%m-%d') AS 'MODIFICACION' 
+                                                FROM fruta_icarga 
+                                                WHERE ID_ICARGA= '" . $ID . "';");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 
     public function verIcarga2($IDICARGA)
     {
