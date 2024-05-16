@@ -573,7 +573,7 @@ $html = $html . '
         <thead>
            
           <tr>
-            <th colspan="7" class="center">PRODUCTO INDUSTRIAL.</th>
+            <th colspan="7" class="center">PRODUCTO INDUSTRIAL/DIFERENCIA</th>
           </tr>
           <tr>
             <th class="color left">Folio</th>
@@ -589,6 +589,7 @@ $html = $html . '
          <tbody>
         ';
 foreach ($ARRAYDINDUSTRIAL as $r) :
+
   $ARRAYVERVESPECIESID = $VESPECIES_ADO->verVespecies($r['ID_VESPECIES']);
   if($ARRAYVERVESPECIESID){
     $NOMBREVARIEDAD=$ARRAYVERVESPECIESID[0]['NOMBRE_VESPECIES'];

@@ -544,8 +544,8 @@ if (isset($_POST)) {
                                                             <option value="1" <?php if ($AGRUPACION == 1 ) {  echo "selected";  } ?>> IQF </option>
                                                             <option value="2" <?php if ($AGRUPACION == 2 ) {  echo "selected";  } ?>> Merma </option> 
                                                             <option value="3" <?php if ($AGRUPACION == 3 ) {  echo "selected";  } ?>> Desecho </option>
-                                                            <option value="3" <?php if ($AGRUPACION == 4 ) {  echo "selected";  } ?>> Diferencias </option>
-                                                            <option value="3" <?php if ($AGRUPACION == 5 ) {  echo "selected";  } ?>> Otros </option> 
+                                                            <option value="4" <?php if ($AGRUPACION == 4 ) {  echo "selected";  } ?>> Diferencias </option>
+                                                            <option value="5" <?php if ($AGRUPACION == 5 ) {  echo "selected";  } ?>> Otros </option> 
                                                         </select>
                                                         <label id="val_agrupacion" class="validacion"> </label>
                                                     </div>
@@ -802,8 +802,10 @@ if (isset($_POST)) {
                 $EINDUSTRIAL->__SET('ID_PRODUCTO', $_REQUEST['PRODUCTO']);
                 $EINDUSTRIAL->__SET('AGRUPACION', $_REQUEST['AGRUPACION']);
                 //echo '<script>alert("'.$_REQUEST['AGRUPACION'].'");</script>';
+                
                 $EINDUSTRIAL->__SET('ID_USUARIOM', $IDUSUARIOS);
                 $EINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ID']);
+
                 //LLAMADA AL METODO DE EDICION DEL CONTROLADOR
                 $EINDUSTRIAL_ADO->actualizarEstandar($EINDUSTRIAL);
 

@@ -58,6 +58,8 @@ $FOLIO = "";
 $FOLIOALIAS = "";
 $TCALIBREIND = "";
 
+$TIPOPROCESO = "";
+
 
 $FOLIOBAS2 = "";
 $FOLIOAUX = "";
@@ -108,7 +110,7 @@ $ARRAYDPROCESOINDUSTRIAL2 = "";
 $ARRAYVERFOLIOPOIND = "";
 
 $ARRAYTCALIBREIND = $TCALIBREIND_ADO->listarCalibreIndPorEmpresaCBX($EMPRESAS);
-$ARRAYESTANDAR = $EINDUSTRIAL_ADO->listarEstandarProcesoPorEmpresaCBX($EMPRESAS);
+
 $ARRAYTMANEJO = $TMANEJO_ADO->listarTmanejoCBX();
 $ARRAYFECHAACTUAL = $DPINDUSTRIAL_ADO->obtenerFecha();
 $FECHAEMBALADODINDUSTRIAL = $ARRAYFECHAACTUAL[0]['FECHA'];
@@ -167,6 +169,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
         $PRODUCTOR = "" . $r['ID_PRODUCTOR'];
         $FECHAPROCESO = "" . $r['FECHA_PROCESO'];
         $VESPECIES = "" . $r['ID_VESPECIES'];
+        $TIPOPROCESO = "" . $r['ID_TPROCESO'];
         $ARRAYVESPECIES = $VESPECIES_ADO->verVespecies($r['ID_VESPECIES']);
         $ARRAYVERPRODUCTOR = $PRODUCTOR_ADO->verProductor($PRODUCTOR);
         if ($ARRAYVERPRODUCTOR) {          
@@ -178,6 +181,14 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
 
     endforeach;
 }
+if($TIPOPROCESO==3){
+    //BULK
+    $ARRAYESTANDAR = $EINDUSTRIAL_ADO->listarEstandarProcesoPorEmpresaCBXBulk($EMPRESAS);
+}else{
+    //normal
+    $ARRAYESTANDAR = $EINDUSTRIAL_ADO->listarEstandarProcesoPorEmpresaCBX($EMPRESAS);
+}
+
 //OBTENCION DE DATOS ENVIADOR A LA URL
 //PARA OPERACIONES DE EDICION , VISUALIZACION Y CREACION
 //OPERACION PARA OBTENER EL ID RECEPCION Y FOLIO BASE, SOLO SE OCUPA PARA CREAR UN REGISTRO NUEVO
@@ -499,10 +510,11 @@ if ($_POST) {
                                                 <select class="form-control select2" id="ESTANDAR" name="ESTANDAR" style="width: 100%;" <?php echo $DISABLED; ?> <?php echo $DISABLEDSTYLE; ?>>
                                                     <option></option>
                                                     <?php foreach ($ARRAYESTANDAR as $r) : ?>
-                                                        <?php if ($ARRAYESTANDAR) {    ?>
-                                                            <option value="<?php echo $r['ID_ESTANDAR']; ?>" <?php if ($ESTANDAR == $r['ID_ESTANDAR']) {
-                                                                                                                    echo "selected";
-                                                                                                                } ?>><?php echo $r['CODIGO_ESTANDAR'] ?> : <?php echo $r['NOMBRE_ESTANDAR'] ?> </option>
+                                                        <?php if ($ARRAYESTANDAR) {    
+                                                               
+                                                            ?>
+
+                                                            <option value="<?php echo $r['ID_ESTANDAR']; ?>" <?php if ($ESTANDAR == $r['ID_ESTANDAR']) {echo "selected";} ?>><?php echo $r['CODIGO_ESTANDAR'] ?> : <?php echo $r['NOMBRE_ESTANDAR'] ?> </option>
                                                         <?php } else { ?>
                                                             <option>No Hay Datos Registrados</option>
                                                         <?php } ?>
@@ -519,7 +531,7 @@ if ($_POST) {
                                             </div>
                                         </div>
                                         <?php if($ESTADO_USO_CALIBRE == 1){ ?>
-                                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 ">
+                                        <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-6 col-xs-6 " style="display: none;">
                                             <div class="form-group">
                                                 <label>Calibre Industrial</label>
                                                 <select class="form-control select2" id="TCALIBREIND" name="TCALIBREIND" style="width: 100%;" <?php echo $DISABLED; ?>>

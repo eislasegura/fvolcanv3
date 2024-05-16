@@ -260,6 +260,8 @@ class EINDUSTRIAL_ADO
                     )
 
                 );
+
+                //var_dump($resultado);
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -337,7 +339,30 @@ class EINDUSTRIAL_ADO
                                             FROM estandar_eindustrial 
                                             WHERE ESTADO_REGISTRO = 1
                                             AND ID_EMPRESA = '".$IDEMPRESA."'
-                                            AND TESTANDAR = 0 ;	");
+                                            AND TESTANDAR = 0 AND AGRUPACION NOT IN(4);	");
+            $datos->execute();
+            $resultado = $datos->fetchAll();
+            $datos=null;
+
+            //	print_r($resultado);
+            //	var_dump($resultado);
+
+
+            return $resultado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function listarEstandarProcesoPorEmpresaCBXBulk($IDEMPRESA)
+    {
+        try {
+
+            $datos = $this->conexion->prepare("SELECT * 
+                                            FROM estandar_eindustrial 
+                                            WHERE ESTADO_REGISTRO = 1
+                                            AND ID_EMPRESA = '".$IDEMPRESA."'
+                                            AND TESTANDAR = 0 AND AGRUPACION=4 ;	");
             $datos->execute();
             $resultado = $datos->fetchAll();
             $datos=null;
