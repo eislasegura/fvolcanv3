@@ -774,7 +774,8 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                         </ul>
                       </li>                
                     </ul>
-                  </li>                  
+                  </li> 
+                  <li><a href="listarExiRegistroCalidad.php">Registro de Calidad<i class="ti-more"></i></a></li>                 
                 <?php  } ?>
                 <?php if($PFCFLEVANTAMIENTO=="1"){ ?>
                   <!--
@@ -850,6 +851,7 @@ $ARRAYPLANTACAMBIAR = $PLANTA_ADO->listarPlantaPropiaCBX();
                   <li><a href="listarExiIndexportacion.php">Ind Producto Terminado<i class="ti-more"></i></a></li>
                   <li><a href="listarExiindustrial.php">Producto Industrial<i class="ti-more"></i></a></li>
                   <li><a href="listarExiexportacionAgrupado.php">Existencia PT Resumen<i class="ti-more"></i></a></li>
+                  
                 </ul>
               </li>
               <li class="treeview">
