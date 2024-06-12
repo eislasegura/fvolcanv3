@@ -180,8 +180,7 @@ class DPINDUSTRIAL_ADO
           ID_VESPECIES = ? ,
           ID_ESTANDAR = ? ,
           ID_PRODUCTOR = ?,
-          ID_PROCESO = ? ,
-          ID_TCALIBREIND = ?           
+          ID_PROCESO = ?            
 		WHERE ID_DPINDUSTRIAL= ? ;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -193,7 +192,6 @@ class DPINDUSTRIAL_ADO
                         $DPINDUSTRIAL->__GET('ID_ESTANDAR'),
                         $DPINDUSTRIAL->__GET('ID_PRODUCTOR'),
                         $DPINDUSTRIAL->__GET('ID_PROCESO'),
-                        $DPINDUSTRIAL->__GET('ID_TCALIBREIND'),
                         $DPINDUSTRIAL->__GET('ID_DPINDUSTRIAL')
 
                     )

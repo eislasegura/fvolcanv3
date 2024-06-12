@@ -215,10 +215,10 @@ class EXIINDUSTRIAL_ADO
                                                     INGRESO,
                                                     MODIFICACION,
                                                     ESTADO,  
-                                                    ESTADO_REGISTRO,
-                                                    ID_TCALIBRE
+                                                    ESTADO_REGISTRO
+                                                    
                                                 ) VALUES
-	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  2, 1,?);";
+	       	( ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?, ?,    ?, ?, ?, ?, ?,  ?,  SYSDATE(),SYSDATE(),  2, 1);";
             $this->conexion->prepare($query)
                 ->execute(
                     array(
@@ -239,8 +239,7 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_EMPRESA'),
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
-                        $EXIINDUSTRIAL->__GET('ID_PROCESO'),
-                        $EXIINDUSTRIAL->__GET('ID_TCALIBRE')
+                        $EXIINDUSTRIAL->__GET('ID_PROCESO')
 
                     )
 
@@ -1015,8 +1014,7 @@ class EXIINDUSTRIAL_ADO
                 ID_EMPRESA = ?,
                 ID_PLANTA = ?, 
                 ID_TEMPORADA = ? ,
-                ID_PROCESO = ?,
-                ID_TCALIBRE = ?           
+                ID_PROCESO = ?         
 		WHERE ID_EXIINDUSTRIAL= ?;";
             $this->conexion->prepare($query)
                 ->execute(
@@ -1033,7 +1031,6 @@ class EXIINDUSTRIAL_ADO
                         $EXIINDUSTRIAL->__GET('ID_PLANTA'),
                         $EXIINDUSTRIAL->__GET('ID_TEMPORADA'),
                         $EXIINDUSTRIAL->__GET('ID_PROCESO'),
-                        $EXIINDUSTRIAL->__GET('ID_TCALIBRE'),
                         $EXIINDUSTRIAL->__GET('ID_EXIINDUSTRIAL')
                     )
 

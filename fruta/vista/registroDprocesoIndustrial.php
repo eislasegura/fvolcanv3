@@ -401,15 +401,7 @@ if ($_POST) {
                     }
                     document.form_reg_dato.TMANEJO.style.borderColor = "#4AF575";
 
-                    <?php if($ESTADO_USO_CALIBRE == 1){ ?>
-                    if (TCALIBREIND == null || TCALIBREIND == 0) {
-                        document.form_reg_dato.TCALIBREIND.focus();
-                        document.form_reg_dato.TCALIBREIND.style.borderColor = "#FF0000";
-                        document.getElementById('val_tcalibreind').innerHTML = "NO HA SELECIONADO ALTERNATIVA";
-                        return false;
-                    }
-                    document.form_reg_dato.TCALIBREIND.style.borderColor = "#4AF575";
-                    <?php } ?>
+               
 
 
                 }
@@ -670,7 +662,7 @@ if ($_POST) {
                 $DPINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                 $DPINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
                 $DPINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
-                $DPINDUSTRIAL->__SET('ID_TCALIBREIND', $_REQUEST['TCALIBREIND']);
+                $DPINDUSTRIAL->__SET('ID_TCALIBREIND', 0);
                 $DPINDUSTRIAL->__SET('ID_PROCESO', $_REQUEST['IDP']);
                 $DPINDUSTRIAL_ADO->agregarDpindustrial($DPINDUSTRIAL);
 
@@ -687,7 +679,7 @@ if ($_POST) {
                 $EXIINDUSTRIAL->__SET('FECHA_PROCESO', $_REQUEST['FECHAPROCESO']);
                 $EXIINDUSTRIAL->__SET('TCOBRO', $TCOBRO);
                 $EXIINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
-                $EXIINDUSTRIAL->__SET('ID_TCALIBRE', $_REQUEST['TCALIBREIND']);
+                $EXIINDUSTRIAL->__SET('ID_TCALIBRE', 0);
                 $EXIINDUSTRIAL->__SET('ID_FOLIO', $FOLIO);
                 $EXIINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                 $EXIINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
@@ -730,7 +722,7 @@ if ($_POST) {
                 $DPINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
                 $DPINDUSTRIAL->__SET('ID_VESPECIES',  $_REQUEST['VESPECIES']);
                 $DPINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
-                $DPINDUSTRIAL->__SET('ID_TCALIBREIND', $_REQUEST['TCALIBREIND']);
+                $DPINDUSTRIAL->__SET('ID_TCALIBREIND', 0);
                 $DPINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
                 $DPINDUSTRIAL->__SET('ID_PROCESO', $_REQUEST['IDP']);
                 $DPINDUSTRIAL->__SET('ID_DPINDUSTRIAL', $_REQUEST['ID']);
@@ -748,7 +740,7 @@ if ($_POST) {
                     $EXIINDUSTRIAL->__SET('FECHA_PROCESO', $_REQUEST['FECHAPROCESO']);
                     $EXIINDUSTRIAL->__SET('TCOBRO', $TCOBRO);
                     $EXIINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
-                    $EXIINDUSTRIAL->__SET('ID_TCALIBRE', $_REQUEST['TCALIBREIND']);
+                    $EXIINDUSTRIAL->__SET('ID_TCALIBRE', 0);
                     $EXIINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                     $EXIINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
                     $EXIINDUSTRIAL->__SET('ID_VESPECIES', $_REQUEST['VESPECIES']);
@@ -779,7 +771,7 @@ if ($_POST) {
                     $EXIINDUSTRIAL->__SET('FECHA_PROCESO', $_REQUEST['FECHAPROCESO']);
                     $EXIINDUSTRIAL->__SET('TCOBRO', $TCOBRO);
                     $EXIINDUSTRIAL->__SET('ID_TMANEJO', $_REQUEST['TMANEJO']);
-                    $EXIINDUSTRIAL->__SET('ID_TCALIBRE', $_REQUEST['TCALIBREIND']);
+                    $EXIINDUSTRIAL->__SET('ID_TCALIBRE', 0);
                     $EXIINDUSTRIAL->__SET('ID_FOLIO', $FOLIO);
                     $EXIINDUSTRIAL->__SET('ID_ESTANDAR', $_REQUEST['ESTANDAR']);
                     $EXIINDUSTRIAL->__SET('ID_PRODUCTOR', $_REQUEST['PRODUCTOR']);
