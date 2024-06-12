@@ -777,7 +777,9 @@ class ICARGA_ADO
                                                         IFNULL(TOTAL_ENVASE_ICAGRA,0) AS 'ENVASE',
                                                         IFNULL(TOTAL_NETO_ICARGA,0) AS 'NETO',
                                                         IFNULL(TOTAL_BRUTO_ICARGA,0) AS 'BRUTO',
-                                                        IFNULL(TOTAL_US_ICARGA,0) AS 'US'
+                                                        IFNULL(TOTAL_US_ICARGA,0) AS 'US',
+                                                        ID_ICARGA,
+														(select COUNT(ID_EXIEXPORTACION) FROM fruta_exiexportacion WHERE ESTADO = 2 AND REFERENCIA = fruta_icarga.ID_ICARGA)AS N_FOLIOS
                                             FROM fruta_icarga  
                                             WHERE ESTADO_REGISTRO = 1                                                                                                        
                                             AND ID_EMPRESA = '" . $EMPRESA . "' 

@@ -123,7 +123,7 @@ if (isset($id_dato) && isset($accion_dato) && isset($urlo_dato)) {
     $IDP = $id_dato;
     $OPP = $accion_dato;
     $URLO = $urlo_dato;
-    $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorEmpresaPlantaTemporadaNoAsignado($EMPRESAS, $PLANTAS, $TEMPORADAS);
+    $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->buscarPorEmpresaPlantaTemporadaSiAsignado($EMPRESAS, $PLANTAS, $TEMPORADAS, $IDP);
 }
 include_once "../../assest/config/validarDatosUrlD.php";
 
@@ -135,7 +135,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
 <html lang="es">
 
 <head>
-    <title>Selección Exitencia</title>
+    <title>Lista de Folios Asignados</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
@@ -169,13 +169,13 @@ include_once "../../assest/config/validarDatosUrlD.php";
                     <div class="content-header">
                         <div class="d-flex align-items-center">
                             <div class="mr-auto">
-                                <h3 class="page-title">Asignar Folio a Referencia </h3>
+                                <h3 class="page-title">Lista de Folios Asignados </h3>
                                 <div class="d-inline-block align-items-center">
                                     <nav>
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="index.php"><i class="mdi mdi-home-outline"></i></a></li>
                                             <li class="breadcrumb-item" aria-current="page">Módulo</li>
-                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#">Seleccion Existencia a Referencia</a> </li>
+                                            <li class="breadcrumb-item active" aria-current="page"> <a href="#">Lista de Folios Asignados</a> </li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -203,6 +203,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
                                                         <tr class="text-center">
+                                                            <th> </th>
                                                             <th>Folio </th>
                                                             <th>Código Estandar </th>
                                                             <th>Envase/Estandar </th>
@@ -362,11 +363,11 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                     <!-- /.box-body -->                                    
                                     <div class="card-footer">
                                         <div class="btn-group btn-rounded btn-block col-xxl-4 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-xs-12" role="group" aria-label="Acciones generales">
-                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('listarICarga.php');" >
+                                            <button type="button" class="btn btn-success  " data-toggle="tooltip" title="Volver" name="CANCELAR" value="CANCELAR" Onclick="irPagina('listarICarga.php');">
                                                 <i class="ti-back-left "></i> Volver
                                             </button>
-                                            <button type="submit" class="btn btn-primary" data-toggle="tooltip" title="Seleccionar" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
-                                                <i class="ti-save-alt"></i> Seleccionar
+                                            <button type="submit" class="btn btn-danger" data-toggle="tooltip" title="Seleccionar" name="AGREGAR" value="AGREGAR" <?php echo $DISABLED; ?>>
+                                                <i class="ti-save-alt"></i> Quitar de la Referencia
                                             </button>
                                         </div>
                                     </div>
@@ -412,7 +413,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                     foreach ($SELECIONAREXISTENCIA as $r) :
 
                         $IDEXIEXPORTACION = $r;
-                        $EXIEXPORTACION->__SET('REFERENCIA', $IDDESPACHOEX);
+                        $EXIEXPORTACION->__SET('REFERENCIA', '');
                         $EXIEXPORTACION->__SET('ID_EXIEXPORTACION', $IDEXIEXPORTACION);
                         //LLAMADA AL METODO DE REGISTRO DEL CONTROLADOR
                         $EXIEXPORTACION_ADO->actualizarAsignarReferencia($EXIEXPORTACION);
@@ -426,7 +427,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                         Swal.fire({
                             icon:"success",
                             title:"Accion realizada",
-                            text:"Se agregado los folios a la referencia.",
+                            text:"Se quito los folios de la referencia.",
                             showConfirmButton: true,
                             confirmButtonText:"Volver al listado de Int. Carga",
                             closeOnConfirm:false

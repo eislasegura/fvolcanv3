@@ -149,6 +149,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                     <tr class="text-center">
                                                         <th>Número </th>
                                                         <th>Número Referencia</th>
+                                                        <th>Folios Asignados</th>
                                                         <th>Estado</th>
                                                         <th>Fecha Instructivo</th>
                                                         <th class="text-center">Operaciónes </th>
@@ -258,6 +259,7 @@ include_once "../../assest/config/datosUrLP.php";
                                                         <tr class="text-center">
                                                             <td> <?php echo $r['NUMERO_ICARGA']; ?>  </td>
                                                             <td> <?php echo $r['NREFERENCIA_ICARGA']; ?>  </td>
+                                                            <td>  <?php echo $r['N_FOLIOS']; ?> </td>
                                                             <td>
                                                                 <?php if ($r['ESTADO'] == "0") { ?>
                                                                     <button type="button" class="btn btn-block btn-danger">Cerrado</button>
@@ -294,6 +296,11 @@ include_once "../../assest/config/datosUrLP.php";
                                                                                         <?php if ($r['ESTADO'] == "1") { ?>
                                                                                                 <a type="submit" class="btn  btn-primary " id="ASIGNARFOLIOURL" name="ASIGNARFOLIOURL" data-toggle="tooltip"  title="Asignar Folios A Instructivo" href="./registroSeleccionExistenciaReferencia.php?op&id=<?php echo $r['ID_ICARGA']; ?>">
                                                                                                     <i class="ti-pencil-alt"></i> Asignar Folios A Instructivo
+                                                                                                </a>
+                                                                                        <?php } ?> 
+                                                                                        <?php if ($r['ESTADO'] == "1") { ?>
+                                                                                                <a type="submit" class="btn  btn-danger " id="LISTAASIGNARFOLIOURL" name="LISTAASIGNARFOLIOURL" data-toggle="tooltip"  title="Lista de Folios Asignados" href="./registroSeleccionExistenciaReferenciaAsignado.php?op&id=<?php echo $r['ID_ICARGA']; ?>">
+                                                                                                    <i class="ti-pencil-alt"></i> Lista Folios Asignados
                                                                                                 </a>
                                                                                         <?php } ?>                                                                                          
                                                                                         <?php if ($ARRAYDESPACHOEX) { ?>
