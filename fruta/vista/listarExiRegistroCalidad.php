@@ -183,6 +183,22 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
 
                                                         
                                                           <?php 
+
+                                                         
+
+                                                            if($r['COLOR']=="1"){
+                                                                $TRECHAZOCOLOR="badge badge-danger ";
+                                                                $COLOR="Rechazado";
+                                                            }else if($r['COLOR']=="2"){
+                                                                $TRECHAZOCOLOR="badge badge-warning ";
+                                                                $COLOR="Objetado";
+                                                            }else if($r['COLOR']=="3"){
+                                                                $TRECHAZOCOLOR="badge badge-Success ";
+                                                                $COLOR="Aprobado";
+                                                            }else{
+                                                                $TRECHAZOCOLOR="";
+                                                                $COLOR="Sin Datos";
+                                                            } 
             
                                                             $ARRAYEVERERECEPCIONID = $EEXPORTACION_ADO->verEstandar($r['ID_ESTANDAR']);
                                                             if ($ARRAYEVERERECEPCIONID) {
@@ -431,7 +447,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
             </div>
             <div class="row">
             <div class="col-md-12">
-            <button type="submit" class="btn btn-rounded btn-primary float-right btnAdd">Guardar Registro</button>
+            <button type="submit" class="btn btn-primary float-right btnAdd">Guardar Registro</button>
+            <button type="button" class="btn btn-danger float-left btnRechazo">Rechazar Folio </button>
             </div>
         </div>
            
@@ -496,6 +513,46 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
             //     title: "Informacion importante",
             //     html: "<label>Las <b>Existencia</b> que tienen la letra de color <b>Rojo</b> tiene mas de 7 dias desde su ingreso.</label>"
             // })
+
+            $('body').on('click', 'button.btnRechazo', function(event) {
+
+                var folioex = $("input[name='folioex']").val();
+
+                var formData = new FormData();
+                formData.append('action', 'rechazo');
+                formData.append('folioex', folioex);
+
+                console.log(formData);
+
+                $.ajax({
+                    data: formData,
+                    url: "../../assest/controlador/REGCALIDAD_ADO.php",
+                    type: "POST",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        console.log('procesamos el rechazo');
+                    },
+                    success: function(respuesta) {
+                        console.log(respuesta);
+
+                        $.toast({
+                            heading: 'Folio rechazado',
+                            text: 'Su registro al Folio N° '+folioex+' fue rechazado',
+                            position: 'bottom-left',
+                            loaderBg: '#ff6849',
+                            icon: 'success',
+                            hideAfter: 3500,
+                            stack: 6
+                        });
+
+                        location.reload();
+
+                    }
+                });
+
+            });
 
 
             function updateClock() {

@@ -78,6 +78,24 @@ class REGCALIDAD_ADO {
         }
     }
 
+    public function rechazoFolioCalidad(REGCALIDAD $REGCALIDAD) {
+        try {
+
+        $query = "
+            UPDATE fruta_exiexportacion SET
+                COLOR=1 
+            WHERE FOLIO_EXIEXPORTACION= ?;";
+            $this->conexion->prepare($query)->execute(array(
+                        $REGCALIDAD->__GET('FOLIOEX')
+            ));
+
+
+          
+        } catch(Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function handleAjaxRequest() {
 
  
@@ -115,9 +133,17 @@ class REGCALIDAD_ADO {
 
                 $folioex = $_POST['folioex'];
                 $empresa = $_POST['empresa'];
-
                 $resultado = $this->listarRegCalidad($folioex, $empresa);
                 echo json_encode($resultado);
+
+            }elseif ($action == 'rechazo') {
+
+                $regCalidad = new REGCALIDAD();
+                $regCalidad->__SET('FOLIOEX', $_POST['folioex']);
+                $this->rechazoFolioCalidad($regCalidad);
+
+                echo 1;
+
             } else {
                 echo 2;
             }
