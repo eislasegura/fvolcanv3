@@ -2268,6 +2268,65 @@ class EXIEXPORTACION_ADO
                     }
     }
 
+    public function listaFolioAgrupadoExistenciaExportacionCalidad($EMPRESA, $PLANTA, $TEMPORADA){
+        try {
+        
+            $datos = $this->conexion->prepare("SELECT
+                        FOLIO_AUXILIAR_EXIEXPORTACION, 
+                        FOLIO_EXIEXPORTACION,
+                        ID_ESTANDAR,
+                        SUM(CANTIDAD_ENVASE_EXIEXPORTACION)AS ENVASES,
+                        SUM(KILOS_NETO_EXIEXPORTACION)AS KILOS_NETO,
+                        SUM(KILOS_BRUTO_EXIEXPORTACION)AS KILOS_BRUTO,
+                        SUM(KILOS_DESHIRATACION_EXIEXPORTACION)AS KILOS_DESHIDRATACION,
+                        (REFERENCIA)AS NUMERO_REFERENCIA FROM
+                        fruta_exiexportacion 
+                    WHERE
+                    ID_EMPRESA = '" . $EMPRESA . "' 
+                    AND ID_PLANTA = '" . $PLANTA . "'
+                    AND ID_TEMPORADA = '" . $TEMPORADA . "' 
+                        AND ESTADO_REGISTRO = 1 
+                        AND ESTADO = 2 
+                        AND (COLOR IS NULL OR COLOR != 1)
+                    GROUP BY
+                        FOLIO_EXIEXPORTACION;");
+
+                        /*echo "SELECT
+                        FOLIO_AUXILIAR_EXIEXPORTACION, 
+                        FOLIO_EXIEXPORTACION,
+                        ID_ESTANDAR,
+                        SUM(CANTIDAD_ENVASE_EXIEXPORTACION)AS ENVASES,
+                        SUM(KILOS_NETO_EXIEXPORTACION)AS KILOS_NETO,
+                        SUM(KILOS_BRUTO_EXIEXPORTACION)AS KILOS_BRUTO,
+                        SUM(KILOS_DESHIRATACION_EXIEXPORTACION)AS KILOS_DESHIDRATACION,
+                        (REFERENCIA)AS NUMERO_REFERENCIA FROM
+                        fruta_exiexportacion 
+                    WHERE
+                    ID_EMPRESA = '" . $EMPRESA . "' 
+                    AND ID_PLANTA = '" . $PLANTA . "'
+                    AND ID_TEMPORADA = '" . $TEMPORADA . "' 
+                        AND ESTADO_REGISTRO = 1 
+                        AND ESTADO = 2 
+                        AND (COLOR IS NULL OR COLOR != 1)
+                    GROUP BY
+                        FOLIO_AUXILIAR_EXIEXPORTACION;";*/
+
+
+                        
+                        $datos->execute();
+                        $resultado = $datos->fetchAll();
+                        $datos=null;
+
+                        //	print_r($resultado);
+                        //	var_dump($resultado);
+
+
+                        return $resultado;
+                    } catch (Exception $e) {
+                        die($e->getMessage());
+                    }
+    }
+
 
     public function listarExiexportacionEmpresaPlantaTemporadaPorFolioDisponible($EMPRESA, $PLANTA, $TEMPORADA, $FOLIO)
     {

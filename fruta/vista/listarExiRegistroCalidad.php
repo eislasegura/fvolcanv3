@@ -90,7 +90,7 @@ $ARRAYINPSAG = "";
 
 //DEFINIR ARREGLOS CON LOS DATOS OBTENIDOS DE LAS FUNCIONES DE LOS CONTROLADORES 
 if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
-    $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->listaFolioAgrupadoExistenciaExportacion($EMPRESAS, $PLANTAS, $TEMPORADAS);
+    $ARRAYEXIEXPORTACION = $EXIEXPORTACION_ADO->listaFolioAgrupadoExistenciaExportacionCalidad($EMPRESAS, $PLANTAS, $TEMPORADAS);
 }
 ?>
 
@@ -166,7 +166,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                             <table id="existenciaptagrupado" class="table-hover" style="width: 100%;">
                                                 <thead>
                                                     <tr class="text-center">
-                                                        <th>Folio final</th>
+                                                        <th>Folio Original</th>
+                                                        <th>Folio Final</th>
                                                         <th>Registro de Calidad</th>
                                                         <th>Código Estándar</th>
                                                         <th>Estándar</th>
@@ -194,13 +195,19 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                            
                                                             ?>
                                                             <tr class="text-center">
+                                                            <td>                                                                   
+                                                                    <span class="<?php echo $TRECHAZOCOLOR; ?>">
+                                                                        <?php echo $r['FOLIO_EXIEXPORTACION']; ?>
+                                                                    </span>
+                                                                </td>
                                                                 <td>                                                                   
                                                                     <span class="<?php echo $TRECHAZOCOLOR; ?>">
                                                                         <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
                                                                     </span>
                                                                 </td>
+                                                                
                                                                 <td>
-                                                                <button type="button" class="btn btn-rounded btn-info registroCalidad" attr-id="<?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>">
+                                                                <button type="button" class="btn btn-rounded btn-info registroCalidad" attr-id="<?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>" attr-idex="<?php echo $r['FOLIO_EXIEXPORTACION']; ?>">
 					                                                Añadir Registro
 				                                                </button>
                                                                 </td>
@@ -317,15 +324,24 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
 
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Folio</label>
-                            <input type="text" class="form-control" placeholder="N° Folio" name="folio" readonly>
+                            <label>Folio Original</label>
+                            <input type="text" class="form-control" placeholder="N° Folio Exportación" name="folioex" readonly>
                         </div>
                     </div>
 
                     <div class="col-md-3">
+                        <div class="form-group">
+                            <label>Folio Final</label>
+                            <input type="text" class="form-control" placeholder="N° Folio" name="folio" readonly>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="col-md-3">
 						<div class="form-group">
 						<label>Tipo de Registro </label>
-						<select class="form-control" name="tipo">
+						<select class="form-control" name="tipo" required>
 						    <option value="0">Seleccione una opción</option>
 							<option value="1">Origen</option>
 							<option value="2">Destino</option>
@@ -335,79 +351,79 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Baxlo Promedio</label>
-                            <input type="text" class="form-control" placeholder="Baxlo Promedio" name="baxlo_promedio">
+                            <input type="text" class="form-control" placeholder="Baxlo Promedio" name="baxlo_promedio" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Peso 10 Frutos</label>
-                            <input type="text" class="form-control" placeholder="Peso 10 Frutos" name="peso_10_frutos">
+                            <input type="text" class="form-control" placeholder="Peso 10 Frutos" name="peso_10_frutos" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Temperatura</label>
-                            <input type="text" class="form-control" placeholder="Temperatura" name="temperatura">
+                            <input type="text" class="form-control" placeholder="Temperatura" name="temperatura" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Brix</label>
-                            <input type="text" class="form-control" placeholder="Brix" name="brix">
+                            <input type="text" class="form-control" placeholder="Brix" name="brix" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Pudrición - Micelio</label>
-                            <input type="text" class="form-control" placeholder="Pudrición - Micelio" name="pudricion_micelio">
+                            <input type="text" class="form-control" placeholder="Pudrición - Micelio" name="pudricion_micelio" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Heridas Abiertas</label>
-                            <input type="text" class="form-control" placeholder="Heridas Abiertas" name="heridas_abiertas">
+                            <input type="text" class="form-control" placeholder="Heridas Abiertas" name="heridas_abiertas" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Deshidratación</label>
-                            <input type="text" class="form-control" placeholder="Deshidratación" name="deshidratacion">
+                            <input type="text" class="form-control" placeholder="Deshidratación" name="deshidratacion" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Exudación Jugo</label>
-                            <input type="text" class="form-control" placeholder="Exudación Jugo" name="exudacion_jugo">
+                            <input type="text" class="form-control" placeholder="Exudación Jugo" name="exudacion_jugo" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Blando</label>
-                            <input type="text" class="form-control" placeholder="Blando" name="blando">
+                            <input type="text" class="form-control" placeholder="Blando" name="blando" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Machucon</label>
-                            <input type="text" class="form-control" placeholder="Machucon" name="machucon">
+                            <input type="text" class="form-control" placeholder="Machucon" name="machucon" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>Inmadura Roja</label>
-                            <input type="text" class="form-control" placeholder="Inmadura Roja" name="inmadura_roja">
+                            <input type="text" class="form-control" placeholder="Inmadura Roja" name="inmadura_roja" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>QC Calidad</label>
-                            <input type="text" class="form-control" placeholder="QC Calidad" name="qc_calidad">
+                            <input type="text" class="form-control" placeholder="QC Calidad" name="qc_calidad" required>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
                             <label>QC Condición</label>
-                            <input type="text" class="form-control" placeholder="QC Condición" name="qc_condicion">
+                            <input type="text" class="form-control" placeholder="QC Condición" name="qc_condicion" required>
                         </div>
                     </div>
                 </div>
@@ -428,7 +444,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                             <thead>
                                 <tr class="text-center">
                                     <th>Fecha/Hora</th>
-                                    <th>Folio</th>
+                                    <th>Folio Original</th>
+                                    <th>Folio Final</th>
                                     <th>Tipo</th>
                                     <th>Baxlo Promedio</th>
                                     <th>Peso 10 Frutos</th>
@@ -508,6 +525,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                 console.log('ejecutamos modal-left');
 
                 var folio = $(this).attr('attr-id');
+                var folioex = $(this).attr('attr-idex');
 
                 // Obtener la fecha y la hora actuales
                 var now = new Date();
@@ -522,12 +540,14 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                 $('input[name="fecha"]').val(date);
                 
                 $('input[name="folio"]').val(folio);
+                $('input[name="folioex"]').val(folioex);
                 updateClock();
 
                 //precargamos primero la tabla con registros
                 var formData = new FormData();
                 formData.append('action', 'list');
                 formData.append('folio', folio);
+                formData.append('folioex', folioex);
                 formData.append('empresa', <?php echo $_SESSION['ID_EMPRESA']; ?>);
 
                 console.log(formData);
@@ -551,7 +571,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                             registros.forEach(function(registro) {
                                 html += '<tr>';
                                 html += '<td>' + registro.FECHA + '/' + registro.HORA + '</td>';
+                                html += '<td>' + registro.FOLIOEX + '</td>';
                                 html += '<td>' + registro.FOLIO + '</td>';
+                                
                                 var tipo_descripcion = '';
                                 switch(registro.TIPO){
                                     case '1': tipo_descripcion = 'Origen';
@@ -593,6 +615,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
             $('body').on('submit', 'form#formRegistroCalidad', function(event) {
                 var formData = new FormData($('form#formRegistroCalidad')[0]);
                 var folio = $("input[name='folio']").val();
+                var folioex = $("input[name='folioex']").val();
                 console.log('ejecutamos el formulario');
                 //alert(formData);
                 $.ajax({
@@ -628,6 +651,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                         var formData2 = new FormData();
                         formData2.append('action', 'list');
                         formData2.append('folio', folio);
+                        formData2.append('folioex', folioex);
                         formData2.append('empresa', <?php echo $_SESSION['ID_EMPRESA']; ?>);
                 console.log(formData2);
 
@@ -650,7 +674,9 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                             registros.forEach(function(registro) {
                                 html += '<tr>';
                                 html += '<td>' + registro.FECHA + '/' + registro.HORA + '</td>';
+                                html += '<td>' + registro.FOLIOEX + '</td>';
                                 html += '<td>' + registro.FOLIO + '</td>';
+                                
                                 var tipo_descripcion = '';
                                 switch(registro.TIPO){
                                     case 1: tipo_descripcion = 'Origen';
@@ -685,7 +711,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                 });
 
                 $('form#formRegistroCalidad').find(':input').each(function() {
-                            if ($(this).attr('name') !== 'fecha' && $(this).attr('name') !== 'hora' && $(this).attr('name') !== 'folio' && $(this).attr('name') !== 'usuario' && $(this).attr('name') !== 'tipo' && $(this).attr('name') !== 'empresa' && $(this).attr('name') !== 'action' ) {
+                            if ($(this).attr('name') !== 'fecha' && $(this).attr('name') !== 'hora' && $(this).attr('name') !== 'folio' && $(this).attr('name') !== 'folioex' && $(this).attr('name') !== 'usuario' && $(this).attr('name') !== 'tipo' && $(this).attr('name') !== 'empresa' && $(this).attr('name') !== 'action' ) {
                                 $(this).val(''); // Limpia los demás campos de entrada
                                 $("select[name='tipo']").prop('selectedIndex', 0);
                             }

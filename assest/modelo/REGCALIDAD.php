@@ -8,6 +8,7 @@ class  REGCALIDAD {
     
     //ATRIBUTOS DE LA CLASE    
     private	  $ID; 
+    private	  $FOLIOEX;
     private	  $FOLIO;
     private	  $FECHA;
     private   $HORA; 

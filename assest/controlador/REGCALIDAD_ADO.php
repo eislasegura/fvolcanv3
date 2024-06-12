@@ -30,10 +30,10 @@ class REGCALIDAD_ADO {
         }
     }
 
-    public function listarRegCalidad($folio, $empresa) {
+    public function listarRegCalidad($folioex, $empresa) {
         try {
-            $datos = $this->conexion->prepare("SELECT * FROM registro_calidad WHERE FOLIO = ? AND ID_EMPRESA = ? AND ESTADO=1 order by ID DESC;");
-            $datos->execute([$folio, $empresa]);
+            $datos = $this->conexion->prepare("SELECT * FROM registro_calidad WHERE FOLIOEX = ? AND ID_EMPRESA = ? AND ESTADO=1 order by ID DESC;");
+            $datos->execute([$folioex, $empresa]);
             $resultado = $datos->fetchAll();
             $datos = null;
             return $resultado;
@@ -44,14 +44,15 @@ class REGCALIDAD_ADO {
 
     public function agregarRegCalidad(REGCALIDAD $REGCALIDAD) {
         try {
-            $query = "INSERT INTO registro_calidad (
+            $query = "INSERT INTO registro_calidad (FOLIOEX,
                          FOLIO, FECHA, HORA, ID_USUARIO, TIPO, BAXLO_PROMEDIO, PESO_10_FRUTOS, 
                          TEMPERATURA, BRIX, PUDRICION_MICELIO, HERIDAS_ABIERTAS, DESHIDRATACION,
                          EXUDACION_JUGO, BLANDO, MACHUCON, INMADURA_ROJA, QC_CALIDAD, 
                          QC_CONDICION, ESTADO, ID_EMPRESA
-                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)";
+                     ) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?)";
             
             $this->conexion->prepare($query)->execute(array(
+                $REGCALIDAD->__GET('FOLIOEX'),
                 $REGCALIDAD->__GET('FOLIO'),
                 $REGCALIDAD->__GET('FECHA'),
                 $REGCALIDAD->__GET('HORA'),
@@ -86,6 +87,7 @@ class REGCALIDAD_ADO {
 
             if ($action == 'insert') {
                 $regCalidad = new REGCALIDAD();
+                $regCalidad->__SET('FOLIOEX', $_POST['folioex']);
                 $regCalidad->__SET('FOLIO', $_POST['folio']);
                 $regCalidad->__SET('FECHA', $_POST['fecha']);
                 $regCalidad->__SET('HORA', $_POST['hora']);
@@ -111,10 +113,10 @@ class REGCALIDAD_ADO {
                 echo 1;
             } elseif ($action == 'list') {
 
-                $folio = $_POST['folio'];
+                $folioex = $_POST['folioex'];
                 $empresa = $_POST['empresa'];
 
-                $resultado = $this->listarRegCalidad($folio, $empresa);
+                $resultado = $this->listarRegCalidad($folioex, $empresa);
                 echo json_encode($resultado);
             } else {
                 echo 2;
