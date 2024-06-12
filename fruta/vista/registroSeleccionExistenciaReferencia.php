@@ -204,16 +204,21 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                     <thead>
                                                         <tr class="text-center">
                                                             <th>Folio </th>
-                                                            <th>Estado Calidad</th>
-                                                            <th>Condición </th>
-                                                            <th>Selección</th>
-                                                            <th>Fecha Embalado </th>
                                                             <th>Código Estandar </th>
                                                             <th>Envase/Estandar </th>
+
+                                                            <th>Cantidad Envase </th>
                                                             <th>CSG</th>
                                                             <th>Productor</th>
                                                             <th>Variedad</th>
-                                                            <th>Cantidad Envase </th>
+                                                            <th>Fecha Embalado </th>
+
+                                                            <th>Estado Calidad</th>
+                                                            <th>Condición </th>
+                                                            <th>Selección</th>
+                                                            
+                            
+                                                            
                                                             <th>Kilo Neto </th>
                                                             <th>Tipo Manejo</th>
                                                             <th>Tipo Calibre</th>
@@ -309,26 +314,36 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             }
                                                             ?>
                                                             <tr class="text-center">
-                                                                <td>                                                                   
-                                                                    <span class="<?php echo $TRECHAZOCOLOR; ?>">
-                                                                        <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
-                                                                    </span>
-                                                                </td>
-                                                                <td><?php echo $COLOR; ?></td>
-                                                                <td><?php echo $ESTADOSAG; ?></td>
-                                                                <td>
+                                                            <td>
                                                                     <div class="form-group">
                                                                         <input type="checkbox" name="SELECIONAREXISTENCIA[]" id="SELECIONAREXISTENCIA<?php echo $r['ID_EXIEXPORTACION']; ?>" value="<?php echo $r['ID_EXIEXPORTACION']; ?>">
                                                                         <label for="SELECIONAREXISTENCIA<?php echo $r['ID_EXIEXPORTACION']; ?>"> Seleccionar</label>
                                                                     </div>
                                                                 </td>
-                                                                <td><?php echo $r['EMBALADO']; ?></td>
+                                                                <td>                                                                   
+                                                                    <span class="<?php echo $TRECHAZOCOLOR; ?>">
+                                                                        <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
+                                                                    </span>
+                                                                </td>
                                                                 <td><?php echo $CODIGOESTANDAR; ?></td>
                                                                 <td><?php echo $NOMBREESTANDAR; ?></td>
+
+                                                                <td><?php echo $r['ENVASE']; ?></td>
                                                                 <td><?php echo $CSGPRODUCTOR; ?></td>
                                                                 <td><?php echo $NOMBREPRODUCTOR; ?></td>
                                                                 <td><?php echo $NOMBREVESPECIES; ?></td>
-                                                                <td><?php echo $r['ENVASE']; ?></td>
+                                                                <td><?php echo $r['EMBALADO']; ?></td>
+
+
+                                                                <td><?php echo $COLOR; ?></td>
+                                                                <td><?php echo $ESTADOSAG; ?></td>
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+
+
                                                                 <td><?php echo $r['NETO']; ?></td>
                                                                 <td><?php echo $NOMBRETMANEJO; ?></td>
                                                                 <td><?php echo $NOMBRETCALIBRE; ?></td>
