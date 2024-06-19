@@ -19,6 +19,8 @@ include_once '../../assest/controlador/EXIEXPORTACION_ADO.php';
 include_once '../../assest/modelo/DESPACHOEX.php';
 include_once '../../assest/modelo/EXIEXPORTACION.php';
 
+include_once '../../assest/controlador/DESPACHOPT_ADO.php';
+
 
 //INCIALIZAR LAS VARIBLES
 //INICIALIZAR CONTROLADOR
@@ -38,6 +40,8 @@ $EXIEXPORTACION_ADO =  new EXIEXPORTACION_ADO();
 //INIICIALIZAR MODELO
 $DESPACHOEX =  new DESPACHOEX();
 $EXIEXPORTACION =  new EXIEXPORTACION();
+
+$DESPACHOPT_ADO =  new DESPACHOPT_ADO();
 
 
 
@@ -75,7 +79,7 @@ $NODATOURL = "";
 
 $SINO = "";
 $SINO2 = "";
-
+$TDESPACHO = "";
 
 //INICIALIZAR ARREGLOS
 $ARRAYEXIEXPORTACION = "";
@@ -116,6 +120,21 @@ if (isset($_GET["urlo"])) {
     $urlo_dato = "";
 }
 //OPERACION DE REGISTRO DE FILA
+$IDOP = $id_dato;
+//echo $IDOP.'uyyy';
+
+//OBTENER TIPO DE DESPACHO
+$ARRAYDESPACHOMP = $DESPACHOPT_ADO->verDespachopt($IDOP);
+//PASAR DATOS OBTENIDOS A VARIABLES QUE SE VISUALIZAR EN EL FORMULARIO DE LA VISTA
+foreach ($ARRAYDESPACHOMP as $r) :
+
+ 
+        $TDESPACHO = "" . $r['TDESPACHO'];
+
+
+
+
+endforeach;
 
 
 
@@ -229,6 +248,8 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                     <tbody>
                                                         <?php foreach ($ARRAYEXIEXPORTACION as $r) : ?>
                                                             <?php
+
+                                                            
                                                             if ($r['TESTADOSAG'] == null || $r['TESTADOSAG'] == "0") {
                                                                 $ESTADOSAG = "Sin Condición";
                                                             }
@@ -311,6 +332,8 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             } else {
                                                                 $NOMBRETEMBALAJE = "Sin Datos";
                                                             }
+                                                            //echo $TDESPACHO.'xxx';
+                                                            if($TDESPACHO == "6" && $r['COLOR']=="1"){
                                                             ?>
                                                             <tr class="text-center">
                                                                 <td>                                                                   
@@ -340,7 +363,40 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                                 <td><?php echo $r['STOCKR']; ?></td>
                                                                 <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             </tr>
-                                                        <?php endforeach; ?>
+                                                        <?php
+                                                            }elseif ($TDESPACHO != "6") {
+                                                              ?>
+                                                            <tr class="text-center">
+                                                                <td>                                                                   
+                                                                    <span class="<?php echo $TRECHAZOCOLOR; ?>">
+                                                                        <?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>
+                                                                    </span>
+                                                                </td>
+                                                                <td><?php echo $COLOR; ?></td>
+                                                                <td><?php echo $ESTADOSAG; ?></td>
+                                                                <td>
+                                                                    <div class="form-group">
+                                                                        <input type="checkbox" name="SELECIONAREXISTENCIA[]" id="SELECIONAREXISTENCIA<?php echo $r['ID_EXIEXPORTACION']; ?>" value="<?php echo $r['ID_EXIEXPORTACION']; ?>">
+                                                                        <label for="SELECIONAREXISTENCIA<?php echo $r['ID_EXIEXPORTACION']; ?>"> Seleccionar</label>
+                                                                    </div>
+                                                                </td>
+                                                                <td><?php echo $r['EMBALADO']; ?></td>
+                                                                <td><?php echo $CODIGOESTANDAR; ?></td>
+                                                                <td><?php echo $NOMBREESTANDAR; ?></td>
+                                                                <td><?php echo $CSGPRODUCTOR; ?></td>
+                                                                <td><?php echo $NOMBREPRODUCTOR; ?></td>
+                                                                <td><?php echo $NOMBREVESPECIES; ?></td>
+                                                                <td><?php echo $r['ENVASE']; ?></td>
+                                                                <td><?php echo $r['NETO']; ?></td>
+                                                                <td><?php echo $NOMBRETMANEJO; ?></td>
+                                                                <td><?php echo $NOMBRETCALIBRE; ?></td>
+                                                                <td><?php echo $NOMBRETEMBALAJE; ?></td>
+                                                                <td><?php echo $r['STOCKR']; ?></td>
+                                                                <td><?php echo $NUMEROREFERENCIA; ?></td>
+                                                            </tr>
+
+                                                           <?php }
+                                                     endforeach; ?>
                                                     </tbody>
 
                                                 </table>
