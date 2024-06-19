@@ -203,6 +203,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                 <table id="selecionExistencia" class="table-hover " style="width: 100%;">
                                                     <thead>
                                                         <tr class="text-center">
+                                                        <th>Selección </th>
                                                             <th>Folio </th>
                                                             <th>Código Estandar </th>
                                                             <th>Envase/Estandar </th>
