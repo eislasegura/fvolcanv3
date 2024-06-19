@@ -448,7 +448,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
             <div class="row">
             <div class="col-md-12">
             <button type="submit" class="btn btn-primary float-right btnAdd">Guardar Registro</button>
-            <button type="button" class="btn btn-danger float-left btnRechazo">Rechazar Folio </button>
+            <!--<button type="button" class="btn btn-danger float-left btnRechazo">Rechazar Folio </button>-->
             </div>
         </div>
            
