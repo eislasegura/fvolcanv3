@@ -573,14 +573,14 @@ $html = $html . '
         <thead>
            
           <tr>
-            <th colspan="7" class="center">PRODUCTO INDUSTRIAL/DIFERENCIA</th>
+            <th colspan="6" class="center">PRODUCTO INDUSTRIAL/DIFERENCIA</th>
           </tr>
           <tr>
             <th class="color left">Folio</th>
             <th class="color center">Fecha Embalado</th>
             <th class="color center">Código Estandar</th>
             <th class="color center">Envase/Estandar</th>
-            <th class="color center">Calibre</th>
+            
             <th class="color center">Kilos Neto</th>
             <th class="color center">%</th>
             <th class="color center">Variedad </th>
@@ -624,7 +624,7 @@ foreach ($ARRAYDINDUSTRIAL as $r) :
             <td class=" center"> ' . $r['EMBALADO'] . '</td>
             <td class=" center"> ' . $CODIGOESTANDAR . '</td>
             <td class=" center"> ' . $NOMBREESTANDAR . '</td>
-            <td class=" center"> ' . $NOMBRETCALIBREIND . '</td>
+           
             <td class=" center"> ' . $r['NETO'] . '</td>
             <td class=" center"> ' . $NETOINDU . '%</td>
             <td class=" center "> ' . $NOMBREVARIEDAD . ' </td>
@@ -637,7 +637,7 @@ $html = $html . '
             <th class="color left"> </th>
             <th class="color center"> </th>
             <th class="color center"> </th>
-            <th class="color center"> </th>
+            
             <th class="color right">Sub Total </th>
             <th class="color center"> ' . $TOTALNETOINDV . '</th>
             <th class="color center "> ' . number_format($PDINDUSTRIAL, 2, ",", ".") . '% </th>
