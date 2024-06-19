@@ -675,6 +675,20 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                 var folioex = $("input[name='folioex']").val();
                 console.log('ejecutamos el formulario');
                 //alert(formData);
+
+                var tipoSeleccionado = document.getElementById('tipoRegistro').value;
+                //alert(tipoSeleccionado);
+            if (tipoSeleccionado === '0') {
+                event.preventDefault(); // Prevenir el envío del formulario
+                $.toast({
+                            heading: 'Error',
+                            text: 'Selecciona un tipo de despacho para el Folio N° '+folio,
+                            position: 'bottom-left',
+                            loaderBg: '#ff6849',
+                            icon: 'error',
+                            hideAfter: 3500
+                        });
+            }else{
                 $.ajax({
                     data: formData,
                     url: "../../assest/controlador/REGCALIDAD_ADO.php",
@@ -787,6 +801,8 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                         }
                     }
                 });
+
+                }
                 return false;
             });
 
