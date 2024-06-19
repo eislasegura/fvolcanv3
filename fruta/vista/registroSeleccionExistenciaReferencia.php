@@ -312,6 +312,8 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                             } else {
                                                                 $NOMBRETEMBALAJE = "Sin Datos";
                                                             }
+
+                                                            if($r['COLOR'] == "1"){}else{
                                                             ?>
                                                             <tr class="text-center">
                                                             <td>
@@ -351,7 +353,7 @@ include_once "../../assest/config/validarDatosUrlD.php";
                                                                 <td><?php echo $r['STOCKR']; ?></td>
                                                                 <td><?php echo $NUMEROREFERENCIA; ?></td>
                                                             </tr>
-                                                        <?php endforeach; ?>
+                                                        <?php } endforeach; ?>
                                                     </tbody>
 
                                                 </table>
