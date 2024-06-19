@@ -223,7 +223,7 @@ if ($EMPRESAS  && $PLANTAS && $TEMPORADAS) {
                                                                 </td>
                                                                 
                                                                 <td>
-                                                                <button type="button" class="btn btn-rounded btn-info registroCalidad" attr-id="<?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>" attr-idex="<?php echo $r['FOLIO_EXIEXPORTACION']; ?>">
+                                                                <button type="button" class="btn btn-info registroCalidad" attr-id="<?php echo $r['FOLIO_AUXILIAR_EXIEXPORTACION']; ?>" attr-idex="<?php echo $r['FOLIO_EXIEXPORTACION']; ?>">
 					                                                Añadir Registro
 				                                                </button>
                                                                 </td>
