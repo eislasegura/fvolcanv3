@@ -70,6 +70,7 @@ $CONDUCTOR = "";
 $TRANSPORTE = "";
 $PLANTADESTINO = "";
 $PLANTAEXTERNA = "";
+$DESPACHOINDUSTRIAL = "";
 $TDESPACHO = "";
 $COMPRADOR = "";
 $PRODUCTOR = "";
@@ -266,6 +267,10 @@ if (isset($id_dato) && isset($accion_dato)) {
                 $PLANTAEXTERNA = "" . $r['ID_PLANTA3'];
             }
 
+            if ($TDESPACHO == "6") {
+                $DESPACHOINDUSTRIAL = "" . $r['ID_PLANTA3'];
+            }
+
 
 
         endforeach;
@@ -321,6 +326,10 @@ if (isset($id_dato) && isset($accion_dato)) {
             }
             if ($TDESPACHO == "5") {
                 $PLANTAEXTERNA = "" . $r['ID_PLANTA3'];
+            }
+
+            if ($TDESPACHO == "6") {
+                $DESPACHOINDUSTRIAL = "" . $r['ID_PLANTA3'];
             }
 
 
@@ -380,6 +389,12 @@ if (isset($id_dato) && isset($accion_dato)) {
             if ($TDESPACHO == "5") {
                 $PLANTAEXTERNA = "" . $r['ID_PLANTA3'];
             }
+
+            if ($TDESPACHO == "6") {
+                $DESPACHOINDUSTRIAL = "" . $r['ID_PLANTA3'];
+            }
+
+            
 
 
 
@@ -470,6 +485,12 @@ if (isset($_POST)) {
         if ($TDESPACHO == "5") {
             if (isset($_REQUEST['PLANTAEXTERNA'])) {
                 $PLANTAEXTERNA = "" . $_REQUEST['PLANTAEXTERNA'];
+            }
+        }
+
+        if ($TDESPACHO == "6") {
+            if (isset($_REQUEST['DESPACHOINDUSTRIAL'])) {
+                $DESPACHOINDUSTRIAL = "" . $_REQUEST['DESPACHOINDUSTRIAL'];
             }
         }
     }
@@ -732,6 +753,21 @@ if (isset($_POST)) {
 
                     }
 
+                    if (TDESPACHO == 6) {
+
+                        DESPACHOINDUSTRIAL = document.getElementById("DESPACHOINDUSTRIAL").selectedIndex;
+                        document.getElementById('val_plantae').innerHTML = "";
+
+                        if (DESPACHOINDUSTRIAL == null || DESPACHOINDUSTRIAL == 0) {
+                            document.form_reg_dato.DESPACHOINDUSTRIAL.focus();
+                            document.form_reg_dato.DESPACHOINDUSTRIAL.style.borderColor = "#FF0000";
+                            document.getElementById('val_plantae').innerHTML = "NO HA SELECIONADO ALTERNATIVA";
+                            return false
+                        }
+                        document.form_reg_dato.DESPACHOINDUSTRIAL.style.borderColor = "#4AF575";
+
+                        }
+
                     /*
                     if (OBSERVACIONDESPACHOMP == null || OBSERVACIONDESPACHOMP.length == 0 || /^\s+$/.test(OBSERVACIONDESPACHOMP)) {
                         document.form_reg_dato.OBSERVACIONDESPACHOMP.focus();
@@ -870,7 +906,7 @@ if (isset($_POST)) {
                                                     <option value="3" <?php if ($TDESPACHO == "3") { echo "selected"; } ?>> Venta</option>
                                                     <option value="4" <?php if ($TDESPACHO == "4") { echo "selected"; } ?>> Despacho de Descarte(R)</option>
                                                     <option value="5" <?php if ($TDESPACHO == "5") { echo "selected"; } ?>> Planta Externa</option>
-                                                    <option value="3" <?php if ($TDESPACHO == "6") { echo "selected"; } ?>> Despacho Industrial</option>
+                                                    <option value="6" <?php if ($TDESPACHO == "6") { echo "selected"; } ?>> Despacho Industrial</option>
                                                 </select>
                                                 <label id="val_tdespacho" class="validacion"> </label>
                                             </div>
